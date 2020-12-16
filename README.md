@@ -27,6 +27,8 @@ The repository administrators are responsible for deleting the remote copies of 
 
 External pull requests are welcome, but must be reviewed before they can be merged into the master branch. Reviewers may ask questions or make suggestions for edits and improvements before your feature can be merged. If your feature branch pull request is not accepted, make the necessary adjustments or fixes as indicated by the repository administrators and redo the pull request.
 
+For a longer desciption of the branching model, please refer to our [examples](https://github.com/RI-SE/smirk/blob/main/branching.md).
+
 ## References
 <a id="1">[1]</a> https://ec.europa.eu/digital-single-market/en/news/assessment-list-trustworthy-artificial-intelligence-altai-self-assessment
 
