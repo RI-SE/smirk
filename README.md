@@ -14,12 +14,18 @@ SMIRK is a research prototype under development that facilitates research on ver
 
 ## Branching Model
 
-The SMIRK development follows the [git-flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model. The model uses two infinite branches (master and develop) and two types of supporting branches (feature and hotfix branches).
+The SMIRK development follows the popular [git-flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model. The model uses two *infinite* branches (`master` and `develop`) and two types of supporting branches (`feature` and `hotfix` branches). Supporting branches shall be *ephemeral*, i.e., they should only last as long as the feature or hotfix itself is in development. Once completed, they shall be merged back into one of the infitine branches and/or discarded.
 
-- master - the main branch where the source code of HEAD always reflects a production-ready state.
-- develop - where the main development is reflected. Merges with master.
-- feature-x - used to develop new features for the upcoming release. Merges with develop.
--	hotfix-x - used when it is necessary to act immediately upon an undesired state of a live production version. Merges with master.
+In the following examples, `feature-x` or `hotfix-x` shall be replaced with a short phrase describing the feature or hotfix.
+
+- `master` - the main branch where the source code of HEAD always reflects a production-ready state.
+- `develop` - where the main development is reflected. Merges into `master`.
+- `feature-x` - used to develop new features for the upcoming release. Merges into `develop`.
+-	`hotfix-x` - used when it is necessary to act immediately upon an undesired state of a live production version. Merges into `master`.
+
+The repository administrators are responsible for deleting the remote copies of ephemeral branches and updating the version tag for the `master` branch.
+
+External pull requests are welcome, but must be reviewed before they can be merged into the master branch. Reviewers may ask questions or make suggestions for edits and improvements before your feature can be merged. If your feature branch pull request is not accepted, make the necessary adjustments or fixes as indicated by the repository administrators and redo the pull request.
 
 ## References
 <a id="1">[1]</a> https://ec.europa.eu/digital-single-market/en/news/assessment-list-trustworthy-artificial-intelligence-altai-self-assessment
