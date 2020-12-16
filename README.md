@@ -6,7 +6,7 @@ SMIRK is an experimental pedestrian emergency breaking ADAS facilitating researc
 - Keywords: automotive, machine learning, computer vision, functional safety, SOTIF, quality assurance, AI testing 
 - Responsible unit at RISE: Digital Systems/Mobility and Systems/Humanized Autonomy
 - Related research projects: SMILEIII, SODA, AIQ Meta-Testbed
-- License: MIT
+- License: [MIT](https://github.com/RI-SE/smirk/blob/main/LICENSE)
 
 ## Description
 
