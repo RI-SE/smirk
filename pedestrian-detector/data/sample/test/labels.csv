@@ -1,0 +1,4 @@
+filename,xmin,ymin,xmax,ymax,width,height,class_text,class_label
+cam000001.jpg,4,217,36,291,640,480,pedestrian,1
+cam000002.jpg,9,219,52,289,640,480,pedestrian,1
+cam000003.jpg,32,217,63,291,640,480,pedestrian,1
