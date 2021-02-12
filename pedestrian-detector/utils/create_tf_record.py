@@ -1,9 +1,9 @@
 from pathlib import Path
 
+from object_detection.utils import dataset_util
 import pandas as pd
 import tensorflow as tf
 from tqdm import tqdm
-from object_detection.utils import dataset_util
 
 
 def create_tf_example(example):

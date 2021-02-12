@@ -1,9 +1,10 @@
-from absl import flags
-from object_detection import model_lib_v2
-import tensorflow as tf
 from pathlib import Path
 import shutil
 from typing import Dict
+
+from absl import flags
+from object_detection import model_lib_v2
+import tensorflow as tf
 
 import config
 
