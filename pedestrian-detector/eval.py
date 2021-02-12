@@ -64,7 +64,7 @@ def eval_all_checkpoints(
             )
 
 
-flags.DEFINE_enum("model_name", None, config.MODELS.keys(), "The model to train.")
+flags.DEFINE_enum("model_name", None, config.MODELS.keys(), "The model to evaluate.")
 
 FLAGS = flags.FLAGS
 
