@@ -5,21 +5,7 @@ from pathlib import Path
 import shutil
 from typing import Dict
 
-MODELS = {
-    "efficient-det-d0": {
-        "origin_name": "efficientdet_d0_coco17_tpu-32",
-        "name": "efficient-det-d0",
-        "url": "http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz",
-    },
-    "ssd_mobilenet_320": {
-        "origin_name": "ssd_mobilenet_v2_320x320_coco17_tpu-8",
-        "name": "ssd_mobilenet_320",
-        "url": "http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_320x320_coco17_tpu-8.tar.gz",
-    },
-}
-
-TRAINED_BASE_DIR = Path("./trained")
-PRE_TRAINED_BASE_DIR = Path("./pre-trained")
+import config
 
 
 def load_model(pre_train_base_dir: Path, model_config: Dict) -> None:
@@ -57,7 +43,7 @@ def train(
         )
 
 
-flags.DEFINE_enum("model_name", None, MODELS.keys(), "The model to train.")
+flags.DEFINE_enum("model_name", None, config.MODELS.keys(), "The model to train.")
 flags.DEFINE_integer("train_steps", None, "Override number of trainig steps.")
 flags.DEFINE_integer("checkpoint_every_n", 1000, "Number of steps between checkpoints.")
 flags.DEFINE_integer(
@@ -70,10 +56,10 @@ FLAGS = flags.FLAGS
 def main(_):
     flags.mark_flag_as_required("model_name")
 
-    model_config = MODELS[FLAGS.model_name]
-    load_model(PRE_TRAINED_BASE_DIR, model_config)
+    model_config = config.MODELS[FLAGS.model_name]
+    load_model(config.PRE_TRAINED_BASE_DIR, model_config)
     train(
-        TRAINED_BASE_DIR / model_config["name"],
+        config.TRAINED_BASE_DIR / model_config["name"],
         train_steps=FLAGS.train_steps,
         checkpoint_every_n=FLAGS.checkpoint_every_n,
         checkpoint_max_to_keep=FLAGS.checkpoint_max_to_keep,
