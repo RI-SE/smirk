@@ -1,12 +1,7 @@
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
-from typing import Any, List, Union
+from typing import List
 
-
-@dataclass
-class RadarDetection:
-    reading: Any
-    time_to_collision: Union[int, None]
+from .radar_detection import RadarDetection
 
 
 class Radar(ABC):
