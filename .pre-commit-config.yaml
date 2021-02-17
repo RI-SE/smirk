@@ -1,0 +1,29 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: check-merge-conflict
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: poetry run black
+        language: system
+        types: [python]
+      - id: flake8
+        name: flake8
+        entry: poetry run flake8
+        language: system
+        types: [python]
+      - id: export-requirements
+        name: requirements.txt
+        language: system
+        entry: poetry export -o requirements.txt
+        files: "^pyproject.toml$"
+        pass_filenames: false
+      - id: isort
+        name: isort
+        entry: poetry run isort
+        language: system
+        types: [python]
+        args: ["--profile", "black", "--filter-files"]
