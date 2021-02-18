@@ -27,6 +27,11 @@ class SsdHubDetector(PedestrianDetector):
         person_scores: np.ndarray = detections["detection_scores"][person_mask]
 
         if self.debug_fn:
-            self.debug_fn(camera_frame, detections)
+            self.debug_fn(
+                camera_frame,
+                detections["detection_boxes"][person_mask][
+                    person_scores > self.DETECTION_THRESHOLD
+                ],
+            )
 
         return np.any(person_scores > self.DETECTION_THRESHOLD)
