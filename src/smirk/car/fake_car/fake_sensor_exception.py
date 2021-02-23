@@ -1,0 +1,2 @@
+class FakeSensorException(Exception):
+    pass
