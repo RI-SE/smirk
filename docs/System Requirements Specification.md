@@ -1,4 +1,4 @@
-# System Requirements Specification
+# System Requirements Specification v0.1
 
 Revision History
 <table>
@@ -25,33 +25,28 @@ Revision History
 # 1 Introduction #
 ## 1.1 Purpose ##
 ## 1.2 Document Conventions ##
+[X] refers to artifacts specified by AMLAS.
 ## 1.3 Glossary
+- AMLAS Guidance on the Assurance of Machine Learning in Autonomous Systems
+- ML: Machine Learning
+
 ## 1.4 Intended Audience and Reading Suggestions ##
 ## 1.5 Product Scope ##
 ## 1.6 References ##
 
-# 2 Overall Description #
+# 2 System Description [B] #
 ## 2.1 Product Perspective ##
 ## 2.2 Product Functions ##
-## 2.3 User Classes and Characteristics ##
-## 2.4 Operating Environment ##
-## 2.5 Design and Implementation Constraints ##
-## 2.6 User Documentation ##
-## 2.7 Assumptions and Dependencies ##
+## 2.3 External Interface Requirements ##
 
-# 3 External Interface Requirements #
-## 3.1 User Interfaces ##
-## 3.2 Hardware Interfaces ##
-## 3.3 Software Interfaces ##
-## 3.4 Communication Interfaces ##
+# 3 System Safety Requirements [A] #
 
-# 4 System Features #
+# 4 Operational Design Domain [B] #
 
-# 5. Nonfunctional Requirements #
-## 5.1 Performance Requirements ##
-## 5.2 Safety Requirements ##
-## 5.3 Security Requirements ##
-## 5.4 Software Quality Attributes ##
-## 5.5 Business Rules ##
+# 5 ML Component Description [D] #
 
-# 6 Other Requirements #
+# 6 ML Assurance Scoping Argument Pattern [F] #
+
+# 7 Safety Requirements Allocated to ML Component [E] #
+
+# 6 ML Assurance Scoping Argument Pattern [G] #
