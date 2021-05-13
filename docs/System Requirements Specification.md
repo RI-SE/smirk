@@ -1,4 +1,4 @@
-# System Requirements Specification v0.1
+# System Requirements Specification v0.2
 
 Revision History
 <table>
@@ -9,10 +9,10 @@ Revision History
 <th>0.1</th>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Markus Borg</td>
+<td>WIP</td>
+<td>Initial version to discuss at AMLAS workshop.</td>
+<td>0.2</td>
 </tr>
 <tr>
 <td></td>
