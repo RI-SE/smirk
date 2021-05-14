@@ -34,7 +34,7 @@ Revision History
 ## 1.5 Product Scope ##
 ## 1.6 References ##
 
-# 2 System Description [B] #
+# 2 System Description [C] #
 ## 2.1 Product Perspective ##
 ## 2.2 Product Functions ##
 ## 2.3 External Interface Requirements ##
