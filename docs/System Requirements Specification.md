@@ -49,4 +49,4 @@ Revision History
 
 # 7 Safety Requirements Allocated to ML Component [E] #
 
-# 6 ML Safety Assurance Scoping Argument [G] #
+# 8 ML Safety Assurance Scoping Argument [G] #
