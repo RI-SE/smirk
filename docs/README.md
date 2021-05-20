@@ -17,13 +17,13 @@ The table below is an index to navigate the artifacts mandated (cf. [ID]) by the
 
 |      ID   |     Title                                        |     Input to    |     Output from    |     Where?       |
 |:---------:|--------------------------------------------------|:---------------:|:------------------:|------------------|
-|     [A]   |     System Safety Requirements                     |         1, 6    |                    |     [SRS Sec 3](</docs/System Requirements Specification.md#system_reqts>)    |
-|     [B]   |     Description of Operating Environment of System |         1, 6    |                    |     SRS Sec 4    |
-|     [C]   |     System Description                             |         1, 6    |                    |     SRS Sec 2    |
-|     [D]   |     ML Component Description                       |          1      |                    |     SRS Sec 5    |
-|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     SRS Sec 7    |
-|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     SRS Sec 6    |
-|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     SRS Sec 8    |
+|     [A]   |     System Safety Requirements                     |         1, 6    |                    |     [SRS Sec 3](</docs/System Requirements Specification.md#system_safety_reqts>)    |
+|     [B]   |     Description of Operating Environment of System |         1, 6    |                    |     [SRS Sec 4](</docs/System Requirements Specification.md#odd>)    |
+|     [C]   |     System Description                             |         1, 6    |                    |     [SRS Sec 2](</docs/System Requirements Specification.md#system_reqts>)    |
+|     [D]   |     ML Component Description                       |          1      |                    |     [SRS Sec 5](</docs/System Requirements Specification.md#ml_component_desc>)    |
+|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    |
+|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    |
+|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 8](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    |
 |     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       |                  |
 |     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    |                  |
 |     [J]   |     ML Safety Requirements Validation Results      |                 |            2       |                  |
