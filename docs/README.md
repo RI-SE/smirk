@@ -29,16 +29,15 @@ The table below is an index to navigate the artifacts mandated (cf. [ID]) by the
 |     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | TBD |
 |     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | TBD |
 |     [K]   |     ML Safety Requirements Argument                |                 |            2       | TBD |
-|     [L]   |     Data Requirements                              |                 |            3       | TBD |
-|     [M]   | Data Requirements Justification Report             |                 |          3         | TBD |
+|     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) |
+|     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) |
 |     [N]   | Development Data                                   |                 |          3         | TBD |
 |     [O]   | Internal Test Data                                 |                 |          3         | TBD |
 |     [P]   | Verification Data                                  |                 |          3         | TBD |
-|     [R]   |     ML Data Argument Pattern                       |          3      |                    | TBD |
-|     [Q]   |     Data Generation Log                            |                 |            3       | TBD |
-|     [R]   | ML Data Argument Pattern                           |        3        |                    | TBD |
-|     [S]   | ML Data Validation Results                         |                 |          3         | TBD |
-|     [T]   | ML Data Argument                                   |                 |          3         | TBD |
+|     [Q]   |     Data Generation Log                            |                 |            3       | [DMS Sec 4](</docs/Data Management Specification.md#data_gen>) |
+|     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) |
+|     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) |
+|     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) |
 |     [U]   |     Model Development Log                          |                 |          4         | TBD |
 |     [V]   | ML Model                                           |       5, 6      |          4         | TBD |
 |     [W]   |     ML Learning Argument Pattern                   |          4      |                    | TBD |
