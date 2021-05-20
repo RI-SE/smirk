@@ -53,6 +53,24 @@ The goal of this document is to provide the foundation for a SMIRK minimum viabl
 # 4 Operational Design Domain [B] <a name="odd"></a>
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA [2]. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
 
+## 4.1 Physical Infrastructure
+![AMLAS process](/docs/figures/srs_odd_physical.png) <a name="amlas"></a>
+
+## 4.2 Operational Constraints
+![AMLAS process](/docs/figures/srs_odd_operational.png) <a name="amlas"></a>
+
+## 4.3 Objects
+![AMLAS process](/docs/figures/srs_odd_objects.png) <a name="amlas"></a>
+
+## 4.4 Connectivity
+N/A
+
+## 4.5 Environmental Conditions
+![AMLAS process](/docs/figures/srs_odd_environmental.png) <a name="amlas"></a>
+
+## 4.6 Zones
+![AMLAS process](/docs/figures/srs_odd_zones.png) <a name="amlas"></a>
+
 # 5 ML Component Description [D] <a name="ml_component_desc"></a>
 
 # 6 ML Assurance Scoping Argument Pattern [F] <a name="ml_assurance_scoping_pattern"></a>
