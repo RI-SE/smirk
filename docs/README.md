@@ -24,31 +24,31 @@ The table below is an index to navigate the artifacts mandated (cf. [ID]) by the
 |     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    |
 |     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    |
 |     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 8](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    |
-|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       |                  |
-|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    |                  |
-|     [J]   |     ML Safety Requirements Validation Results      |                 |            2       |                  |
-|     [K]   |     ML Safety Requirements Argument                |                 |            2       |                  |
-|     [L]   |     Data Requirements                              |                 |            3       |                  |
-|     [M]   | Data Requirements Justification Report             |                 |          3         |                  |
-|     [N]   | Development Data                                   |                 |          3         |                  |
-|     [O]   | Internal Test Data                                 |                 |          3         |                  |
-|     [P]   | Verification Data                                  |                 |          3         |                  |
-|     [R]   |     ML Data Argument Pattern                       |          3      |                    |                  |
-|     [Q]   |     Data Generation Log                            |                 |            3       |                  |
-|     [R]   | ML Data Argument Pattern                           |        3        |                    |                  |
-|     [S]   | ML Data Validation Results                         |                 |          3         |                  |
-|     [T]   | ML Data Argument                                   |                 |          3         |                  |
-|     [U]   |     Model Development Log                          |                 |          4         |                  |
-|     [V]   | ML Model                                           |       5, 6      |          4         |                  |
-|     [W]   |     ML Learning Argument Pattern                   |          4      |                    |                  |
-|     [X]   |     Internal Test Results                          |                 |            4       |                  |
-|     [Y]   |     ML Learning Argument                           |                 |            4       |                  |
-|     [Z]   |     ML Verification Results                        |                 |            5       |                  |
-|     [AA]  |     Verification Log                               |                 |            5       |                  |
-|     [BB]  |     ML Verification Argument Pattern               |          5      |                    |                  |
-|     [CC]  |     ML Verification Argument                       |                 |            5       |                  |
-|     [DD]  |     Erroneous Behaviour Log                        |                 |            6       |                  |
-|     [EE]  |     Operational scenarios                          |         6       |                    |                  |
-|     [FF]  | Integration Testing Results                        |                 |          6         |                  |
-|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    |                  |
-|     [HH]  |     ML Deployment Argument                         |                 |            6       |                  |
+|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | TBD |
+|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | TBD |
+|     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | TBD |
+|     [K]   |     ML Safety Requirements Argument                |                 |            2       | TBD |
+|     [L]   |     Data Requirements                              |                 |            3       | TBD |
+|     [M]   | Data Requirements Justification Report             |                 |          3         | TBD |
+|     [N]   | Development Data                                   |                 |          3         | TBD |
+|     [O]   | Internal Test Data                                 |                 |          3         | TBD |
+|     [P]   | Verification Data                                  |                 |          3         | TBD |
+|     [R]   |     ML Data Argument Pattern                       |          3      |                    | TBD |
+|     [Q]   |     Data Generation Log                            |                 |            3       | TBD |
+|     [R]   | ML Data Argument Pattern                           |        3        |                    | TBD |
+|     [S]   | ML Data Validation Results                         |                 |          3         | TBD |
+|     [T]   | ML Data Argument                                   |                 |          3         | TBD |
+|     [U]   |     Model Development Log                          |                 |          4         | TBD |
+|     [V]   | ML Model                                           |       5, 6      |          4         | TBD |
+|     [W]   |     ML Learning Argument Pattern                   |          4      |                    | TBD |
+|     [X]   |     Internal Test Results                          |                 |            4       | TBD |
+|     [Y]   |     ML Learning Argument                           |                 |            4       | TBD |
+|     [Z]   |     ML Verification Results                        |                 |            5       | TBD |
+|     [AA]  |     Verification Log                               |                 |            5       | TBD |
+|     [BB]  |     ML Verification Argument Pattern               |          5      |                    | TBD |
+|     [CC]  |     ML Verification Argument                       |                 |            5       | TBD |
+|     [DD]  |     Erroneous Behaviour Log                        |                 |            6       | TBD |
+|     [EE]  |     Operational scenarios                          |         6       |                    | TBD |
+|     [FF]  | Integration Testing Results                        |                 |          6         | TBD |
+|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | TBD |
+|     [HH]  |     ML Deployment Argument                         |                 |            6       | TBD |
