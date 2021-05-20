@@ -17,7 +17,7 @@ The table below is an index to navigate the artifacts mandated (cf. [ID]) by the
 
 |      ID   |     Title                                        |     Input to    |     Output from    |     Where?       |
 |:---------:|--------------------------------------------------|:---------------:|:------------------:|------------------|
-|     [A]   |     System Safety Requirements                     |         1, 6    |                    |     [SRS Sec 3](/docs/System_Requirements_Specification.md)    |
+|     [A]   |     System Safety Requirements                     |         1, 6    |                    |     [SRS Sec 3](</docs/System Requirements Specification.md#system_reqts>)    |
 |     [B]   |     Description of Operating Environment of System |         1, 6    |                    |     SRS Sec 4    |
 |     [C]   |     System Description                             |         1, 6    |                    |     SRS Sec 2    |
 |     [D]   |     ML Component Description                       |          1      |                    |     SRS Sec 5    |
