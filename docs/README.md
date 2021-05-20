@@ -9,9 +9,11 @@ In this folder, all documentation related to SMIRK is evolving. Everything is WI
 
 ## Safety Assurance
 
-SMIRK evolves in compliance with Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS). ![AMLAS process](/amlas_process.png) <a name="workflow"></a>
+SMIRK evolves in compliance with [Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/assuring-autonomy/news/publications/amlas/) (AMLAS) published by the University of York. The figure below shows an overview of the AMLAS process and the six corresponding stages. 
 
-The table is an index to navigate the artifacts mandated by the AMLAS process. 
+![AMLAS process](/docs/figures/amlas_process.png) <a name="amlas"></a>
+
+The table below is an index to navigate the artifacts mandated by the AMLAS process. 
 
 |        ID   |     Title                                          |     Input to    |     Output from    |     Where?       |
 |:-----------:|----------------------------------------------------|:---------------:|:------------------:|------------------|
