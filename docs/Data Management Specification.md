@@ -1,4 +1,4 @@
-# Data Management Specification 
+# Data Management Specification v0.1
 
 Revision History
 <table>
