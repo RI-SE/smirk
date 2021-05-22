@@ -490,10 +490,149 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </table>
 
 ## 4.4 Connectivity
-N/A
+N/A.
 
 ## 4.5 Environmental Conditions
-![AMLAS process](/docs/figures/srs_odd_environmental.png) <a name="amlas"></a>
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Weather</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Wind</td>
+    <td>Calm winds</td>
+  </tr>
+  <tr>
+    <td>Rain</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Snow</td>
+    <td>N</td>
+  </tr>
+    <tr>
+    <td>Sleet</td>
+    <td>N</td>
+  </tr>
+    <tr>
+    <td>Temperature</td>
+    <td>Between 5 and 30 degree Celsius</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Weather-Induced Roadway Conditions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Standing Water</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Flooded Roadways</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Icy Roads</td>
+    <td>N</td>
+  </tr>
+    <tr>
+    <td>Snow on Road</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Particulate Matter</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Fog</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Smoke</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Smog</td>
+    <td>N</td>
+  </tr>
+    <tr>
+    <td>Dust/Dirt</td>
+    <td>N</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>Mud</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Illumination</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Day (sun: Overhead, Back-lighting and Frontlighting)</td>
+    <td>Y, overhead sun</td>
+  </tr>
+  <tr>
+    <td>Dawn</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Dusk</td>
+    <td>N</td>
+  </tr>
+    <tr>
+    <td>Night</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Street lights</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Headlights (Regular & High-Beam)</td>
+    <td>Turned off</td>
+  </tr>
+  <tr>
+    <td>Oncoming vehicle lights (Overhead Lighting, Back-lighting & Front-lighting)</td>
+    <td>N/A, no other traffic</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
 
 ## 4.6 Zones
 ![AMLAS process](/docs/figures/srs_odd_zones.png) <a name="amlas"></a>
