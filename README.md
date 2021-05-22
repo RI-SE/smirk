@@ -1,6 +1,7 @@
 # SMIRK
-
 SMIRK is an experimental pedestrian emergency breaking ADAS facilitating research on quality assurance of critical components that rely on machine learning.
+
+![Logo](/docs/figures/smirk.png) <a name="logo"></a>
 
 - Domain: Automotive, Advanced Driver-Assistance Systems (ADAS)
 - Keywords: automotive, machine learning, computer vision, functional safety, SOTIF, quality assurance, AI testing 
