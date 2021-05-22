@@ -326,7 +326,53 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </table>
 
 ## 4.2 Operational Constraints
-![AMLAS process](/docs/figures/srs_odd_operational.png) <a name="amlas"></a>
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Speed Limits</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Minimum Speed Limit</td>
+    <td>0 km/h</td>
+  </tr>
+  <tr>
+    <td>Maximum Speed Limit</td>
+    <td>70 km/h</td>
+  </tr>
+  <tr>
+    <td>Relative to Surrounding Traffic</td>
+    <td>No surrounding traffic</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Traffic Conditions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Traffic density</td>
+    <td>No other traffic</td>
+  </tr>
+  <tr>
+    <td>Altered (Accident emergency vehicle, construction, closed road, special event)</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
 
 ## 4.3 Objects
 ![AMLAS process](/docs/figures/srs_odd_objects.png) <a name="amlas"></a>
