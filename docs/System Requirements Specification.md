@@ -375,7 +375,119 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </table>
 
 ## 4.3 Objects
-![AMLAS process](/docs/figures/srs_odd_objects.png) <a name="amlas"></a>
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Signage</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Signs (e.g., stop, yield, pedestrian, railroad, school zone, etc.)</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Traffic Signals (regular, flashing, school zone, fire dept. zone)</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Crosswalks</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Railroad crossing</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Stopped buses</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Construction signage</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>First responder signals  </td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Distress signals</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Roadway user signals</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Hand signals</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+</tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Roadway Users</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Vehicle types (cars, light trucks, large trucks, buses, motorcycles, wide-load, emergency vehicles, construction or farming equipment, horse-drawn carriages/buggies)</td>
+    <td>No other vehicles</td>
+  </tr>
+  <tr>
+    <td>Stopped vehicles</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other automated vehicles</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Pedestrians</td>
+    <td>0-1 pedestrians, either stationary or moving with a constant speed (<20 km/h) and direction </td>
+  </tr>
+  <tr>
+    <td>Cyclists</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Non-Roadway Users Obstacles</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Animals (e.g., dogs, deer, etc.)</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Shopping carts</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Debris (e.g., pieces of tire, trash, ladders)</td>
+    <td>N</td>
+  </tr>
+    <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
 
 ## 4.4 Connectivity
 N/A
