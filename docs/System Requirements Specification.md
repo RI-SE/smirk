@@ -490,7 +490,112 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </table>
 
 ## 4.4 Connectivity
-N/A.
+SMIRK does not rely on any external connectivity. All items below are either N or N/A.
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Vehicles</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>V2I and V2V communications</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Emergency vehicles</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Remote Fleet Management System</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Does the system require an operations center?</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Does remote operation expand ODD or support fault handling?</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Infrastructure Sensors</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Work zone alerts</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Vulnerable road user</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Routing and incident management</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Digital Infrastructure</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>GPS</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>3-D Maps</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Pothole Locations</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Weather Data</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Infrastructure Data</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
 
 ## 4.5 Environmental Conditions
 <table> 
