@@ -55,7 +55,275 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA [2]. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
 
 ## 4.1 Physical Infrastructure
-![AMLAS process](/docs/figures/srs_odd_physical.png) <a name="amlas"></a>
+<table>
+<thead>
+  <tr>
+    <th colspan="2">Roadway Types</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Divided highway</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Undivided highway</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Arterial</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Urban</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Rural</td>
+    <td>Y (open green fields)</td>
+  </tr>
+  <tr>
+    <td>Parking (surface lots, structures, private/public)</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Bridges</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Multi-lane/single lane</td>
+    <td>Single lane</td>
+  </tr>
+  <tr>
+    <td>Managed lanes (HOV, HOT, etc.)</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>On-off ramps</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Emergency evacuation routes</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>One way</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Private roads</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Reversible lanes</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td colspan="2">Intersection Types</td>
+  </tr>
+  <tr>
+    <td>signaled</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>U-turn</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>4-way vs. 3-way vs. 2-way</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>stop sign</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>roundabout</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>merge lanes</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>left turn across traffic, one-way to one-way</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>right turn</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>multiple turn lane</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>crosswalk</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>toll plaza</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>railroad crossing</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Roadway Surfaces</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Asphalt</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>Concrete<br></td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Mixed</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Grating</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Brick</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Dirt</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Gravel</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Scraped road</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Partially occluded</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Speed bumps</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Potholes</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Grass</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Roadway Edges and Markings</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Lane markers</td>
+    <td>Clear markers</td>
+  </tr>
+  <tr>
+    <td>Temporary lane markers</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Shoulder (paved or gravel)</td>
+    <td>Gravel</td>
+  </tr>
+  <tr>
+    <td>Lane barriers</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Grating</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Rails</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Curb</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Cones</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Roadway Geometry</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Straightaways</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>Curves</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Hills</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Lateral crests</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Corners (regular, blind)</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Negative obstacles</td>
+    <td>N</td>
+  </tr>
+  <tr>
+    <td>Lane width</td>
+    <td>&lt;TBD&gt;</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+</tbody>
+</table>
 
 ## 4.2 Operational Constraints
 ![AMLAS process](/docs/figures/srs_odd_operational.png) <a name="amlas"></a>
