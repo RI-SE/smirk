@@ -45,7 +45,16 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - E. Thorn, S. Kimmel, and M. Chaka. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration, 2018.
 
 # 2 System Description [C] <a name="system_reqts"></a>
+
 ## 2.1 Product Perspective ##
+SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios. In the fifth scenario, the pedestrian is stationary on the road.
+
+![Scenario1](/docs/figures/scenario1.png) <a name="scenario1"></a>
+![Scenario2](/docs/figures/scenario2.png) <a name="scenario2"></a>
+![Scenario3](/docs/figures/scenario3.png) <a name="scenario3"></a>
+![Scenario4](/docs/figures/scenario4.png) <a name="scenario4"></a>
+![Scenario5](/docs/figures/scenario5.png) <a name="scenario5"></a>
+
 ## 2.2 Product Functions ##
 ## 2.3 External Interface Requirements ##
 
