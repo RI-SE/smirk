@@ -740,7 +740,161 @@ SMIRK does not rely on any external connectivity. All items below are either N o
 </table>
 
 ## 4.6 Zones
-![AMLAS process](/docs/figures/srs_odd_zones.png) <a name="amlas"></a>
+SMIRK does not rely on any zone specifics. All items below are either N or N/A.
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Geofencing</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>CBDs</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>School Campuses</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Retirement Communities</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Fixed Route</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Traffic Management Zones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Temporary Closures</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Dynamic Traffic Signs</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Variable Speed Limits</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Temporary or Non-Existent Lane Marking</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+  <td>Human-Directed Traffic</td>
+    <td>N</td>
+  </tr>
+  <tr>
+  <td>Loading and Unloading Zones</td>
+    <td>N</td>
+  </tr>
+  <tr>
+  <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">School/Construction Zones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Dynamic speed limit</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Erratic pedestrian</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Vehicular behaviors</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Regions/States</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Legal/Regulatory</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Enforcement Considerations</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Tort</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
+
+<table> 
+  <thead>
+  <tr>
+    <th colspan="2">Interference Zones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Tunnels</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Parking Garage</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Dense Foliage</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Limited GPS</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Atmospheric Conditions</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Other</td>
+    <td>N</td>
+  </tr>
+  </tbody>
+</table>
 
 # 5 ML Component Description [D] <a name="ml_component_desc"></a>
 
