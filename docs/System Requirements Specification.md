@@ -36,6 +36,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 ## 1.3 Glossary
 - AMLAS Guidance on the Assurance of Machine Learning in Autonomous Systems
 - ML: Machine Learning
+- ODD: Operational Design Domain
 
 ## 1.4 Intended Audience and Reading Suggestions ##
 ## 1.5 Product Scope ##
@@ -64,15 +65,15 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 # 3.1 Performance Requirements
 From Gauerhof et al. (2020).
 
-- SYS-PER-REQ1: When Ego is 50 metres from the crossing, the object detection component shallidentify pedestrians that are on or close to the crossing in their correct position.
-- SYS-PER-REQ1.1:In a sequence of images from a video feed any object to be detectedshould notbe missed more then 1 in 5 frames.
-- SYS-PER-REQ1.2:Position of pedestrians shall be determined within 50cm of actual position
+- SYS-PER-REQ1: When Ego is 50 metres from the a pedestrian, the object detection component shall identify pedestrians that are on or close to the road.
+- SYS-PER-REQ1.1: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.
+- SYS-PER-REQ1.2: Position of pedestrians shall be determined within 50 cm of actual position.
 
 # 3.2 Robustness Requirements
 From Gauerhof et al. (2020).
 
-- SYS-ROB-REQ1:The object detection component shall perform as required in all situations Egomay encounter within the defined ODD.
-- SYS-ROB-REQ2:The object detection component shall perform as required in the face of definedcomponent failures arising within the system
+- SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.
+- SYS-ROB-REQ2: The object detection component shall perform as required in the face of defined component failures arising within the system.
 
 # 3.3 System Safety Requirements [A] <a name="system_safety_reqts"></a>
 SYS-SAF-REQ1 - Ego shall stop if a pedestrian appears in front of the vehicle.
