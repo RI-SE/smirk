@@ -62,21 +62,21 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 
 # 3 System Requirements
 
-# 3.1 Performance Requirements
+# 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
+SYS-SAF-REQ1 - Ego shall stop if collision with a pedestrian is imminent.
+
+# 3.2 Performance Requirements
 From Gauerhof et al. (2020).
 
 - SYS-PER-REQ1: When Ego is 50 metres from the a pedestrian, the object detection component shall identify pedestrians that are on or close to the road.
 - SYS-PER-REQ1.1: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.
 - SYS-PER-REQ1.2: Position of pedestrians shall be determined within 50 cm of actual position.
 
-# 3.2 Robustness Requirements
+# 3.3 Robustness Requirements
 From Gauerhof et al. (2020).
 
 - SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.
 - SYS-ROB-REQ2: The object detection component shall perform as required in the face of defined component failures arising within the system.
-
-# 3.3 System Safety Requirements [A] <a name="system_safety_reqts"></a>
-SYS-SAF-REQ1 - Ego shall stop if a pedestrian appears in front of the vehicle.
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA [2]. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
