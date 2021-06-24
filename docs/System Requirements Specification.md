@@ -78,6 +78,10 @@ From Gauerhof et al. (2020).
 - SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.
 - SYS-ROB-REQ2: The object detection component shall perform as required in the face of defined component failures arising within the system.
 
+# 3.4 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
+
+- TBD
+
 # 4 Operational Design Domain [B] <a name="odd"></a>
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA [2]. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
 
