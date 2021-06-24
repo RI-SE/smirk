@@ -25,7 +25,7 @@ The table below is an index to navigate the artifacts mandated (cf. [ID]) by the
 |     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    |
 |     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    |
 |     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 8](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    |
-|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | TBD |
+|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | [SRS Sec 3](</docs/System Requirements Specification.md#ml_safety_reqts>) |
 |     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | TBD |
 |     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | TBD |
 |     [K]   |     ML Safety Requirements Argument                |                 |            2       | TBD |
