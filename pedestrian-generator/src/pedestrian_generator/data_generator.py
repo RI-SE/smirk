@@ -1,17 +1,15 @@
 import itertools
 from pathlib import Path
+from time import sleep
 from typing import cast
 
-from omegaconf import OmegaConf, DictConfig
-
-
+from omegaconf import DictConfig, OmegaConf
 from pedestrian_generator.direction import Direction
 from pedestrian_generator.prosivic.objects.observable_pedestrian import (
     ObservablePedestrian,
 )
 from pedestrian_generator.prosivic.simulation import Simulation
 from pedestrian_generator.utils.timer import Timer
-
 
 FEMALE_PEDESTRIAN_NAME = "female/pedestrian"
 FEMALE_PEDESTRIAN_OBSERVER = "female_observer"
@@ -77,19 +75,25 @@ def run_scenario_configuration(
     angle: int,
     speed: int,
 ) -> None:
-
     # TODO: Does z=0 work in all situations?
     pedestrian.set_position(distance, start_position_y, 0)
     pedestrian.set_angle(angle)
+    pedestrian.set_speed(0)
 
     simulation.play()
+    wait_for_start_condition(start_position_y, pedestrian)
 
     pedestrian.set_speed(speed)
-
-    # TODO: Some scenarios get skipped? Do we need to wait for postion to be set?
     wait_for_end_condition(start_position_y, end_position_y, pedestrian)
 
     simulation.pause()
+
+
+def wait_for_start_condition(
+    start_position_y: int, pedestrian: ObservablePedestrian
+) -> None:
+    while abs(start_position_y - pedestrian.getPosition().y) > 0.1:
+        sleep(0.01)
 
 
 def wait_for_end_condition(
@@ -99,7 +103,7 @@ def wait_for_end_condition(
 
     if is_increasing:
         while pedestrian.getPosition().y < end_position_y:
-            pass
+            sleep(0.01)
     else:
         while pedestrian.getPosition().y > end_position_y:
-            pass
+            sleep(0.01)
