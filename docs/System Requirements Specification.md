@@ -52,13 +52,14 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 SMIRK is an Open-Source Software (OSS) ML-based ADAS under development. It is a research prototype that provides pedestrian emergency braking that adheres to development practices mandated by the candidate standard ISO/PAS 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem et al., 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking. The system combines Python source code and a trained DNN for object detection that demosntrates safety-critical driving automation on SAE Level 2.
 
 ## 2.1 Product Perspective ##
-SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios. In the fifth scenario, the pedestrian is stationary on the road. Note that SMIRK does not only operate with perpendicular movement, i.e., all angles are within the ODD.
+SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios and general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems.
 
 ![Scenario1](/docs/figures/scenario1.png) <a name="scenario1"></a>
 ![Scenario2](/docs/figures/scenario2.png) <a name="scenario2"></a>
 ![Scenario3](/docs/figures/scenario3.png) <a name="scenario3"></a>
 ![Scenario4](/docs/figures/scenario4.png) <a name="scenario4"></a>
 ![Scenario5](/docs/figures/scenario5.png) <a name="scenario5"></a>
+![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
 
 ## 2.2 Product Functions ##
 ## 2.3 External Interface Requirements ##
