@@ -41,15 +41,18 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 ## 1.4 Intended Audience and Reading Suggestions ##
 ## 1.5 Product Scope ##
 ## 1.6 References ##
-- Gauerhof, Lydia, Hawkins, Richard David, Picardi, Chiara et al. (3 more authors) (2020) Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In: SAFECOMP 2020 (39th International Conference on ComputerSafety, Reliability and Security). 
-- Nair, De La Vara, Sabetzadeh, and Briand. [An extended systematic literature review on provision of evidence for safety certification](https://www.sciencedirect.com/science/article/abs/pii/S0950584914000603). *Information and Software Technology*, 56(7), 689-717, 2014.
-- Picardi, Paterson, Hawkins, Calinescu, and Habli. [Assurance Argument Patterns and Processes for Machine Learning in Safety-Related Systems](http://ceur-ws.org/Vol-2560/paper17.pdf). In *Proceedings of the Workshop on Artificial Intelligence Safety (SafeAI 2020)*, pp. 23-30, 2020.
+- Ben Abdessalem, Nejati, Briand, and Stifter, 2018. Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms, in Proc. of the 40th Int’l. Conf. on Software Engineering.  
+- Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
+- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP). 
+- Nair, De La Vara, Sabetzadeh, and Briand, 2014. [An extended systematic literature review on provision of evidence for safety certification](https://www.sciencedirect.com/science/article/abs/pii/S0950584914000603). *Information and Software Technology*, 56(7), 689-717.
+- Picardi, Paterson, Hawkins, Calinescu, and Habli, 2020. [Assurance Argument Patterns and Processes for Machine Learning in Safety-Related Systems](http://ceur-ws.org/Vol-2560/paper17.pdf). In *Proceedings of the Workshop on Artificial Intelligence Safety (SafeAI 2020)*, pp. 23-30.
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 System Description [C] <a name="system_reqts"></a>
+SMIRK is an Open-Source Software (OSS) ML-based ADAS under development. It is a research prototype that provides pedestrian emergency braking that adheres to development practices mandated by the candidate standard ISO/PAS 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem et al., 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking. The system combines Python source code and a trained DNN for object detection that demosntrates safety-critical driving automation on SAE Level 2.
 
 ## 2.1 Product Perspective ##
-SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios. In the fifth scenario, the pedestrian is stationary on the road.
+SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios. In the fifth scenario, the pedestrian is stationary on the road. Note that SMIRK does not only operate with perpendicular movement, i.e., all angles are within the ODD.
 
 ![Scenario1](/docs/figures/scenario1.png) <a name="scenario1"></a>
 ![Scenario2](/docs/figures/scenario2.png) <a name="scenario2"></a>
