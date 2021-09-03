@@ -26,7 +26,7 @@ Revision History
 This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
 
 ## 1.1 Purpose ##
-SMIRK assists the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., “the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration. SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2.
+SMIRK assists the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2.
 
 This document provides the foundation for the SMIRK minimum viable product (MVP).
 
@@ -49,7 +49,8 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 System Description [C] <a name="system_reqts"></a>
-SMIRK is an Open-Source Software (OSS) ML-based ADAS under development. It is a research prototype that provides pedestrian emergency braking that adheres to development practices mandated by the candidate standard ISO/PAS 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem et al., 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking. The system combines Python source code and a trained DNN for object detection that demosntrates safety-critical driving automation on SAE Level 2.
+SMIRK is an Open-Source Software (OSS) ML-based ADAS under development. It is a research prototype that provides pedestrian emergency braking that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem et al., 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking. The system combines Python source code and a trained DNN for object detection that demonstrates safety-critical driving automation on SAE Level 1.
+
 
 ## 2.1 Product Perspective ##
 SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios and general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems.
@@ -62,6 +63,21 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 ![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
 
 ## 2.2 Product Functions ##
+SMIRK comprices the following product functions, organized into the categories sensors, algorithms, and actuators in line with ISO 21448.
+
+Sensors:
+- Radar detection and tracking of objects in front of the vehicle.
+- A forward-facing mono-camera.
+
+Algorithms:
+- Time-to-collision calculation for objects on collision course.
+- Pedestrian detection based on the camera input.
+- Out-of-distribution detection of never-seen-before input (part of the safety-cage mechanism).
+- A braking module that commissions emergency braking. 
+
+Actuators:
+- Brakes (out of scope, not mentioned again in the documentation).
+
 ## 2.3 External Interface Requirements ##
 
 # 3 System Requirements
