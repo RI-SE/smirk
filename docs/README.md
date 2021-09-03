@@ -5,7 +5,9 @@ In this folder, all documentation related to SMIRK is evolving. Everything is WI
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
 - [Data Management Specification](</docs/Data Management Specification.md>)
 - Architecture Specification (To appear)
+- ML Model Specification (To appear)
 - Test Specification (To appear)
+- Deployment Specification (To appear)
 - ALTAI_Numbered_Questions_v1.0.pdf (used in [SEthics21 paper](https://arxiv.org/abs/2103.09051))
 
 ## Safety Assurance
