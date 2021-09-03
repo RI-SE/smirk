@@ -68,8 +68,8 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 SMIRK comprices the following product functions, organized into the categories sensors, algorithms, and actuators in line with ISO 21448.
 
 Sensors:
-- Radar detection and tracking of objects in front of the vehicle.
-- A forward-facing mono-camera.
+- Radar detection and tracking of objects in front of the vehicle (provided by ESI Pro-SiVIC, not elaborated further).
+- A forward-facing mono-camera (provided by ESI Pro-SiVIC, not elaborated further).
 
 Algorithms:
 - Time-to-collision calculation for objects on collision course.
@@ -78,7 +78,7 @@ Algorithms:
 - A braking module that commissions emergency braking. 
 
 Actuators:
-- Brakes (out of scope, not mentioned again in the documentation).
+- Brakes (provided by ESI Pro-SiVIC, not elaborated further).
 
 ## 2.3 External Interface Requirements ##
 
