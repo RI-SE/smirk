@@ -41,7 +41,14 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - ODD: Operational Design Domain
 
 ## 1.4 Intended Audience and Reading Suggestions ##
+- Developers: the entire document is relevant.
+- Testers: sections 3 (requirements) and 4 (ODD) are particularly important.
+- Safety assessors: focus on headings that map to the AMLAS process.
+- Other stakeholders: read sections 1 and 2 to get an overview of SMIRK.
+
 ## 1.5 Product Scope ##
+SMIRK is an ADAS that is intended to co-exist with other ADAS in a vechicle. We expect that sensors and actuators will be shared among different systems. SMIRK implements its own perception based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide SMIRK with input. This is not yet the case. 
+
 ## 1.6 References ##
 - Ben Abdessalem, Nejati, Briand, and Stifter, 2018. Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms, in Proc. of the 40th Int’l. Conf. on Software Engineering.  
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
