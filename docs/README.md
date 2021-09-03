@@ -16,39 +16,39 @@ SMIRK evolves in compliance with [Guidance on the Assurance of Machine Learning 
 
 The table below is an index to navigate the artifacts mandated (cf. [ID]) by the AMLAS process. The input/output columns indicate in which AMLAS stage the artifact is used. The final column lists the location of the corresponding artifact for SMIRK.
 
-|      ID   |     Title                                        |     Input to    |     Output from    |     Where?       |
-|:---------:|--------------------------------------------------|:---------------:|:------------------:|------------------|
-|     [A]   |     System Safety Requirements                     |         1, 6    |                    |     [SRS Sec 3](</docs/System Requirements Specification.md#system_safety_reqts>)    |
-|     [B]   |     Description of Operating Environment of System |         1, 6    |                    |     [SRS Sec 4](</docs/System Requirements Specification.md#odd>)    |
-|     [C]   |     System Description                             |         1, 6    |                    |     [SRS Sec 2](</docs/System Requirements Specification.md#system_reqts>)    |
-|     [D]   |     ML Component Description                       |          1      |                    |     [SRS Sec 5](</docs/System Requirements Specification.md#ml_component_desc>)    |
-|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    |
-|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    |
-|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 8](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    |
-|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | [SRS Sec 3](</docs/System Requirements Specification.md#ml_safety_reqts>) |
-|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | TBD |
-|     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | TBD |
-|     [K]   |     ML Safety Requirements Argument                |                 |            2       | TBD |
-|     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) |
-|     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) |
-|     [N]   | Development Data                                   |                 |          3         | TBD |
-|     [O]   | Internal Test Data                                 |                 |          3         | TBD |
-|     [P]   | Verification Data                                  |                 |          3         | TBD |
-|     [Q]   |     Data Generation Log                            |                 |            3       | [DMS Sec 4](</docs/Data Management Specification.md#data_gen>) |
-|     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) |
-|     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) |
-|     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) |
-|     [U]   |     Model Development Log                          |                 |          4         | TBD |
-|     [V]   | ML Model                                           |       5, 6      |          4         | TBD |
-|     [W]   |     ML Learning Argument Pattern                   |          4      |                    | TBD |
-|     [X]   |     Internal Test Results                          |                 |            4       | TBD |
-|     [Y]   |     ML Learning Argument                           |                 |            4       | TBD |
-|     [Z]   |     ML Verification Results                        |                 |            5       | TBD |
-|     [AA]  |     Verification Log                               |                 |            5       | TBD |
-|     [BB]  |     ML Verification Argument Pattern               |          5      |                    | TBD |
-|     [CC]  |     ML Verification Argument                       |                 |            5       | TBD |
-|     [DD]  |     Erroneous Behaviour Log                        |                 |            6       | TBD |
-|     [EE]  |     Operational scenarios                          |         6       |                    | TBD |
-|     [FF]  | Integration Testing Results                        |                 |          6         | TBD |
-|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | TBD |
-|     [HH]  |     ML Deployment Argument                         |                 |            6       | TBD |
+|      ID   |     Title                                        |     Input to    |     Output from    |     Where?       |     Status       |
+|:---------:|--------------------------------------------------|:---------------:|:------------------:|------------------|------------------|
+|     [A]   |     System Safety Requirements                     |         1, 6    |                    |     [SRS Sec 3](</docs/System Requirements Specification.md#system_safety_reqts>)    | In progress |
+|     [B]   |     Description of Operating Environment of System |         1, 6    |                    |     [SRS Sec 4](</docs/System Requirements Specification.md#odd>)    | Done |
+|     [C]   |     System Description                             |         1, 6    |                    |     [SRS Sec 2](</docs/System Requirements Specification.md#system_reqts>)    | In progress |
+|     [D]   |     ML Component Description                       |          1      |                    |     [SRS Sec 5](</docs/System Requirements Specification.md#ml_component_desc>)    | In progress |
+|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    | In progress |
+|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    | Not started |
+|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 8](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    | Not started |
+|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | [SRS Sec 3](</docs/System Requirements Specification.md#ml_safety_reqts>) | In progress |
+|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | TBD | Not started |
+|     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | TBD | Not started |
+|     [K]   |     ML Safety Requirements Argument                |                 |            2       | TBD | Not started |
+|     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) | In progress |
+|     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) | In progress |
+|     [N]   | Development Data                                   |                 |          3         | TBD | In progress |
+|     [O]   | Internal Test Data                                 |                 |          3         | TBD | In progress |
+|     [P]   | Verification Data                                  |                 |          3         | TBD | In progress |
+|     [Q]   |     Data Generation Log                            |                 |            3       | [DMS Sec 4](</docs/Data Management Specification.md#data_gen>) | In progress |
+|     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) | Not started |
+|     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | Not started |
+|     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) | Not started |
+|     [U]   |     Model Development Log                          |                 |          4         | TBD | Not started |
+|     [V]   | ML Model                                           |       5, 6      |          4         | TBD | In progress |
+|     [W]   |     ML Learning Argument Pattern                   |          4      |                    | TBD | Not started |
+|     [X]   |     Internal Test Results                          |                 |            4       | TBD | Not started |
+|     [Y]   |     ML Learning Argument                           |                 |            4       | TBD | Not started |
+|     [Z]   |     ML Verification Results                        |                 |            5       | TBD | Not started |
+|     [AA]  |     Verification Log                               |                 |            5       | TBD | Not started |
+|     [BB]  |     ML Verification Argument Pattern               |          5      |                    | TBD | Not started |
+|     [CC]  |     ML Verification Argument                       |                 |            5       | TBD | Not started |
+|     [DD]  |     Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
+|     [EE]  |     Operational scenarios                          |         6       |                    | TBD | Not started |
+|     [FF]  | Integration Testing Results                        |                 |          6         | TBD | Not started |
+|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | TBD | Not started |
+|     [HH]  |     ML Deployment Argument                         |                 |            6       | TBD | Not started |
