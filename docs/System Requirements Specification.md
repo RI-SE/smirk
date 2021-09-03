@@ -34,7 +34,7 @@ This document provides the foundation for the SMIRK minimum viable product (MVP)
 Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
 
 ## 1.3 Glossary
-- AMLAS Guidance on the Assurance of Machine Learning in Autonomous Systems
+- AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - ML: Machine Learning
 - ODD: Operational Design Domain
 
@@ -43,8 +43,8 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 ## 1.6 References ##
 - Gauerhof, Lydia, Hawkins, Richard David, Picardi, Chiara et al. (3 more authors) (2020) Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In: SAFECOMP 2020 (39th International Conference on ComputerSafety, Reliability and Security). 
 - Nair, De La Vara, Sabetzadeh, and Briand. [An extended systematic literature review on provision of evidence for safety certification](https://www.sciencedirect.com/science/article/abs/pii/S0950584914000603). *Information and Software Technology*, 56(7), 689-717, 2014.
-- Picardi,,Paterson, Hawkins, Calinescu, and Habli. [Assurance Argument Patterns and Processes for Machine Learning in Safety-Related Systems](http://ceur-ws.org/Vol-2560/paper17.pdf). In *Proceedings of the Workshop on Artificial Intelligence Safety (SafeAI 2020)*, pp. 23-30, 2020.
-- E. Thorn, S. Kimmel, and M. Chaka. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration, 2018.
+- Picardi, Paterson, Hawkins, Calinescu, and Habli. [Assurance Argument Patterns and Processes for Machine Learning in Safety-Related Systems](http://ceur-ws.org/Vol-2560/paper17.pdf). In *Proceedings of the Workshop on Artificial Intelligence Safety (SafeAI 2020)*, pp. 23-30, 2020.
+- Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 System Description [C] <a name="system_reqts"></a>
 
@@ -83,7 +83,7 @@ From Gauerhof et al. (2020).
 - TBD
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
-This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA [2]. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
+This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn et al., 2018). Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
 
 ## 4.1 Physical Infrastructure
 <table>
