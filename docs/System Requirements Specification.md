@@ -1,4 +1,4 @@
-# System Requirements Specification v0.2
+# System Requirements Specification v0.3
 
 Revision History
 <table>
@@ -45,6 +45,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - ML: Machine Learning
 - ODD: Operational Design Domain
+- TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
 - Developers: the entire document is relevant.
@@ -94,30 +95,26 @@ Actuators:
 - Brakes (provided by ESI Pro-SiVIC, not elaborated further).
 
 ## 2.3 External Interface Requirements ##
-The ESI Pro-SiVIC Python API and DDS communication provides interfaces between the simulator and SMIRK.
+The ESI Pro-SiVIC Python API and DDS communication provides interfaces between the simulator and SMIRK. The Python API is only used for initialization, all subsequent communications uses DDS.
 
 # 3 System Requirements
-This section specified the SMIRK system requirements, organized into system safety requirements, performance requirements, robustness requirements, and ML safety requirements. 
+This section specified the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are inspired by Gauerhof et al. (2020).
 
 # 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
-SYS-SAF-REQ1 - Ego shall stop if collision with a pedestrian is imminent.
+SYS-SAF-REQ1: Ego shall stop if collision with a pedestrian is imminent.
 
-# 3.2 Performance Requirements
-From Gauerhof et al. (2020).
+# 3.2 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
+SYS-ML-REQ1: The object detection component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.
 
-- SYS-PER-REQ1: When Ego is 50 metres from the a pedestrian, the object detection component shall identify pedestrians that are on or close to the road.
-- SYS-PER-REQ1.1: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.
-- SYS-PER-REQ1.2: Position of pedestrians shall be determined within 50 cm of actual position.
+# 3.2.1 Performance Requirements
+- SYS-PER-REQ1: The object detection component shall identify pedestrians that are on or close to the road when they are 50 meters away or closer.
+- SYS-PER-REQ2: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.
+- SYS-PER-REQ3: Position of pedestrians shall be determined within 50 cm of their actual position.
 
-# 3.3 Robustness Requirements
-From Gauerhof et al. (2020).
-
+# 3.2.2 Robustness Requirements
 - SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.
 - SYS-ROB-REQ2: The object detection component shall perform as required in the face of defined component failures arising within the system.
-
-# 3.4 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
-
-- TBD
+- SYS-ROB-REQ3: The ML component shall identify a person irrespective of their pose with respect to the camera.
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn et al., 2018). Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
