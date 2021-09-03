@@ -91,6 +91,7 @@ Actuators:
 The ESI Pro-SiVIC Python API and DDS communication provides interfaces between the simulator and SMIRK.
 
 # 3 System Requirements
+This section specified the SMIRK system requirements, organized into system safety requirements, performance requirements, robustness requirements, and ML safety requirements. 
 
 # 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
 SYS-SAF-REQ1 - Ego shall stop if collision with a pedestrian is imminent.
