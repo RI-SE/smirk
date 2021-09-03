@@ -88,6 +88,7 @@ Actuators:
 - Brakes (provided by ESI Pro-SiVIC, not elaborated further).
 
 ## 2.3 External Interface Requirements ##
+The ESI Pro-SiVIC Python API and DDS communication provides interfaces between the simulator and SMIRK.
 
 # 3 System Requirements
 
