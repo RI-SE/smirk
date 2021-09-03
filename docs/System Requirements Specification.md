@@ -10,9 +10,15 @@ Revision History
 </tr>
 <tr>
 <td>Markus Borg</td>
-<td>WIP</td>
+<td>2021-09-03</td>
 <td>Initial version to discuss at AMLAS workshop.</td>
 <td>0.2</td>
+</tr>
+<tr>
+<td>Markus Borg, Jens Henriksson</td>
+<td>WIP</td>
+<td>Working toward the first complete draft.</td>
+<td>0.3</td>
 </tr>
 <tr>
 <td></td>
