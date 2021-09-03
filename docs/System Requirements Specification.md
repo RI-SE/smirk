@@ -3,10 +3,10 @@
 Revision History
 <table>
 <tr>
-<th>Markus Borg</th>
-<th>2021-05-13</th>
-<th>Initialized using IEEE SRS template.</th>
-<th>0.1</th>
+<td>Markus Borg</th>
+<td>2021-05-13</th>
+<td>Initialized using IEEE SRS template.</th>
+<td>0.1</th>
 </tr>
 <tr>
 <td>Markus Borg</td>
