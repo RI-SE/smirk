@@ -3,6 +3,12 @@
 Revision History
 <table>
 <tr>
+<th>Author(s)</th>
+<th>Date</th>
+<th>Description</th>
+<th>Version</th>
+</tr>
+<tr>
 <td>Markus Borg</th>
 <td>2021-05-13</th>
 <td>Initialized using IEEE SRS template.</th>
