@@ -77,7 +77,7 @@ This desiderata considers the intersection between the dataset and the supported
 - DAT-REL-REQ6: Pedestrians included in data samples shall be of a type that may appear in the ODD.
 - DAT-REL-REQ7: All data samples containing non-pedestrian objects shall be of a type that may appear in the ODD.
 
-Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. DAT-REL-REQ5 is added to based on the corresponding fundamental restriction of the SMIRK ODD. DAT-REL-REQ7 restricts data samples providing negative training examples.
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. DAT-REL-REQ5 is added to based on the corresponding fundamental restriction of the SMIRK ODD. DAT-REL-REQ7 restricts data samples providing negative training examples.
 
 ## 2.2 Complete
 This desiderata considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore et al. (2021) refer to this as the external perspective on the data.
@@ -88,7 +88,7 @@ This desiderata considers the sampling strategy across the input domain and its 
 - DAT-COM-REQ4: The data samples shall include examples with a sufficient range of levels of occlusion giving partial view of pedestrians crossing the road.
 - DAT-COM-REQ5: The data samples shall include a sufficient range of examples reflecting the effects of identified system failure modes.
 
-Rationale: SMIRK adapts the reqiurements from the Complete desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
+Rationale: SMIRK adapts the requirements from the Complete desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
 
 ## 2.3 Balanced
 This desiderata considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore et al. (2021) refer to this as an internal perspective on the data.
@@ -96,7 +96,7 @@ This desiderata considers the distribution of features in the dataset, e.g., the
 - DAT-BAL-REQ1: The data set shall have a comparable representation of samples for each relevant class and feature.
 - DAT-BAL-REQ2: The data set shall have an equal share of positive and negative examples.
 
-Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
 
 ## 2.4 Accurate
 This desiderata considers how measurement issues can affect the way that samples reflect the intended ODD, e.g., sensor accuracy and labelling errors. 
@@ -105,7 +105,7 @@ This desiderata considers how measurement issues can affect the way that samples
 - DAT-ACC-REQ2: All bounding boxes produced shall be no more than 10% larger in any dimension than the minimum sized box capable of including the entirety of the pedestrian.
 - DAT-ACC-REQ3: All pedestrians present in the data samples must be correctly labelled.
 
-Rationale: SMIRK reuses the reqiurements from the Accurate desiderata specified by Gauerhof et al. (2020). 
+Rationale: SMIRK reuses the requirements from the Accurate desiderata specified by Gauerhof et al. (2020). 
 
 # 3 Data Requirements Justification Report [M] <a name="data_rqts_just"></a>
 TBD.
