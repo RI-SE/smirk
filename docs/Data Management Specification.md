@@ -105,6 +105,8 @@ This desiderata considers how measurement issues can affect the way that samples
 - DAT-ACC-REQ2: All bounding boxes produced shall be no more than 10% larger in any dimension than the minimum sized box capable of including the entirety of the pedestrian.
 - DAT-ACC-REQ3: All pedestrians present in the data samples must be correctly labelled.
 
+Rationale: SMIRK reuses the reqiurements from the Accurate desiderata specified by Gauerhof et al. (2020). 
+
 # 3 Data Requirements Justification Report [M] <a name="data_rqts_just"></a>
 TBD.
 
