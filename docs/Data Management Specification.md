@@ -1,4 +1,4 @@
-# Data Management Specification v0.1
+# Data Management Specification v0.2
 
 Revision History
 <table>
@@ -67,16 +67,24 @@ This section specifies requirements on the data used to train and test the objec
 ## 2.1 Relevant
 This desiderata considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. The SMIRK training data will not cover operational environments that are outside of the ODD, e.g., images collected in heavy snowfall. 
 
-DAT-REL-REQ1: All data samples shall represent images of a road from the perspective of a vehicle.
-DAT-REL-REQ2: All data samples shall represent images of a road that correspond to the ODD.
-DAT-REL-REQ3: Pedestrians included in data samples shall be of a type that may appear in the ODD.
-DAT-REL-REQ4: The format of each data sample shall be representative of that which is captured using sensors deployed on the ego vehicle.
-DAT-REL-REQ5: Each data sample shall assume sensor positioning which is representative of that which is used on the ego vehicle.
+- DAT-REL-REQ1: All data samples shall represent images of a road from the perspective of a vehicle.
+- DAT-REL-REQ2: All data samples shall represent images of a road that correspond to the ODD.
+- DAT-REL-REQ3: Pedestrians included in data samples shall be of a type that may appear in the ODD.
+- DAT-REL-REQ4: The format of each data sample shall be representative of that which is captured using sensors deployed on the ego vehicle.
+- DAT-REL-REQ5: Each data sample shall assume sensor positioning which is representative of that which is used on the ego vehicle.
 
 Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
 
 ## 2.2 Complete
 This desiderata considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore et al. (2021) refer to this as the external perspective on the data.
+
+- DAT-COM-REQ1: The data samples shall include sufficient range of environmental factors within the scope of the ODD.
+- DAT-COM-REQ2: The data samples shall include sufficient range of pedestrians within the scope of the ODD.
+- DAT-COM-REQ3: The data samples shall include images representing a sufficient range of distances from the crossing up to that required by the decision making aspect of the perception pipeline.
+- DAT-COM-REQ4: The data samples shall include examples with a sufficient range of levels of occlusion giving partial view of pedestrians crossing the road.
+- DAT-COM-REQ5: The data samples shall include a sufficient range of examples reflecting the effects of identified system failure modes.
+
+Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
 
 ## 2.3 Balanced
 This desiderata considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore et al. (2021) refer to this as an internal perspective on the data.
