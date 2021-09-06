@@ -115,11 +115,11 @@ SYS-ML-REQ1: The object detection component shall detect pedestrians if the rada
 Rationale: SMIRK follows the reference architecture from Ben Abdessalem et al. (2018) and uses the same TTC threshold (4s). 
 
 # 3.2.1 Performance Requirements
-- SYS-PER-REQ1: The object detection component shall identify pedestrians that are on or close to the road when they are 50 meters away or closer.
+- SYS-PER-REQ1: The object detection component shall identify pedestrians that are on or close to the road with an accuracy of 0.93 when they are 50 meters away or closer.
 - SYS-PER-REQ2: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.
 - SYS-PER-REQ3: Position of pedestrians shall be determined within 50 cm of their actual position.
 
-Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD.
+Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS.
 
 # 3.2.2 Robustness Requirements
 - SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.
