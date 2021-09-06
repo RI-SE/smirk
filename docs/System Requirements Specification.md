@@ -104,7 +104,9 @@ The ESI Pro-SiVIC Python API and DDS communication provides interfaces between t
 This section specified the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are inspired by Gauerhof et al. (2020).
 
 # 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
-SYS-SAF-REQ1: Ego shall stop if collision with a pedestrian is imminent.
+SYS-SAF-REQ1: Ego shall commence automatic emergency braking if collision with a pedestrian is imminent.
+
+Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avoid a collision. If a collision is inevitable, Ego will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
 
 # 3.2 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
 SYS-ML-REQ1: The object detection component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.
@@ -116,8 +118,7 @@ SYS-ML-REQ1: The object detection component shall detect pedestrians if the rada
 
 # 3.2.2 Robustness Requirements
 - SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.
-- SYS-ROB-REQ2: The object detection component shall perform as required in the face of defined component failures arising within the system.
-- SYS-ROB-REQ3: The ML component shall identify a person irrespective of their pose with respect to the camera.
+- SYS-ROB-REQ2: The ML component shall identify a person irrespective of their pose with respect to the camera.
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn et al., 2018). Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
