@@ -3,10 +3,16 @@
 Revision History
 <table>
 <tr>
-<th>Olof Lennartsson</th>
-<th>2021-05-20</th>
-<th>Initial SMILE version.</th>
-<th>0.1</th>
+<th>Author(s)</th>
+<th>Date</th>
+<th>Description</th>
+<th>Version</th>
+</tr>
+<tr>
+<td>Olof Lennartsson</th>
+<td>2021-05-20</th>
+<td>Initial SMILE version.</th>
+<td>0.1</th>
 </tr>
 <tr>
 <td>Markus Borg, Kasper Socha</td>
@@ -23,25 +29,28 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document describes the Data Management (DM) strategy used when developing SMIRK in the research project SMILE III. The strategy is based on previous studies on how to ensure robustness and safety in safety-critical machine learning models. A fundamental data-set is created from the requirements of the data. The neural network (NN) is trained on this data set.
+This document contains the data management specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
 
-Pro-Sivic/CARLA is used to simulate the specific cases, to test how well the NN can generalize and detect hazards. Using the output of the safety cage,
-that is placed around the NN, corner cases can be detected. The corner cases will be saved in a data bank. The information given by the data bank can
-then be used to investigate if the requirements are properly defined. Once the requirements fulfill the operational design domain (ODD), the corner
-cases in the data bank will be used to fine-tune the NN [3]. The process is repeated iteratively until the NN achieves a satisfactory magnitude of some
-specific metrics.
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
 
 ## 1.1 Purpose ##
-TBD.
+This document describes the data management strategy used in the SMIRK lifecycle. The document encompasses data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operations.
 
 ## 1.2 Document Conventions ##
 Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
 
 ## 1.3 Glossary
-- AMLAS Guidance on the Assurance of Machine Learning in Autonomous Systems
+- AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
+- DM: Data Management
 - ML: Machine Learning
+- ODD: Operational Design Domain
+- TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
+- Developers: the entire document is relevant.
+- Testers: sections 2-6 are particularly important.
+- Safety assessors: focus on headings that map to the AMLAS process.
+- Other stakeholders: read section 2 to understand the expectations on the SMIRK training data.
 
 ## 1.6 References ##
 - Development Data [N]
