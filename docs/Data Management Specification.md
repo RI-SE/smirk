@@ -62,10 +62,18 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - [4] Edward Schwalb. Analysis of Safety of The Intended Use (SOTIF).
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
-The data requirements are organized according to the assurance-related desiderata proposed by Ashmore et al. (2021),  i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
+This section specifies requirements on the data used to train and test the object detection component in SMIRK. The data requirements are organized according to the assurance-related desiderata proposed by Ashmore et al. (2021),  i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
 
 ## 2.1 Relevant
-This desiderata considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. For example, a dataset that only included German road signs would not be Relevant for a system intended to operate on UK roads.
+This desiderata considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. The SMIRK training data will not cover operational environments that are outside of the ODD, e.g., images collected in heavy snowfall. 
+
+DAT-REL-REQ1: All data samples shall represent images of a road from the perspective of a vehicle.
+DAT-REL-REQ2: All data samples shall represent images of a road that correspond to the ODD.
+DAT-REL-REQ3: Pedestrians included in data samples shall be of a type that may appear in the ODD.
+DAT-REL-REQ4: The format of each data sample shall be representative of that which is captured using sensors deployed on the ego vehicle.
+DAT-REL-REQ5: Each data sample shall assume sensor positioning which is representative of that which is used on the ego vehicle.
+
+Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
 
 ## 2.2 Complete
 This desiderata considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore et al. (2021) refer to this as the external perspective on the data.
