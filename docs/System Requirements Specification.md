@@ -94,6 +94,9 @@ Algorithms:
 Actuators:
 - Brakes (provided by ESI Pro-SiVIC, not elaborated further).
 
+The figure below illustrates detection of a pedestrian on collision course, i.e., automativ emergency braking shall be commenced.
+![pedestrian_detection](/docs/figures/pedestrian_detection.png) <a name="pedestrian_detection"></a>
+
 ## 2.3 External Interface Requirements ##
 The ESI Pro-SiVIC Python API and DDS communication provides interfaces between the simulator and SMIRK. The Python API is only used for initialization, all subsequent communications uses DDS.
 
