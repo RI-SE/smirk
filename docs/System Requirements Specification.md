@@ -111,8 +111,9 @@ Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avo
 
 # 3.2 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
 SYS-ML-REQ1: The object detection component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.
+SYS-ML-REQ2: The object detection component shall reject input that does not resemble the training data.
 
-Rationale: SMIRK follows the reference architecture from Ben Abdessalem et al. (2018) and uses the same TTC threshold (4s). 
+Rationale: SMIRK follows the reference architecture from Ben Abdessalem et al. (2018) and SYS-ML-REQ1 uses the same TTC threshold (4s). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
 # 3.2.1 Performance Requirements
 - SYS-PER-REQ1: The object detection component shall identify pedestrians that are on or close to the road with an accuracy of 0.93 when they are 50 meters away or closer.
