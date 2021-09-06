@@ -56,13 +56,26 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - Development Data [N]
 - Internal Test Data [O]
 - Verification Data [P]
+- Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), ACM Comput. Surv. 54(5).
 - [1] C. Thomas A. Pereira. Challenges of Machine Learning Applied to Safety-Critical Cyber-Physical Systems. 2020.
-- [2] Rob Ashmore, Radu Calinescu, and Colin Paterson. Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges. 2019.
-arXiv: 1905.04223 [cs.LG].
 - [3] A. Freytag C. Käding E. Rodner and J. Denzler. Fine-tuning Deep Neural Networks in Continuous Learning Scenarios. 2016.
 - [4] Edward Schwalb. Analysis of Safety of The Intended Use (SOTIF).
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
+The data requirements are organized according to the assurance-related desiderata proposed by Ashmore et al. (2021),  i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
+
+## 2.1 Relevant
+This desiderata considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. For example, a dataset that only included German road signs would not be Relevant for a system intended to operate on UK roads.
+
+## 2.2 Complete
+This desiderata considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore et al. (2021) refer to this as the external perspective on the data.
+
+## 2.3 Balanced
+This desiderata considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore et al. (2021) refer to this as an internal perspective on the data.
+
+## 2.4 Accurate
+This desiderata considers how measurement issues can affect the way that samples reflect the intended ODD, e.g., sensor accuracy and labelling errors. 
+
 The initial dataset, used to train the NN-model in the first iteration, is a representation of the ODD. How exact of a representation it is, is hard to
 measure before development. However, as the system behavior is dependent on the definition of the ODD, control of the initial dataset is needed (This is
 further discussed in Chapter 3 Data Acquisition). To guide the definition of requirements in general R. Ashmore et. al. [2] provides a good description
