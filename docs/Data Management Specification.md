@@ -34,7 +34,9 @@ This document contains the data management specification for SMIRK – a pedestr
 We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
 
 ## 1.1 Purpose ##
-This document describes the data management strategy used in the SMIRK lifecycle. The document encompasses data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operations.
+This document describes the data management strategy for the object detection component in SMIRK. The object detection component detects pedestrians in input images, i.e., no other classes are detected in the input.
+
+The document encompasses the entire lifecycle, i.e., data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operations.
 
 ## 1.2 Document Conventions ##
 Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
@@ -68,12 +70,14 @@ This section specifies requirements on the data used to train and test the objec
 This desiderata considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. The SMIRK training data will not cover operational environments that are outside of the ODD, e.g., images collected in heavy snowfall. 
 
 - DAT-REL-REQ1: All data samples shall represent images of a road from the perspective of a vehicle.
-- DAT-REL-REQ2: All data samples shall represent images of a road that correspond to the ODD.
-- DAT-REL-REQ3: Pedestrians included in data samples shall be of a type that may appear in the ODD.
-- DAT-REL-REQ4: The format of each data sample shall be representative of that which is captured using sensors deployed on the ego vehicle.
-- DAT-REL-REQ5: Each data sample shall assume sensor positioning which is representative of that which is used on the ego vehicle.
+- DAT-REL-REQ2: The format of each data sample shall be representative of that which is captured using sensors deployed on the ego vehicle.
+- DAT-REL-REQ3: Each data sample shall assume sensor positioning which is representative of that which is used on the ego vehicle.
+- DAT-REL-REQ4: All data samples shall represent images of a road that corresponds to the ODD.
+- DAT-REL-REQ5: All data samples containing pedestrians shall include one single pedestrian.
+- DAT-REL-REQ6: Pedestrians included in data samples shall be of a type that may appear in the ODD.
+- DAT-REL-REQ7: All data samples containing non-pedestrian objects shall be of a type that may appear in the ODD.
 
-Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
+Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. DAT-REL-REQ5 is added to based on the corresponding fundamental restriction of the SMIRK ODD. DAT-REL-REQ7 restricts data samples providing negative training examples.
 
 ## 2.2 Complete
 This desiderata considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore et al. (2021) refer to this as the external perspective on the data.
@@ -84,18 +88,22 @@ This desiderata considers the sampling strategy across the input domain and its 
 - DAT-COM-REQ4: The data samples shall include examples with a sufficient range of levels of occlusion giving partial view of pedestrians crossing the road.
 - DAT-COM-REQ5: The data samples shall include a sufficient range of examples reflecting the effects of identified system failure modes.
 
-Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
+Rationale: SMIRK adapts the reqiurements from the Complete desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
 
 ## 2.3 Balanced
 This desiderata considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore et al. (2021) refer to this as an internal perspective on the data.
 
+- DAT-BAL-REQ1: The data set shall have a comparable representation of samples for each relevant class and feature.
+- DAT-BAL-REQ2: The data set shall have an equal share of positive and negative examples.
+
+Rationale: SMIRK adapts the reqiurements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
+
 ## 2.4 Accurate
 This desiderata considers how measurement issues can affect the way that samples reflect the intended ODD, e.g., sensor accuracy and labelling errors. 
 
-The initial dataset, used to train the NN-model in the first iteration, is a representation of the ODD. How exact of a representation it is, is hard to
-measure before development. However, as the system behavior is dependent on the definition of the ODD, control of the initial dataset is needed (This is
-further discussed in Chapter 3 Data Acquisition). To guide the definition of requirements in general R. Ashmore et. al. [2] provides a good description
-of this. It is also discussed in A. Pereira’s work [1]. The specification of the data needs to be determined so that one knows what classes are relevant in terms of the ODD. All classes need to be represented in the data set. All classes need to be represented in the data-set. The data-set must cover critical scenarios and known scenarios. According to SOTIF [4], all possible situations the system may encounter can be divided into four categories, safe/unsafe known and safe/unsafe unknown ones. All known scenarios must be included in the data-set. The classes must be evenly distributed [2].
+- DAT-ACC-REQ1: All bounding boxes produced shall be sufficiently large to include the entirety of the pedestrian.
+- DAT-ACC-REQ2: All bounding boxes produced shall be no more than 10% larger in any dimension than the minimum sized box capable of including the entirety of the pedestrian.
+- DAT-ACC-REQ3: All pedestrians present in the data samples must be correctly labelled.
 
 # 3 Data Requirements Justification Report [M] <a name="data_rqts_just"></a>
 TBD.
