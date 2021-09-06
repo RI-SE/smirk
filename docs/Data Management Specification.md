@@ -23,9 +23,7 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document describes the data management (DM) strategy used when developing SMIRK in the research project SMILE III. This strategy is built upon RQ3 from
-the research proposal. Using the literature, the strategy has been built upon previous studies on how to ensure robustness and safety in safety-critical
-machine learning models. A fundamental data-set is created from the requirements of the data. The neural network (NN) is trained on this data set.
+This document describes the Data Management (DM) strategy used when developing SMIRK in the research project SMILE III. The strategy is based on previous studies on how to ensure robustness and safety in safety-critical machine learning models. A fundamental data-set is created from the requirements of the data. The neural network (NN) is trained on this data set.
 
 Pro-Sivic/CARLA is used to simulate the specific cases, to test how well the NN can generalize and detect hazards. Using the output of the safety cage,
 that is placed around the NN, corner cases can be detected. The corner cases will be saved in a data bank. The information given by the data bank can
