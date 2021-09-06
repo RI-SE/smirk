@@ -9,6 +9,12 @@ Revision History
 <th>0.1</th>
 </tr>
 <tr>
+<td>Markus Borg, Kasper Socha</td>
+<td>WIP</td>
+<td>Working toward the first complete draft.</td>
+<td>0.2</td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
