@@ -75,7 +75,6 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vechicle. We 
 # 2 System Description [C] <a name="system_reqts"></a>
 SMIRK is an Open-Source Software (OSS) ML-based ADAS under development. It is a research prototype that provides pedestrian emergency braking that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem et al., 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking. The system combines Python source code and a trained DNN for object detection that demonstrates safety-critical driving automation on SAE Level 1.
 
-
 ## 2.1 Product Perspective ##
 SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios and general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems.
 
@@ -85,6 +84,10 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 ![Scenario4](/docs/figures/scenario4.png) <a name="scenario4"></a>
 ![Scenario5](/docs/figures/scenario5.png) <a name="scenario5"></a>
 ![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
+
+The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is pedestrian emergency braking. The design of the SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. Other ADAS 1 - N). We also expect that sensors and actuators will be shared between ADAS. On the other hand, we do not assume a central perception system that fuses various types of sensor input for individual ADAS to use. SMIRK uses a standalone ML model trained for pedestrian detection. Solid lines in the figure shows how SMIRK interacts with sensors and actuators in the ego vehicle. Dashed lines indicate how other ADAS might use sensors and actuators.
+
+![Context](/docs/figures/context_diagram.png) <a name="context"></a>
 
 ## 2.2 Product Functions ##
 SMIRK comprices the following product functions, organized into the categories sensors, algorithms, and actuators in line with ISO 21448.
