@@ -59,6 +59,8 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - Internal Test Data [O]
 - Verification Data [P]
 - Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), ACM Comput. Surv. 54(5).
+- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
+- [Safety First for Automated Driving (SaFAD}(https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
 - [1] C. Thomas A. Pereira. Challenges of Machine Learning Applied to Safety-Critical Cyber-Physical Systems. 2020.
 - [3] A. Freytag C. Käding E. Rodner and J. Denzler. Fine-tuning Deep Neural Networks in Continuous Learning Scenarios. 2016.
 - [4] Edward Schwalb. Analysis of Safety of The Intended Use (SOTIF).
@@ -108,7 +110,16 @@ This desiderata considers how measurement issues can affect the way that samples
 Rationale: SMIRK reuses the requirements from the Accurate desiderata specified by Gauerhof et al. (2020). 
 
 # 3 Data Requirements Justification Report [M] <a name="data_rqts_just"></a>
-TBD.
+The SMIRK data requirements have evolved during the Swedish [SMILE3 research project](https://www.ri.se/en/what-we-do/projects/smile-iii-safety-analysis-and-verificationvalidation-of-ml-based-systems), in turn based on two previous research projects on safety analysis and verification & validation of machine learning-based automotive systems. All SMIRK requirements have been individually reviewed by SMILE3 project partners and discussed in regular project meetings. Furthermore, we have organized dedicated workshops focusing on hazard and risk analysis and subsequent requirements engineering.
+
+SMIRK requirements are based on examples from analaguous systems presented in peer-reviewed publications, white papers, and technical reports from academic authors. Both system requirements and data requirements are largely reused from a research paper by Gauershof et al. (2020), describing requirements for a pedestrian detection system at UK crossings - peer-reviewed and accepted for publication in the Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP). Moreover, we have reused requirements from the AMLAS examples and from the SaFAD white paper.
+
+SMIRK has specified a very restricted ODD to support our efforts in requirements engineering for data. Based on several iterations with representatives from different organizations, we posit that the current data requirements fulfil the desiderata. A data set collected according to the requirements will be relevant, complete, balanced, and accurate. Representatives from the following organizations, all active in automotive R&D, have reviewed this work.
+
+- RISE Research Institutes of Sweden
+- Semcon
+- Infotiv
+- QRTech
 
 # 4 Data Generation Log [Q] <a name="data_gen"></a>
 
