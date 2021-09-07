@@ -1,9 +1,8 @@
-from pedestrian_generator.prosivic.prosivic_tcp import ProsivicTCP
+from simulators.prosivic.prosivic_tcp import ProsivicTCP
 
 
 class Simulation:
     def __init__(self, script_filename: str) -> None:
-        print(f"Loading {script_filename}")
         self.tcp = ProsivicTCP()
         self.tcp.connect()
         self.tcp.load(script_filename)
@@ -17,6 +16,9 @@ class Simulation:
 
     def stop(self) -> None:
         self.tcp.stop()
+
+    def step(self, steps: int) -> None:
+        self.tcp.step(steps)
 
     def cmd(self, script_command: str) -> None:
         self.tcp.cmd(script_command)

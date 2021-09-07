@@ -1,0 +1,2245 @@
+# Engine settings
+clearcolorbuffer	1
+clearcolor	0.0000000 0.0000000 0.0000000 0.0000000
+ambient	1.0000000 1.0000000 1.0000000 1.0000000
+fog	0
+fogcolor	0.0000000 0.0000000 0.0000000 0.0000000
+fogmode	exp
+fogstart	100.0000000
+fogend	500.0000000
+fogdensity	1.0000000
+
+
+# Object creation
+
+new sivicPackage scene
+new sivicPackage sun
+new sivicPackage sky
+new sivicPackage pedestrian
+new mgPositionable collision_position_pedestrian
+new sivicManObserver pedestrian_observer
+new sivicPackage ego_car
+new mgPositionable collision_position_car
+new sivicPackage main_camera
+new sivicPackage radar
+new sivicDistanceObserver collision_observer
+
+
+# Object configuration
+
+# Object _DefaultRenderer with type mgAccurateRenderer
+_DefaultRenderer.SetDisabled	0
+_DefaultRenderer.SetHidden	1
+_DefaultRenderer.SetPersistent	1
+_DefaultRenderer.SetWireframe 0
+_DefaultRenderer.SetNoTextures 0
+_DefaultRenderer.SetClampVertexColor 0
+_DefaultRenderer.SetClampFragmentColor 0
+
+# Object editor with type sivicPackage
+editor.SetDisabled	0
+editor.SetHidden	1
+editor.SetPersistent	1
+editor.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object editor/cam with type sivicCamera
+editor/cam.SetPeriod 0.0400000
+editor/cam.SetOMGDDSEnabled false
+editor/cam.SetFileName cam
+editor/cam.SetExtension .cap
+editor/cam.Off 
+editor/cam.SetRecordEnabled false
+editor/cam.SetExportFormat tsv
+editor/cam.SetDisabled	0
+editor/cam.SetPersistent	1
+editor/cam.SetLocalPosition	-0.1903552 12.9347982 19.4348717
+editor/cam.SetLocalRotation	2.6223187 -67.2977219 -162.4710846
+#editor/cam.SetLocalRotationAngles	44.9999886 0.0000155 -175.5371399
+editor/cam.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/cam.SetFrustum	-0.1410162 0.1410162 -0.0767327 0.0767327 0.1000000 5000.0000000
+editor/cam.SetRenderSize 1246 678
+editor/cam.SetRenderer editor/ren
+editor/cam.SetCaptureFileName MGEngine
+editor/cam.SetClearColorBufferRegion 1
+editor/cam.SetColorFormat rgb8
+editor/cam.SetDepthFormat DEPTH_24
+editor/cam.SetMultiSamples 4
+editor/cam.SetCorrectDistortion 1
+editor/cam.SetEnableIntegration 0
+editor/cam.SetExposureTime 0.0400000
+editor/cam.SetExposureSampling 0.0050000
+editor/cam.SetMatrixSize 2.6666000 2.0000000
+editor/cam.SetFocalLength 1.3032253
+editor/cam.SetZNear 0.1000000
+editor/cam.SetZFar 5000.0000000
+editor/cam.SetCollectDepthImage off
+editor/cam.SetDepthImageRange 1000
+editor/cam.SetDepthImageResolution 1
+editor/cam.SetImageType RGB24
+editor/cam.SetNbEffectiveBits 8
+editor/cam.SetRecordFormat bmp
+editor/cam.SetPNGCompression png_1
+editor/cam.SetModeCorrection off
+editor/cam.SetCollectLabelImage 0
+editor/cam.SetOccludeLabels 1
+
+# Object editor/view with type sivicCameraViewport
+editor/view.SetDisabled	0
+editor/view.SetPersistent	1
+editor/view.SetAutoResize 1
+editor/view.SetViewport 0.0000000% 0.0000000% 100.0000000% 100.0000000%
+editor/view.SetCamera editor/cam
+editor/view.SetColorMask 1 1 1
+editor/view.SetForceCameraResize 1
+editor/view.SetMinDepthRange 0.0000000
+editor/view.SetMaxDepthRange 100.0000000
+editor/view.SetLookupTexture 
+
+# Object editor/ren with type sivicEditorRenderer
+editor/ren.SetDisabled	0
+editor/ren.SetPersistent	1
+editor/ren.SetWireframe 0
+editor/ren.SetNoTextures 0
+editor/ren.SetClampVertexColor 0
+editor/ren.SetClampFragmentColor 0
+editor/ren.SetShowGrid 1
+editor/ren.SetGridMesh checker
+editor/ren.SetShowAxes 1
+editor/ren.SetAxesMesh repere
+editor/ren.SetHighlight 1
+editor/ren.SetHighlightColor 1.0000000 0.3000000 0.0000000 
+
+# Object editor/cont with type mgPositionController
+editor/cont.SetDisabled	0
+editor/cont.SetPersistent	1
+editor/cont.AttachTo editor/cam
+editor/cont.SetXPosController	x_trans3
+editor/cont.SetYPosController	y_trans3
+editor/cont.SetZPosController	z_trans3
+editor/cont.SetXRotController	x_rot3
+editor/cont.SetYRotController	y_rot3
+editor/cont.SetZRotController	z_rot3
+editor/cont.SetTranslationSpeed	10.0000000
+editor/cont.SetRotationSpeed	3.1415899
+editor/cont.SetRealTime	on
+editor/cont.SetMode Fly
+
+# Object editor/tt with type mgTrackTo
+editor/tt.SetDisabled	0
+editor/tt.SetPersistent	1
+editor/tt.ApplyTo editor/cam
+
+# Object editor/_RendererPlugin_sivicBeaconReceiverDisplay with type sivicBeaconReceiverDisplay
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicBeaconReceiverDisplay.SetWireframe 1
+
+# Object editor/_RendererPlugin_sivicBeaconTransmitterDisplay with type sivicBeaconTransmitterDisplay
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicBeaconTransmitterDisplay.SetWireframe 1
+
+# Object editor/_RendererPlugin_sivicCameraDisplay with type sivicCameraDisplay
+editor/_RendererPlugin_sivicCameraDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicCameraDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicCameraDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicCameraDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicCameraDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicCameraDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicCameraDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicCameraDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicCameraDisplay.SetDoNotRender	0
+
+# Object editor/_RendererPlugin_sivicCarDisplay with type sivicCarDisplay
+editor/_RendererPlugin_sivicCarDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicCarDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicCarDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicCarDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicCarDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicCarDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicCarDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicCarDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicCarDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicCarDisplay.SetShowTrackLeft 1
+editor/_RendererPlugin_sivicCarDisplay.SetShowTrackCenter 1
+editor/_RendererPlugin_sivicCarDisplay.SetShowTrackRight 1
+editor/_RendererPlugin_sivicCarDisplay.SetShowPath 1
+editor/_RendererPlugin_sivicCarDisplay.SetZShift 0.1000000
+editor/_RendererPlugin_sivicCarDisplay.SetColorPath 0 255 0 255 
+editor/_RendererPlugin_sivicCarDisplay.SetColorTrkCenter 0 255 255 255 
+editor/_RendererPlugin_sivicCarDisplay.SetColorTrkLeft 0 0 255 255 
+editor/_RendererPlugin_sivicCarDisplay.SetColorTrkRight 255 0 0 255 
+editor/_RendererPlugin_sivicCarDisplay.SetColorPathPoints 155 0 100 255 
+editor/_RendererPlugin_sivicCarDisplay.SetColorTrkCenterPoints 255 0 0 255 
+editor/_RendererPlugin_sivicCarDisplay.SetColorTrkLeftPoints 255 255 0 255 
+editor/_RendererPlugin_sivicCarDisplay.SetColorTrkRightPoints 255 255 0 255 
+editor/_RendererPlugin_sivicCarDisplay.SetPointSize 1.0000000
+editor/_RendererPlugin_sivicCarDisplay.SetShowMeanTurningRadiusFront 0
+editor/_RendererPlugin_sivicCarDisplay.SetShowTurningFrontDeadZone 0
+editor/_RendererPlugin_sivicCarDisplay.SetShowCollisionRaytrace 0
+
+# Object editor/_RendererPlugin_sivicCommunicationDisplay with type sivicCommunicationDisplay
+editor/_RendererPlugin_sivicCommunicationDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicCommunicationDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicCommunicationDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicCommunicationDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicCommunicationDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicCommunicationDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicCommunicationDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicCommunicationDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicCommunicationDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicCommunicationDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicCommunicationDisplay.SetWireframe 1
+
+# Object editor/_RendererPlugin_sivicCompassDisplay with type sivicCompassDisplay
+editor/_RendererPlugin_sivicCompassDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicCompassDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicCompassDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicCompassDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicCompassDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicCompassDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicCompassDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicCompassDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicCompassDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicCompassDisplay.SetWireframe 1
+editor/_RendererPlugin_sivicCompassDisplay.SetShowWind 1
+
+# Object editor/_RendererPlugin_sivicCompassRoseDisplay with type sivicCompassRoseDisplay
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicCompassRoseDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetWireframe 0
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetShowWind 1
+editor/_RendererPlugin_sivicCompassRoseDisplay.SetCompassPoint 8
+
+# Object editor/_RendererPlugin_sivicDistanceObserverDisplay with type sivicDistanceObserverDisplay
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicDistanceObserverDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetWireframe 1
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetShowObjectIndicator 0
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetShowMeasurePoint 1
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetColor 0.0000000 0.0000000 1.0000000
+editor/_RendererPlugin_sivicDistanceObserverDisplay.SetLineWidth 5.0000000
+
+# Object editor/_RendererPlugin_sivicEventDisplay with type sivicEventDisplay
+editor/_RendererPlugin_sivicEventDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicEventDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicEventDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicEventDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicEventDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicEventDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicEventDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicEventDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicEventDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicEventDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicEventDisplay.SetWireframe 1
+
+# Object editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay with type sivicExternalTrajectoryReaderDisplay
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetPrecision 8
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetPathColor 1.0000000 0.3300000 0.5000000 1.0000000
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetPointsColor 0.0000000 0.5000000 0.8000000 1.0000000
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetShowPath 1
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetShowPoints 1
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetShowOrientation 1
+editor/_RendererPlugin_sivicExternalTrajectoryReaderDisplay.SetPointSize 0.0800000
+
+# Object editor/_RendererPlugin_sivicGPSDisplay with type sivicGPSDisplay
+editor/_RendererPlugin_sivicGPSDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicGPSDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicGPSDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicGPSDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicGPSDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicGPSDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicGPSDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicGPSDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicGPSDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicGPSDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicGPSDisplay.SetWireframe 1
+
+# Object editor/_RendererPlugin_sivicHumanDisplay with type sivicHumanDisplay
+editor/_RendererPlugin_sivicHumanDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicHumanDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicHumanDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicHumanDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicHumanDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicHumanDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicHumanDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicHumanDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicHumanDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicHumanDisplay.SetShowTrackLeft 1
+editor/_RendererPlugin_sivicHumanDisplay.SetShowTrackCenter 1
+editor/_RendererPlugin_sivicHumanDisplay.SetShowTrackRight 1
+editor/_RendererPlugin_sivicHumanDisplay.SetShowPath 1
+editor/_RendererPlugin_sivicHumanDisplay.SetZShift 0.1000000
+editor/_RendererPlugin_sivicHumanDisplay.SetColorPath 0 255 0 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetColorTrkCenter 0 255 255 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetColorTrkLeft 0 0 255 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetColorTrkRight 255 0 0 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetColorPathPoints 155 0 100 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetColorTrkCenterPoints 255 0 0 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetColorTrkLeftPoints 255 255 0 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetColorTrkRightPoints 255 255 0 255 
+editor/_RendererPlugin_sivicHumanDisplay.SetPointSize 1.0000000
+editor/_RendererPlugin_sivicHumanDisplay.SetShowWalkingZone 0
+
+# Object editor/_RendererPlugin_sivicInclinometerDisplay with type sivicInclinometerDisplay
+editor/_RendererPlugin_sivicInclinometerDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicInclinometerDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicInclinometerDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicInclinometerDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicInclinometerDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicInclinometerDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicInclinometerDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicInclinometerDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicInclinometerDisplay.SetDoNotRender	0
+
+# Object editor/_RendererPlugin_sivicLightSourceDisplay with type sivicLightSourceDisplay
+editor/_RendererPlugin_sivicLightSourceDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicLightSourceDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicLightSourceDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicLightSourceDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicLightSourceDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicLightSourceDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicLightSourceDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicLightSourceDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicLightSourceDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicLightSourceDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicLightSourceDisplay.SetWireframe 0
+
+# Object editor/_RendererPlugin_sivicRadarHUD with type sivicRadarHUD
+editor/_RendererPlugin_sivicRadarHUD.SetDisabled	0
+editor/_RendererPlugin_sivicRadarHUD.SetPersistent	1
+editor/_RendererPlugin_sivicRadarHUD.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicRadarHUD.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicRadarHUD.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicRadarHUD.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicRadarHUD.SetCastShadows	0
+editor/_RendererPlugin_sivicRadarHUD.SetRenderOrder	5.0000000
+editor/_RendererPlugin_sivicRadarHUD.SetDoNotRender	0
+editor/_RendererPlugin_sivicRadarHUD.SetLobePlot 1
+editor/_RendererPlugin_sivicRadarHUD.SetLogDisplay 1
+editor/_RendererPlugin_sivicRadarHUD.SetDisplayResolution 1.0000000
+
+# Object editor/_RendererPlugin_sivicRadarSimpleDisplay with type sivicRadarSimpleDisplay
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicRadarSimpleDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicRadarSimpleDisplay.SetDoNotRender	0
+
+# Object editor/_RendererPlugin_sivicRangefinderDisplay with type sivicRangefinderDisplay
+editor/_RendererPlugin_sivicRangefinderDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicRangefinderDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicRangefinderDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicRangefinderDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicRangefinderDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicRangefinderDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicRangefinderDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicRangefinderDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicRangefinderDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicRangefinderDisplay.SetShowAll 1
+editor/_RendererPlugin_sivicRangefinderDisplay.SetWireframe 0
+
+# Object editor/_RendererPlugin_sivicRCSDisplay with type sivicRCSDisplay
+editor/_RendererPlugin_sivicRCSDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicRCSDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicRCSDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicRCSDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicRCSDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicRCSDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicRCSDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicRCSDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicRCSDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicRCSDisplay.SetShowAll 0
+editor/_RendererPlugin_sivicRCSDisplay.SetWireframe 0
+
+# Object editor/_RendererPlugin_sivicTrajectoryDisplay with type sivicTrajectoryDisplay
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicTrajectoryDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetDoNotRender	0
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetPrecision 8
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetPathColor 0.2000000 0.6000000 0.5000000 1.0000000
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetPointsColor 0.0000000 0.5000000 0.8000000 1.0000000
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetShowPath 1
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetShowPoints 1
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetShowOrientation 1
+editor/_RendererPlugin_sivicTrajectoryDisplay.SetPointSize 0.0800000
+
+# Object editor/_RendererPlugin_sivicUltrasonicSensorDisplay with type sivicUltrasonicSensorDisplay
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetDisabled	0
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetPersistent	1
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetLocalPosition	0.0000000 0.0000000 0.0000000
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetLocalScale	1.0000000 1.0000000 1.0000000
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetCastShadows	0
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetRenderOrder	4.0000000
+editor/_RendererPlugin_sivicUltrasonicSensorDisplay.SetDoNotRender	0
+
+# Object scene with type sivicPackage
+scene.SetDisabled	0
+scene.SetLocalPosition	0.0000000 0.0000000 0.0000000
+scene.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene.SetLocalScale	0.1500000 0.1500000 0.1000000
+scene.SetPackageData	AEB_scene.zip
+
+# Object scene/Road with type mgPositionable
+scene/Road.SetDisabled	0
+scene/Road.SetLocalPosition	0.0000000 0.0000000 0.0000000
+scene/Road.SetLocalRotation	0.0000000 0.0000000 -90.0000000
+#scene/Road.SetLocalRotationAngles	0.0000000 0.0000000 -89.9999924
+scene/Road.SetLocalScale	1.0000000 1.0000000 0.0001000
+
+# Object scene/Road_0 with type sivicBSPActor
+scene/Road_0.AddProperty	ColorLabel	mgColor	128 128 128 255
+scene/Road_0.AddProperty	InfrastructureType	string	road
+scene/Road_0.AddProperty	layers	mgLayers	16777215
+scene/Road_0.SetDisabled	0
+scene/Road_0.MakeChildOf scene/Road
+scene/Road_0.SetLocalPosition	0.0000000 0.0000000 0.0000000
+scene/Road_0.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Road_0.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Road_0.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Road_0.SetCastShadows	0
+scene/Road_0.SetRenderOrder	0.0000000
+scene/Road_0.SetDoNotRender	0
+scene/Road_0.SetBSPData AEB_scene.bsp
+scene/Road_0.SetRenderingDepth 8
+scene/Road_0.SetAmbientOcclusionMap 
+scene/Road_0.SetNearClippingDistance 0.0000000
+scene/Road_0.SetFarClippingDistance 
+
+# Object scene/RootNode with type mgPositionable
+scene/RootNode.SetDisabled	1
+scene/RootNode.SetLocalPosition	0.0000000 0.0000000 0.0000000
+scene/RootNode.SetLocalRotation	0.0000000 0.0000000 -90.0000000
+#scene/RootNode.SetLocalRotationAngles	0.0000000 0.0000000 -89.9999924
+scene/RootNode.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object scene/treewallR with type sivicMeshActor
+scene/treewallR.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/treewallR.AddProperty	layers	mgLayers	16777215
+scene/treewallR.SetDisabled	0
+scene/treewallR.MakeChildOf scene/RootNode
+scene/treewallR.SetLocalPosition	3.4998200 -20.1888008 0.0000000
+scene/treewallR.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/treewallR.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/treewallR.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/treewallR.SetCastShadows	0
+scene/treewallR.SetRenderOrder	1.0000000
+scene/treewallR.SetDoNotRender	0
+scene/treewallR.SetMesh	AEB_scene/treewallR.mesh
+scene/treewallR.SetCatchShadows	1
+scene/treewallR.SetOccludeAmbient	0
+scene/treewallR.SetCameraAligned	0
+
+# Object scene/Forest001 with type sivicMeshActor
+scene/Forest001.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest001.AddProperty	layers	mgLayers	16777215
+scene/Forest001.SetDisabled	0
+scene/Forest001.MakeChildOf scene/RootNode
+scene/Forest001.SetLocalPosition	-364.0270081 -519.4929810 0.0000210
+scene/Forest001.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest001.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest001.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest001.SetCastShadows	0
+scene/Forest001.SetRenderOrder	1.0000000
+scene/Forest001.SetDoNotRender	0
+scene/Forest001.SetMesh	AEB_scene/Forest001.mesh
+scene/Forest001.SetCatchShadows	1
+scene/Forest001.SetOccludeAmbient	0
+scene/Forest001.SetCameraAligned	0
+
+# Object scene/Forest002 with type sivicMeshActor
+scene/Forest002.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest002.AddProperty	layers	mgLayers	16777215
+scene/Forest002.SetDisabled	0
+scene/Forest002.MakeChildOf scene/RootNode
+scene/Forest002.SetLocalPosition	-374.5270081 -519.4929810 0.0000210
+scene/Forest002.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest002.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest002.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest002.SetCastShadows	0
+scene/Forest002.SetRenderOrder	1.0000000
+scene/Forest002.SetDoNotRender	0
+scene/Forest002.SetMesh	AEB_scene/Forest002.mesh
+scene/Forest002.SetCatchShadows	1
+scene/Forest002.SetOccludeAmbient	0
+scene/Forest002.SetCameraAligned	0
+
+# Object scene/treewallL with type sivicMeshActor
+scene/treewallL.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/treewallL.AddProperty	layers	mgLayers	16777215
+scene/treewallL.SetDisabled	0
+scene/treewallL.MakeChildOf scene/RootNode
+scene/treewallL.SetLocalPosition	-7.0001798 -20.1888008 0.0000000
+scene/treewallL.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/treewallL.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/treewallL.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/treewallL.SetCastShadows	0
+scene/treewallL.SetRenderOrder	1.0000000
+scene/treewallL.SetDoNotRender	0
+scene/treewallL.SetMesh	AEB_scene/treewallL.mesh
+scene/treewallL.SetCatchShadows	1
+scene/treewallL.SetOccludeAmbient	0
+scene/treewallL.SetCameraAligned	0
+
+# Object scene/Forest003 with type sivicMeshActor
+scene/Forest003.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest003.AddProperty	layers	mgLayers	16777215
+scene/Forest003.SetDisabled	0
+scene/Forest003.MakeChildOf scene/RootNode
+scene/Forest003.SetLocalPosition	-364.0270081 0.5071720 -0.0003117
+scene/Forest003.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest003.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest003.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest003.SetCastShadows	0
+scene/Forest003.SetRenderOrder	1.0000000
+scene/Forest003.SetDoNotRender	0
+scene/Forest003.SetMesh	AEB_scene/Forest003.mesh
+scene/Forest003.SetCatchShadows	1
+scene/Forest003.SetOccludeAmbient	0
+scene/Forest003.SetCameraAligned	0
+
+# Object scene/Forest004 with type sivicMeshActor
+scene/Forest004.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest004.AddProperty	layers	mgLayers	16777215
+scene/Forest004.SetDisabled	0
+scene/Forest004.MakeChildOf scene/RootNode
+scene/Forest004.SetLocalPosition	-374.5270081 0.5072330 -0.0003117
+scene/Forest004.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest004.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest004.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest004.SetCastShadows	0
+scene/Forest004.SetRenderOrder	1.0000000
+scene/Forest004.SetDoNotRender	0
+scene/Forest004.SetMesh	AEB_scene/Forest004.mesh
+scene/Forest004.SetCatchShadows	1
+scene/Forest004.SetOccludeAmbient	0
+scene/Forest004.SetCameraAligned	0
+
+# Object scene/Forest005 with type sivicMeshActor
+scene/Forest005.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest005.AddProperty	layers	mgLayers	16777215
+scene/Forest005.SetDisabled	0
+scene/Forest005.MakeChildOf scene/RootNode
+scene/Forest005.SetLocalPosition	-364.0270081 520.5070190 -0.0006444
+scene/Forest005.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest005.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest005.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest005.SetCastShadows	0
+scene/Forest005.SetRenderOrder	1.0000000
+scene/Forest005.SetDoNotRender	0
+scene/Forest005.SetMesh	AEB_scene/Forest005.mesh
+scene/Forest005.SetCatchShadows	1
+scene/Forest005.SetOccludeAmbient	0
+scene/Forest005.SetCameraAligned	0
+
+# Object scene/Forest006 with type sivicMeshActor
+scene/Forest006.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest006.AddProperty	layers	mgLayers	16777215
+scene/Forest006.SetDisabled	0
+scene/Forest006.MakeChildOf scene/RootNode
+scene/Forest006.SetLocalPosition	-374.5270081 520.5070190 -0.0006444
+scene/Forest006.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest006.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest006.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest006.SetCastShadows	0
+scene/Forest006.SetRenderOrder	1.0000000
+scene/Forest006.SetDoNotRender	0
+scene/Forest006.SetMesh	AEB_scene/Forest006.mesh
+scene/Forest006.SetCatchShadows	1
+scene/Forest006.SetOccludeAmbient	0
+scene/Forest006.SetCameraAligned	0
+
+# Object scene/Forest007 with type sivicMeshActor
+scene/Forest007.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest007.AddProperty	layers	mgLayers	16777215
+scene/Forest007.SetDisabled	0
+scene/Forest007.MakeChildOf scene/RootNode
+scene/Forest007.SetLocalPosition	-364.0270081 1040.5100098 -0.0009770
+scene/Forest007.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest007.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest007.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest007.SetCastShadows	0
+scene/Forest007.SetRenderOrder	1.0000000
+scene/Forest007.SetDoNotRender	0
+scene/Forest007.SetMesh	AEB_scene/Forest007.mesh
+scene/Forest007.SetCatchShadows	1
+scene/Forest007.SetOccludeAmbient	0
+scene/Forest007.SetCameraAligned	0
+
+# Object scene/Forest008 with type sivicMeshActor
+scene/Forest008.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest008.AddProperty	layers	mgLayers	16777215
+scene/Forest008.SetDisabled	0
+scene/Forest008.MakeChildOf scene/RootNode
+scene/Forest008.SetLocalPosition	-374.5270081 1040.5100098 -0.0009770
+scene/Forest008.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest008.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest008.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest008.SetCastShadows	0
+scene/Forest008.SetRenderOrder	1.0000000
+scene/Forest008.SetDoNotRender	0
+scene/Forest008.SetMesh	AEB_scene/Forest008.mesh
+scene/Forest008.SetCatchShadows	1
+scene/Forest008.SetOccludeAmbient	0
+scene/Forest008.SetCameraAligned	0
+
+# Object scene/Forest011 with type sivicMeshActor
+scene/Forest011.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest011.AddProperty	layers	mgLayers	16777215
+scene/Forest011.SetDisabled	0
+scene/Forest011.MakeChildOf scene/RootNode
+scene/Forest011.SetLocalPosition	-2300.3798828 2368.8999023 0.0000000
+scene/Forest011.SetLocalRotation	0.0000000 0.0000000 -90.0000000
+#scene/Forest011.SetLocalRotationAngles	0.0000000 0.0000000 -89.9999924
+scene/Forest011.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest011.SetCastShadows	0
+scene/Forest011.SetRenderOrder	1.0000000
+scene/Forest011.SetDoNotRender	0
+scene/Forest011.SetMesh	AEB_scene/Forest011.mesh
+scene/Forest011.SetCatchShadows	1
+scene/Forest011.SetOccludeAmbient	0
+scene/Forest011.SetCameraAligned	0
+
+# Object scene/Forest009 with type sivicMeshActor
+scene/Forest009.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest009.AddProperty	layers	mgLayers	16777215
+scene/Forest009.SetDisabled	0
+scene/Forest009.MakeChildOf scene/RootNode
+scene/Forest009.SetLocalPosition	-364.0270081 1036.6500244 -0.0009775
+scene/Forest009.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#scene/Forest009.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+scene/Forest009.SetLocalScale	1.0000000 1.0000000 1.0000000
+scene/Forest009.SetCastShadows	0
+scene/Forest009.SetRenderOrder	1.0000000
+scene/Forest009.SetDoNotRender	0
+scene/Forest009.SetMesh	AEB_scene/Forest009.mesh
+scene/Forest009.SetCatchShadows	1
+scene/Forest009.SetOccludeAmbient	0
+scene/Forest009.SetCameraAligned	0
+
+# Object scene/Forest010 with type sivicMeshActor
+scene/Forest010.AddProperty	ColorLabel	mgColor	0 176 80 255
+scene/Forest010.AddProperty	layers	mgLayers	16777215
+scene/Forest010.SetDisabled	0
+scene/Forest010.MakeChildOf scene/RootNode
+scene/Forest010.SetLocalPosition	364.0270081 1036.6500244 -0.0008881
+scene/Forest010.SetLocalRotation	180.0000000 -0.0000000 -0.0000000
+#scene/Forest010.SetLocalRotationAngles	-179.9999847 0.0000000 0.0000000
+scene/Forest010.SetLocalScale	-1.0000000 -1.0000000 -1.0000000
+scene/Forest010.SetCastShadows	0
+scene/Forest010.SetRenderOrder	1.0000000
+scene/Forest010.SetDoNotRender	0
+scene/Forest010.SetMesh	AEB_scene/Forest010.mesh
+scene/Forest010.SetCatchShadows	1
+scene/Forest010.SetOccludeAmbient	0
+scene/Forest010.SetCameraAligned	0
+
+# Object sun with type sivicPackage
+sun.SetDisabled	0
+sun.SetLocalPosition	0.0000000 0.0000000 0.0000000
+sun.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#sun.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+sun.SetLocalScale	1.0000000 1.0000000 1.0000000
+sun.SetPackageData	Sun.zip
+
+# Object sun/sky_ref with type mgPositionable
+sun/sky_ref.SetDisabled	0
+sun/sky_ref.SetLocalPosition	0.0000000 0.0000000 0.0000000
+sun/sky_ref.SetLocalRotation	90.0000000 0.0000000 0.0000000
+#sun/sky_ref.SetLocalRotationAngles	89.9999924 -0.0000000 0.0000000
+sun/sky_ref.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object sun/sun with type mgLightSource
+sun/sun.AddProperty	LightType	string	sun
+sun/sun.SetDisabled	0
+sun/sun.MakeChildOf sun/sky_ref
+sun/sun.SetLocalPosition	0.0000000 100000.0000000 0.0000000
+sun/sun.SetLocalRotation	-90.0000000 0.0000000 0.0000000
+#sun/sun.SetLocalRotationAngles	-89.9999924 0.0000000 0.0000000
+sun/sun.SetLocalScale	1.0000000 1.0000000 1.0000000
+sun/sun.SetColor	1.0000000 1.0000000 1.0000000 1.0000000
+sun/sun.SetIntensityScale	1.0000000
+sun/sun.SetAttenuationFactors	1.0000000 0.0000000 0.0000000
+sun/sun.SetCastShadows	1
+
+# Object sky with type sivicPackage
+sky.SetDisabled	0
+sky.SetLocalPosition	0.0000000 0.0000000 0.0000000
+sky.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#sky.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+sky.SetLocalScale	1.0000000 1.0000000 1.0000000
+sky.SetPackageData	Sky_bluedream.zip
+
+# Object sky/sky with type mgSkyBoxActor
+sky/sky.AddProperty	ColorLabel	mgColor	0 176 240 255
+sky/sky.SetDisabled	0
+sky/sky.SetLocalPosition	0.0000000 0.0000000 0.0000000
+sky/sky.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#sky/sky.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+sky/sky.SetLocalScale	1.0000000 1.0000000 1.0000000
+sky/sky.SetCastShadows	0
+sky/sky.SetRenderOrder	-1.0000000
+sky/sky.SetDoNotRender	0
+sky/sky.SetMesh skybox/bluedream
+
+# Object pedestrian with type sivicPackage
+pedestrian.SetDisabled	0
+pedestrian.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian.SetPackageData	Pedestrian.zip
+
+# Object pedestrian/pedestrian with type sivicHuman
+pedestrian/pedestrian.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian.SetDisabled	0
+pedestrian/pedestrian.SetLocalPosition	-10.0000000 0.0000000 0.0000000
+pedestrian/pedestrian.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian.SetLocalRotationAngles	0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian.Load	Pedestrian.def
+pedestrian/pedestrian.SetSpeed	0.0000000
+pedestrian/pedestrian.SetPosition -10.0000000 0.0000000 0.0000000
+pedestrian/pedestrian.SetAngle 0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian.SetAccCtrl human2_Walk
+pedestrian/pedestrian.SetSteerCtrl human2_BodyTurn
+pedestrian/pedestrian.SetStopCtrl human2_Stop
+pedestrian/pedestrian.SetHeadCtrl human2_HeadTurn
+pedestrian/pedestrian.SetLoop 1
+pedestrian/pedestrian.SetFileNameTrajectory 
+pedestrian/pedestrian.SetExtensionTrajectory .trj
+pedestrian/pedestrian.SetFileNameTrack 
+pedestrian/pedestrian.SetExtensionTrack .trk
+pedestrian/pedestrian.SetMode 0
+pedestrian/pedestrian.SetInitTrajectoryIndex 0
+pedestrian/pedestrian.SetInitCurrentLoop 1
+pedestrian/pedestrian.SetInitPosition -10.0000000 0.0000000 0.0000000
+pedestrian/pedestrian.SetInitAngle 0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian.SetUseRoadAsGround 1
+
+# Object pedestrian/CollisionModel with type sivicMeshActor
+pedestrian/CollisionModel.AddProperty	ColorLabel	mgColor	255 255 255 255
+pedestrian/CollisionModel.AddProperty	layers	mgLayers	16777215
+pedestrian/CollisionModel.SetDisabled	0
+pedestrian/CollisionModel.MakeChildOf pedestrian/pedestrian
+pedestrian/CollisionModel.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian/CollisionModel.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/CollisionModel.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/CollisionModel.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/CollisionModel.SetCastShadows	0
+pedestrian/CollisionModel.SetRenderOrder	1.0000000
+pedestrian/CollisionModel.SetDoNotRender	1
+pedestrian/CollisionModel.SetMesh	pedestrian_rcs/pedestrian_rcs
+pedestrian/CollisionModel.SetCatchShadows	1
+pedestrian/CollisionModel.SetOccludeAmbient	0
+pedestrian/CollisionModel.SetCameraAligned	0
+
+# Object pedestrian/RCS with type sivicRCS
+pedestrian/RCS.SetDisabled	0
+pedestrian/RCS.MakeChildOf pedestrian/pedestrian
+pedestrian/RCS.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian/RCS.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/RCS.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/RCS.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/RCS.SetCollisionModel 
+pedestrian/RCS.ClearLobes
+pedestrian/RCS.AddLobe 1.0000000	1.0000000	-1.0000000 0.0000000 0.0000000 0.0000000	0.0000000 -1.0000000 0.0000000 0.0000000	0.0000000 0.0000000 -1.0000000 0.0000000	0.0000000 0.0000000 0.0000000 0.0000000
+pedestrian/RCS.SetRCSData Pedestrian_MoS_freq_77GHz.rcs
+pedestrian/RCS.SetPolicy table
+pedestrian/RCS.SetSymetryX none
+pedestrian/RCS.SetSymetryY none
+pedestrian/RCS.SetSymetryZ none
+
+# Object pedestrian/pedestrian/root with type mgPositionable
+pedestrian/pedestrian/root.SetDisabled	0
+pedestrian/pedestrian/root.SetLocalPosition	0.0000000 0.0000000 0.5940000
+pedestrian/pedestrian/root.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/root.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/root.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/hipsmain-joint with type mgPositionable
+pedestrian/pedestrian/hipsmain-joint.SetDisabled	0
+pedestrian/pedestrian/hipsmain-joint.MakeChildOf pedestrian/pedestrian/root
+pedestrian/pedestrian/hipsmain-joint.SetLocalPosition	0.0000000 0.0000000 0.5940000
+pedestrian/pedestrian/hipsmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/hipsmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/hipsmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/hipsmain with type mgMeshActor
+pedestrian/pedestrian/hipsmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/hipsmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/hipsmain.SetDisabled	0
+pedestrian/pedestrian/hipsmain.MakeChildOf pedestrian/pedestrian/hipsmain-joint
+pedestrian/pedestrian/hipsmain.SetLocalPosition	0.0000000 0.0000000 -1.1880000
+pedestrian/pedestrian/hipsmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/hipsmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/hipsmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/hipsmain.SetCastShadows	0
+pedestrian/pedestrian/hipsmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/hipsmain.SetDoNotRender	0
+pedestrian/pedestrian/hipsmain.SetMesh	pedestrian/hipsmain
+pedestrian/pedestrian/hipsmain.SetCatchShadows	1
+pedestrian/pedestrian/hipsmain.SetOccludeAmbient	0
+pedestrian/pedestrian/hipsmain.SetCameraAligned	0
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/hipsmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/right_upper_legmain-joint with type mgPositionable
+pedestrian/pedestrian/right_upper_legmain-joint.SetDisabled	0
+pedestrian/pedestrian/right_upper_legmain-joint.MakeChildOf pedestrian/pedestrian/hipsmain-joint
+pedestrian/pedestrian/right_upper_legmain-joint.SetLocalPosition	0.0000000 -0.0720000 -0.2700000
+pedestrian/pedestrian/right_upper_legmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/right_upper_legmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/right_upper_legmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/right_upper_legmain with type mgMeshActor
+pedestrian/pedestrian/right_upper_legmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/right_upper_legmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/right_upper_legmain.SetDisabled	0
+pedestrian/pedestrian/right_upper_legmain.MakeChildOf pedestrian/pedestrian/right_upper_legmain-joint
+pedestrian/pedestrian/right_upper_legmain.SetLocalPosition	0.0000000 0.0720000 -0.9180000
+pedestrian/pedestrian/right_upper_legmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/right_upper_legmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/right_upper_legmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/right_upper_legmain.SetCastShadows	0
+pedestrian/pedestrian/right_upper_legmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/right_upper_legmain.SetDoNotRender	0
+pedestrian/pedestrian/right_upper_legmain.SetMesh	pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_upper_legmain.SetCatchShadows	1
+pedestrian/pedestrian/right_upper_legmain.SetOccludeAmbient	0
+pedestrian/pedestrian/right_upper_legmain.SetCameraAligned	0
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/right_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/right_lower_legmain-joint with type mgPositionable
+pedestrian/pedestrian/right_lower_legmain-joint.SetDisabled	0
+pedestrian/pedestrian/right_lower_legmain-joint.MakeChildOf pedestrian/pedestrian/right_upper_legmain-joint
+pedestrian/pedestrian/right_lower_legmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.4320000
+pedestrian/pedestrian/right_lower_legmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/right_lower_legmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/right_lower_legmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/right_lower_legmain with type mgMeshActor
+pedestrian/pedestrian/right_lower_legmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/right_lower_legmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/right_lower_legmain.SetDisabled	0
+pedestrian/pedestrian/right_lower_legmain.MakeChildOf pedestrian/pedestrian/right_lower_legmain-joint
+pedestrian/pedestrian/right_lower_legmain.SetLocalPosition	0.0000000 0.0720000 -0.4860000
+pedestrian/pedestrian/right_lower_legmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/right_lower_legmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/right_lower_legmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/right_lower_legmain.SetCastShadows	0
+pedestrian/pedestrian/right_lower_legmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/right_lower_legmain.SetDoNotRender	0
+pedestrian/pedestrian/right_lower_legmain.SetMesh	pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_lower_legmain.SetCatchShadows	1
+pedestrian/pedestrian/right_lower_legmain.SetOccludeAmbient	0
+pedestrian/pedestrian/right_lower_legmain.SetCameraAligned	0
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/right_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/right_footmain-joint with type mgPositionable
+pedestrian/pedestrian/right_footmain-joint.SetDisabled	0
+pedestrian/pedestrian/right_footmain-joint.MakeChildOf pedestrian/pedestrian/right_lower_legmain-joint
+pedestrian/pedestrian/right_footmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.4320000
+pedestrian/pedestrian/right_footmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/right_footmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/right_footmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/right_footmain with type mgMeshActor
+pedestrian/pedestrian/right_footmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/right_footmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/right_footmain.SetDisabled	0
+pedestrian/pedestrian/right_footmain.MakeChildOf pedestrian/pedestrian/right_footmain-joint
+pedestrian/pedestrian/right_footmain.SetLocalPosition	0.0000000 0.0720000 -0.0540000
+pedestrian/pedestrian/right_footmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/right_footmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/right_footmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/right_footmain.SetCastShadows	0
+pedestrian/pedestrian/right_footmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/right_footmain.SetDoNotRender	0
+pedestrian/pedestrian/right_footmain.SetMesh	pedestrian/right_footmain
+pedestrian/pedestrian/right_footmain.SetCatchShadows	1
+pedestrian/pedestrian/right_footmain.SetOccludeAmbient	0
+pedestrian/pedestrian/right_footmain.SetCameraAligned	0
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/right_footmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/left_upper_legmain-joint with type mgPositionable
+pedestrian/pedestrian/left_upper_legmain-joint.SetDisabled	0
+pedestrian/pedestrian/left_upper_legmain-joint.MakeChildOf pedestrian/pedestrian/hipsmain-joint
+pedestrian/pedestrian/left_upper_legmain-joint.SetLocalPosition	0.0000000 0.0720000 -0.2700000
+pedestrian/pedestrian/left_upper_legmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/left_upper_legmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/left_upper_legmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/left_upper_legmain with type mgMeshActor
+pedestrian/pedestrian/left_upper_legmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/left_upper_legmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/left_upper_legmain.SetDisabled	0
+pedestrian/pedestrian/left_upper_legmain.MakeChildOf pedestrian/pedestrian/left_upper_legmain-joint
+pedestrian/pedestrian/left_upper_legmain.SetLocalPosition	0.0000000 -0.0720000 -0.9180000
+pedestrian/pedestrian/left_upper_legmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/left_upper_legmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/left_upper_legmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/left_upper_legmain.SetCastShadows	0
+pedestrian/pedestrian/left_upper_legmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/left_upper_legmain.SetDoNotRender	0
+pedestrian/pedestrian/left_upper_legmain.SetMesh	pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_upper_legmain.SetCatchShadows	1
+pedestrian/pedestrian/left_upper_legmain.SetOccludeAmbient	0
+pedestrian/pedestrian/left_upper_legmain.SetCameraAligned	0
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/left_upper_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/left_lower_legmain-joint with type mgPositionable
+pedestrian/pedestrian/left_lower_legmain-joint.SetDisabled	0
+pedestrian/pedestrian/left_lower_legmain-joint.MakeChildOf pedestrian/pedestrian/left_upper_legmain-joint
+pedestrian/pedestrian/left_lower_legmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.4320000
+pedestrian/pedestrian/left_lower_legmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/left_lower_legmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/left_lower_legmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/left_lower_legmain with type mgMeshActor
+pedestrian/pedestrian/left_lower_legmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/left_lower_legmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/left_lower_legmain.SetDisabled	0
+pedestrian/pedestrian/left_lower_legmain.MakeChildOf pedestrian/pedestrian/left_lower_legmain-joint
+pedestrian/pedestrian/left_lower_legmain.SetLocalPosition	0.0000000 -0.0720000 -0.4860000
+pedestrian/pedestrian/left_lower_legmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/left_lower_legmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/left_lower_legmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/left_lower_legmain.SetCastShadows	0
+pedestrian/pedestrian/left_lower_legmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/left_lower_legmain.SetDoNotRender	0
+pedestrian/pedestrian/left_lower_legmain.SetMesh	pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_lower_legmain.SetCatchShadows	1
+pedestrian/pedestrian/left_lower_legmain.SetOccludeAmbient	0
+pedestrian/pedestrian/left_lower_legmain.SetCameraAligned	0
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/left_lower_legmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/left_footmain-joint with type mgPositionable
+pedestrian/pedestrian/left_footmain-joint.SetDisabled	0
+pedestrian/pedestrian/left_footmain-joint.MakeChildOf pedestrian/pedestrian/left_lower_legmain-joint
+pedestrian/pedestrian/left_footmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.4320000
+pedestrian/pedestrian/left_footmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/left_footmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/left_footmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/left_footmain with type mgMeshActor
+pedestrian/pedestrian/left_footmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/left_footmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/left_footmain.SetDisabled	0
+pedestrian/pedestrian/left_footmain.MakeChildOf pedestrian/pedestrian/left_footmain-joint
+pedestrian/pedestrian/left_footmain.SetLocalPosition	0.0000000 -0.0720000 -0.0540000
+pedestrian/pedestrian/left_footmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/left_footmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/left_footmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/left_footmain.SetCastShadows	0
+pedestrian/pedestrian/left_footmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/left_footmain.SetDoNotRender	0
+pedestrian/pedestrian/left_footmain.SetMesh	pedestrian/left_footmain
+pedestrian/pedestrian/left_footmain.SetCatchShadows	1
+pedestrian/pedestrian/left_footmain.SetOccludeAmbient	0
+pedestrian/pedestrian/left_footmain.SetCameraAligned	0
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/left_footmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/lower_torsomain-joint with type mgPositionable
+pedestrian/pedestrian/lower_torsomain-joint.SetDisabled	0
+pedestrian/pedestrian/lower_torsomain-joint.MakeChildOf pedestrian/pedestrian/hipsmain-joint
+pedestrian/pedestrian/lower_torsomain-joint.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian/lower_torsomain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/lower_torsomain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/lower_torsomain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/lower_torsomain with type mgMeshActor
+pedestrian/pedestrian/lower_torsomain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/lower_torsomain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/lower_torsomain.SetDisabled	0
+pedestrian/pedestrian/lower_torsomain.MakeChildOf pedestrian/pedestrian/lower_torsomain-joint
+pedestrian/pedestrian/lower_torsomain.SetLocalPosition	0.0000000 0.0000000 -1.1880000
+pedestrian/pedestrian/lower_torsomain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/lower_torsomain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/lower_torsomain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/lower_torsomain.SetCastShadows	0
+pedestrian/pedestrian/lower_torsomain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/lower_torsomain.SetDoNotRender	0
+pedestrian/pedestrian/lower_torsomain.SetMesh	pedestrian/lower_torsomain
+pedestrian/pedestrian/lower_torsomain.SetCatchShadows	1
+pedestrian/pedestrian/lower_torsomain.SetOccludeAmbient	0
+pedestrian/pedestrian/lower_torsomain.SetCameraAligned	0
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/lower_torsomain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/upper_torsomain-joint with type mgPositionable
+pedestrian/pedestrian/upper_torsomain-joint.SetDisabled	0
+pedestrian/pedestrian/upper_torsomain-joint.MakeChildOf pedestrian/pedestrian/lower_torsomain-joint
+pedestrian/pedestrian/upper_torsomain-joint.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian/upper_torsomain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/upper_torsomain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/upper_torsomain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/upper_torsomain with type mgMeshActor
+pedestrian/pedestrian/upper_torsomain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/upper_torsomain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/upper_torsomain.SetDisabled	0
+pedestrian/pedestrian/upper_torsomain.MakeChildOf pedestrian/pedestrian/upper_torsomain-joint
+pedestrian/pedestrian/upper_torsomain.SetLocalPosition	0.0000000 0.0000000 -1.1880000
+pedestrian/pedestrian/upper_torsomain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/upper_torsomain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/upper_torsomain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/upper_torsomain.SetCastShadows	0
+pedestrian/pedestrian/upper_torsomain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/upper_torsomain.SetDoNotRender	0
+pedestrian/pedestrian/upper_torsomain.SetMesh	pedestrian/upper_torsomain
+pedestrian/pedestrian/upper_torsomain.SetCatchShadows	1
+pedestrian/pedestrian/upper_torsomain.SetOccludeAmbient	0
+pedestrian/pedestrian/upper_torsomain.SetCameraAligned	0
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/upper_torsomain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/neckmain-joint with type mgPositionable
+pedestrian/pedestrian/neckmain-joint.SetDisabled	0
+pedestrian/pedestrian/neckmain-joint.MakeChildOf pedestrian/pedestrian/upper_torsomain-joint
+pedestrian/pedestrian/neckmain-joint.SetLocalPosition	0.0000000 0.0000000 0.3870000
+pedestrian/pedestrian/neckmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/neckmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/neckmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/neckmain with type mgMeshActor
+pedestrian/pedestrian/neckmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/neckmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/neckmain.SetDisabled	0
+pedestrian/pedestrian/neckmain.MakeChildOf pedestrian/pedestrian/neckmain-joint
+pedestrian/pedestrian/neckmain.SetLocalPosition	0.0000000 0.0000000 -1.5749999
+pedestrian/pedestrian/neckmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/neckmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/neckmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/neckmain.SetCastShadows	0
+pedestrian/pedestrian/neckmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/neckmain.SetDoNotRender	0
+pedestrian/pedestrian/neckmain.SetMesh	pedestrian/neckmain
+pedestrian/pedestrian/neckmain.SetCatchShadows	1
+pedestrian/pedestrian/neckmain.SetOccludeAmbient	0
+pedestrian/pedestrian/neckmain.SetCameraAligned	0
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/neckmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/headmain-joint with type mgPositionable
+pedestrian/pedestrian/headmain-joint.SetDisabled	0
+pedestrian/pedestrian/headmain-joint.MakeChildOf pedestrian/pedestrian/neckmain-joint
+pedestrian/pedestrian/headmain-joint.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian/headmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/headmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/headmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/headmain with type mgMeshActor
+pedestrian/pedestrian/headmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/headmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/headmain.SetDisabled	0
+pedestrian/pedestrian/headmain.MakeChildOf pedestrian/pedestrian/headmain-joint
+pedestrian/pedestrian/headmain.SetLocalPosition	0.0000000 0.0000000 -1.5749999
+pedestrian/pedestrian/headmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/headmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/headmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/headmain.SetCastShadows	0
+pedestrian/pedestrian/headmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/headmain.SetDoNotRender	0
+pedestrian/pedestrian/headmain.SetMesh	pedestrian/headmain
+pedestrian/pedestrian/headmain.SetCatchShadows	1
+pedestrian/pedestrian/headmain.SetOccludeAmbient	0
+pedestrian/pedestrian/headmain.SetCameraAligned	0
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/headmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/right_claviclemain-joint with type mgPositionable
+pedestrian/pedestrian/right_claviclemain-joint.SetDisabled	0
+pedestrian/pedestrian/right_claviclemain-joint.MakeChildOf pedestrian/pedestrian/upper_torsomain-joint
+pedestrian/pedestrian/right_claviclemain-joint.SetLocalPosition	0.0000000 -0.2700000 0.2700000
+pedestrian/pedestrian/right_claviclemain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/right_claviclemain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/right_claviclemain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/right_claviclemain with type mgMeshActor
+pedestrian/pedestrian/right_claviclemain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/right_claviclemain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/right_claviclemain.SetDisabled	0
+pedestrian/pedestrian/right_claviclemain.MakeChildOf pedestrian/pedestrian/right_claviclemain-joint
+pedestrian/pedestrian/right_claviclemain.SetLocalPosition	0.0000000 0.1800000 0.0000000
+pedestrian/pedestrian/right_claviclemain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/right_claviclemain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/right_claviclemain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/right_claviclemain.SetCastShadows	0
+pedestrian/pedestrian/right_claviclemain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/right_claviclemain.SetDoNotRender	0
+pedestrian/pedestrian/right_claviclemain.SetMesh	pedestrian/right_claviclemain
+pedestrian/pedestrian/right_claviclemain.SetCatchShadows	1
+pedestrian/pedestrian/right_claviclemain.SetOccludeAmbient	0
+pedestrian/pedestrian/right_claviclemain.SetCameraAligned	0
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/right_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/right_upper_armmain-joint with type mgPositionable
+pedestrian/pedestrian/right_upper_armmain-joint.SetDisabled	0
+pedestrian/pedestrian/right_upper_armmain-joint.MakeChildOf pedestrian/pedestrian/right_claviclemain-joint
+pedestrian/pedestrian/right_upper_armmain-joint.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian/right_upper_armmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/right_upper_armmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/right_upper_armmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/right_upper_armmain with type mgMeshActor
+pedestrian/pedestrian/right_upper_armmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/right_upper_armmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/right_upper_armmain.SetDisabled	0
+pedestrian/pedestrian/right_upper_armmain.MakeChildOf pedestrian/pedestrian/right_upper_armmain-joint
+pedestrian/pedestrian/right_upper_armmain.SetLocalPosition	0.0000000 0.2700000 -1.4579999
+pedestrian/pedestrian/right_upper_armmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/right_upper_armmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/right_upper_armmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/right_upper_armmain.SetCastShadows	0
+pedestrian/pedestrian/right_upper_armmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/right_upper_armmain.SetDoNotRender	0
+pedestrian/pedestrian/right_upper_armmain.SetMesh	pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_upper_armmain.SetCatchShadows	1
+pedestrian/pedestrian/right_upper_armmain.SetOccludeAmbient	0
+pedestrian/pedestrian/right_upper_armmain.SetCameraAligned	0
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/right_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/right_lower_armmain-joint with type mgPositionable
+pedestrian/pedestrian/right_lower_armmain-joint.SetDisabled	0
+pedestrian/pedestrian/right_lower_armmain-joint.MakeChildOf pedestrian/pedestrian/right_upper_armmain-joint
+pedestrian/pedestrian/right_lower_armmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.3240000
+pedestrian/pedestrian/right_lower_armmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/right_lower_armmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/right_lower_armmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/right_lower_armmain with type mgMeshActor
+pedestrian/pedestrian/right_lower_armmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/right_lower_armmain.SetDisabled	0
+pedestrian/pedestrian/right_lower_armmain.MakeChildOf pedestrian/pedestrian/right_lower_armmain-joint
+pedestrian/pedestrian/right_lower_armmain.SetLocalPosition	0.0000000 0.2700000 -1.1339999
+pedestrian/pedestrian/right_lower_armmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/right_lower_armmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/right_lower_armmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/right_lower_armmain.SetCastShadows	0
+pedestrian/pedestrian/right_lower_armmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/right_lower_armmain.SetDoNotRender	0
+pedestrian/pedestrian/right_lower_armmain.SetMesh	pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_lower_armmain.SetCatchShadows	1
+pedestrian/pedestrian/right_lower_armmain.SetOccludeAmbient	0
+pedestrian/pedestrian/right_lower_armmain.SetCameraAligned	0
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/right_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/right_handmain-joint with type mgPositionable
+pedestrian/pedestrian/right_handmain-joint.SetDisabled	0
+pedestrian/pedestrian/right_handmain-joint.MakeChildOf pedestrian/pedestrian/right_lower_armmain-joint
+pedestrian/pedestrian/right_handmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.2700000
+pedestrian/pedestrian/right_handmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/right_handmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/right_handmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/right_handmain with type mgMeshActor
+pedestrian/pedestrian/right_handmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/right_handmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/right_handmain.SetDisabled	0
+pedestrian/pedestrian/right_handmain.MakeChildOf pedestrian/pedestrian/right_handmain-joint
+pedestrian/pedestrian/right_handmain.SetLocalPosition	0.0000000 0.2700000 -0.8640000
+pedestrian/pedestrian/right_handmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/right_handmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/right_handmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/right_handmain.SetCastShadows	0
+pedestrian/pedestrian/right_handmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/right_handmain.SetDoNotRender	0
+pedestrian/pedestrian/right_handmain.SetMesh	pedestrian/right_handmain
+pedestrian/pedestrian/right_handmain.SetCatchShadows	1
+pedestrian/pedestrian/right_handmain.SetOccludeAmbient	0
+pedestrian/pedestrian/right_handmain.SetCameraAligned	0
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/right_handmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/left_claviclemain-joint with type mgPositionable
+pedestrian/pedestrian/left_claviclemain-joint.SetDisabled	0
+pedestrian/pedestrian/left_claviclemain-joint.MakeChildOf pedestrian/pedestrian/upper_torsomain-joint
+pedestrian/pedestrian/left_claviclemain-joint.SetLocalPosition	0.0000000 0.2700000 0.2700000
+pedestrian/pedestrian/left_claviclemain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/left_claviclemain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/left_claviclemain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/left_claviclemain with type mgMeshActor
+pedestrian/pedestrian/left_claviclemain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/left_claviclemain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/left_claviclemain.SetDisabled	0
+pedestrian/pedestrian/left_claviclemain.MakeChildOf pedestrian/pedestrian/left_claviclemain-joint
+pedestrian/pedestrian/left_claviclemain.SetLocalPosition	0.0000000 -0.1800000 0.0000000
+pedestrian/pedestrian/left_claviclemain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/left_claviclemain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/left_claviclemain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/left_claviclemain.SetCastShadows	0
+pedestrian/pedestrian/left_claviclemain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/left_claviclemain.SetDoNotRender	0
+pedestrian/pedestrian/left_claviclemain.SetMesh	pedestrian/left_claviclemain
+pedestrian/pedestrian/left_claviclemain.SetCatchShadows	1
+pedestrian/pedestrian/left_claviclemain.SetOccludeAmbient	0
+pedestrian/pedestrian/left_claviclemain.SetCameraAligned	0
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/left_claviclemain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/left_upper_armmain-joint with type mgPositionable
+pedestrian/pedestrian/left_upper_armmain-joint.SetDisabled	0
+pedestrian/pedestrian/left_upper_armmain-joint.MakeChildOf pedestrian/pedestrian/left_claviclemain-joint
+pedestrian/pedestrian/left_upper_armmain-joint.SetLocalPosition	0.0000000 0.0000000 0.0000000
+pedestrian/pedestrian/left_upper_armmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/left_upper_armmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/left_upper_armmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/left_upper_armmain with type mgMeshActor
+pedestrian/pedestrian/left_upper_armmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/left_upper_armmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/left_upper_armmain.SetDisabled	0
+pedestrian/pedestrian/left_upper_armmain.MakeChildOf pedestrian/pedestrian/left_upper_armmain-joint
+pedestrian/pedestrian/left_upper_armmain.SetLocalPosition	0.0000000 -0.2700000 -1.4579999
+pedestrian/pedestrian/left_upper_armmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/left_upper_armmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/left_upper_armmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/left_upper_armmain.SetCastShadows	0
+pedestrian/pedestrian/left_upper_armmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/left_upper_armmain.SetDoNotRender	0
+pedestrian/pedestrian/left_upper_armmain.SetMesh	pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_upper_armmain.SetCatchShadows	1
+pedestrian/pedestrian/left_upper_armmain.SetOccludeAmbient	0
+pedestrian/pedestrian/left_upper_armmain.SetCameraAligned	0
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/left_upper_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/left_lower_armmain-joint with type mgPositionable
+pedestrian/pedestrian/left_lower_armmain-joint.SetDisabled	0
+pedestrian/pedestrian/left_lower_armmain-joint.MakeChildOf pedestrian/pedestrian/left_upper_armmain-joint
+pedestrian/pedestrian/left_lower_armmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.3240000
+pedestrian/pedestrian/left_lower_armmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/left_lower_armmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/left_lower_armmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/left_lower_armmain with type mgMeshActor
+pedestrian/pedestrian/left_lower_armmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/left_lower_armmain.SetDisabled	0
+pedestrian/pedestrian/left_lower_armmain.MakeChildOf pedestrian/pedestrian/left_lower_armmain-joint
+pedestrian/pedestrian/left_lower_armmain.SetLocalPosition	0.0000000 -0.2700000 -1.1339999
+pedestrian/pedestrian/left_lower_armmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/left_lower_armmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/left_lower_armmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/left_lower_armmain.SetCastShadows	0
+pedestrian/pedestrian/left_lower_armmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/left_lower_armmain.SetDoNotRender	0
+pedestrian/pedestrian/left_lower_armmain.SetMesh	pedestrian/left_lower_armmain
+pedestrian/pedestrian/left_lower_armmain.SetCatchShadows	1
+pedestrian/pedestrian/left_lower_armmain.SetOccludeAmbient	0
+pedestrian/pedestrian/left_lower_armmain.SetCameraAligned	0
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/left_lower_armmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object pedestrian/pedestrian/left_handmain-joint with type mgPositionable
+pedestrian/pedestrian/left_handmain-joint.SetDisabled	0
+pedestrian/pedestrian/left_handmain-joint.MakeChildOf pedestrian/pedestrian/left_lower_armmain-joint
+pedestrian/pedestrian/left_handmain-joint.SetLocalPosition	0.0000000 0.0000000 -0.2700000
+pedestrian/pedestrian/left_handmain-joint.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#pedestrian/pedestrian/left_handmain-joint.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+pedestrian/pedestrian/left_handmain-joint.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian/pedestrian/left_handmain with type mgMeshActor
+pedestrian/pedestrian/left_handmain.AddProperty	ColorLabel	mgColor	255 0 0 255
+pedestrian/pedestrian/left_handmain.AddProperty	InfrastructureType	string	obstacle
+pedestrian/pedestrian/left_handmain.SetDisabled	0
+pedestrian/pedestrian/left_handmain.MakeChildOf pedestrian/pedestrian/left_handmain-joint
+pedestrian/pedestrian/left_handmain.SetLocalPosition	0.0000000 -0.2700000 -0.8640000
+pedestrian/pedestrian/left_handmain.SetLocalRotation	0.0000000 0.0000000 90.0000000
+#pedestrian/pedestrian/left_handmain.SetLocalRotationAngles	0.0000000 -0.0000000 89.9999924
+pedestrian/pedestrian/left_handmain.SetLocalScale	1.0000000 1.0000000 1.0000000
+pedestrian/pedestrian/left_handmain.SetCastShadows	0
+pedestrian/pedestrian/left_handmain.SetRenderOrder	1.0000000
+pedestrian/pedestrian/left_handmain.SetDoNotRender	0
+pedestrian/pedestrian/left_handmain.SetMesh	pedestrian/left_handmain
+pedestrian/pedestrian/left_handmain.SetCatchShadows	1
+pedestrian/pedestrian/left_handmain.SetOccludeAmbient	0
+pedestrian/pedestrian/left_handmain.SetCameraAligned	0
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/right_lower_legmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/right_footmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/left_upper_legmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/hipsmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/right_upper_legmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/lower_torsomain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/right_upper_armmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/headmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/right_claviclemain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/neckmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/left_lower_legmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/left_footmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/upper_torsomain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/right_lower_armmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/right_handmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/left_upper_armmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/left_handmain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/left_claviclemain
+pedestrian/pedestrian/left_handmain.IgnoreShadows	pedestrian/pedestrian/left_lower_armmain
+
+# Object collision_position_pedestrian with type mgPositionable
+collision_position_pedestrian.SetDisabled	0
+collision_position_pedestrian.MakeChildOf pedestrian/pedestrian
+collision_position_pedestrian.SetLocalPosition	0.0000000 0.0000000 0.5000000
+collision_position_pedestrian.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#collision_position_pedestrian.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+collision_position_pedestrian.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object pedestrian_observer with type sivicManObserver
+pedestrian_observer.SetPeriod 0.0400000
+pedestrian_observer.SetOMGDDSEnabled true
+pedestrian_observer.SetFileName pedestrian_observer
+pedestrian_observer.SetExtension .cap
+pedestrian_observer.On 
+pedestrian_observer.SetRecordEnabled false
+pedestrian_observer.SetExportFormat tsv
+pedestrian_observer.SetDisabled	0
+pedestrian_observer.SetPrecision 2
+pedestrian_observer.SetObject pedestrian/pedestrian
+
+# Object ego_car with type sivicPackage
+ego_car.SetDisabled	0
+ego_car.SetLocalPosition	0.0000000 0.0000000 0.0000000
+ego_car.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+ego_car.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car.SetPackageData	Audi-A4_Dynamic.zip
+
+# Object ego_car/vc with type sivicCarViewport
+ego_car/vc.SetPeriod 0.0400000
+ego_car/vc.SetOMGDDSEnabled false
+ego_car/vc.SetFileName vc
+ego_car/vc.SetExtension .cap
+ego_car/vc.Off 
+ego_car/vc.SetRecordEnabled false
+ego_car/vc.SetExportFormat tsv
+ego_car/vc.SetDisabled	0
+ego_car/vc.SetViewport 0 0 100 48
+# Backgound color for ego_car/vc: 
+ego_car/vc.SetTransparency true
+ego_car/vc.SetWatermark 0.0000000
+ego_car/vc.SetBackgroundColor 1.0000000 0.0000000 0.0000000 0.0000000
+ego_car/vc.SetPosition 0 0
+ego_car/vc.SetSize 100 48
+ego_car/vc.SetDigitWidth 0.1500000
+ego_car/vc.SetPositionUnit 0.6000000
+ego_car/vc.SetDataColor 0.0000000 0.0000000 0.0000000 1.0000000
+ego_car/vc.SetCar ego_car/car
+
+# Object ego_car/chassis with type sivicMeshActor
+ego_car/chassis.AddProperty	ColorLabel	mgColor	255 0 0 255
+ego_car/chassis.AddProperty	VehicleModel	string	Audi_A4
+ego_car/chassis.AddProperty	VehicleType	string	car
+ego_car/chassis.AddProperty	layers	mgLayers	16777215
+ego_car/chassis.SetDisabled	0
+ego_car/chassis.SetLocalPosition	-3.5799985 -0.0000008 0.3510531
+ego_car/chassis.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car/chassis.SetLocalRotationAngles	-0.0007827 0.0000870 0.0000000
+ego_car/chassis.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car/chassis.SetCastShadows	0
+ego_car/chassis.SetRenderOrder	1.0000000
+ego_car/chassis.SetDoNotRender	0
+ego_car/chassis.SetMesh	A4/A4_Dynamic
+ego_car/chassis.SetCatchShadows	1
+ego_car/chassis.SetOccludeAmbient	0
+ego_car/chassis.SetCameraAligned	0
+ego_car/chassis.OverrideMaterial	Body Body_Black
+
+# Object ego_car/fl with type sivicMeshActor
+ego_car/fl.AddProperty	ColorLabel	mgColor	255 0 0 255
+ego_car/fl.AddProperty	layers	mgLayers	16777215
+ego_car/fl.SetDisabled	0
+ego_car/fl.MakeChildOf ego_car/chassis
+ego_car/fl.SetLocalPosition	2.6599998 0.7500002 -0.0210394
+ego_car/fl.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car/fl.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+ego_car/fl.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car/fl.SetCastShadows	0
+ego_car/fl.SetRenderOrder	1.0000000
+ego_car/fl.SetDoNotRender	0
+ego_car/fl.SetMesh	A4_wheel/left_wheel
+ego_car/fl.SetCatchShadows	1
+ego_car/fl.SetOccludeAmbient	0
+ego_car/fl.SetCameraAligned	0
+
+# Object ego_car/fr with type sivicMeshActor
+ego_car/fr.AddProperty	ColorLabel	mgColor	255 0 0 255
+ego_car/fr.AddProperty	layers	mgLayers	16777215
+ego_car/fr.SetDisabled	0
+ego_car/fr.MakeChildOf ego_car/chassis
+ego_car/fr.SetLocalPosition	2.6599998 -0.7499998 -0.0210600
+ego_car/fr.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car/fr.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+ego_car/fr.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car/fr.SetCastShadows	0
+ego_car/fr.SetRenderOrder	1.0000000
+ego_car/fr.SetDoNotRender	0
+ego_car/fr.SetMesh	A4_wheel/right_wheel
+ego_car/fr.SetCatchShadows	1
+ego_car/fr.SetOccludeAmbient	0
+ego_car/fr.SetCameraAligned	0
+
+# Object ego_car/rl with type sivicMeshActor
+ego_car/rl.AddProperty	ColorLabel	mgColor	255 0 0 255
+ego_car/rl.AddProperty	layers	mgLayers	16777215
+ego_car/rl.SetDisabled	0
+ego_car/rl.MakeChildOf ego_car/chassis
+ego_car/rl.SetLocalPosition	0.0000000 0.7500002 -0.0210434
+ego_car/rl.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car/rl.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+ego_car/rl.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car/rl.SetCastShadows	0
+ego_car/rl.SetRenderOrder	1.0000000
+ego_car/rl.SetDoNotRender	0
+ego_car/rl.SetMesh	A4_wheel/left_wheel
+ego_car/rl.SetCatchShadows	1
+ego_car/rl.SetOccludeAmbient	0
+ego_car/rl.SetCameraAligned	0
+
+# Object ego_car/rr with type sivicMeshActor
+ego_car/rr.AddProperty	ColorLabel	mgColor	255 0 0 255
+ego_car/rr.AddProperty	layers	mgLayers	16777215
+ego_car/rr.SetDisabled	0
+ego_car/rr.MakeChildOf ego_car/chassis
+ego_car/rr.SetLocalPosition	0.0000000 -0.7499998 -0.0210639
+ego_car/rr.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car/rr.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+ego_car/rr.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car/rr.SetCastShadows	0
+ego_car/rr.SetRenderOrder	1.0000000
+ego_car/rr.SetDoNotRender	0
+ego_car/rr.SetMesh	A4_wheel/right_wheel
+ego_car/rr.SetCatchShadows	1
+ego_car/rr.SetOccludeAmbient	0
+ego_car/rr.SetCameraAligned	0
+
+# Object ego_car/CollisionModel with type sivicMeshActor
+ego_car/CollisionModel.AddProperty	layers	mgLayers	16777215
+ego_car/CollisionModel.SetDisabled	0
+ego_car/CollisionModel.MakeChildOf ego_car/chassis
+ego_car/CollisionModel.SetLocalPosition	0.0000000 0.0000000 0.0000000
+ego_car/CollisionModel.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car/CollisionModel.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+ego_car/CollisionModel.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car/CollisionModel.SetCastShadows	0
+ego_car/CollisionModel.SetRenderOrder	1.0000000
+ego_car/CollisionModel.SetDoNotRender	1
+ego_car/CollisionModel.SetMesh	audi_A4_rcs/audi_A4_rcs
+ego_car/CollisionModel.SetCatchShadows	1
+ego_car/CollisionModel.SetOccludeAmbient	0
+ego_car/CollisionModel.SetCameraAligned	0
+
+# Object ego_car/RCS with type sivicRCS
+ego_car/RCS.SetDisabled	0
+ego_car/RCS.MakeChildOf ego_car/chassis
+ego_car/RCS.SetLocalPosition	1.5000000 0.0000000 0.0000000
+ego_car/RCS.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#ego_car/RCS.SetLocalRotationAngles	0.0000000 0.0000000 0.0000000
+ego_car/RCS.SetLocalScale	1.0000000 1.0000000 1.0000000
+ego_car/RCS.SetCollisionModel ego_car/CollisionModel
+ego_car/RCS.ClearLobes
+ego_car/RCS.AddLobe 1.0000000	1.0000000	-1.0000000 0.0000000 0.0000000 0.0000000	0.0000000 -1.0000000 0.0000000 0.0000000	0.0000000 0.0000000 -1.0000000 0.0000000	0.0000000 0.0000000 0.0000000 0.0000000
+ego_car/RCS.SetRCSData Audi_A4_MoS_freq_77GHz.rcs
+ego_car/RCS.SetPolicy table
+ego_car/RCS.SetSymetryX none
+ego_car/RCS.SetSymetryY none
+ego_car/RCS.SetSymetryZ none
+
+# Object collision_position_car with type mgPositionable
+collision_position_car.SetDisabled	0
+collision_position_car.MakeChildOf ego_car/chassis
+collision_position_car.SetLocalPosition	3.5799999 0.0000000 0.2000000
+collision_position_car.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#collision_position_car.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+collision_position_car.SetLocalScale	1.0000000 1.0000000 1.0000000
+
+# Object main_camera with type sivicPackage
+main_camera.SetDisabled	0
+main_camera.MakeChildOf ego_car/chassis
+main_camera.SetLocalPosition	1.8000000 0.0000000 1.0000000
+main_camera.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#main_camera.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+main_camera.SetLocalScale	1.0000000 1.0000000 1.0000000
+main_camera.SetPackageData	generic_camera.zip
+
+# Object main_camera/cam with type sivicCamera
+main_camera/cam.SetPeriod 0.0400000
+main_camera/cam.SetOMGDDSEnabled true
+main_camera/cam.SetFileName cam
+main_camera/cam.SetExtension .cap
+main_camera/cam.On 
+main_camera/cam.SetRecordEnabled true
+main_camera/cam.SetExportFormat tsv
+main_camera/cam.SetDisabled	0
+main_camera/cam.SetLocalPosition	0.0000000 0.0000000 0.0000000
+main_camera/cam.SetLocalRotation	69.2820282 -69.2820282 -69.2820282
+#main_camera/cam.SetLocalRotationAngles	90.0000000 0.0000017 -90.0000000
+main_camera/cam.SetLocalScale	1.0000000 1.0000000 1.0000000
+main_camera/cam.SetFrustum	-0.0041980 0.0041980 -0.0026795 0.0026795 0.0100000 10000.0000000
+main_camera/cam.SetRenderSize 752 480
+main_camera/cam.SetRenderer main_camera/prend
+main_camera/cam.SetCaptureFileName MGEngine
+main_camera/cam.SetClearColorBufferRegion 1
+main_camera/cam.SetColorFormat rgb32f
+main_camera/cam.SetDepthFormat DEPTH_24
+main_camera/cam.SetMultiSamples 4
+main_camera/cam.SetCorrectDistortion 1
+main_camera/cam.AddFilter main_camera/fog
+main_camera/cam.AddFilter main_camera/rain
+main_camera/cam.AddFilter main_camera/dof
+main_camera/cam.AddFilter main_camera/distortion
+main_camera/cam.AddFilter main_camera/vignetting
+main_camera/cam.AddFilter main_camera/blur
+main_camera/cam.AddFilter main_camera/motion
+main_camera/cam.AddFilter main_camera/aperture
+main_camera/cam.AddFilter main_camera/blooming
+main_camera/cam.AddFilter main_camera/sensitivity
+main_camera/cam.AddFilter main_camera/color
+main_camera/cam.AddFilter main_camera/noise
+main_camera/cam.AddFilter main_camera/ae
+main_camera/cam.SetEnableIntegration 0
+main_camera/cam.SetExposureTime 0.0400000
+main_camera/cam.SetExposureSampling 0.0050000
+main_camera/cam.SetMatrixSize 3.1334000 2.0000000
+main_camera/cam.SetFocalLength 3.7320499
+main_camera/cam.SetZNear 0.0100000
+main_camera/cam.SetZFar 10000.0000000
+main_camera/cam.SetCollectDepthImage off
+main_camera/cam.SetDepthImageRange 1000
+main_camera/cam.SetDepthImageResolution 1
+main_camera/cam.SetImageType RGB24
+main_camera/cam.SetNbEffectiveBits 8
+main_camera/cam.SetRecordFormat bmp
+main_camera/cam.SetPNGCompression png_1
+main_camera/cam.SetModeCorrection off
+main_camera/cam.SetCollectLabelImage 1
+main_camera/cam.SetOccludeLabels 1
+main_camera/cam.AddLabel pedestrian/pedestrian/right_lower_legmain
+main_camera/cam.AddLabel pedestrian/CollisionModel
+main_camera/cam.AddLabel pedestrian/pedestrian/right_footmain
+main_camera/cam.AddLabel pedestrian/pedestrian/left_upper_legmain
+main_camera/cam.AddLabel pedestrian/pedestrian/hipsmain
+main_camera/cam.AddLabel pedestrian/pedestrian/right_upper_legmain
+main_camera/cam.AddLabel pedestrian/pedestrian/lower_torsomain
+main_camera/cam.AddLabel pedestrian/pedestrian/right_upper_armmain
+main_camera/cam.AddLabel pedestrian/pedestrian/headmain
+main_camera/cam.AddLabel pedestrian/pedestrian/right_claviclemain
+main_camera/cam.AddLabel pedestrian/pedestrian/neckmain
+main_camera/cam.AddLabel pedestrian/pedestrian/left_lower_legmain
+main_camera/cam.AddLabel pedestrian/pedestrian/left_footmain
+main_camera/cam.AddLabel pedestrian/pedestrian/upper_torsomain
+main_camera/cam.AddLabel pedestrian/pedestrian/right_lower_armmain
+main_camera/cam.AddLabel pedestrian/pedestrian/right_handmain
+main_camera/cam.AddLabel pedestrian/pedestrian/left_upper_armmain
+main_camera/cam.AddLabel pedestrian/pedestrian/left_handmain
+main_camera/cam.AddLabel pedestrian/pedestrian/left_claviclemain
+main_camera/cam.AddLabel pedestrian/pedestrian/left_lower_armmain
+
+# Object main_camera/view with type sivicCameraViewport
+main_camera/view.SetDisabled	1
+main_camera/view.SetAutoResize 1
+main_camera/view.SetViewport 54.7351532% 0.0000000% 33.7078667% 44.2477875%
+main_camera/view.SetCamera main_camera/cam
+main_camera/view.SetColorMask 1 1 1
+main_camera/view.SetMinDepthRange 0.0000000
+main_camera/view.SetMaxDepthRange 100.0000000
+main_camera/view.SetLookupTexture 
+
+# Object main_camera/prend with type sivicPhysicalRenderer
+main_camera/prend.SetDisabled	0
+main_camera/prend.SetWireframe 0
+main_camera/prend.SetNoTextures 0
+main_camera/prend.SetAlphaMultisampling 1
+main_camera/prend.SetClampVertexColor 0
+main_camera/prend.SetClampFragmentColor 0
+main_camera/prend.SetActivatedTextureChannels 3
+main_camera/prend.SetEnableLighting 1
+main_camera/prend.SetEnableHemisphereLighting 1
+main_camera/prend.SetHemisphereDirection 0.0000000 0.0000000 1000000.0000000
+main_camera/prend.SetGroundColor 1.0000000 1.0000000 1.0000000
+main_camera/prend.SetSkyColor 1.0000000 1.0000000 1.0000000
+
+# Object main_camera/fog with type sivicFogFilter
+main_camera/fog.AddProperty	FoggyWeatherOnly	bool	true
+main_camera/fog.SetDisabled	1
+main_camera/fog.SetK 0.1000000
+main_camera/fog.SetSkyLuminosity 1.0000000
+main_camera/fog.SetCentroid 
+main_camera/fog.SetConstantFalloff 1.0000000
+main_camera/fog.SetLinearFalloff 0.0000000
+main_camera/fog.SetQuadraticFalloff 0.0000000
+
+# Object main_camera/rain with type sivicRainFilter
+main_camera/rain.AddProperty	RainyWeatherOnly	bool	true
+main_camera/rain.SetDisabled	1
+main_camera/rain.SetTexture 
+main_camera/rain.SetDispersion 1.0000000
+main_camera/rain.SetThickness 1.0000000
+main_camera/rain.SetNRefract 1.2000000
+
+# Object main_camera/dof with type sivicDOFFilter
+main_camera/dof.SetDisabled	1
+main_camera/dof.SetFNumber 2.0000000
+main_camera/dof.SetLensFocalLength 0.0100000
+main_camera/dof.SetFocusDistance 1.0000000
+main_camera/dof.SetMaxCoCDiameter 16.0000000
+main_camera/dof.SetAutoFocus 0
+
+# Object main_camera/distortion with type sivicDistortionFilter
+main_camera/distortion.SetDisabled	1
+main_camera/distortion.SetK1 0.0000000
+main_camera/distortion.SetK2 0.0000000
+main_camera/distortion.SetPasses 1
+
+# Object main_camera/vignetting with type sivicSpVignettingFilter
+main_camera/vignetting.SetDisabled	1
+main_camera/vignetting.SetVignettingMap 
+
+# Object main_camera/blur with type sivicGaussianBlurFilter
+main_camera/blur.SetDisabled	1
+main_camera/blur.SetSigma 0.0000000
+
+# Object main_camera/motion with type sivicMotionBlurFilter
+main_camera/motion.SetDisabled	1
+main_camera/motion.SetOffModeBlurDuration 0.5000000
+
+# Object main_camera/aperture with type mgToneMapFilter
+main_camera/aperture.SetDisabled	1
+main_camera/aperture.SetClampMin 0.0000000 0.0000000 0.0000000 1.0000000
+main_camera/aperture.SetClampMax 1.0000000 1.0000000 1.0000000 1.0000000
+main_camera/aperture.SetLookupTexture 
+
+# Object main_camera/blooming with type mgGlowFilter
+main_camera/blooming.SetDisabled	1
+main_camera/blooming.SetResolution	256 256
+main_camera/blooming.SetColorThreshold	0.1000000 0.1000000 0.1000000
+main_camera/blooming.SetGamma	1.0000000
+main_camera/blooming.SetBlurLevel	4
+main_camera/blooming.SetBlurSpread	3.0000000
+main_camera/blooming.SetBlurDirectionCount	5
+main_camera/blooming.SetBlurRotation	0.0000000
+main_camera/blooming.SetOriginalImageFactor	1.0000000
+main_camera/blooming.SetAdditiveEffectFactor	10.0000000
+main_camera/blooming.SetBrightenEffectFactor	0.0000000
+main_camera/blooming.SetColorControlEnabled	0
+main_camera/blooming.SetColorControlFactors	0.5000000 0.2500000 -0.2500000 -0.5000000 0.0000000
+main_camera/blooming.SetBrightenSpeed	0.1000000
+main_camera/blooming.SetDarkenSpeed	0.2500000
+
+# Object main_camera/sensitivity with type mgToneMapFilter
+main_camera/sensitivity.SetDisabled	1
+main_camera/sensitivity.SetClampMin 0.0000000 0.0000000 0.0000000 1.0000000
+main_camera/sensitivity.SetClampMax 0.0100000 0.0100000 0.0100000 1.0000000
+main_camera/sensitivity.SetLookupTexture 
+
+# Object main_camera/color with type sivicColorFilter
+main_camera/color.SetDisabled	1
+main_camera/color.SetColorMatrix 0.7000000 0.1500000 0.1000000 0.0000000  0.1000000 0.7000000 0.1000000 0.0000000  0.1000000 0.1000000 0.6000000 0.0000000  0.0000000 0.0000000 0.0000000 1.0000000
+
+# Object main_camera/noise with type sivicNoiseFilter
+main_camera/noise.SetDisabled	1
+main_camera/noise.SetParams 0.0800000 0.0000000 0.0000000
+main_camera/noise.SetType a
+
+# Object main_camera/ae with type sivicAEFilter
+main_camera/ae.SetDisabled	1
+main_camera/ae.SetToneMapFilter main_camera/aperture
+main_camera/ae.SetMask 
+main_camera/ae.SetTargetLuminosity 0.3000000
+main_camera/ae.SetProportionalGain 20.0000000
+main_camera/ae.SetIntegralGain 0.0000000
+main_camera/ae.SetDerivativeGain 0.1000000
+main_camera/ae.SetMinMaxRatio 0.0000000
+main_camera/ae.SetCurrentOutput 1.0000000
+main_camera/ae.SetMinimalOutput 0.0000000
+main_camera/ae.SetMaximalOutput 1000000.0000000
+main_camera/ae.SetHistogramSaturationThreshold 1.0000000
+main_camera/ae.SetSaturationCorrectionFactor 1.2000000
+main_camera/ae.SetDarkCorrectionFactor 0.8000000
+main_camera/ae.SetHistogramDarkThreshold 1.0000000
+
+# Object radar with type sivicPackage
+radar.SetDisabled	0
+radar.MakeChildOf ego_car/chassis
+radar.SetLocalPosition	3.5799999 0.0000000 0.2000000
+radar.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#radar.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+radar.SetLocalScale	1.0000000 1.0000000 1.0000000
+radar.SetPackageData	RadarLevel1.zip
+
+# Object radar/em with type sivicEMChannel
+radar/em.SetPeriod 0.1000000
+radar/em.SetOMGDDSEnabled false
+radar/em.SetFileName em
+radar/em.SetExtension .cap
+radar/em.On 
+radar/em.SetRecordEnabled false
+radar/em.SetExportFormat tsv
+radar/em.SetDisabled	0
+radar/em.SetEmitter radar/radar
+radar/em.SetReceiver radar/radar
+radar/em.SetReceiverArea 1.0000000
+radar/em.SetMaxBounces 1
+radar/em.SetMaxNumPaths 10
+radar/em.SetWaveVelocity 299792458.0000000
+radar/em.SetTransmitterAxisConvention 0
+radar/em.SetReceiverAxisConvention 0
+
+# Object radar/radar with type sivicRadar
+radar/radar.SetDisabled	0
+radar/radar.SetLocalPosition	0.0000000 0.0000000 0.0000000
+radar/radar.SetLocalRotation	0.0000000 0.0000000 0.0000000
+#radar/radar.SetLocalRotationAngles	0.0000000 -0.0000000 0.0000000
+radar/radar.SetLocalScale	1.0000000 1.0000000 1.0000000
+radar/radar.SetCollisionModel 
+radar/radar.ClearLobes
+radar/radar.AddLobe 1.0000000	0.0000000	1.0000000 0.0000000 0.0000000 0.0000000	0.0000000 1.0000000 0.0000000 0.0000000	0.0000000 0.0000000 1.0000000 0.0000000	0.0000000 0.0000000 0.0000000 0.0000000
+radar/radar.SetRCSData 
+radar/radar.SetPolicy lobes
+radar/radar.SetSymetryX none
+radar/radar.SetSymetryY none
+radar/radar.SetSymetryZ none
+radar/radar.SetPeriod 0.1000000
+radar/radar.SetOMGDDSEnabled true
+radar/radar.SetFileName radar
+radar/radar.SetExtension .cap
+radar/radar.On 
+radar/radar.SetRecordEnabled false
+radar/radar.SetExportFormat tsv
+radar/radar.SetPropagationChannel radar/em
+radar/radar.SetDebugPlugin 0
+radar/radar.SetAntennaType 1
+radar/radar.SetModellingMode 0
+radar/radar.SetComputationMode 1
+radar/radar.SetDetectionMode 1
+radar/radar.SetModulation 2
+radar/radar.SetCarrierFrequency 76.5000000
+radar/radar.SetBandWidth 1.0000000
+radar/radar.SetSampleRate 20.0000000
+radar/radar.SetPeriodDuration 0.0000005
+radar/radar.SetChirpDuration 0.0000000
+radar/radar.SetListenningDuration 0.0015000
+radar/radar.SetThresholdDetection -500.0000000
+radar/radar.SetAntennaMaxGain 24.0000000
+radar/radar.SetAntennaStepAngle 0.5000000
+radar/radar.SetAntennaOpenAngle 120.0000000
+radar/radar.SetUseTracking 0
+radar/radar.SetNbTargetsMax 2
+radar/radar.SetFixSweepingGhostTargets 1
+radar/radar.SetSweepingFixDistanceThreshold 1.0000000
+radar/radar.SetSweepingFixAngleThreshold 5.0000000
+radar/radar.SetSweepingFixSpeedThreshold 5.0000000
+
+# Object radar/view with type sivicRadarViewport
+radar/view.SetDisabled	1
+radar/view.SetViewport 0 0 640 320
+radar/view.SetRadar radar/radar
+radar/view.SetViewingRange 200.0000000
+radar/view.SetDisplayTargetWidth 1.0000000
+radar/view.SetBackgroundColor 0.5000000 0.0000000 0.0000000 1.0000000
+radar/view.SetAxisColor 0.7500000 0.7500000 0.7500000 1.0000000
+radar/view.SetFontSize 12
+radar/view.SetViewportOpacity 0.2500000
+radar/view.SetDataColor 1.0000000 1.0000000 0.0000000 1.0000000
+radar/view.SetAxisAngleStep 30.0000000
+radar/view.SetAxisDistanceStep 25.0000000
+
+# Object ego_car/car with type sivicCar
+ego_car/car.AddProperty	ColorLabel	mgColor	255 0 0 255
+ego_car/car.SetDisabled	0
+# SetCarDescriptionData will be use to load resource used to override car body color.
+ego_car/car.SetCarBodyColorMaterialData body_color_material.conf
+ego_car/car.SetCarBodyColor Black
+# Meshes for ego_car/car: 
+ego_car/car.SetChassis ego_car/chassis
+ego_car/car.SetWheelFL ego_car/fl
+ego_car/car.SetWheelFR ego_car/fr
+ego_car/car.SetWheelRL ego_car/rl
+ego_car/car.SetWheelRR ego_car/rr
+ego_car/car.SetEnableWheelScale false
+# Controllers for ego_car/car (analogical inputs): 
+ego_car/car.SetAccCtrl car1_ThrottlePedal
+ego_car/car.SetAccCtrlDuration 0.0001000
+ego_car/car.SetClutchCtrl car1_ClutchPedal
+ego_car/car.SetClutchCtrlDuration 0.0001000
+ego_car/car.SetBrakeCtrl car1_BrakePedal
+ego_car/car.SetBrakeCtrlDuration 0.0001000
+ego_car/car.SetSteerCtrl car1_SteeringWheelAngle
+ego_car/car.SetSteerCtrlDuration 0.0001000
+# Controllers for ego_car/car (binary inputs): 
+ego_car/car.SetUpGearCtrl car1_UpGear
+ego_car/car.SetDownGearCtrl car1_DownGear
+ego_car/car.SetUpKeyCtrl car1_UpKey
+ego_car/car.SetDownKeyCtrl car1_DownKey
+ego_car/car.SetStopCtrl car1_Stop
+ego_car/car.SetUseAdaptativeSteeringSpeed 1
+ego_car/car.SetUseRoadAsGround 1
+ego_car/car.SetUseStopOnObstacles 1
+ego_car/car.SetMass 1374.0000000
+ego_car/car.SetWheelsSpacing 1.3300000 1.3300000 0.7500000 0.7500000
+#ego_car/car.SetWheelbase 2.6600001
+#ego_car/car.SetFrontTrack 1.5000000
+#ego_car/car.SetRearTrack 1.5000000
+ego_car/car.SetIgnitionKey 1
+ego_car/car.SetGearShift 1
+ego_car/car.SetAutoClutch 1
+ego_car/car.SetPosition -2.2499986 -0.0000008 0.6810526
+ego_car/car.SetAngle -0.0007827 0.0000870 0.0000000
+ego_car/car.SetGroundTireAltitude 0.0000000 -0.0000001 0.0000000 0.0000000
+# Shock absorbers parameters for ego_car/car: 
+ego_car/car.SetShockAbsorberFL 20000.0000000 6000.0000000
+ego_car/car.SetShockAbsorberFR 20000.0000000 6000.0000000
+ego_car/car.SetShockAbsorberRL 20000.0000000 6000.0000000
+ego_car/car.SetShockAbsorberRR 20000.0000000 6000.0000000
+# Wheels parameters for ego_car/car: 
+ego_car/car.SetWheelsHeight 0.0400000 0.0300000
+ego_car/car.SetTireCode 225.0000000 44.4444008 18.1102009
+ego_car/car.SetTireGripFR 0.9000000
+ego_car/car.SetTireGripFL 0.9000000
+ego_car/car.SetTireGripRR 0.9000000
+ego_car/car.SetTireGripRL 0.9000000
+# Masses and inertia for ego_car/car: 
+ego_car/car.SetCarMasses 1500.0000000 1500.0000000 1340.0000000
+ego_car/car.SetCarMomentOfInertia 305.0000000 2000.0000000 2454.0000000
+ego_car/car.SetTireMass 18.0000000
+ego_car/car.SetTireMomentOfInertia 1.2825000
+ego_car/car.SetMaxOrderAcc 790.0000000
+ego_car/car.SetMaxOrderBrk 1250.0000000
+ego_car/car.SetMaxOrderSteer 0.5200000
+ego_car/car.SetMaxSpeedSteer 0.7853982
+ego_car/car.SetBrakeTorqueDistributionFL 0.6000000
+ego_car/car.SetBrakeTorqueDistributionFR 0.6000000
+ego_car/car.SetBrakeTorqueDistributionRL 0.4000000
+ego_car/car.SetBrakeTorqueDistributionRR 0.4000000
+# Cruise control parameters for ego_car/car: 
+ego_car/car.SetCruiseControlPosition 0
+ego_car/car.SetSpeedControl 0.0000000
+ego_car/car.SetSpeedLimit 0.0000000
+# Trajectory parameters for ego_car/car: 
+ego_car/car.SetLoop 1
+ego_car/car.SetCruiseControlPosition 0
+ego_car/car.SetSpeedControl 0.0000000
+ego_car/car.SetSpeedLimit 0.0000000
+ego_car/car.SetFileNameTrajectory 
+ego_car/car.SetExtensionTrajectory .trj
+ego_car/car.SetFileNameTrack 
+ego_car/car.SetExtensionTrack .trk
+ego_car/car.SetMode 0
+ego_car/car.SetSubMode 0
+ego_car/car.SetPeriod 0.0050000
+ego_car/car.SetOMGDDSEnabled true
+ego_car/car.SetCarDescriptionCommunicationMode 0
+ego_car/car.SetCarOrdersCommunicationMode 2
+ego_car/car.SetCarEnvironmentCommunicationMode 1
+# Car dynamic model for ego_car/car (0: Internal ; 1: External): 
+ego_car/car.SetModelSelector 0
+# Car dynamic model for ego_car/car, CarSim parameters (if used as External dynamic model): 
+ego_car/car.SetSimfileName simfile.sim
+ego_car/car.SetSimfileLocation C:/Users/Public/Documents/CarSim2016.1_Data/
+ego_car/car.SetSteerAngle 0.0000000
+# Initials parameters for ego_car/car: 
+ego_car/car.SetInitTrajectoryIndex 0
+ego_car/car.SetInitCurrentLoop 1
+ego_car/car.SetInitPosition -2.2500000 -0.0000000 0.6811000
+ego_car/car.SetInitAngle 0.0000000 0.0000000 0.0000000
+ego_car/car.SetInitSpeed 0.0000000
+ego_car/car.SetInitSpeedControl 0.0000000
+ego_car/car.SetInitSpeedLimit 0.0000000
+ego_car/car.SetACCSpeed 0.0000000
+ego_car/car.SetPIDKp 500.0000000
+ego_car/car.SetPIDKi 0.0000000
+ego_car/car.SetPIDKd 0.0000000
+ego_car/car.SetLateralCorrectionTimeTarget 4.0000000
+ego_car/car.SetControlParameters 0.5000000 70.0000000 130.0000000 1.0000000 0.2000000
+
+# Object collision_observer with type sivicDistanceObserver
+collision_observer.SetPeriod 0.0400000
+collision_observer.SetOMGDDSEnabled true
+collision_observer.SetFileName collision_observer
+collision_observer.SetExtension .cap
+collision_observer.On 
+collision_observer.SetRecordEnabled false
+collision_observer.SetExportFormat tsv
+collision_observer.SetDisabled	0
+collision_observer.SetPrecision 2
+collision_observer.SetObject1 collision_position_car
+collision_observer.SetObject2 collision_position_pedestrian
+
+
+
+# Viewport ordering
+
+editor/view.ToFront
+ego_car/vc.ToFront
+main_camera/view.ToFront
+radar/view.ToFront
