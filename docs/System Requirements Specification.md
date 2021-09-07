@@ -68,6 +68,7 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vechicle. We 
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
 - Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
 - Hawkins, Paterson, Picardi, Jia, Calinescu, and Habli. [Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS)](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf), v1.1, Techincal Report, University of York, 2021.
+- Henriksson, Berger, Borg, Tornberg, Englund, Sathyamoorthy, and Ursing, 2019. Towards Structured Evaluation of Deep Neural Network Supervisors, In Proc. of the International Conference On Artificial Intelligence Testing, pp. 27-34.
 - Nair, De La Vara, Sabetzadeh, and Briand, 2014. [An extended systematic literature review on provision of evidence for safety certification](https://www.sciencedirect.com/science/article/abs/pii/S0950584914000603). *Information and Software Technology*, 56(7), 689-717.
 - Picardi, Paterson, Hawkins, Calinescu, and Habli, 2020. [Assurance Argument Patterns and Processes for Machine Learning in Safety-Related Systems](http://ceur-ws.org/Vol-2560/paper17.pdf). In *Proceedings of the Workshop on Artificial Intelligence Safety (SafeAI 2020)*, pp. 23-30.
 - [Safety First for Automated Driving (SaFAD}](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
@@ -116,6 +117,8 @@ The ESI Pro-SiVIC Python API and DDS communication provides interfaces between t
 This section specified the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are inspired by Gauerhof et al. (2020).
 
 ## 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
+This section specifies the highest level SMIRK requirement.
+
 - **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if collision with a pedestrian is imminent.**
 
 Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avoid a collision. If a collision is inevitable, Ego will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
@@ -129,19 +132,27 @@ Based on a HARA, two categories of hazards were identified. First, SMIRK might m
 To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements in relation to false negatives. Furthermore, the false positive hazard necessitates the introduction of SYS-ML-REQ2.
 
 ## 3.3 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
+This section refines SYS-SAF-REQ into two separate requirements corresponding to false positives and false negatives, respectively.
+
 - **SYS-ML-REQ1: The object detection component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.**
 - **SYS-ML-REQ2: The object detection component shall reject input that does not resemble the training data.**
 
 Rationale: SMIRK follows the reference architecture from Ben Abdessalem et al. (2018) and SYS-ML-REQ1 uses the same TTC threshold (4s). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
 ## 3.3.1 Performance Requirements
-- **SYS-PER-REQ1: The object detection component shall identify pedestrians that are on or close to the road with an accuracy of 0.93 when they are 50 meters away or closer.**
-- **SYS-PER-REQ2: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.**
-- **SYS-PER-REQ3: Position of pedestrians shall be determined within 50 cm of their actual position.**
+This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets. All requirements below are restricted to pedestrians on or close to the road.
 
-Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS.
+- **SYS-PER-REQ1: The object detection component shall identify pedestrians with an accuracy of 0.93 when they are within 50 meters.**
+- **SYS-PER-REQ2: The false negative rate of the object detection component shall not exceed 7% for pedestrians when they are within 50 meters.**
+- **SYS-PER-REQ3: The false positive rate shall not exceed 0.01% for objects detected by the radar tracking component with a TTC < 4s** 
+- **SYS-PER-REQ3: In a sequence of images from a video feed any object to be detected shall not be missed in more then 1 out of 5 frames.**
+- **SYS-PER-REQ4: The position of pedestrians shall be determined within 50 cm of their actual position.**
+
+Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are additional requirements that are inspired by Henriksson et al. (2019).
 
 ## 3.3.2 Robustness Requirements
+This section specifies robustness requirements corresponding to the ML safety requirements.
+
 - **SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.**
 - **SYS-ROB-REQ2: The ML component shall identify a person irrespective of their pose with respect to the camera.**
 
