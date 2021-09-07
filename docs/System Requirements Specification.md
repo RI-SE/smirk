@@ -49,6 +49,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
+- HARA: Hazard and Risk Analysis
 - ML: Machine Learning
 - ODD: Operational Design Domain
 - TTC: Time To Collission
@@ -114,27 +115,35 @@ The ESI Pro-SiVIC Python API and DDS communication provides interfaces between t
 # 3 System Requirements
 This section specified the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are inspired by Gauerhof et al. (2020).
 
-# 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
-- SYS-SAF-REQ1: Ego shall commence automatic emergency braking if collision with a pedestrian is imminent.
+## 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
+- **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if collision with a pedestrian is imminent.**
 
 Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avoid a collision. If a collision is inevitable, Ego will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
 
-# 3.2 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
-- SYS-ML-REQ1: The object detection component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.
-- SYS-ML-REQ2: The object detection component shall reject input that does not resemble the training data.
+## 3.2 Safety Requirements Allocated to ML Component [E] <a name="ml_component_safety_reqts"></a>
+Based on a HARA, two categories of hazards were identified. First, SMIRK might miss pedestrians and fail to commence emergency braking - we refer to this as a false negative. Second, SMIRK might commence emergency braking when there it should not - we refer to this as a false positive. A summary of the HARA is presented below.
+
+- False negative: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego vehicle.
+- False positive: The severity of the hazard is high (can be fatal). Controllability is very low since the driver would have no chance to counteract the braking. 
+ 
+To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements in relation to false negatives. Furthermore, the false positive hazard necessitates the introduction of SYS-ML-REQ2.
+
+## 3.3 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
+- **SYS-ML-REQ1: The object detection component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.**
+- **SYS-ML-REQ2: The object detection component shall reject input that does not resemble the training data.**
 
 Rationale: SMIRK follows the reference architecture from Ben Abdessalem et al. (2018) and SYS-ML-REQ1 uses the same TTC threshold (4s). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
-# 3.2.1 Performance Requirements
-- SYS-PER-REQ1: The object detection component shall identify pedestrians that are on or close to the road with an accuracy of 0.93 when they are 50 meters away or closer.
-- SYS-PER-REQ2: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.
-- SYS-PER-REQ3: Position of pedestrians shall be determined within 50 cm of their actual position.
+## 3.3.1 Performance Requirements
+- **SYS-PER-REQ1: The object detection component shall identify pedestrians that are on or close to the road with an accuracy of 0.93 when they are 50 meters away or closer.**
+- **SYS-PER-REQ2: In a sequence of images from a video feed any object to be detected shall not be missed more then 1 in 5 frames.**
+- **SYS-PER-REQ3: Position of pedestrians shall be determined within 50 cm of their actual position.**
 
 Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS.
 
-# 3.2.2 Robustness Requirements
-- SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.
-- SYS-ROB-REQ2: The ML component shall identify a person irrespective of their pose with respect to the camera.
+## 3.3.2 Robustness Requirements
+- **SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.**
+- **SYS-ROB-REQ2: The ML component shall identify a person irrespective of their pose with respect to the camera.**
 
 Rationale: SMIRK reuses robustness requirements for pedestrian detection from previous work. SYS-ROB-REQ1 is specificed in Gauerhof et al. (2020). SYS-ROB-REQ2 is presented as Example 7 in AMLAS.
 
@@ -987,6 +996,4 @@ SMIRK does not rely on any zone specifics. All items below are either N or N/A.
 
 # 6 ML Assurance Scoping Argument Pattern [F] <a name="ml_assurance_scoping_pattern"></a>
 
-# 7 Safety Requirements Allocated to ML Component [E] <a name="ml_component_safety_reqts"></a>
-
-# 8 ML Safety Assurance Scoping Argument [G] <a name="ml_assurance_scoping_argument"></a>
+# 7 ML Safety Assurance Scoping Argument [G] <a name="ml_assurance_scoping_argument"></a>
