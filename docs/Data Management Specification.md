@@ -9,7 +9,7 @@ Revision History
 <th>Version</th>
 </tr>
 <tr>
-<td>Olof Lennartsson</th>
+<td>Olof Lennartsson, Elias Sonnsjö</th>
 <td>2021-05-20</th>
 <td>Initial SMILE version.</th>
 <td>0.1</th>
@@ -55,6 +55,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - Other stakeholders: read section 2 to understand the expectations on the SMIRK training data.
 
 ## 1.6 References ##
+- [System Requirements Specification](</docs/System Requirements Specification.md>)
 - Development Data [N]
 - Internal Test Data [O]
 - Verification Data [P]
@@ -66,7 +67,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - [4] Edward Schwalb. Analysis of Safety of The Intended Use (SOTIF).
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
-This section specifies requirements on the data used to train and test the object detection component in SMIRK. The data requirements are organized according to the assurance-related desiderata proposed by Ashmore et al. (2021),  i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
+This section specifies requirements on the data used to train and test the object detection component in SMIRK. The data requirements are specified to comply with the Machine Learning Safety Requirements in the [System Requirements Specification](</docs/System Requirements Specification.md>). All data requirements are organized according to the assurance-related desiderata proposed by Ashmore et al. (2021),  i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
 
 ## 2.1 Relevant
 This desiderata considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. The SMIRK training data will not cover operational environments that are outside of the ODD, e.g., images collected in heavy snowfall. 
