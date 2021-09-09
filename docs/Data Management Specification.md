@@ -124,6 +124,7 @@ SMIRK has specified a very restricted ODD to support our efforts in requirements
 - Semcon
 - Infotiv
 - QRTech
+- Combitech
 
 # 4 Data Generation Log [Q] <a name="data_gen"></a>
 
