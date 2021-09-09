@@ -69,6 +69,9 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 # 2 Data Requirements [L] <a name="data_rqts"></a>
 This section specifies requirements on the data used to train and test the object detection component in SMIRK. The data requirements are specified to comply with the [Machine Learning Safety Requirements](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#33-machine-learning-safety-requirements-h-) in the System Requirements Specification. All data requirements are organized according to the assurance-related desiderata proposed by Ashmore et al. (2021),  i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
 
+The table below shows a requirements traceability matrix beween ML Safety Requirements and Data Requirements. Entries in individual cells denote that the ML safety requirement is addressed, at least partly, by the corresponding data requirement.
+![ML-Data Requirements Matrix](/docs/figures/ml-data_matrix.png) <a name="ML-Data Requirements Matrix"></a>
+
 ## 2.1 Relevant
 This desiderata considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. The SMIRK training data will not cover operational environments that are outside of the ODD, e.g., images collected in heavy snowfall. 
 
