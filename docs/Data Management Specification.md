@@ -87,7 +87,7 @@ This desiderata considers the sampling strategy across the input domain and its 
 
 - DAT-COM-REQ1: The data samples shall include sufficient range of environmental factors within the scope of the ODD.
 - DAT-COM-REQ2: The data samples shall include sufficient range of pedestrians within the scope of the ODD.
-- DAT-COM-REQ3: The data samples shall include images representing a sufficient range of distances from the crossing up to that required by the decision making aspect of the perception pipeline.
+- DAT-COM-REQ3: The data samples shall include images representing a sufficient range of distances to crossing detestrians up to that required by the decision making aspect of the perception pipeline.
 - DAT-COM-REQ4: The data samples shall include examples with a sufficient range of levels of occlusion giving partial view of pedestrians crossing the road.
 - DAT-COM-REQ5: The data samples shall include a sufficient range of examples reflecting the effects of identified system failure modes.
 
