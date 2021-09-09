@@ -50,6 +50,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DDS: Data Distribution Service
+- FPS: Frames Per Second
 - GSN: Goal Structuring Notation
 - HARA: Hazard and Risk Analysis
 - ML: Machine Learning
@@ -155,8 +156,9 @@ This section specifies performance requirements corresponding to the ML safety r
 - **SYS-PER-REQ1: The object detection component shall identify pedestrians with an accuracy of 0.93 when they are within 50 meters.**
 - **SYS-PER-REQ2: The false negative rate of the object detection component shall not exceed 7% for pedestrians when they are within 50 meters.**
 - **SYS-PER-REQ3: The false positive rate shall not exceed 0.01% for objects detected by the radar tracking component with a TTC < 4s** 
-- **SYS-PER-REQ3: In a sequence of images from a video feed any object to be detected shall not be missed in more then 1 out of 5 frames.**
-- **SYS-PER-REQ4: The position of pedestrians shall be determined within 50 cm of their actual position.**
+- **SYS-PER-REQ4: In a sequence of images from a video feed any object to be detected shall not be missed in more then 1 out of 5 frames.**
+- **SYS-PER-REQ5: The position of pedestrians shall be determined within 50 cm of their actual position.**
+- **SYS-PER-REQ6: The object detection component shall allow an inference speed of at least 10 FPS on the target platform.**
 
 Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson et al. (2019).
 
