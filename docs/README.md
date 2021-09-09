@@ -18,15 +18,17 @@ SMIRK evolves in compliance with [Guidance on the Assurance of Machine Learning 
 
 The table below is an index to navigate the artifacts mandated (cf. [ID]) by the AMLAS process. The input/output columns indicate in which AMLAS stage the artifact is used. The final column lists the location of the corresponding artifact for SMIRK.
 
+The set of artifacts listed constitutes the safety case for the ML-based object detection component of SMIRK, i.e., it instantiates the [ML Assurance Scoping Pattern](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>).
+
 |      ID   |     Title                                        |     Input to    |     Output from    |     Where?       |     Status       |
 |:---------:|--------------------------------------------------|:---------------:|:------------------:|------------------|------------------|
 |     [A]   |     System Safety Requirements                     |         1, 6    |                    |     [SRS Sec 3](</docs/System Requirements Specification.md#system_safety_reqts>)    | Done |
 |     [B]   |     Description of Operating Environment of System |         1, 6    |                    |     [SRS Sec 4](</docs/System Requirements Specification.md#odd>)    | Done |
 |     [C]   |     System Description                             |         1, 6    |                    |     [SRS Sec 2](</docs/System Requirements Specification.md#system_reqts>)    | Done |
 |     [D]   |     ML Component Description                       |          1      |                    |     [SRS Sec 5](</docs/System Requirements Specification.md#ml_component_desc>)    | In progress |
-|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    | In progress |
-|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    | Not started |
-|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 8](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    | Not started |
+|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    | Done |
+|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    | Done |
+|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 8](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    | Done |
 |     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | [SRS Sec 3](</docs/System Requirements Specification.md#ml_safety_reqts>) | Done |
 |     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | TBD | Not started |
 |     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | TBD | Not started |
