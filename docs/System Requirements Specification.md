@@ -160,7 +160,7 @@ This section specifies performance requirements corresponding to the ML safety r
 - **SYS-PER-REQ5: The position of pedestrians shall be determined within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The object detection component shall allow an inference speed of at least 10 FPS on the target platform.**
 
-Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson et al. (2019).
+Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson et al. (2019). SYS-PER-REQ6 means that any further improvements to reaction time has negligable impact on the total brake distance. 
 
 ## 3.3.2 Robustness Requirements
 This section specifies robustness requirements corresponding to the ML safety requirements.
