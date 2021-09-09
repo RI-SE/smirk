@@ -1010,7 +1010,13 @@ SMIRK does not rely on any zone specifics. All items below are either N or N/A.
 # 5 ML Component Description [D] <a name="ml_component_desc"></a>
 
 # 6 ML Assurance Scoping Argument Pattern [F] <a name="ml_assurance_scoping_pattern"></a>
+The figure below shows the ML assurance scoping argument pattern using GSN. The pattern follows the example provided in AMLAS, but adapts it to the specific SMIRK case.
+
 ![GSN-ML-Assurance_Scoping_Argument_Pattern](/docs/figures/gsn-ml_assurance_scoping_argument_pattern.png) <a name="gsn-ml_assurance_scoping"></a>
 
+The top claim, i.e., the starting point for the safety argument for the SMIRK ML-based object detection component, is that the system safety requirements that have been allocated to the component are satisfied in the ODD (G1.1). The safety claim for the object detection component is made within the context of the information that was used to establish the safety requirements allocation, i.e., the system description ([C]), the ODD ([B]), and ML component description ([D]). The allocated system safety requirements ([E]) are also provided as context. An explicit assumption is made that the allocated safety requirements have been correctly defined (A1.1), as this is part of the overalll the system safety process preceeding AMLAS. Our claim to the validity of this assumption is presented in relation to the HARA described in [E]. As stated in AMLAS, "the primary aim of the ML Safety Assurance Scoping argument is to explain and justify the essential relationship between, on the one hand, the system‐level safety requirements and associated hazards and risks, and on the other hand, the ML‐specific safety requirements and associated ML performance and failure conditions."
+
+The ML safety claim is supported by an argument split into two parts. First, the development of the ML component is considered with an argument that starts with the elicitation of the ML safety requirements argument. Second, the deployment of the ML component is addressed with a corresponding argument. 
 
 # 7 ML Safety Assurance Scoping Argument [G] <a name="ml_assurance_scoping_argument"></a>
+SMIRK instantiates the ML safety assurance scoping argument through the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). The set of artifacts constitutes the safety case for the ML-based SMIRK object detection component.
