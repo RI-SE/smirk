@@ -1010,5 +1010,7 @@ SMIRK does not rely on any zone specifics. All items below are either N or N/A.
 # 5 ML Component Description [D] <a name="ml_component_desc"></a>
 
 # 6 ML Assurance Scoping Argument Pattern [F] <a name="ml_assurance_scoping_pattern"></a>
+![GSN-ML-Assurance_Scoping_Argument_Pattern](/docs/figures/gsn-ml_assurance_scoping_argument_pattern.png) <a name="gsn-ml_assurance_scoping"></a>
+
 
 # 7 ML Safety Assurance Scoping Argument [G] <a name="ml_assurance_scoping_argument"></a>
