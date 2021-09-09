@@ -49,6 +49,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
+- DDS: Data Distribution Service
 - GSN: Goal Structuring Notation
 - HARA: Hazard and Risk Analysis
 - ML: Machine Learning
@@ -71,6 +72,7 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vechicle. We 
 - Hawkins, Paterson, Picardi, Jia, Calinescu, and Habli. [Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS)](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf), v1.1, Techincal Report, University of York, 2021.
 - Henriksson, Berger, Borg, Tornberg, Englund, Sathyamoorthy, and Ursing, 2019. Towards Structured Evaluation of Deep Neural Network Supervisors, In Proc. of the International Conference On Artificial Intelligence Testing, pp. 27-34.
 - Nair, De La Vara, Sabetzadeh, and Briand, 2014. [An extended systematic literature review on provision of evidence for safety certification](https://www.sciencedirect.com/science/article/abs/pii/S0950584914000603). *Information and Software Technology*, 56(7), 689-717.
+- Object Management Group (OMG) Data Distribution Service (DDS)(https://www.dds-foundation.org/what-is-dds-3/), Last checked: 2021-09-09.
 - Picardi, Paterson, Hawkins, Calinescu, and Habli, 2020. [Assurance Argument Patterns and Processes for Machine Learning in Safety-Related Systems](http://ceur-ws.org/Vol-2560/paper17.pdf). In *Proceedings of the Workshop on Artificial Intelligence Safety (SafeAI 2020)*, pp. 23-30.
 - [Safety First for Automated Driving (SaFAD}](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
 - The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard, Version 2](https://scsc.uk/r141B:1?t=1), SCSC-141B. 
@@ -115,7 +117,11 @@ The figure below illustrates detection of a pedestrian on collision course, i.e.
 ![pedestrian_detection](/docs/figures/pedestrian_detection.png) <a name="pedestrian_detection"></a>
 
 ## 2.3 External Interface Requirements ##
-The ESI Pro-SiVIC Python API and DDS communication provides interfaces between the simulator and SMIRK. The Python API is only used for initialization, all subsequent communications uses DDS.
+SMIRK and ESI Pro-SiVIC has two types of communication. First, SMIRK communicates over TCP using the ESI Pro-SiVIC Python API. Second, DDS communication is used to transfer data during simulations. OMG Data Distribution Service (DDS) is a middleware protocol and API standard for data-centric connectivity from the Object Management Group. In summary, 
+
+- All dynamic Pro-SiVIC setup is communicated as Pro-SiVIC commands  over TCP.
+- Scenarios are started over TCP.	
+- All subsequent data communication, i.e., live data during the simulation, is transferred over DDS through the Python API.
 
 # 3 System Requirements
 This section specified the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are inspired by Gauerhof et al. (2020).
