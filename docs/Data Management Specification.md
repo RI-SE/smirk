@@ -124,6 +124,11 @@ SMIRK has specified a very restricted ODD to support our efforts in requirements
 - Combitech
 
 # 4 Data Generation Log [Q] <a name="data_gen"></a>
+The SMIRK vision component uses transfer learning as it is pre-trained on publicly available image data from the [COCO dataset](https://cocodataset.org/). Pretraining on COCO dataset provides features from real-world imagary, from basic shapes to more complex features. Subsequently, the SMIRK vision component is [fine-tuned](https://www.tensorflow.org/tutorials/images/transfer_learning) for the task of pedestrian detection in the specific ODD. Based on the data requirements, we generate data for fine-tuning. The data are split into three sets in accordance with AMLAS. 
+
+- Development data: Covering both training and validation data used by developers to create models during ML development.
+- Internal test data: Used by developers to test the model.
+- Verification data: Used by the independent testers at Infotiv when the model is ready for release. 
 
 ## 4.1 Data Collection
 Collect data from a simulation or the real world. In SMILEIII we will collect it from Pro-Sivic/CARLA. The main benefit with using simulators is that the data is usually annotated programmatically by the simulation software.
