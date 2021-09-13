@@ -124,20 +124,44 @@ SMIRK has specified a very restricted ODD to support our efforts in requirements
 - Combitech
 
 # 4 Data Generation Log [Q] <a name="data_gen"></a>
-The SMIRK vision component uses transfer learning as it is pre-trained on publicly available image data from the [COCO dataset](https://cocodataset.org/). Pretraining on COCO dataset provides features from real-world imagary, from basic shapes to more complex features. Subsequently, the SMIRK vision component is [fine-tuned](https://www.tensorflow.org/tutorials/images/transfer_learning) for the task of pedestrian detection in the specific ODD. Based on the data requirements, we generate data for fine-tuning. The data are split into three sets in accordance with AMLAS. 
+The SMIRK vision component uses transfer learning as it is pre-trained on publicly available image data from the [COCO dataset](https://cocodataset.org/). Pretraining on COCO dataset provides features from real-world imagary, from basic shapes to more complex features. Subsequently, the SMIRK vision component is [fine-tuned](https://www.tensorflow.org/tutorials/images/transfer_learning) for the task of pedestrian detection in the specific ODD. Based on the [data requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we generate data for fine-tuning. The data are split into three sets in accordance with AMLAS. 
 
 - Development data: Covering both training and validation data used by developers to create models during ML development.
 - Internal test data: Used by developers to test the model.
 - Verification data: Used by the independent testers at Infotiv when the model is ready for release. 
 
 ## 4.1 Data Collection
-Collect data from a simulation or the real world. In SMILEIII we will collect it from Pro-Sivic/CARLA. The main benefit with using simulators is that the data is usually annotated programmatically by the simulation software.
+The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and are fully reproducable. The following list presents the scripts used to play scenarios and capture corresponding annotated data:
+
+- Casual female pedestrian crossing from the left [LINK]
+- Casual female pedestrian crossing from the right [LINK]
+- Casual male pedestrian crossing from the left [LINK]
+- Casual male pedestrian crossing from the right [LINK]
+- Business casual female pedestrian crossing from the left [LINK]
+- Business casual female pedestrian crossing from the right [LINK]
+- Business casual male pedestrian crossing from the left [LINK]
+- Business casual male pedestrian crossing from the right [LINK]
+- Child crossing from the left [LINK]
+- Child crossing from the right [LINK]
+- Male construction worker crossing from the left [LINK]
+- Male construction worker crossing from the right [LINK]
+
+Moreover, all of the above scenraios contain pedestrians standing still on the road and walking on the road toward or away from ego car.
+
+The scripts equally spaced distributions of input data using the following variation points for the pedestrian:
+
+- starting position (x, y)
+- crossing angle
+- walking or running speed 
 
 ## 4.2 Data Cleaning
-Data needs to be cleaned after it has been collected: Outliers, conflicted and Irrelevant data, in terms of the ODD, needs to be excluded along with data that have fatal errors.
+Data needs to be cleaned after it has been collected: Outliers, conflicted and irrelevant data, in terms of the ODD, needs to be excluded along with invalid data.
 
 ## 4.3 Preprocessing
 Normalization of data, e.g., make all images (for a perception model) the same size. If collecting from the real world, simulated data could be added both as disturbances in real world images and as synthetic data. GA, GANs can be used to automatically create “lookalike twins” of data to increase the size and diversity of the data-set.
+
+## 4.4 Data Splitting
+What goes where? Random split? Leave out some scripts for testing and verification, respectively?
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 TBD.
