@@ -12,7 +12,7 @@ In this folder, all documentation related to SMIRK is evolving. Everything is WI
 
 ## Safety Assurance
 
-SMIRK evolves in compliance with [Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/assuring-autonomy/news/publications/amlas/) (AMLAS) published by the University of York. The figure below shows an overview of the AMLAS process and the six corresponding stages. 
+SMIRK evolves in compliance with [Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/assuring-autonomy/guidance/amlas/) (AMLAS) published by the University of York. The figure below shows an overview of the AMLAS process and the six corresponding stages. 
 
 ![AMLAS process](/docs/figures/amlas_process.png) <a name="amlas"></a>
 
