@@ -31,7 +31,7 @@ Revision History
 # 1 Introduction <a name="introduction"></a>
 This document contains the data management specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
 
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK ODD by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual or business casual clothes and young boys wearing jeans and a sweatshirt. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes to be likely to appear when SMIRK is in operation: boxes, cones, pyramids, and spheres.
 
 ## 1.1 Purpose ##
 This document describes the data management strategy for the object detection component in SMIRK. The object detection component detects pedestrians in input images, i.e., no other classes are detected in the input.
