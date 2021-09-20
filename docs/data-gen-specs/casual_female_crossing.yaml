@@ -1,0 +1,33 @@
+scenarios:
+  - 
+    type: 'left'
+    pedestrian:
+      model: casual_female
+      speeds: "${range:0,20,1}"
+      angles: "${range:30,151,20}"
+      distances_from_car: "${range:10,151,10}"
+      distances_from_road: "${range:1,5,1}"
+  - 
+    type: 'right'
+    pedestrian:
+      model: casual_female
+      speeds: "${range:0,20,1}"
+      angles: "${range:30,151,20}"
+      distances_from_car: "${range:10,151,10}"
+      distances_from_road: "${range:1,5,1}"
+  - 
+    type: 'towards'
+    pedestrian:
+      model: casual_female
+      speeds: "${range:0,20,2}"
+      distances_from_car: [150]
+      offsets_from_road_center:  "${range:-3,4,1}"
+      max_walking_distance: 140
+  - 
+    type: 'away'
+    pedestrian:
+      model: casual_female
+      speeds: "${range:0,20,2}"
+      distances_from_car: [150]
+      offsets_from_road_center:  "${range:-3,4,1}"
+      max_walking_distance: 140
