@@ -131,29 +131,29 @@ The SMIRK vision component uses transfer learning as it is pre-trained on public
 - Verification data: Used by the independent testers at Infotiv when the model is ready for release. 
 
 ## 4.1 Data Collection
-The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and are fully reproducable. The following two lists presents the scripts used to play scenarios and capture corresponding annotated data. The first list represents positive examples, i.e., pedestrians that shall be classified as pedestrians. The second list reprsents negative examples, i.e., objects that shall not be classified as pedestrians.
+The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and are fully reproducable. The following two lists presents the scripts used to play scenarios and capture corresponding annotated data. The first list represents positive examples [PX], i.e., pedestrians that shall be classified as pedestrians. The second list represents negative examples [NX], i.e., objects that shall not be classified as pedestrians. For each listed item, there is a link to a scene in ESI Pro-SiVIC and a Python script that generate the data in the ESI Pro-SiVIC output folder "Sensors". 
 
 Positive examples:
-- [P1] Casual female pedestrian crossing from the left [LINK]
-- [P2] Casual female pedestrian crossing from the right [LINK]
-- [P3] Casual male pedestrian crossing from the left [LINK]
-- [P4] Casual male pedestrian crossing from the right [LINK]
-- [P5] Business casual female pedestrian crossing from the left [LINK]
-- [P6] Business casual female pedestrian crossing from the right [LINK]
-- [P7] Business casual male pedestrian crossing from the left [LINK]
-- [P8] Business casual male pedestrian crossing from the right [LINK]
-- [P9] Child crossing from the left [LINK]
-- [P10] Child crossing from the right [LINK]
-- [P11] Male construction worker crossing from the left [LINK]
-- [P12] Male construction worker crossing from the right [LINK]
+- [P1] Casual female pedestrian crossing from the left [casual_female_crossing.script][smirk_data-gen_p1.py]
+- [P2] Casual female pedestrian crossing from the right [casual_female_crossing.script][smirk_data-gen_p2.py]
+- [P3] Casual male pedestrian crossing from the left [casual_male_crossing.script][smirk_data-gen_p3.py]
+- [P4] Casual male pedestrian crossing from the right [casual_male_crossing.script][smirk_data-gen_p4.py]
+- [P5] Business casual female pedestrian crossing from the left [business_female_crossing.script][smirk_data-gen_p5.py]
+- [P6] Business casual female pedestrian crossing from the right [business_female_crossing.script][smirk_data-gen_p6.py]
+- [P7] Business casual male pedestrian crossing from the left [business_male_crossing.script][smirk_data-gen_p7.py]
+- [P8] Business casual male pedestrian crossing from the right [business_male_crossing.script][smirk_data-gen_p8.py]
+- [P9] Child crossing from the left [child_crossing.script][smirk_data-gen_p9.py]
+- [P10] Child crossing from the right [child_crossing.script][smirk_data-gen_p10.py]
+- [P11] Male construction worker crossing from the left [worker_crossing.script][smirk_data-gen_p11.py]
+- [P12] Male construction worker crossing from the right [worker_crossing.script][smirk_data-gen_p12.py]
 
 Negative examples: (WIP)
-- [N1] Sphere crossing from the left [LINK]
-- [N2] Sphere crossing from the right [LINK]
-- [N3] Cube crossing from the left [LINK]
-- [N4] Cube crossing from the right [LINK]
-- [N5] Cone crossing from the left [LINK]
-- [N6] Cone crossing from the right [LINK]
+- [N1] Sphere crossing from the left [sphere_crossing.script][smirk_data-gen_n1.py]
+- [N2] Sphere crossing from the right [sphere_crossing.script][smirk_data-gen_n2.py]
+- [N3] Cube crossing from the left [cube_crossing.script][smirk_data-gen_n3.py]
+- [N4] Cube crossing from the right [cube_crossing.script][smirk_data-gen_n4.py]
+- [N5] Cone crossing from the left [cone_crossing.script][smirk_data-gen_n5.py]
+- [N6] Cone crossing from the right [cone_crossing.script][smirk_data-gen_n6.py]
 
 Moreover, all of the above scenarios contain pedestrians and objects standing still on the road and moving on the road toward or away from ego car.
 
