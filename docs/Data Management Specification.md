@@ -172,8 +172,8 @@ SMIRK includes a script to generate bounding boxes for training the object detec
 The generated SMIRK data will be used in sequestered data sets as follows:
 
 - Development data: [P1], [P4], [P6], [P7], [P9], [P12], [N2], [N3], and [N6]
-- Internal test data: [P2], [P5], [N1], and [N5]
-- Verification data: [P3], [P8], and [N4]
+- Internal test data: [P2], [P5], [P10], [N1], and [N5]
+- Verification data: [P3], [P8], [P11], and [N4]
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 The figure below shows the ML data argument pattern using GSN. The pattern follows the example provided in AMLAS, but adapts it to the specific SMIRK case.
