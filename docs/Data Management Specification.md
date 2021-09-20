@@ -171,9 +171,9 @@ SMIRK includes a script to generate bounding boxes for training the object detec
 ## 4.3 Data Splitting
 The generated SMIRK data will be used in sequestered data sets as follows:
 
-Development data: [P1], [P4], [P6], [P7], [P9], [P12], [N2], [N3], and [N6]
-Internal test data: [P2], [P5], [N1], and [N5]
-Verification data: [P3], [P8], and [N4]
+- Development data: [P1], [P4], [P6], [P7], [P9], [P12], [N2], [N3], and [N6]
+- Internal test data: [P2], [P5], [N1], and [N5]
+- Verification data: [P3], [P8], and [N4]
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 TBD.
