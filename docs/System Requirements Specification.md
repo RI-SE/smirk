@@ -1030,6 +1030,9 @@ The ML safety claim is supported by an argument split into two parts. First, the
 SMIRK instantiates the ML safety assurance scoping argument through the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). The set of artifacts constitutes the safety case for the ML-based SMIRK object detection component.
 
 # 8 ML Safety Requirements Argument Pattern [I]
+The figure below shows the ML safety requirements argument pattern using GSN. The pattern largely follows the example provided in AMLAS, but adapts it to the specific SMIRK case. The major difference is the introduction of G2.2 targeting false positives and the safety cage mechanism as the corresponding solution 2.2.
+
+![GSN-ML-Safety_Reqts_Argument_Pattern](/docs/figures/gsn-ml_safety_reqts_argument_pattern.png) <a name="gsn-ml_safety_reqts_argument"></a>
 
 # 9 ML Safety Requirements Validation Results [J]
 
