@@ -169,7 +169,11 @@ As the SMIRK data collection campaign relies on data generation in ESI Pro-SiVIC
 SMIRK includes a script to generate bounding boxes for training the object detection model. Pro-SiVIC generates ground truth image segmentation on a pixel-level. [The script](TBD) is used to convert the output to the approriate input format for model training. TBD...
 
 ## 4.3 Data Splitting
-What goes where? Random split? Leave out some scripts for testing and verification, respectively?
+The generated SMIRK data will be used in sequestered data sets as follows:
+
+Development data: [P1], [P4], [P6], [P7], [P9], [P12], [N2], [N3], and [N6]
+Internal test data: [P2], [P5], [N1], and [N5]
+Verification data: [P3], [P8], and [N4]
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 TBD.
