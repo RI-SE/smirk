@@ -1032,7 +1032,7 @@ SMIRK instantiates the ML safety assurance scoping argument through the artifact
 # 8 ML Safety Requirements Argument Pattern [I]
 The figure below shows the ML safety requirements argument pattern using GSN. The pattern largely follows the example provided in AMLAS, but adapts it to the specific SMIRK case. The major difference is the introduction of G2.2 targeting false positives and the safety cage mechanism as the corresponding solution 2.2.
 
-![GSN-ML-Assurance_Scoping_Argument_Pattern](/docs/figures/gsn-ml_assurance_scoping_argument_pattern.png) <a name="gsn-ml_assurance_scoping"></a>
+![GSN-ML-Safety_Reqts_Argument_Pattern](/docs/figures/gsn-ml_safety_reqts_argument_pattern.png) <a name="gsn-ml_safety_reqts_argument"></a>
 
 # 9 ML Safety Requirements Validation Results [J]
 
