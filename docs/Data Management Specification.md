@@ -131,36 +131,44 @@ The SMIRK vision component uses transfer learning as it is pre-trained on public
 - Verification data: Used by the independent testers at Infotiv when the model is ready for release. 
 
 ## 4.1 Data Collection
-The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and are fully reproducable. The following list presents the scripts used to play scenarios and capture corresponding annotated data:
+The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and are fully reproducable. The following two lists presents the scripts used to play scenarios and capture corresponding annotated data. The first list represents positive examples, i.e., pedestrians that shall be classified as pedestrians. The second list reprsents negative examples, i.e., objects that shall not be classified as pedestrians.
 
-- Casual female pedestrian crossing from the left [LINK]
-- Casual female pedestrian crossing from the right [LINK]
-- Casual male pedestrian crossing from the left [LINK]
-- Casual male pedestrian crossing from the right [LINK]
-- Business casual female pedestrian crossing from the left [LINK]
-- Business casual female pedestrian crossing from the right [LINK]
-- Business casual male pedestrian crossing from the left [LINK]
-- Business casual male pedestrian crossing from the right [LINK]
-- Child crossing from the left [LINK]
-- Child crossing from the right [LINK]
-- Male construction worker crossing from the left [LINK]
-- Male construction worker crossing from the right [LINK]
+Positive examples:
+- [P1] Casual female pedestrian crossing from the left [LINK]
+- [P2] Casual female pedestrian crossing from the right [LINK]
+- [P3] Casual male pedestrian crossing from the left [LINK]
+- [P4] Casual male pedestrian crossing from the right [LINK]
+- [P5] Business casual female pedestrian crossing from the left [LINK]
+- [P6] Business casual female pedestrian crossing from the right [LINK]
+- [P7] Business casual male pedestrian crossing from the left [LINK]
+- [P8] Business casual male pedestrian crossing from the right [LINK]
+- [P9] Child crossing from the left [LINK]
+- [P10] Child crossing from the right [LINK]
+- [P11] Male construction worker crossing from the left [LINK]
+- [P12] Male construction worker crossing from the right [LINK]
 
-Moreover, all of the above scenraios contain pedestrians standing still on the road and walking on the road toward or away from ego car.
+Negative examples: (WIP)
+- [N1] Sphere crossing from the left [LINK]
+- [N2] Sphere crossing from the right [LINK]
+- [N3] Cube crossing from the left [LINK]
+- [N4] Cube crossing from the right [LINK]
+- [N5] Cone crossing from the left [LINK]
+- [N6] Cone crossing from the right [LINK]
 
-The scripts equally spaced distributions of input data using the following variation points for the pedestrian:
+Moreover, all of the above scenarios contain pedestrians and objects standing still on the road and moving on the road toward or away from ego car.
+
+The scripts equally spaced distributions of input data using the following variation points for the pedestrian and objects:
 
 - starting position (x, y)
 - crossing angle
-- walking or running speed 
+- moving speed 
 
-## 4.2 Data Cleaning
-Data needs to be cleaned after it has been collected: Outliers, conflicted and irrelevant data, in terms of the ODD, needs to be excluded along with invalid data.
+## 4.2 Preprocessing
+As the SMIRK data collection campaign relies on data generation in ESI Pro-SiVIC, the need for pre-processing differs from counterparts using using naturalistic data. To follow convention, we refer to the data processing between data collection and model training as pre-processing - although post-processing would be a more correct term in SMIRK. We have developed scripts that generate data sets representing the scenarios listed in Section 4.1. The scripts ensure that the crossing pedestrians and objects appear at the right distance with specified conditions and without occlusion. All output images are share the same characteristics, thus no normalization is needed.
 
-## 4.3 Preprocessing
-Normalization of data, e.g., make all images (for a perception model) the same size. If collecting from the real world, simulated data could be added both as disturbances in real world images and as synthetic data. GA, GANs can be used to automatically create “lookalike twins” of data to increase the size and diversity of the data-set.
+SMIRK includes a script to generate bounding boxes for training the object detection model. Pro-SiVIC generates ground truth image segmentation on a pixel-level. [The script](TBD) is used to convert the output to the approriate input format for model training. TBD...
 
-## 4.4 Data Splitting
+## 4.3 Data Splitting
 What goes where? Random split? Leave out some scripts for testing and verification, respectively?
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
