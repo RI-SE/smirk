@@ -1028,3 +1028,9 @@ The ML safety claim is supported by an argument split into two parts. First, the
 
 # 7 ML Safety Assurance Scoping Argument [G] <a name="ml_assurance_scoping_argument"></a>
 SMIRK instantiates the ML safety assurance scoping argument through the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). The set of artifacts constitutes the safety case for the ML-based SMIRK object detection component.
+
+# 8 ML Safety Requirements Argument Pattern [I]
+
+# 9 ML Safety Requirements Validation Results [J]
+
+# 10 ML Safety Requirements Argument [K]
