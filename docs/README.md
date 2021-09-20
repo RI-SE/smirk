@@ -30,17 +30,17 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    |     [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    | Done |
 |     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       |     [SRS Sec 7](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    | Done |
 |     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | [SRS Sec 3.3](</docs/System Requirements Specification.md#ml_safety_reqts>) | Done |
-|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | [SRS Sec 8](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#8-ml-safety-requirements-argument-pattern-i) | In progress |
+|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | [SRS Sec 8](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#8-ml-safety-requirements-argument-pattern-i) | Done |
 |     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | [SRS Sec 9](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#9-ml-safety-requirements-validation-results-j) | In progress |
 |     [K]   |     ML Safety Requirements Argument                |                 |            2       | [SRS Sec 10](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#10-ml-safety-requirements-argument-k) | In progress |
-|     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) | In progress |
+|     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) | Done |
 |     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) | In progress |
 |     [N]   | Development Data                                   |                 |          3         | TBD | In progress |
 |     [O]   | Internal Test Data                                 |                 |          3         | TBD | In progress |
 |     [P]   | Verification Data                                  |                 |          3         | TBD | In progress |
 |     [Q]   |     Data Generation Log                            |                 |            3       | [DMS Sec 4](</docs/Data Management Specification.md#data_gen>) | In progress |
-|     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) | Not started |
-|     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | Not started |
+|     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) | Done |
+|     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | In progress |
 |     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) | Not started |
 |     [U]   |     Model Development Log                          |                 |          4         | TBD | Not started |
 |     [V]   | ML Model                                           |       5, 6      |          4         | TBD | In progress |
