@@ -180,6 +180,10 @@ The figure below shows the ML data argument pattern using GSN. The pattern follo
 
 ![GSN-ML_Data_Argument_Pattern](/docs/figures/gsn-ml_data_argument_pattern.png) <a name="gsn-ml_data_argument"></a>
 
+The top claim is that the data used during the development and verification of the ML model is sufficient (G3.1). This claim is made for all three data sets: development data [N], internal test data [O], and verification data [P]. The argumentation strategy (S2.1) involves how the sufficiency of these data sets are demonstrated given the Data Requirements [L]. The strategy is supported by arguing over to subclaims demonstrating sufficiency of the Data Requirements (G3.2) and that the Data Requirements are satisfied (G3.3). Claim G3.2 is supported by evidence in the form of a data requirements justification report [M]. As stated in AMLAS, "It is not possible to claim that the data alone can guarantee that the ML safety requirements will be satisfied, however the data used must be sufficient to enable the model that is developed to do so."
+
+Claim G3.3 states that the generated data satisfies the data requirements in context of the decisions made during data collection. The details of the data collection, along with rationales, are recorded in the Data Collection Log [Q]. The argumentation strategy (S2.2) uses refinement mapping to the assurance-related desiderata of the data requirements. The refinement of the desiderata into concrete data requirements for the object detection component of SMIRK, given the ODD, is justified by an analysis of the expected traffic agents and objects that can appear in ESI Pro-SiVIC. For each subclaim corresponding to a desiderata, i.e., relevance (G3.4), completeness (G3.5), accuracy (G3.6), and balance (G3.7), there is evidence in a matching section in the ML Data Validation Report [S].
+
 # 6 ML Data Validation Results [S] <a name="data_validation_results"></a>
 TBD.
 
