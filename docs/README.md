@@ -40,8 +40,8 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [P]   | Verification Data                                  |                 |          3         | TBD | In progress |
 |     [Q]   | Data Generation Log                            |                 |            3       | [DMS Sec 4](</docs/Data Management Specification.md#data_gen>) | In progress |
 |     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) | Done |
-|     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | In progress |
-|     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) | Not started |
+|     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | Formal inspection needed |
+|     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) | Done |
 |     [U]   |     Model Development Log                          |                 |          4         | TBD | Not started |
 |     [V]   | ML Model                                           |       5, 6      |          4         | TBD | In progress |
 |     [W]   |     ML Learning Argument Pattern                   |          4      |                    | TBD | Not started |
