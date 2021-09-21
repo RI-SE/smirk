@@ -1,4 +1,4 @@
-# Data Management Specification v0.1
+# Machine Learning Component Specification v0.1
 
 Revision History
 <table>
