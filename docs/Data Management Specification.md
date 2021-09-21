@@ -188,4 +188,12 @@ Claim G3.3 states that the generated data satisfies the data requirements in con
 TBD.
 
 # 7 ML Data Argument [T] <a name="data_argument"></a>
-TBD.
+SMIRK instantiates the ML Data Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Data Argument Pattern [R]](</docs/Data Management Specification.md#data_argument_pattern>), as well as the following artefacts from preceding AMLAS activities:
+- [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
+- [Data Requirements](</docs/Data Management Specification.md#data_rqts>) [L]
+- [Data Requirements Justification Report](</docs/Data Management Specification.md#data_rqts_just>) [M]
+- [Development Data](TBD) [N]
+- [Internal Test Data](TBD) [O]
+- [Verification Data](TBD) [P]
+- [Data Generation Log](</docs/Data Management Specification.md#data_gen>) [Q]
+- [ML Data Validation Results](</docs/Data Management Specification.md#data_validation_results>) [S]
