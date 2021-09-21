@@ -55,3 +55,6 @@ This section describes the object detection component in SMIRK.
 
 # 3 Neural Network Architecture 
 TBD
+
+# 4 Safety Cage Architecture
+TBD
