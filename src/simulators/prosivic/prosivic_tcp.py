@@ -23,8 +23,7 @@ class ProsivicTCP:
             self.connect()
 
     def step(self, steps: int = 1) -> None:
-        for _ in range(steps):
-            self._send_cmd("COMD pass")
+        self._send_cmd(f"COMD pass {steps}")
 
     def _send_cmd(self, cmd: str, wait_for_answer: bool = True) -> str:
         self.log.info("[ProSiVIC_TCP]: Executing command ... :%s" % str(cmd))
