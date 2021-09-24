@@ -53,6 +53,7 @@ class SimpleAebScene:
 
     def __init__(self) -> None:
         self.simulation = Simulation(self.SCRIPT_NAME)
+        self.car = Car(self.EGO_CAR_NAME, self.simulation)
         self.pedestrian = ObservablePedestrian(
             self.PEDESTRIAN_NAME,
             self.PEDESTRIAN_OBSERVER_NAME,
@@ -61,7 +62,6 @@ class SimpleAebScene:
         self.camera = Camera(self.CAMERA_NAME)
         self.radar = Radar(self.RADAR_NAME, self.CAR_WIDTH)
         self.collision_observer = DistanceObserver(self.DISTANCE_OBSERVER_NAME)
-        self.car = Car(self.EGO_CAR_NAME, self.simulation)
         self.current_setup: Optional[ScenarioSetup] = None
 
     def get_collision_data(self) -> CollisionData:
