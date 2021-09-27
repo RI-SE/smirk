@@ -1,4 +1,4 @@
-# Machine Learning Component Specification v0.1
+# Machine Learning Component Specification v0.2
 
 Revision History
 <table>
@@ -13,6 +13,12 @@ Revision History
 <td>2021-09-21</th>
 <td>Initial template.</th>
 <td>0.1</th>
+</tr>
+<tr>
+<td>Markus Borg</td>
+<td>2021-09-27</td>
+<td>Toward a complete draft.</td>
+<td>0.2</td>
 </tr>
 <tr>
 <td></td>
@@ -58,3 +64,6 @@ TBD
 
 # 4 Safety Cage Architecture
 TBD
+
+# 5 ML Model Learning Argument Pattern
+![GSN-ML-Model_Learning_Argument_Pattern](/docs/figures/gsn-ml_model_deployment_argument_pattern.png) <a name="gsn-ml_model_learning_argument"></a>
