@@ -65,5 +65,9 @@ TBD
 # 4 Safety Cage Architecture
 TBD
 
-# 5 ML Model Learning Argument Pattern
+# 5 ML Model Learning Argument Pattern [W]
+The figure below shows the ML model learning argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
+
 ![GSN-ML-Model_Learning_Argument_Pattern](/docs/figures/gsn-ml_model_deployment_argument_pattern.png) <a name="gsn-ml_model_learning_argument"></a>
+
+The top claim (G4.1) in this argument pattern is that the development of the learnt model [V] is sufficient. The strategy is to argue over the internal testing of the model and that the ML development was approriate (S4.1) in context of creating a valid model that meets practical constraints such as real-time performance and cost (C4.2). Sub-claim (G4.2) is that the ML model satisifies the ML safety requirements when using the internal test data [O]. We justify that the internal test results indicate that the ML model satisfies the ML safety requirements (J3.1) by presenting evidence from the internal test results [X].
