@@ -68,6 +68,9 @@ TBD
 # 5 ML Model Learning Argument Pattern [W]
 The figure below shows the ML model learning argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
-![GSN-ML-Model_Learning_Argument_Pattern](/docs/figures/gsn-ml_model_deployment_argument_pattern.png) <a name="gsn-ml_model_learning_argument"></a>
+![GSN-ML-Model_Learning_Argument_Pattern](/docs/figures/gsn-model_learning_argument_pattern.png) <a name="gsn-ml_model_learning_argument"></a>
 
 The top claim (G4.1) in this argument pattern is that the development of the learnt model [V] is sufficient. The strategy is to argue over the internal testing of the model and that the ML development was approriate (S4.1) in context of creating a valid model that meets practical constraints such as real-time performance and cost (C4.2). Sub-claim (G4.2) is that the ML model satisifies the ML safety requirements when using the internal test data [O]. We justify that the internal test results indicate that the ML model satisfies the ML safety requirements (J3.1) by presenting evidence from the internal test results [X].
+
+Sub-claim G4.3 addresses the approach that was used when developing the model. The claim is supported by three claims regarding the type of model selected, the transfer learning process used, and the model parameters selected, respectively. First, G4.5 claims that the type of model is appropriate for the specified ML safety requirements and the other model constraints. Second, G4.6 claims that the process followed to allow transfer learning is appropriate. ML development processes, including transfer learning, are highly iterative thus rationales for development decisions must be recorded. Third, G4.7 claims that the parameters of the ML model are appropiately selected to tune performance toward the object detection task in the specified ODD. Rationales for any decisions in G4.5-G4.7 are recorded in the model development log [U].
+
