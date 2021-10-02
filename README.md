@@ -1,5 +1,5 @@
 # SMIRK
-SMIRK is an experimental pedestrian emergency breaking ADAS facilitating research on quality assurance of critical components that rely on machine learning.
+SMIRK is an experimental pedestrian emergency braking ADAS facilitating research on quality assurance of critical components that rely on machine learning.
 
 ![Logo](/docs/figures/smirk.png) <a name="logo"></a>
 
