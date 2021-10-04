@@ -1,4 +1,4 @@
-# System Test Specification v0.1
+# System Test Specification v0.2
 
 Revision History
 <table>
@@ -13,6 +13,12 @@ Revision History
 <td>2021-10-04</th>
 <td>Initial template.</th>
 <td>0.1</th>
+</tr>
+<tr>
+<td>Markus Borg</th>
+<td>WIP</th>
+<td>Toward a complete draft.</th>
+<td>0.2</th>
 </tr>
 <tr>
 <td></td>
@@ -53,7 +59,7 @@ The testing process must be independent from the development. Neither developers
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
 
-# 2 ML Test Strategy
+# 2 ML Test Strategy <a name="strategy"></a>
 This section describes the overall ML test strategy.
 
 # 3 ML Model Test Case Specifications
@@ -63,4 +69,8 @@ This section describes the overall ML test strategy.
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
-![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-model_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
+![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-ml_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
+
+The top claim (G5.1) corresponds to the bottom claim in the safety requirements argument pattern [I], i.e., that all ML safety requirements are satisfied. The argumentation builds on a sub-claim and an argumentation strategy. First, sub-claim G5.2 is that the verification of the ML model is independent of its development. The verification log [AA] specifies how this has been achieved for SMIRK (Sn5.1). Second, the strategy S5.1 argues that test-based verification is an appropriate approach to generate evidence that the ML safety requirements are met. The justification is that the SMIRK [test strategy](#real-cool-heading) follows the proposed organization in peer-reviewed literature on ML testing, which is a better fit than using less mature formal methods for ML models as complex as YOLO. 
+
+Following the test-based verification approach, the sub-claim G5.3 argues that that the ML model satisfies the ML safety requirement when the verification data (C5.1) is applied. The testing claim is supported by three sub-claims. First, G5.4 argues that the test results demonstrate that the ML safety requirements are satisfied, for which Verification Test Results [Z] are presented as evidence. Second, G5.5 argues that the Verification Data [P] is sufficient to verify the intent of the ML safety requirements in the ODD. Third, G5.6 argues that the test platform is representative of the operational platform. Evidence for both G5.5 and G5.6 is presented in the Verification Log [AA].

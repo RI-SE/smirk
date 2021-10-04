@@ -6,7 +6,7 @@ In this folder, all documentation related to SMIRK is evolving. Everything is WI
 - [Data Management Specification](</docs/Data Management Specification.md>)
 - Architecture Specification (To appear)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
-- Test Specification (To appear)
+- [System Test Specification](</docs/System Test Specification.md>)
 - Deployment Specification (To appear)
 - ALTAI_Numbered_Questions_v1.0.pdf (used in [SEthics21 paper](https://arxiv.org/abs/2103.09051))
 
@@ -49,7 +49,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [Y]   | ML Learning Argument                           |                 |            4       | TBD | Not started |
 |     [Z]   | ML Verification Results                        |                 |            5       | TBD | Not started |
 |     [AA]  | Verification Log                               |                 |            5       | TBD | Not started |
-|     [BB]  | ML Verification Argument Pattern               |          5      |                    | TBD | Not started |
+|     [BB]  | ML Verification Argument Pattern               |          5      |                    | [STS Sec 5](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>) | Done |
 |     [CC]  | ML Verification Argument                       |                 |            5       | TBD | Not started |
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
 |     [EE]  | Operational scenarios                          |         6       |                    | TBD | Not started |
