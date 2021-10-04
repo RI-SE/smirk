@@ -1,0 +1,66 @@
+# Machine Learning Component Test Specification v0.1
+
+Revision History
+<table>
+<tr>
+<th>Author(s)</th>
+<th>Date</th>
+<th>Description</th>
+<th>Version</th>
+</tr>
+<tr>
+<td>Markus Borg</th>
+<td>2021-10-04</th>
+<td>Initial template.</th>
+<td>0.1</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+# 1 Introduction <a name="introduction"></a>
+This document containts the ML component test specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
+
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
+
+## 1.1 Purpose ##
+This document describes the test strategy for the ML-based object detection component. The object detection component detects pedestrians in input images, i.e., no other classes are detected in the input.
+
+## 1.2 Document Conventions ##
+Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
+
+## 1.3 Glossary
+- AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
+- DM: Data Management
+- ML: Machine Learning
+- ODD: Operational Design Domain
+- TTC: Time To Collission
+
+## 1.4 Intended Audience and Reading Suggestions ##
+The testing process must be independent from the development. Neither developers nor ML developers can have access to this document.
+
+- Developers: Must not have access to the document.
+- ML developers: Must not have access to the document.
+- Testers: The entire document is important.
+- Safety assessors: The entire document is important.
+- Other stakeholders: TBD
+
+## 1.6 References ##
+- [System Requirements Specification](</docs/System Requirements Specification.md>)
+- [Machine Learning Component Specification](</docs/ML Component Specification.md>)
+
+# 2 ML Test Strategy
+This section describes the overall ML test strategy.
+
+# 3 ML Model Test Case Specifications
+
+# 4 System Test Case Specifications
+
+# 5 ML Verification Argument Pattern [BB]
+The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
+
+![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-model_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
