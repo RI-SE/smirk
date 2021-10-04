@@ -63,4 +63,4 @@ This section describes the overall ML test strategy.
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
-![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-model_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
+![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-ml_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
