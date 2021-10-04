@@ -1,4 +1,4 @@
-# Machine Learning Component Test Specification v0.1
+# System Test Specification v0.1
 
 Revision History
 <table>
@@ -23,7 +23,7 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document containts the ML component test specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
+This document containts the system test specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
 
 We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
