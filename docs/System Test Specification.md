@@ -1,4 +1,4 @@
-# System Test Specification v0.1
+# System Test Specification v0.2
 
 Revision History
 <table>
@@ -13,6 +13,12 @@ Revision History
 <td>2021-10-04</th>
 <td>Initial template.</th>
 <td>0.1</th>
+</tr>
+<tr>
+<td>Markus Borg</th>
+<td>WIP</th>
+<td>Toward a complete draft.</th>
+<td>0.2</th>
 </tr>
 <tr>
 <td></td>
@@ -64,3 +70,5 @@ This section describes the overall ML test strategy.
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
 ![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-ml_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
+
+The top claim (G5.1) corresponds to the bottom claim in the safety requirements argument pattern [I], i.e., that all ML safety requirements are satisfied. The argumentation builds on two subclaims. First, subclaim G5.2 is that the verification of the ML model is independent of its development. The verification log [AA] specifies how this has been achieved for SMIRK.
