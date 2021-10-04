@@ -59,7 +59,7 @@ The testing process must be independent from the development. Neither developers
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
 
-# 2 ML Test Strategy
+# 2 ML Test Strategy <a name="strategy"></a>
 This section describes the overall ML test strategy.
 
 # 3 ML Model Test Case Specifications
@@ -71,4 +71,6 @@ The figure below shows the ML verification argument pattern using GSN. The patte
 
 ![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-ml_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
 
-The top claim (G5.1) corresponds to the bottom claim in the safety requirements argument pattern [I], i.e., that all ML safety requirements are satisfied. The argumentation builds on two subclaims. First, subclaim G5.2 is that the verification of the ML model is independent of its development. The verification log [AA] specifies how this has been achieved for SMIRK.
+The top claim (G5.1) corresponds to the bottom claim in the safety requirements argument pattern [I], i.e., that all ML safety requirements are satisfied. The argumentation builds on a sub-claim and an argumentation strategy. First, sub-claim G5.2 is that the verification of the ML model is independent of its development. The verification log [AA] specifies how this has been achieved for SMIRK (Sn5.1). Second, the strategy S5.1 argues that test-based verification is an appropriate approach to generate evidence that the ML safety requirements are met. The justification is that the SMIRK [test strategy](#real-cool-heading) follows the proposed organization in peer-reviewed literature on ML testing, which is a better fit than using less mature formal methods for ML models as complex as YOLO. 
+
+
