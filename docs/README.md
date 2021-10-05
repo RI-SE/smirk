@@ -2,13 +2,15 @@
 
 In this folder, all documentation related to SMIRK is evolving. Everything is WIP.
 
-- [System Requirements Specification](</docs/System Requirements Specification.md>)
-- [Data Management Specification](</docs/Data Management Specification.md>)
-- Architecture Specification (To appear)
-- [Machine Learning Component Specification](</docs/ML Component Specification.md>)
-- [System Test Specification](</docs/System Test Specification.md>)
-- Deployment Specification (To appear)
-- ALTAI_Numbered_Questions_v1.0.pdf (used in [SEthics21 paper](https://arxiv.org/abs/2103.09051))
+- [System Requirements Specification](</docs/System Requirements Specification.md>) (SRS)
+- [Data Management Specification](</docs/Data Management Specification.md>) (DMS)
+- Architecture Specification (AS)
+- [Machine Learning Component Specification](</docs/ML Component Specification.md>) (MLCS)
+- [System Test Specification](</docs/System Test Specification.md>) (STS)
+- [Deployment Specification](</docs/ML Deployment Specification.md>) Deployment Specification (DS)
+
+Supplementary documents
+- [Numbered ALTAI questions](</docs/ALTAI_Numbered_Questions_v1.0.pdf>) from the Assessment List for Trustworthy Artificial Intelligence. The European Commission published ALTAI to support self-assessment. The questions were used in a paper on [AI ethics](https://arxiv.org/abs/2103.09051).
 
 ## Safety Assurance
 
@@ -54,5 +56,5 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
 |     [EE]  | Operational scenarios                          |         6       |                    | TBD | Not started |
 |     [FF]  | Integration Testing Results                        |                 |          6         | TBD | Not started |
-|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | TBD | Not started |
+|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | [DS Sec 5](</docs/Deployment%20Specification.md#5-ml-deployment-argument-pattern-bb>) | In progress |
 |     [HH]  | ML Deployment Argument                         |                 |            6       | TBD | Not started |
