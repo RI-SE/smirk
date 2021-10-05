@@ -7,7 +7,7 @@ In this folder, all documentation related to SMIRK is evolving. Everything is WI
 - Architecture Specification (AS)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>) (MLCS)
 - [System Test Specification](</docs/System Test Specification.md>) (STS)
-- [Deployment Specification](</docs/Deployment Specification.md>) Deployment Specification (DS)
+- [Deployment Specification](</docs/Deployment Specification.md>) (DS)
 
 Supplementary documents
 - [Numbered ALTAI questions](</docs/ALTAI_Numbered_Questions_v1.0.pdf>) from the Assessment List for Trustworthy Artificial Intelligence. The European Commission published ALTAI to support self-assessment. The questions were used in a paper on [AI ethics](https://arxiv.org/abs/2103.09051).
