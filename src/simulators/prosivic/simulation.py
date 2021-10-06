@@ -22,3 +22,13 @@ class Simulation:
 
     def cmd(self, script_command: str) -> None:
         self.tcp.cmd(script_command)
+
+    def create_object(self, name: str, type: str) -> None:
+        self.cmd(f"new {type} {name}")
+
+    def create_object_from_package_data(self, package_name, package_data) -> None:
+        self.create_object(package_name, "sivicPackage")
+        self.cmd(f"{package_name}.SetPackageData {package_data}")
+
+    def delete_object(self, object_name: str) -> None:
+        self.cmd(f"delete {object_name}")

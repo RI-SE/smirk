@@ -2,7 +2,7 @@ import argparse
 import math
 import random
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Any, Dict, List, cast
 
 import numpy as np
 import pandas as pd
@@ -12,9 +12,20 @@ from smirk.pedestrian_detector.ssd_hub_detector import SsdHubDetector
 from smirk.safety_cage.noop_cage import NoopCage
 from smirk.smirk import Smirk
 
+SCENARIO_TYPES = ("left", "right", "towards", "away")
+PEDESTRIAN_APPEARANCES = (
+    "male_business",
+    "male_casual",
+    "male_construction",
+    "female_business",
+    "female_casual",
+    "child",
+)
+
 
 def get_random_parameters(
-    scenario_types=("left", "right", "towards", "away"),
+    scenario_types=SCENARIO_TYPES,
+    pedestrian_appearances=PEDESTRIAN_APPEARANCES,
     pedestrian_distance_from_car_range=(30, 150),
     pedestrian_walking_angle_range=(0, 180),
     pedestrian_distance_from_road_range=(-1, 2),
@@ -23,38 +34,41 @@ def get_random_parameters(
     car_speed_range=(30, 70),
 ):
     scenario_type = random.choice(scenario_types)
+    pedestrian_appearance = random.choice(pedestrian_appearances)
+    car_speed = np.random.uniform(*car_speed_range)
+    pedestrian_distance_from_car = np.random.uniform(
+        *pedestrian_distance_from_car_range
+    )
+    pedestrian_distance_from_road = np.random.uniform(
+        *pedestrian_distance_from_road_range
+    )
+    pedestrian_offset_from_road_center = np.random.uniform(
+        *pedestrian_offset_from_road_center_range
+    )
+    pedestrian_walking_angle = np.random.uniform(*pedestrian_walking_angle_range)
+    pedestrian_walking_speed = np.random.uniform(*pedestrian_walking_speed_range)
 
     if scenario_type in ["left", "right"]:
         return (
             scenario_type,
             dict(
-                pedestrian_distance_from_car=np.random.uniform(
-                    *pedestrian_distance_from_car_range
-                ),
-                pedestrian_walking_angle=np.random.uniform(
-                    *pedestrian_walking_angle_range
-                ),
-                pedestrian_distance_from_road=np.random.uniform(
-                    *pedestrian_distance_from_road_range
-                ),
-                pedestrian_walking_speed=np.random.uniform(
-                    *pedestrian_walking_speed_range
-                ),
-                car_speed=np.random.uniform(*car_speed_range),
+                pedestrian_appearance=pedestrian_appearance,
+                pedestrian_distance_from_car=pedestrian_distance_from_car,
+                pedestrian_walking_speed=pedestrian_walking_speed,
+                pedestrian_walking_angle=pedestrian_walking_angle,
+                pedestrian_distance_from_road=pedestrian_distance_from_road,
+                car_speed=car_speed,
             ),
         )
 
     return (
         scenario_type,
         dict(
-            pedestrian_distance_from_car=np.random.uniform(
-                *pedestrian_distance_from_car_range
-            ),
-            pedestrian_offset_from_road_center=np.random.uniform(
-                *pedestrian_offset_from_road_center_range
-            ),
-            pedestrian_walking_speed=np.random.uniform(*pedestrian_walking_speed_range),
-            car_speed=np.random.uniform(*car_speed_range),
+            pedestrian_appearance=pedestrian_appearance,
+            pedestrian_distance_from_car=pedestrian_distance_from_car,
+            pedestrian_offset_from_road_center=pedestrian_offset_from_road_center,
+            pedestrian_walking_speed=pedestrian_walking_speed,
+            car_speed=car_speed,
         ),
     )
 
@@ -91,7 +105,9 @@ def step_until_end_condition(scene: SimpleAebScene, smirk: Smirk):
         collision_data = scene.get_collision_data()
         car_speed = scene.car.get_speed()
 
-        result["min_distance"] = min(result["min_distance"], collision_data.distance)
+        result["min_distance"] = min(
+            cast(float, result["min_distance"]), collision_data.distance
+        )
 
         if (
             collision_data.has_car_passed_pedestrian

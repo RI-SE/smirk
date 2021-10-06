@@ -4,6 +4,8 @@ from typing import Any
 import numpy as np
 import ProSivicDDS as psvdds
 
+from simulators.prosivic.simulation import Simulation
+
 
 @dataclass
 class CameraFrame:
@@ -19,7 +21,8 @@ class CameraFrame:
 
 
 class Camera:
-    def __init__(self, name: str) -> None:
+    def __init__(self, simulation: Simulation, name: str) -> None:
+        self.simulation = simulation
         self.name = name
         self.camera_handler = psvdds.cameraHandler(name)
 
@@ -33,3 +36,6 @@ class Camera:
             timestamp=data.timestamp,
             frame_data=self._frame_to_numpy(data),
         )
+
+    def add_mesh_to_labeling(self, mesh_name: str):
+        self.simulation.cmd(f"{self.name}.AddLabel {mesh_name}")

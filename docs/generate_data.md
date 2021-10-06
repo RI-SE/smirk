@@ -8,6 +8,8 @@ Currently it is only possible to generate data from four different scenarios in 
 3. Pedestrian walking towards car
 3. Pedestrian walking away from car
 
+Various scenario parameters can be specified as described in the configuration section below.
+
 ## Requirements
 
 * ESI Pro-SiVIC.
@@ -62,33 +64,46 @@ The default example configuration file is available in the `examples` folder:
 $ cat examples/data-generation-config.yaml
 
 scenarios:
-  -
-    type: 'left'
+  - type: left
     pedestrian:
+      appearance:
+        - male_business
+        - male_casual
+        - male_construction
+        - female_business
+        - female_casual
+        - child
+      speeds: [2]
+      angles: [90]
+      distances_from_car: [50]
+      distances_from_road: [2]
+  - type: left
+    pedestrian:
+      appearance: male_business
       speeds: [2]
       angles: "${range:30,151,20}"
       distances_from_car: "${range:10,151,10}"
       distances_from_road: [2]
-  -
-    type: 'right'
+  - type: right
     pedestrian:
+      appearance: female_business
       speeds: [2]
       angles: "${range:30,151,20}"
       distances_from_car: "${range:10,151,10}"
       distances_from_road: [2]
-  -
-    type: 'towards'
+  - type: towards
     pedestrian:
+      appearance: child
       speeds: [2]
       distances_from_car: [150]
-      offsets_from_road_center:  "${range:-3,4,1}"
+      offsets_from_road_center: "${range:-3,4,1}"
       max_walking_distance: 140
-  -
-    type: 'away'
+  - type: away
     pedestrian:
+      appearance: male_business
       speeds: [2]
       distances_from_car: [10]
-      offsets_from_road_center:  "${range:-3,4,1}"
+      offsets_from_road_center: "${range:-3,4,1}"
       max_walking_distance: 140
 ```
 
@@ -106,7 +121,14 @@ The following parameters are common for all scenarios:
 
 * `speeds` (List[integer]) - Pedestrian speed in m/s.
 * `distances_from_car` (List[integer]) - Starting distance from car in meters.
-* `max_walking_distance`: The distance in meters the pedestrian will walk. (Optional for left/right scenarios).
+* `max_walking_distance` (integer): The distance in meters the pedestrian will walk. (Optional for left/right scenarios).
+* `appearance` (List[string] or string): The appearance of the pedestrian, the following appearances are available:
+  * male_business
+  * male_casual
+  * male_construction
+  * female_business
+  * female_casual
+  * child
 
 The left/right scenarios have additional parameters:
 
@@ -115,6 +137,6 @@ The left/right scenarios have additional parameters:
 
 The towards/away scenarios have additional parameters:
 
-* `offsets_from_road_center` (List[integer]) - Offset in meters from the center of the road. Positive values offests left, negative values offset right.
+* `offsets_from_road_center` (List[integer]) - Offset in meters from the center of the road. Positive values offsets left, negative values offset right.
 
 Apart from standard yaml syntax, it is possible to use `"${range:start,stop,step}"` to generate a list of values starting at `start`, incrementing by `step` up to but not including `stop`.

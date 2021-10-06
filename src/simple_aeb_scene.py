@@ -6,7 +6,8 @@ from typing import Optional
 from simulators.prosivic.objects.camera import Camera
 from simulators.prosivic.objects.car import Car
 from simulators.prosivic.objects.distance_observer import DistanceObserver
-from simulators.prosivic.objects.observable_pedestrian import ObservablePedestrian
+from simulators.prosivic.objects.pedestrian import Pedestrian, PedestrianAppearance
+from simulators.prosivic.objects.pedestrian_observer import PedestrianObserver
 from simulators.prosivic.objects.position import Position
 from simulators.prosivic.objects.radar import Radar
 from simulators.prosivic.simulation import Simulation
@@ -23,6 +24,7 @@ class CollisionData:
 
 @dataclass
 class ScenarioSetup:
+    pedestrian_appearance: PedestrianAppearance
     pedestrian_start_x: float
     pedestrian_start_y: float
     pedestrian_angle: float
@@ -54,14 +56,15 @@ class SimpleAebScene:
     def __init__(self) -> None:
         self.simulation = Simulation(self.SCRIPT_NAME)
         self.car = Car(self.EGO_CAR_NAME, self.simulation)
-        self.pedestrian = ObservablePedestrian(
-            self.PEDESTRIAN_NAME,
-            self.PEDESTRIAN_OBSERVER_NAME,
-            self.simulation,
+        self.pedestrian_observer = PedestrianObserver(
+            self.simulation, self.PEDESTRIAN_OBSERVER_NAME
         )
-        self.camera = Camera(self.CAMERA_NAME)
+        self.camera = Camera(self.simulation, self.CAMERA_NAME)
         self.radar = Radar(self.RADAR_NAME, self.CAR_WIDTH)
-        self.collision_observer = DistanceObserver(self.DISTANCE_OBSERVER_NAME)
+        self.collision_observer = DistanceObserver(
+            self.simulation, self.DISTANCE_OBSERVER_NAME
+        )
+        self.pedestrian: Optional[Pedestrian] = None
         self.current_setup: Optional[ScenarioSetup] = None
 
     def get_collision_data(self) -> CollisionData:
@@ -114,13 +117,15 @@ class SimpleAebScene:
         return Direction.Right
 
     def has_pedestrian_crossed_road(self) -> bool:
-        direction = self.direction_from_angle(self.pedestrian.get_walkling_angle())
+        direction = self.direction_from_angle(
+            self.pedestrian_observer.get_walkling_angle()
+        )
 
         if direction == Direction.Left:
-            return self.pedestrian.get_position().y >= self.ROAD_LEFT_Y
+            return self.pedestrian_observer.get_position().y >= self.ROAD_LEFT_Y
 
         if direction == Direction.Right:
-            return self.pedestrian.get_position().y <= self.ROAD_RIGHT_Y
+            return self.pedestrian_observer.get_position().y <= self.ROAD_RIGHT_Y
 
         return False
 
@@ -128,7 +133,7 @@ class SimpleAebScene:
         if self.current_setup is None:
             return 0
 
-        current_position = self.pedestrian.get_position()
+        current_position = self.pedestrian_observer.get_position()
         start_x = self.current_setup.pedestrian_start_x
         start_y = self.current_setup.pedestrian_start_y
 
@@ -149,15 +154,28 @@ class SimpleAebScene:
 
             prev_timestamp = current_timestamp
 
+    def reset_scene(self):
+        if self.current_setup:
+            self.simulation.stop()
+            self.current_setup = None
+
+        if self.pedestrian:
+            self.pedestrian.delete()
+            self.pedestrian = None
+
     def setup_scenario(
         self,
+        pedestrian_appearance: PedestrianAppearance,
         pedestrian_start_x: float,
         pedestrian_start_y: float,
         pedestrian_angle: float,
         pedestrian_speed: float,
         car_speed: float,
     ) -> None:
+        self.reset_scene()
+
         self.current_setup = ScenarioSetup(
+            pedestrian_appearance,
             pedestrian_start_x,
             pedestrian_start_y,
             pedestrian_angle,
@@ -165,7 +183,12 @@ class SimpleAebScene:
             car_speed,
         )
 
-        self.simulation.stop()
+        self.pedestrian = Pedestrian(self.simulation, pedestrian_appearance)
+        self.pedestrian_observer.set_pedestrian(self.pedestrian.name)
+        self.collision_observer.set_object2(self.pedestrian.name)
+        for mesh in self.pedestrian.get_mesh_names():
+            self.camera.add_mesh_to_labeling(mesh)
+
         self.simulation.pause()
 
         self.pedestrian.set_angle(pedestrian_angle)
@@ -179,6 +202,7 @@ class SimpleAebScene:
 
     def setup_scenario_walk_from_left(
         self,
+        pedestrian_appearance: PedestrianAppearance,
         pedestrian_distance_from_car: float,
         pedestrian_distance_from_road: float,
         pedestrian_walking_angle: float,
@@ -188,6 +212,7 @@ class SimpleAebScene:
         transformed_angle = -pedestrian_walking_angle
 
         self.setup_scenario(
+            pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=self.ROAD_LEFT_Y + pedestrian_distance_from_road,
             pedestrian_angle=transformed_angle,
@@ -197,6 +222,7 @@ class SimpleAebScene:
 
     def setup_scenario_walk_from_right(
         self,
+        pedestrian_appearance: PedestrianAppearance,
         pedestrian_distance_from_car: float,
         pedestrian_distance_from_road: float,
         pedestrian_walking_angle: float,
@@ -204,6 +230,7 @@ class SimpleAebScene:
         car_speed: float,
     ) -> None:
         self.setup_scenario(
+            pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=self.ROAD_RIGHT_Y - pedestrian_distance_from_road,
             pedestrian_angle=pedestrian_walking_angle,
@@ -213,12 +240,14 @@ class SimpleAebScene:
 
     def setup_scenario_walk_away(
         self,
+        pedestrian_appearance: PedestrianAppearance,
         pedestrian_distance_from_car: float,
         pedestrian_offset_from_road_center: float,
         pedestrian_walking_speed: float,
         car_speed: float,
     ) -> None:
         self.setup_scenario(
+            pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=pedestrian_offset_from_road_center,
             pedestrian_angle=0,
@@ -228,12 +257,14 @@ class SimpleAebScene:
 
     def setup_scenario_walk_towards(
         self,
+        pedestrian_appearance: PedestrianAppearance,
         pedestrian_distance_from_car: float,
         pedestrian_offset_from_road_center: float,
         pedestrian_walking_speed: float,
         car_speed: float,
     ) -> None:
         self.setup_scenario(
+            pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=pedestrian_offset_from_road_center,
             pedestrian_angle=180,

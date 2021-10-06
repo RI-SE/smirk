@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 from typing import cast
 
-from omegaconf import DictConfig, OmegaConf
+from omegaconf import DictConfig, ListConfig, OmegaConf
 
 import utils.paths
 from simple_aeb_scene import SimpleAebScene
@@ -19,11 +19,19 @@ def load_config(config_path: Path) -> DictConfig:
     return cast(DictConfig, cfg)
 
 
+def ensure_list(value):
+    if isinstance(value, ListConfig):
+        return value
+
+    return [value]
+
+
 def get_left_right_args(scenario_config):
     pedestrian_config = scenario_config.pedestrian
     car_speeds = [0]
 
     return itertools.product(
+        ensure_list(pedestrian_config.appearance),
         pedestrian_config.distances_from_car,
         pedestrian_config.distances_from_road,
         pedestrian_config.angles,
@@ -37,6 +45,7 @@ def get_towards_away_args(scenario_config):
     car_speeds = [0]
 
     return itertools.product(
+        ensure_list(pedestrian_config.appearance),
         pedestrian_config.distances_from_car,
         pedestrian_config.offsets_from_road_center,
         pedestrian_config.speeds,

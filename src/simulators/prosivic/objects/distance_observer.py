@@ -3,6 +3,7 @@ from dataclasses import dataclass
 import ProSivicDDS as psvdds
 
 from simulators.prosivic.objects.position import Position
+from simulators.prosivic.simulation import Simulation
 
 
 @dataclass
@@ -30,9 +31,18 @@ class DistanceObserverData:
 class DistanceObserver:
     def __init__(
         self,
+        simulation: Simulation,
         name: str,
     ) -> None:
-        self.observer = psvdds.distanceObserverHandler(name)
+        self.simulation = simulation
+        self.name = name
+        self.observer = psvdds.distanceObserverHandler(self.name)
+
+    def set_object1(self, object_name: str) -> None:
+        self.simulation.cmd(f"{self.name}.SetObject1 {object_name}")
+
+    def set_object2(self, object_name: str) -> None:
+        self.simulation.cmd(f"{self.name}.SetObject2 {object_name}")
 
     def get_data(self) -> DistanceObserverData:
         data: _RawProsivicData = self.observer.receive()
