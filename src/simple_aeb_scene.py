@@ -55,7 +55,7 @@ class SimpleAebScene:
 
     def __init__(self) -> None:
         self.simulation = Simulation(self.SCRIPT_NAME)
-        self.car = Car(self.EGO_CAR_NAME, self.simulation)
+        self.car = Car(self.simulation, self.EGO_CAR_NAME)
         self.pedestrian_observer = PedestrianObserver(
             self.simulation, self.PEDESTRIAN_OBSERVER_NAME
         )

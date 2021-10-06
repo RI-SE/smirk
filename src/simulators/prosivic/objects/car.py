@@ -13,7 +13,7 @@ class CruiseControlPositions(Enum):
 
 
 class Car:
-    def __init__(self, name: str, simulation: Simulation) -> None:
+    def __init__(self, simulation: Simulation, name: str) -> None:
         self.name = name
         self.simulation = simulation
         self.order_handler = psvdds.carOrderHandler(name)
