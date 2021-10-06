@@ -56,5 +56,5 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
 |     [EE]  | Operational scenarios                          |         6       |                    | TBD | Not started |
 |     [FF]  | Integration Testing Results                        |                 |          6         | TBD | Not started |
-|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | [DS Sec 5](</docs/Deployment%20Specification.md#5-ml-deployment-argument-pattern-bb>) | In progress |
+|     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | [DS Sec 5](</docs/Deployment%20Specification.md#5-ml-deployment-argument-pattern-bb>) | Done |
 |     [HH]  | ML Deployment Argument                         |                 |            6       | TBD | Not started |
