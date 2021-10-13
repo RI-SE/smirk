@@ -134,26 +134,17 @@ The SMIRK vision component uses transfer learning as it is pre-trained on public
 The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and are fully reproducable. The following two lists presents the scripts used to play scenarios and capture corresponding annotated data. The first list represents positive examples [PX], i.e., pedestrians that shall be classified as pedestrians. The second list represents negative examples [NX], i.e., objects that shall not be classified as pedestrians. For each listed item, there is a link to a scene in ESI Pro-SiVIC and a Python script that generate the data in the ESI Pro-SiVIC output folder "Sensors". 
 
 Positive examples:
-- [P1] Casual female pedestrian crossing from the left [casual_female_crossing.script][smirk_data-gen_p1.py]
-- [P2] Casual female pedestrian crossing from the right [casual_female_crossing.script][smirk_data-gen_p2.py]
-- [P3] Casual male pedestrian crossing from the left [casual_male_crossing.script][smirk_data-gen_p3.py]
-- [P4] Casual male pedestrian crossing from the right [casual_male_crossing.script][smirk_data-gen_p4.py]
-- [P5] Business casual female pedestrian crossing from the left [business_female_crossing.script][smirk_data-gen_p5.py]
-- [P6] Business casual female pedestrian crossing from the right [business_female_crossing.script][smirk_data-gen_p6.py]
-- [P7] Business casual male pedestrian crossing from the left [business_male_crossing.script][smirk_data-gen_p7.py]
-- [P8] Business casual male pedestrian crossing from the right [business_male_crossing.script][smirk_data-gen_p8.py]
-- [P9] Child crossing from the left [child_crossing.script][smirk_data-gen_p9.py]
-- [P10] Child crossing from the right [child_crossing.script][smirk_data-gen_p10.py]
-- [P11] Male construction worker crossing from the left [worker_crossing.script][smirk_data-gen_p11.py]
-- [P12] Male construction worker crossing from the right [worker_crossing.script][smirk_data-gen_p12.py]
+- [P1] Casual female pedestrian [casual_female_crossing.script][smirk_data-gen_p1.py]
+- [P2] Casual male pedestrian [casual_male_crossing.script][smirk_data-gen_p2.py]
+- [P3] Business female pedestrian [business_female_crossing.script][smirk_data-gen_p3.py]
+- [P4] Business male pedestrian [business_male_crossing.script][smirk_data-gen_p4.py]
+- [P5] Child [child_crossing.script][smirk_data-gen_p5.py]
+- [P6] Male construction worker [worker_crossing.script][smirk_data-gen_p6.py]
 
-Negative examples: (WIP)
-- [N1] Sphere crossing from the left [sphere_crossing.script][smirk_data-gen_n1.py]
-- [N2] Sphere crossing from the right [sphere_crossing.script][smirk_data-gen_n2.py]
-- [N3] Cube crossing from the left [cube_crossing.script][smirk_data-gen_n3.py]
-- [N4] Cube crossing from the right [cube_crossing.script][smirk_data-gen_n4.py]
-- [N5] Cone crossing from the left [cone_crossing.script][smirk_data-gen_n5.py]
-- [N6] Cone crossing from the right [cone_crossing.script][smirk_data-gen_n6.py]
+Negative examples:
+- [N1] Sphere [sphere_crossing.script][smirk_data-gen_n1.py]
+- [N3] Cube [cube_crossing.script][smirk_data-gen_n2.py]
+- [N5] Cone [cone_crossing.script][smirk_data-gen_n3.py]
 
 Moreover, all of the above scenarios contain pedestrians and objects standing still on the road and moving on the road toward or away from ego car.
 
@@ -168,12 +159,14 @@ As the SMIRK data collection campaign relies on data generation in ESI Pro-SiVIC
 
 SMIRK includes a script to generate bounding boxes for training the object detection model. Pro-SiVIC generates ground truth image segmentation on a pixel-level. [The script](TBD) is used to convert the output to the approriate input format for model training. TBD...
 
+DESCRIBE SAMPLING HERE?
+
 ## 4.3 Data Splitting
 The generated SMIRK data will be used in sequestered data sets as follows:
 
-- Development data: [P1], [P4], [P6], [P7], [P9], [P12], [N2], [N3], and [N6]
-- Internal test data: [P2], [P5], [P10], [N1], and [N5]
-- Verification data: [P3], [P8], [P11], and [N4]
+- Development data: [P2], [P3], and [N1]
+- Internal test data: [P1], [P4], and [N2] 
+- Verification data: [P5], [P6], and [N3]
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 The figure below shows the ML data argument pattern using GSN. The pattern follows the example provided in AMLAS, but adapts it to the specific SMIRK case.
