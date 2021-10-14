@@ -178,7 +178,7 @@ Negative examples:
 
 All four configuration files for negative examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road either from left or right. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the center of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects's starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
 
-Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+- Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
 ## 4.2 Preprocessing
 As the SMIRK data collection campaign relies on data generation in ESI Pro-SiVIC, the need for pre-processing differs from counterparts using using naturalistic data. To follow convention, we refer to the data processing between data collection and model training as pre-processing - although post-processing would be a more correct term in SMIRK. We have developed scripts that generate data sets representing the scenarios listed in Section 4.1. The scripts ensure that the crossing pedestrians and objects appear at the right distance with specified conditions and without occlusion. All output images are share the same characteristics, thus no normalization is needed.
