@@ -1,4 +1,4 @@
-# System Requirements Specification v0.3
+# System Requirements Specification v0.4
 
 Revision History
 <table>
@@ -22,9 +22,15 @@ Revision History
 </tr>
 <tr>
 <td>Markus Borg, Jens Henriksson</td>
-<td>WIP</td>
-<td>Working toward the first complete draft.</td>
+<td>2021-10-18</td>
+<td>Complete draft.</td>
 <td>0.3</td>
+</tr>
+<tr>
+<td>Markus Borg, Jens Henriksson</td>
+<td>WIP</td>
+<td>Updated after internal review.</td>
+<td>0.4</td>
 </tr>
 <tr>
 <td></td>
