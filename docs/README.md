@@ -44,15 +44,15 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) | Done |
 |     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | Formal inspection needed |
 |     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) | Done |
-|     [U]   | Model Development Log                          |                 |          4         | TBD | Not started |
+|     [U]   | Model Development Log                          |                 |          4         | TBD | In progress |
 |     [V]   | ML Model                                           |       5, 6      |          4         | TBD | In progress |
 |     [W]   | ML Learning Argument Pattern                   |          4      |                    | [MLCS Sec 5](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>) | Done |
-|     [X]   | Internal Test Results                          |                 |            4       | TBD | Not started |
-|     [Y]   | ML Learning Argument                           |                 |            4       | TBD | Not started |
-|     [Z]   | ML Verification Results                        |                 |            5       | TBD | Not started |
-|     [AA]  | Verification Log                               |                 |            5       | TBD | Not started |
+|     [X]   | Internal Test Results                          |                 |            4       | TBD | In progress |
+|     [Y]   | ML Learning Argument                           |                 |            4       | TBD | In progress |
+|     [Z]   | ML Verification Results                        |                 |            5       | TBD | In progress |
+|     [AA]  | Verification Log                               |                 |            5       | TBD | In progress |
 |     [BB]  | ML Verification Argument Pattern               |          5      |                    | [STS Sec 5](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>) | Done |
-|     [CC]  | ML Verification Argument                       |                 |            5       | TBD | Not started |
+|     [CC]  | ML Verification Argument                       |                 |            5       | TBD | In progress |
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
 |     [EE]  | Operational scenarios                          |         6       |                    | TBD | Not started |
 |     [FF]  | Integration Testing Results                        |                 |          6         | TBD | Not started |
