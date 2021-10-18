@@ -204,7 +204,20 @@ The top claim is that the data used during the development and verification of t
 Claim G3.3 states that the generated data satisfies the data requirements in context of the decisions made during data collection. The details of the data collection, along with rationales, are recorded in the Data Collection Log [Q]. The argumentation strategy (S2.2) uses refinement mapping to the assurance-related desiderata of the data requirements. The refinement of the desiderata into concrete data requirements for the object detection component of SMIRK, given the ODD, is justified by an analysis of the expected traffic agents and objects that can appear in ESI Pro-SiVIC. For each subclaim corresponding to a desiderata, i.e., relevance (G3.4), completeness (G3.5), accuracy (G3.6), and balance (G3.7), there is evidence in a matching section in the ML Data Validation Report [S].
 
 # 6 ML Data Validation Results [S] <a name="data_validation_results"></a>
-TBD.
+The SMIRK ML data validation consists of two activities, a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the data requirements and an analysis of the datasets. 
+
+First, the SMILE project conducted a Fagan inspection, i.e., a formal inspection, consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire DMS.
+
+1. Planning: The authors prepared the DMS and invited the required reviewers to an inspection meeting.
+1. Overview: During one of the regular project meetings, the lead authors explained the fundamental stucture of the DMS to the reviewers. The partly relevant SRS inspection checklist was also introduced. Reviewers were also assigned particular inspection perspectives based on their individual expertise. All information was repeated in an email, as not all reviewers were present at the meeting.
+1. Preparation: All reviewers conducted an individual inspection of the DMS, noting any questions, issues, and required improvements.
+1. Inspection meeting: After sufficient time for the individual inspections, the lead authors and all reviewers met for a virtual meeting. The entire document was discussed, and the findings from the independent inspections were compared. All issues were compiled in an inspection protocol.
+1. Rework: The lead authors updated the SRS according to the inspection protocol.
+1. Follow-up: Selected reviewers verified that the previously found issues had been correctly resolved. 
+
+The inspection protocol is available at TBD.
+
+Second, the SMILE project analyzed the characteristics of the datasets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE reviewers manually analyzed a random sample of images from the dataset <TBD, DESCRIBE HOW WE DO THIS>
 
 # 7 ML Data Argument [T] <a name="data_argument"></a>
 SMIRK instantiates the ML Data Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Data Argument Pattern [R]](</docs/Data Management Specification.md#data_argument_pattern>), as well as the following artefacts from preceding AMLAS activities:
