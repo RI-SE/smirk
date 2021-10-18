@@ -1,4 +1,4 @@
-# Data Management Specification v0.2
+# Data Management Specification v0.3
 
 Revision History
 <table>
@@ -16,9 +16,15 @@ Revision History
 </tr>
 <tr>
 <td>Markus Borg, Kasper Socha</td>
+<td>2021-10-15</td>
+<td>Version used when generating datasets.</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</td>
 <td>WIP</td>
 <td>Working toward the first complete draft.</td>
-<td>0.2</td>
+<td>0.3</td>
 </tr>
 <tr>
 <td></td>
