@@ -48,7 +48,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [V]   | ML Model                                           |       5, 6      |          4         | TBD | In progress |
 |     [W]   | ML Learning Argument Pattern                   |          4      |                    | [MLCS Sec 5](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>) | Done |
 |     [X]   | Internal Test Results                          |                 |            4       | TBD | In progress |
-|     [Y]   | ML Learning Argument                           |                 |            4       | TBD | In progress |
+|     [Y]   | ML Learning Argument                           |                 |            4       | [MLCS Sec 6](</docs/ML%20Component%20Specification.md#6-ml-learning-argument-y>) | Done |
 |     [Z]   | ML Verification Results                        |                 |            5       | TBD | In progress |
 |     [AA]  | Verification Log                               |                 |            5       | TBD | In progress |
 |     [BB]  | ML Verification Argument Pattern               |          5      |                    | [STS Sec 5](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>) | Done |
