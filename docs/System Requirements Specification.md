@@ -27,7 +27,7 @@ Revision History
 <td>0.3</td>
 </tr>
 <tr>
-<td>Markus Borg, Jens Henriksson</td>
+<td>Jens Henriksson, Kasper Socha</td>
 <td>WIP</td>
 <td>Updated after internal review.</td>
 <td>0.4</td>
