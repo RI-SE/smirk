@@ -1040,7 +1040,16 @@ Strategy 2.1 is refined into two subclaims about the validity of the ML safety r
 Subclaim G2.4 states that the ML safety requirements are a valid devlopment of the allocated system safety requirements. The justification (J2.2) is that the requirements have been validated in cross-organizational workshops within the SMILE3 research project. We provide evidence through ML Safety Requirements Validation Results [J] originiating in a Fagan inspection (Sn2.2).
 
 # 8 ML Safety Requirements Validation Results [J]
-TBD - A Fagan inspection with the SMILE partners?
+The SMILE project conducted a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the ML safety requirements, i.e., a formal inspection consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire SRS.
+
+1. Planning: The authors prepared the SRS and invited the required reviewers to an inspection meeting.
+1. Overview: During one of the regular project meetings, the lead authors explained the fundamental stucture of the SRS to the reviewers. The SRS inspection checklist was also introduced. Reviewers were also assigned particular inspection perspectives based on their individual expertise. All information was repeated in an email, as not all reviewers were present at the meeting.
+1. Preparation: All reviewers conducted an individual inspection of the SRS, noting any questions, issues, and required improvements.
+1. Inspection meeting: After sufficient time for the individual inspections, the lead authors and all reviewers met for a virtual meeting. The entire document was discussed, and the findings from the independent inspections were compared. All issues were compiled in an inspection protocol.
+1. Rework: The lead authors updated the SRS according to the inspection protocol.
+1. Follow-up: Selected reviewers verified that the previously found issues had been correctly resolved. 
+
+The inspection protocol is available at TBD.
 
 # 9 ML Safety Requirements Argument [K]
 SMIRK instantiates the ML safety requirements argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Safety Requirements Argument Pattern [I]](</docs/System Requirements Specification.md#5-ml-assurance-scoping-argument-pattern-f->), as well as the following artefacts from preceding AMLAS activities:
