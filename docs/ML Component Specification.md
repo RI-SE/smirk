@@ -59,10 +59,14 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 # 2 ML Component Description [D] <a name="ml_comp_desc"></a>
 This section describes the object detection component in SMIRK. 
 
-# 3 Neural Network Architecture 
+- Neural Network Architecture 
+
+# 3 Model Development Log [U] 
 TBD
 
-# 4 Safety Cage Architecture
+# 4 Outlier Detection for the Safety Cage Architecture
+SMIRK relies on the open-source third party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture.
+
 TBD
 
 # 5 ML Model Learning Argument Pattern [W]
@@ -74,3 +78,9 @@ The top claim (G4.1) in this argument pattern is that the development of the lea
 
 Sub-claim G4.3 addresses the approach that was used when developing the model. The claim is supported by three claims regarding the type of model selected, the transfer learning process used, and the model parameters selected, respectively. First, G4.5 claims that the type of model is appropriate for the specified ML safety requirements and the other model constraints. Second, G4.6 claims that the process followed to allow transfer learning is appropriate. ML development processes, including transfer learning, are highly iterative thus rationales for development decisions must be recorded. Third, G4.7 claims that the parameters of the ML model are appropiately selected to tune performance toward the object detection task in the specified ODD. Rationales for any decisions in G4.5-G4.7 are recorded in the model development log [U].
 
+# 6 ML Learning Argument [Y]
+SMIRK instantiates the ML Learning Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Learning Argument Pattern [W]](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>), as well as the following artefacts from preceding AMLAS activities:
+- [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
+- [Development Data](TBD) [N]
+- [Internal Test Data](TBD) [O]
+  
