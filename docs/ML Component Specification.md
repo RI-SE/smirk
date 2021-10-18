@@ -64,6 +64,8 @@ This section describes the object detection component in SMIRK.
 # 3 Model Development Log [U] 
 TBD
 
+The [Internal Test Report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/ML%20Model%20Internal%20Test%20Report.md) [X] provides evidence that the ML model satisfies the requirements on the internal test data.
+
 # 4 Outlier Detection for the Safety Cage Architecture
 SMIRK relies on the open-source third party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture.
 
