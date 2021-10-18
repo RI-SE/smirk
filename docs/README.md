@@ -36,7 +36,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | [SRS Sec 9](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#9-ml-safety-requirements-validation-results-j) | Formal inspection needed |
 |     [K]   |     ML Safety Requirements Argument                |                 |            2       | [SRS Sec 10](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#10-ml-safety-requirements-argument-k) | Done |
 |     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) | Done |
-|     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) | In progress |
+|     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) | Done |
 |     [N]   | Development Data                                   |                 |          3         | TBD | In progress |
 |     [O]   | Internal Test Data                                 |                 |          3         | TBD | In progress |
 |     [P]   | Verification Data                                  |                 |          3         | TBD | In progress |
