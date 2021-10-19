@@ -64,11 +64,11 @@ class RadarData:
 
 
 class Radar:
-    """Prosivic radar.
+    """Prosivic radar. The radar is assumed to be centered on the front of the car.
 
     Attributes:
         name: Name of the prosivic radar object.
-        collision_width: Lateral distance for ttc calculations e.g. half car width if radar is centered.
+        collision_width: Lateral distance for ttc calculations e.g. half car width.
     """
 
     def __init__(self, name: str, collision_width: float) -> None:

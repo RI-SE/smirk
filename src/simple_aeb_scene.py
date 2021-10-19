@@ -57,7 +57,7 @@ class SimpleAebScene:
         self.simulation = Simulation(self.SCRIPT_NAME)
         self.car = Car(self.simulation, self.EGO_CAR_NAME)
         self.camera = Camera(self.simulation, self.CAMERA_NAME)
-        self.radar = Radar(self.RADAR_NAME, self.CAR_WIDTH)
+        self.radar = Radar(self.RADAR_NAME, self.CAR_WIDTH / 2)
         self.collision_observer = DistanceObserver(
             self.simulation, self.DISTANCE_OBSERVER_NAME
         )
