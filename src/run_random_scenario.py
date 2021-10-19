@@ -77,13 +77,13 @@ def setup_scenario(
     scene: SimpleAebScene, scenario_type: str, parameters: Dict[Any, Any]
 ) -> None:
     if scenario_type == "left":
-        scene.setup_scenario_walk_from_left(**parameters)
+        scene.setup_scenario_pedestrian_from_left(**parameters)
     if scenario_type == "right":
-        scene.setup_scenario_walk_from_right(**parameters)
+        scene.setup_scenario_pedestrian_from_right(**parameters)
     if scenario_type == "towards":
-        scene.setup_scenario_walk_towards(**parameters)
+        scene.setup_scenario_pedestrian_towards(**parameters)
     if scenario_type == "away":
-        scene.setup_scenario_walk_away(**parameters)
+        scene.setup_scenario_pedestrian_away(**parameters)
 
 
 def step_until_end_condition(scene: SimpleAebScene, smirk: Smirk):
@@ -110,7 +110,7 @@ def step_until_end_condition(scene: SimpleAebScene, smirk: Smirk):
         )
 
         if (
-            collision_data.has_car_passed_pedestrian
+            collision_data.has_car_passed_object
             or collision_data.is_collision
             or car_speed < 0.1
         ):

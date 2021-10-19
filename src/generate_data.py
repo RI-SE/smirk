@@ -26,7 +26,7 @@ def ensure_list(value):
     return [value]
 
 
-def get_left_right_args(scenario_config):
+def get_pedestrian_left_right_args(scenario_config):
     pedestrian_config = scenario_config.pedestrian
     car_speeds = [0]
 
@@ -40,7 +40,7 @@ def get_left_right_args(scenario_config):
     )
 
 
-def get_towards_away_args(scenario_config):
+def get_pedestrian_towards_away_args(scenario_config):
     pedestrian_config = scenario_config.pedestrian
     car_speeds = [0]
 
@@ -53,21 +53,65 @@ def get_towards_away_args(scenario_config):
     )
 
 
+def get_object_left_right_args(scenario_config):
+    object_config = scenario_config.object
+    car_speeds = [0]
+
+    return itertools.product(
+        ensure_list(object_config.type),
+        object_config.distances_from_car,
+        object_config.distances_from_road,
+        object_config.speeds,
+        car_speeds,
+    )
+
+
 def step_until_end_condition(
     scenario_config: DictConfig, scene: SimpleAebScene
 ) -> None:
-    max_walking_distance = scenario_config.pedestrian.get(
-        "max_walking_distance", float("inf")
-    )
+    max_travel_distance = scenario_config.get("max_travel_distance", float("inf"))
 
     while True:
         scene.simulation.step(20)
 
         if (
-            scene.has_pedestrian_crossed_road()
-            or scene.get_pedestrian_distance_walked() >= max_walking_distance
+            scene.has_object_crossed_road()
+            or scene.get_object_distance_traveled() >= max_travel_distance
         ):
             return
+
+
+def handle_pedestrian_scenario(scenario_config: DictConfig, scene: SimpleAebScene):
+    if scenario_config.type == "left":
+        for scenario_args in get_pedestrian_left_right_args(scenario_config):
+            scene.setup_scenario_pedestrian_from_left(*scenario_args)
+            step_until_end_condition(scenario_config, scene)
+    elif scenario_config.type == "right":
+        for scenario_args in get_pedestrian_left_right_args(scenario_config):
+            scene.setup_scenario_pedestrian_from_right(*scenario_args)
+            step_until_end_condition(scenario_config, scene)
+    elif scenario_config.type == "towards":
+        for scenario_args in get_pedestrian_towards_away_args(scenario_config):
+            scene.setup_scenario_pedestrian_towards(*scenario_args)
+            step_until_end_condition(scenario_config, scene)
+    elif scenario_config.type == "away":
+        for scenario_args in get_pedestrian_towards_away_args(scenario_config):
+            scene.setup_scenario_pedestrian_away(*scenario_args)
+            step_until_end_condition(scenario_config, scene)
+    else:
+        raise ValueError(f"Unknown pedestrian scenario type: {scenario_config.type}")
+
+
+def handle_object_scenario(scenario_config: DictConfig, scene: SimpleAebScene):
+    for scenario_args in get_object_left_right_args(scenario_config):
+        if scenario_config.type == "left":
+            scene.setup_scenario_object_from_left(*scenario_args)
+        elif scenario_config.type == "right":
+            scene.setup_scenario_object_from_left(*scenario_args)
+        else:
+            raise ValueError(f"Unknown object scenario type: {scenario_config.type}")
+
+        step_until_end_condition(scenario_config, scene)
 
 
 def generate_data(config_path: Path) -> None:
@@ -76,24 +120,11 @@ def generate_data(config_path: Path) -> None:
 
     for i, scenario_config in enumerate(config.scenarios):
         print(f"\nRunning configuration {i} type={scenario_config.type}")
-        if scenario_config.type == "left":
-            for scenario_args in get_left_right_args(scenario_config):
-                scene.setup_scenario_walk_from_left(*scenario_args)
-                step_until_end_condition(scenario_config, scene)
-        elif scenario_config.type == "right":
-            for scenario_args in get_left_right_args(scenario_config):
-                scene.setup_scenario_walk_from_right(*scenario_args)
-                step_until_end_condition(scenario_config, scene)
-        elif scenario_config.type == "towards":
-            for scenario_args in get_towards_away_args(scenario_config):
-                scene.setup_scenario_walk_towards(*scenario_args)
-                step_until_end_condition(scenario_config, scene)
-        elif scenario_config.type == "away":
-            for scenario_args in get_towards_away_args(scenario_config):
-                scene.setup_scenario_walk_away(*scenario_args)
-                step_until_end_condition(scenario_config, scene)
-        else:
-            raise ValueError(f"Unknown scenario type {scenario_config.type}")
+
+        if scenario_config.get("pedestrian"):
+            handle_pedestrian_scenario(scenario_config, scene)
+        elif scenario_config.get("object"):
+            handle_object_scenario(scenario_config, scene)
 
 
 if __name__ == "__main__":
