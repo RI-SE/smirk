@@ -58,6 +58,7 @@ The testing process must be independent from the development. Neither developers
 ## 1.6 References ##
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
+- Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
 - Riccio, Jahangirova, Stocco, Humbatova, Weiss, and Tonella. Testing Machine Learning Based Systems: A Systematic Mapping, Empirical Software Engineering, 25, 5193-5254, 2020.
 - Zhang, Harman, Ma, and Liu. Machine Learning Testing: Survey, Landscapes and Horizons. IEEE Transactions on Software Engineering, 2020.
 
@@ -69,9 +70,22 @@ This section describes the overall ML test strategy. The SMIRK ML-based object d
 - Unit testing: Conventional unit testing on the level of Python classes. SMIRK provides a test suite for execution with the pytest framework.
 - System testing: System-level testing of the SMIRK ADAS. All test cases are designed for execution in ESI Pro-SiVIC. The system testing targets the requirements in the [System Requirements Specification](</docs/System Requirements Specification.md>).
 
-# 3 ML Model Test Case Specifications
+# 3 ML Model Test Cases
+The testing of the SMIRK ML model is based on assessing the object detection accuracy for the sequestered verification dataset. A fundamental aspect of the verification argument is that this dataset was never used in any way during the development of the ML model. The test cases provide results for both 1) the entire verification dataset and 2) nine slices of the dataset that are particularly important. The selection of slices is motivated by either an analysis of the available technology or ethical considerations, especially from the perspective of AI fairness (Borg et al., 2021).
 
-# 4 System Test Case Specifications
+Consequently, we measure the performance for the following sets of data. Identifiers in parentheses show direct connections to requirements.
+1. The entire verification dataset
+1. Pedestrians close to the ego car (longitudinal distance <50 m) (SYS-PER-REQ1, SYS-PER-REQ2)
+1. Pedestrians far from the ego car (longitudinal distance >= 50m) (
+1. Running pedestrians (speed >= 3 m/s) (SYS-ROB-REQ2)
+1. Walking pedestrians (speed > 0 m/s but < 3 m/s) (SYS-ROB-REQ2)
+1. Pedestrians standing still (speed = 0 m/s) (SYS-ROB-REQ2)
+1. Occluded pedestrians (entering or leaving the field of view) (DAT-COM-REQ4)
+1. Male pedestrians (DAT-COM-REQ2)
+1. Female pedestrians (DAT-COM-REQ2)
+1. Children (DAT-COM-REQ2)
+
+# 4 System Test Cases
 
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
