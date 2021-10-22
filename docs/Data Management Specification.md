@@ -93,7 +93,7 @@ This desiderata considers the sampling strategy across the input domain and its 
 
 - DAT-COM-REQ1: The data samples shall include sufficient range of environmental factors within the scope of the ODD.
 - DAT-COM-REQ2: The data samples shall include sufficient range of pedestrians within the scope of the ODD.
-- DAT-COM-REQ3: The data samples shall include images representing a sufficient range of distances to crossing detestrians up to that required by the decision making aspect of the perception pipeline.
+- DAT-COM-REQ3: The data samples shall include images representing a sufficient range of distances to crossing pedestrians up to that required by the decision making aspect of the perception pipeline.
 - DAT-COM-REQ4: The data samples shall include examples with a sufficient range of levels of occlusion giving partial view of pedestrians crossing the road.
 - DAT-COM-REQ5: The data samples shall include a sufficient range of examples reflecting the effects of identified system failure modes.
 
@@ -210,7 +210,7 @@ The top claim is that the data used during the development and verification of t
 Claim G3.3 states that the generated data satisfies the data requirements in context of the decisions made during data collection. The details of the data collection, along with rationales, are recorded in the Data Collection Log [Q]. The argumentation strategy (S2.2) uses refinement mapping to the assurance-related desiderata of the data requirements. The refinement of the desiderata into concrete data requirements for the object detection component of SMIRK, given the ODD, is justified by an analysis of the expected traffic agents and objects that can appear in ESI Pro-SiVIC. For each subclaim corresponding to a desiderata, i.e., relevance (G3.4), completeness (G3.5), accuracy (G3.6), and balance (G3.7), there is evidence in a matching section in the ML Data Validation Report [S].
 
 # 6 ML Data Validation Results [S] <a name="data_validation_results"></a>
-The SMIRK ML data validation consists of two activities, a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the data requirements and an analysis of the datasets. 
+The SMIRK ML data validation consists of two activities, a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the data requirements and an analysis of the datasets. Moreover, as the SMIRK data is generated in ESI Pro-SiVIC, we argue that the corresponding [scripts](https://github.com/RI-SE/smirk/tree/main/pedestrian-generator) result in data that complies with most data requirements.
 
 First, the SMILE project conducted a Fagan inspection, i.e., a formal inspection, consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire DMS.
 
@@ -223,7 +223,11 @@ First, the SMILE project conducted a Fagan inspection, i.e., a formal inspection
 
 The inspection protocol is available at TBD.
 
-Second, the SMILE project analyzed the characteristics of the datasets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE reviewers manually analyzed a random sample of images from the dataset <TBD, DESCRIBE HOW WE DO THIS>
+Second, the SMILE project analyzed the characteristics of the datasets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE reviewers manually analyzed a random sample of images from the dataset <TBD, DESCRIBE HOW WE DO THIS>.
+
+Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-)
+- Relevant: DAT-REL-REQ1 to DAT-REL-REQ7 are implicitly met by the data generation scripts. Everything present in the dataset has been explicitly added by the SMIRK developers in the scripts. Nothing but relevant data samples captured using a forward-facing camera in a valid sensor position has been added to the scripts. No outlier objects exist in the data sets.
+- Complete: DAT-COM-REQ is satisfied as the ODD is restricted to excellent driving conditions. The data sets complies with DAT-COM-REQ2 since we explicitly cover six pedestrian types available in the ESI Pro-SiVIC object catalog. DAT-COM-REQ3 is satisfied through scripts that explicitly generate data that covers longitudinal distances between 10 meters and 100 meters. DAT-COM-REQ4 is met since the scripts ensure data collection from the point in time that pedestrians enter the camera's field of vision (a hand becomes available) until the pedestrian leaves (only a foot remains). DAT-COM-REQ5 is implicitly satisfied as the ideal camera in ESI Pro-SiVIC does not fail, i.e., there will be no dirt on the lens or cracks in the optics.
 
 # 7 ML Data Argument [T] <a name="data_argument"></a>
 SMIRK instantiates the ML Data Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Data Argument Pattern [R]](</docs/Data Management Specification.md#data_argument_pattern>), as well as the following artefacts from preceding AMLAS activities:
