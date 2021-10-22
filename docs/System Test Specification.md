@@ -58,9 +58,16 @@ The testing process must be independent from the development. Neither developers
 ## 1.6 References ##
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
+- Riccio, Jahangirova, Stocco, Humbatova, Weiss, and Tonella. Testing Machine Learning Based Systems: A Systematic Mapping, Empirical Software Engineering, 25, 5193-5254, 2020.
+- Zhang, Harman, Ma, and Liu. Machine Learning Testing: Survey, Landscapes and Horizons. IEEE Transactions on Software Engineering, 2020.
 
 # 2 ML Test Strategy <a name="strategy"></a>
-This section describes the overall ML test strategy.
+This section describes the overall ML test strategy. The SMIRK ML-based object detection component is tested on multiple levels.
+
+- Dataset testing: This level refers to automatic checks that verify that specific properties of the dataset are satisfied. As described in the [ML Data Validation Results](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#6-ml-data-validation-results-s-), the data validation includes automated testing of the Balance desiderata. Zhang et al. (2020) refer to dataset testing as Input testing.
+- Model testing: Testing that the ML model provides the expected output. This is the primary focus of academic research on ML testing, and includes white-box, black-box, and data-box access levels during testing (Riccio et al., 2020). This is described in Section 3.
+- Unit testing: Conventional unit testing on the level of Python classes. SMIRK provides a test suite for execution with the pytest framework.
+- System testing: System-level testing of the SMIRK ADAS. All test cases are designed for execution in ESI Pro-SiVIC. The system testing targets the requirements in the [System Requirements Specification](</docs/System Requirements Specification.md>).
 
 # 3 ML Model Test Case Specifications
 
