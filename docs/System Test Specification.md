@@ -1,4 +1,4 @@
-# System Test Specification v0.2
+# System Test Specification v0.3
 
 Revision History
 <table>
@@ -15,10 +15,16 @@ Revision History
 <td>0.1</th>
 </tr>
 <tr>
+<td>Olof Lennertsson, Elias Sonnsjö</th>
+<td>2021-10-26</th>
+<td>Draft version of ML model test cases.</th>
+<td>0.2</th>
+</tr>
+<tr>
 <td>Markus Borg</th>
 <td>WIP</th>
 <td>Toward a complete draft.</th>
-<td>0.2</th>
+<td>0.3</th>
 </tr>
 <tr>
 <td></td>
@@ -71,12 +77,14 @@ This section describes the overall ML test strategy. The SMIRK ML-based object d
 - System testing: System-level testing of the SMIRK ADAS. All test cases are designed for execution in ESI Pro-SiVIC. The system testing targets the requirements in the [System Requirements Specification](</docs/System Requirements Specification.md>).
 
 # 3 ML Model Test Cases
-The testing of the SMIRK ML model is based on assessing the object detection accuracy for the sequestered verification dataset. A fundamental aspect of the verification argument is that this dataset was never used in any way during the development of the ML model. The test cases provide results for both 1) the entire verification dataset and 2) nine slices of the dataset that are particularly important. The selection of slices is motivated by either an analysis of the available technology or ethical considerations, especially from the perspective of AI fairness (Borg et al., 2021).
+The testing of the SMIRK ML model is based on assessing the object detection accuracy for the sequestered verification dataset. A fundamental aspect of the verification argument is that this dataset was never used in any way during the development of the ML model. To further ensure the independence of the ML verification, engineers from [Infotiv](https://www.infotiv.se/), part of the SMILE3 research consortium, led the verification activities. Infotiv led the corresponding V\&V work package and were not in any way involved in the development of the ML model. As described in the [Machine Learning Component Specification](</docs/ML Component Specification.md>), the ML development was led by [Semcon](https://semcon.com/) with support from [RISE Research Institutes of Sweden](https://www.ri.se/en).
+
+The ML model test cases provide results for both 1) the entire verification dataset and 2) nine slices of the dataset that are deemed particularly important. The selection of slices was motivated by either an analysis of the available technology or ethical considerations, especially from the perspective of AI fairness (Borg et al., 2021).
 
 Consequently, we measure the performance for the following sets of data. Identifiers in parentheses show direct connections to requirements.
 1. The entire verification dataset
 1. Pedestrians close to the ego car (longitudinal distance <50 m) (SYS-PER-REQ1, SYS-PER-REQ2)
-1. Pedestrians far from the ego car (longitudinal distance >= 50m) (
+1. Pedestrians far from the ego car (longitudinal distance >= 50m)
 1. Running pedestrians (speed >= 3 m/s) (SYS-ROB-REQ2)
 1. Walking pedestrians (speed > 0 m/s but < 3 m/s) (SYS-ROB-REQ2)
 1. Pedestrians standing still (speed = 0 m/s) (SYS-ROB-REQ2)
@@ -84,6 +92,10 @@ Consequently, we measure the performance for the following sets of data. Identif
 1. Male pedestrians (DAT-COM-REQ2)
 1. Female pedestrians (DAT-COM-REQ2)
 1. Children (DAT-COM-REQ2)
+
+TBD: Describe how we measure the results on verification dataset and all slices. Intersection over union or perhaps https://dbolya.github.io/tide/
+
+Results from running ML model testing are document in the [Protocols folder](https://github.com/RI-SE/smirk/blob/main/docs/protocols/).
 
 # 4 System Test Cases
 
