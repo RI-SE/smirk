@@ -95,7 +95,7 @@ Consequently, we measure the performance for the following sets of data. Identif
 
 TBD: Describe how we measure the results on verification dataset and all slices. Intersection over union or perhaps https://dbolya.github.io/tide/
 
-Results from running ML model testing are document in the [Protocols folder](https://github.com/RI-SE/smirk/blob/main/docs/protocols/).
+Results from running ML model testing, i.e., ML Verification Results [Z], are documented in the [Protocols folder](https://github.com/RI-SE/smirk/blob/main/docs/protocols/).
 
 # 4 System Test Cases
 
