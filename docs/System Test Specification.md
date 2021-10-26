@@ -66,6 +66,7 @@ The testing process must be independent from the development. Neither developers
 - [Data Management Specification](</docs/Data Management Specification.md>)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
+- Hauer, Schmidt, Holzmüller, and Pretschner, 2019. Did We Test All Scenarios for Automated and Autonomous Driving Systems?. In Proc. of the 2019 IEEE Intelligent Transportation Systems Conference, pp. 2950-2955.
 - ISO/IEC/IEEE, 2018. [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) Systems and Software Engineering - Life Cycle Processes - Requirements Engineering.
 - Masuda, 2017. Software Testing Design Techniques Used in Automated Vehicle Simulations. In Proc. of the 2017 IEEE International Conference on Software Testing, Verification and Validation Workshops, pp. 300-303.
 - Riccio, Jahangirova, Stocco, Humbatova, Weiss, and Tonella. Testing Machine Learning Based Systems: A Systematic Mapping, Empirical Software Engineering, 25, 5193-5254, 2020.
@@ -80,7 +81,7 @@ This section describes the overall ML test strategy. The SMIRK ML-based object d
 - Unit testing: Conventional unit testing on the level of Python classes. SMIRK provides a test suite for execution with the pytest framework. Unit testing is conducted by the SMIRK developers and the results are reported on GitHub. This level of testing is not elaborated any further in this document.
 - System testing: System-level testing of the SMIRK ADAS based on a set of Operational Scenarios [EE]. All test cases are designed for execution in ESI Pro-SiVIC. The system testing targets the requirements in the [System Requirements Specification](</docs/System Requirements Specification.md>). This level of testing results in Integration Testing Results [FF] as described in Section 4.
 
-# 3 ML Model Test Cases
+# 3 ML Model Testing
 The testing of the SMIRK ML model is based on assessing the object detection accuracy for the sequestered verification dataset. A fundamental aspect of the verification argument is that this dataset was never used in any way during the development of the ML model. To further ensure the independence of the ML verification, engineers from [Infotiv](https://www.infotiv.se/), part of the SMILE3 research consortium, led the verification activities. Infotiv led the corresponding V\&V work package and were not in any way involved in the development of the ML model. As described in the [Machine Learning Component Specification](</docs/ML Component Specification.md>), the ML development was led by [Semcon](https://semcon.com/) with support from [RISE Research Institutes of Sweden](https://www.ri.se/en).
 
 The ML model test cases provide results for both 1) the entire verification dataset and 2) nine slices of the dataset that are deemed particularly important. The selection of slices was motivated by either an analysis of the available technology or ethical considerations, especially from the perspective of AI fairness (Borg et al., 2021).
@@ -101,7 +102,7 @@ TBD: Describe how we measure the results on verification dataset and all slices.
 
 Results from running ML model testing, i.e., ML Verification Results [Z], are documented in the [Protocols folder](https://github.com/RI-SE/smirk/blob/main/docs/protocols/).
 
-# 4 System Test Cases
+# 4 System Testing
 System-level testing of SMIRK involves integrating the ML model into the object detection component and the complete PAEB ADAS. We do this by defining a set of Operational Scenarios [EE] for which we assess the satisfaction of the [ML Safety Requirements](</docs/System Requirements Specification.md#ml_safety_reqts>). The results from the system-level testing, i.e., the Integration Testing Results [FF], are documented in the [Protocols folder](https://github.com/RI-SE/smirk/blob/main/docs/protocols/).
 
 ## 4.1 Operational scenarios [EE] ##
@@ -133,6 +134,11 @@ The dimensions and ranges listed above results in 324 possible combinations. Usi
 For each operational scenario, two test parameters represent ranges of values, i.e., the longitudinal distance between ego car and the pedestrian and the speed of ego car. For these two test parameters, we identify a combination of values that result in a collision unless the SMIRK system initiates emergency braking. 
 
 The complete set of operational scenarios, realized as 32 executable test scenarios in ESI Pro-SiVIC, are available in TODO: upload the test scripts.
+
+## 4.2 System Test Cases ##
+The system test cases are split into three categories. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the stritly reproducable Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analaguous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that our system level testing does not suffer from the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not.
+
+The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019).
 
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
