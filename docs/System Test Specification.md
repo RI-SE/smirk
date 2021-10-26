@@ -111,7 +111,7 @@ As SMIRK is designed to operate in ESI Pro-SiVIC, the difference between definin
 
 Based on an analysis of the [ML Safety Requirements](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#33-machine-learning-safety-requirements-h-) and the [Data Requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we define operational scenarios addressing SYS-ML-REQ1 and SYS-ML-REQ2 separately. For each subset of operational scenarios, we identify key variation dimensions (i.e., parameters in test scenario generation) and split dimensions into equivalence classes using explicit ranges. Note that ESI Pro-SiVIC enables limited configurability of basic shapes compared to pedestrians, thus the corresponding number of operational scenarios is lower.
 
-Operational Scenarios for SYS-ML-REQ1:
+**Operational Scenarios for SYS-ML-REQ1:**
 - Pedestrian starting point (lateral offset from the road in meters): Left side of the road (-5 m), On the road (0 m), Right side of the road (5 m)
 - Longitudinal distance from ego car (offset in meters): Close (<25m), Medium distance (25-50 m), Far away (>50 m)
 - Pedestrian appearance: Male casual, Female casual, Male business, Female business, Male worker, Child
@@ -121,7 +121,7 @@ Operational Scenarios for SYS-ML-REQ1:
 
 The dimensions and ranges listed above results in 2,430 possible combinations. Using combinatatorial testing, we create a set of 18 operational scenarios that provides pair-wise coverage of all equivalence classes.
 
-Operational Scenarios for SYS-ML-REQ2:
+**Operational Scenarios for SYS-ML-REQ2:**
 - Object starting point (lateral offset from the road in meters): Left side of the road (-5 m), On the road (0 m), Right side of the road (5 m)
 - Longitudinal distance from ego car (offset in meters): Close (<25m), Medium distance (25-50 m), Far away (>50 m)
 - Object appearance: Sphere, Cube, Cone, Pyramid
@@ -130,7 +130,9 @@ Operational Scenarios for SYS-ML-REQ2:
 
 The dimensions and ranges listed above results in 324 possible combinations. Using combinatatorial testing, we create a set of 14 operational scenarios that provides pair-wise coverage of all equivalence classes.
 
-For each operational scenario, two test parameters represent ranges of values, i.e., the longitudinal distance between ego car and the pedestrian and the speed of ego car. For these two test parameters, we identify a combination of values that result in a collision unless the SMIRK system initiates emergency braking. The complete set of test cases, representing the operational scenarios, is available in TODO: upload the test scripts.
+For each operational scenario, two test parameters represent ranges of values, i.e., the longitudinal distance between ego car and the pedestrian and the speed of ego car. For these two test parameters, we identify a combination of values that result in a collision unless the SMIRK system initiates emergency braking. 
+
+The complete set of operational scenarios, realized as 32 executable test scenarios in ESI Pro-SiVIC, are available in TODO: upload the test scripts.
 
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
