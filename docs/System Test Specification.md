@@ -138,7 +138,18 @@ The complete set of operational scenarios, realized as 32 executable test scenar
 ## 4.2 System Test Cases ##
 The system test cases are split into three categories. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the stritly reproducable Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analaguous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that our system level testing does not suffer from the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not.
 
-The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019).
+| Test Case ID   | Type                 | Given               | When       | Then         |
+|----------------|----------------------|---------------------|------------|--------------|
+| TC-OS-[1-32]   | Operational Scenario | Scenario            | Pedestrian | No collision |
+| TC-RAND-[1-32] | Random Testing       | TC-OS-[1-32]+jitter | Pedestrian | No collision |
+|                |                      |                     |            |              |
+
+The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The Table below lists all system test cases, of all three categories, using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. The top-level safeyt requirement SYS-SAF-REQ1 will be verified by testing all detailed requirements.
+
+| Test Case ID | Requirement | Given    | When       | Then         |
+|--------------|-------------|----------|------------|--------------|
+| TC-REQ1      | SYS-ML-REQ1 | Scenario | Pedestrian | No collision |
+|              |             |          |            |              |
 
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
