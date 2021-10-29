@@ -52,9 +52,9 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [Z]   | ML Verification Results                        |                 |            5       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | In progress |
 |     [AA]  | Verification Log                               |                 |            5       | TBD | In progress |
 |     [BB]  | ML Verification Argument Pattern               |          5      |                    | [STS Sec 5](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>) | Done |
-|     [CC]  | ML Verification Argument                       |                 |            5       | TBD | In progress |
+|     [CC]  | ML Verification Argument                       |                 |            5       | [STS Sec 6](https://github.com/RI-SE/smirk/blob/main/docs/System%20Test%20Specification.md#6-ml-verification-argument-cc) | Done |
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
-|     [EE]  | Operational scenarios                          |         6       |                    | TBD | Not started |
+|     [EE]  | Operational scenarios                          |         6       |                    | [STS Sec 4.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Test%20Specification.md#41-operational-scenarios-ee) | Done |
 |     [FF]  | Integration Testing Results                        |                 |          6         | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | Not started |
 |     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | [DS Sec 5](</docs/Deployment%20Specification.md#5-ml-deployment-argument-pattern-bb>) | Done |
 |     [HH]  | ML Deployment Argument                         |                 |            6       | TBD | Not started |
