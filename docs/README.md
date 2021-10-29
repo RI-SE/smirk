@@ -4,7 +4,7 @@ In this folder, all documentation related to SMIRK is evolving. Everything is WI
 
 - [System Requirements Specification](</docs/System Requirements Specification.md>) (SRS)
 - [Data Management Specification](</docs/Data Management Specification.md>) (DMS)
-- Architecture Specification (AS)
+- [System Architecture Description](https://github.com/RI-SE/smirk/blob/main/docs/System%20Architecture%20Description.md) (SAD)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>) (MLCS)
 - [System Test Specification](</docs/System Test Specification.md>) (STS)
 - [Deployment Specification](</docs/Deployment Specification.md>) (DS)
