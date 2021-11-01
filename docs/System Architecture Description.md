@@ -1,4 +1,4 @@
-# System Architecture Description v0.1
+# System Architecture Description v0.3
 
 Revision History
 <table>
@@ -19,6 +19,12 @@ Revision History
 <td>2021-11-01</th>
 <td>Migrated existing content from joint work on MS Teams.</th>
 <td>0.2</th>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</th>
+<td>WIP</th>
+<td>Toward a complete draft.</th>
+<td>0.3</th>
 </tr>
 <tr>
 <td></td>
@@ -88,20 +94,20 @@ The SMIRK logical view is constituted by a description of the entities that real
 
 ![Logical_View](/docs/figures/logical_view.png) <a name="logical_view"></a>
 
-SMIRK consists of the following main components:​
-- Hardware sensors​ and actuators in ESI Pro-SiVIC
-	- Mono **Camera**​ (752x480 (WVGA), sensor dimension 3.13 cm x 2.00 cm, focal length 3.73 cm, angle of view 45 degrees)
-	- **Radar** unit (providing object tracking and relative lateral and longitudinal speeds)​
+SMIRK consists of the following main components:
+- Hardware sensors and actuators in ESI Pro-SiVIC
+	- Mono **Camera** (752x480 (WVGA), sensor dimension 3.13 cm x 2.00 cm, focal length 3.73 cm, angle of view 45 degrees)
+	- **Radar** unit (providing object tracking and relative lateral and longitudinal speeds)
 	- **Ego Car** (Audi A4 for which we are mostly concearned with the brake system)
-- Software components implemented in Python​
+- Software components implemented in Python
 	- **Radar Logic** (calculating TTC based on relative speeds)
-	- **Perception Orchestrator** (the overall perception logic)​
+	- **Perception Orchestrator** (the overall perception logic)
 	- **Rule Engine** (part of the safety cage, implementing heuristics such as pedestrians do not fly in the air)
 	- **Uncertainty Manager** (main part of the safety cage, implementing logic to avoid false positives)
-	- **Brake Manager** (calculating and sending brake signals to the ego car)​
-- Trained Machine Learning models​
+	- **Brake Manager** (calculating and sending brake signals to the ego car)
+- Trained Machine Learning models
 	- **Pedestrian Detector** (a YOLO model trained using PyTorch)
-	- **Anomaly Detector** (a third party component from [Seldon](https://github.com/SeldonIO/alibi-detect))​
+	- **Anomaly Detector** (a third party component from [Seldon](https://github.com/SeldonIO/alibi-detect))
 
 ## 3.2 Process View
 The process view deals with the dynamic aspects of SMIRK including an overview of the run time behavior of the system. The overall SMIRK flow is as follows:
@@ -125,24 +131,30 @@ The development view illustrates SMIRK from the perspective of the developers. A
 The physical view presents the system from a system engineer's point of view. As SMIRK is designed to be deployed in a simulated environment, i.e., ESI Pro-SiVIC, the phyical view is simplistic. TBD: Kasper to describe how SMIRK is integrated in ESI Pro-SiVIC. 
 
 ## 3.5 Scenarios
-Scenarios demonstrate the architecture through a small set of use cases. The figures below depict six standard PAEB scenarios. In the figures, *v* shows the speed of the car and the pedestrian, respectively.
+Scenarios demonstrate the architecture through a small set of use cases. The figures below depict six standard PAEB scenarios. In the figures, *v* shows the speed of the car and the pedestrian, respectively. If the constant motion vectors would results in a collision, SMIRK shall commence PAEB when the TTC is less than 4 seconds.
 
 Scenario 1 - Pedestrian crossing the road from the right.
+
 ![Scenario1](/docs/figures/scenario1.png) <a name="scenario1"></a>
 
 Scenario 2 - Pedestrian crossing the road from the left. 
+
 ![Scenario2](/docs/figures/scenario2.png) <a name="scenario2"></a>
 
 Scenario 3 - Pedestrian moving on the road toward the car. 
+
 ![Scenario3](/docs/figures/scenario3.png) <a name="scenario3"></a>
 
 Scenario 4 - Pedestrian moving on the road away from the car. 
+
 ![Scenario4](/docs/figures/scenario4.png) <a name="scenario4"></a>
 
 Scenario 5 - Pedestrian standing still on the road. 
+
 ![Scenario5](/docs/figures/scenario5.png) <a name="scenario5"></a>
 
-Scenario 6 - Pedestrian crossing the road from the right with the angle θ. 
+Scenario 6 - Pedestrian crossing the road from the right with the angle θ.
+
 ![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
 
 # 4 Architecture Decisions and Rationale
