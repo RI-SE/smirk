@@ -43,7 +43,7 @@ We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pr
 SMIRK assists the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2.
 
 ## 1.2 Document Conventions ##
-Names in bold font in the architecture views represent entities that can be fuond in the logical view.
+Names in bold font in the architecture views represent entities that can be found in the logical view.
 
 ## 1.3 Glossary
 - DDS: Data Distribution Service
@@ -68,9 +68,9 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vechicle. We 
 - Kruchten, 1995. The 4+1 View Model of Architecture. IEEE Software, 12(6), pp. 42-50.
 
 # 2 Architecture Viewpoints
-SMIRK is a pedestrian emergency braking ADAS. The system consists of two sensors (camera and radar/LiDAR) and a deep neural network trained for pedestrian detection. To minimize hazardous false positives, SMIRK implements a SMILE safety cage to reject input that is out-of-distribution.​
+SMIRK is a pedestrian emergency braking ADAS. The system consists of two sensors (camera and radar/LiDAR) and a deep neural network trained for pedestrian detection. To minimize hazardous false positives, SMIRK implements a SMILE safety cage to reject input that is out-of-distribution.
 
-If the radar detects an imminent collision between the ego car and an object, SMIRK will evaluate if the object is a pedestrian. If SMIRK is confident that the object is a pedestrian, it will apply emergency braking.​
+If the radar detects an imminent collision between the ego car and an object, SMIRK will evaluate if the object is a pedestrian. If SMIRK is confident that the object is a pedestrian, it will apply emergency braking.
 
 The primary purpose of SMIRK is to act as a proof-of-concept ADAS with a complete safety case for research purposes. To allow this, SMIRK is designed to operate in a highly restricted ODD that covers a straight rural road, good conditions, no other vehicles, and potentially a single pedestrian walking along or across the road. A complete description is available in the [Operational Design Domain](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#4-operational-design-domain-b-) in the SRS.
 
