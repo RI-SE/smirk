@@ -1,6 +1,6 @@
 # SMIRK Documentation
 
-In this folder, all documentation related to SMIRK is evolving. Everything is WIP.
+The following documents are available in this folder.
 
 - [System Requirements Specification](</docs/System Requirements Specification.md>) (SRS)
 - [Data Management Specification](</docs/Data Management Specification.md>) (DMS)
