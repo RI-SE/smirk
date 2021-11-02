@@ -1,4 +1,4 @@
-# Data Management Specification v0.3
+# Data Management Specification v0.4
 
 Revision History
 <table>
@@ -22,9 +22,16 @@ Revision History
 </tr>
 <tr>
 <td>Markus Borg, Kasper Socha</td>
-<td>WIP</td>
-<td>Working toward the first complete draft.</td>
+<td>2021-11-02</td>
+<td>Complete draft, except sampling details.</td>
 <td>0.3</td>
+</tr>
+<tr>
+<tr>
+<td>Jens Henriksson</td>
+<td>WIP</td>
+<td>Updated after internal review.</td>
+<td>0.4</td>
 </tr>
 <tr>
 <td></td>
