@@ -29,7 +29,7 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document containts the ML component specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
+This document contains the ML component specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
 
 We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
@@ -67,7 +67,7 @@ TBD
 The [Internal Test Report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/ML%20Model%20Internal%20Test%20Report.md) [X] provides evidence that the ML model satisfies the requirements on the internal test data.
 
 # 4 Outlier Detection for the Safety Cage Architecture
-SMIRK relies on the open-source third party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture.
+SMIRK relies on the open-source third-party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture.
 
 TBD
 
@@ -76,12 +76,12 @@ The figure below shows the ML model learning argument pattern using GSN. The pat
 
 ![GSN-ML-Model_Learning_Argument_Pattern](/docs/figures/gsn-model_learning_argument_pattern.png) <a name="gsn-ml_model_learning_argument"></a>
 
-The top claim (G4.1) in this argument pattern is that the development of the learnt model [V] is sufficient. The strategy is to argue over the internal testing of the model and that the ML development was approriate (S4.1) in context of creating a valid model that meets practical constraints such as real-time performance and cost (C4.2). Sub-claim (G4.2) is that the ML model satisifies the ML safety requirements when using the internal test data [O]. We justify that the internal test results indicate that the ML model satisfies the ML safety requirements (J3.1) by presenting evidence from the internal test results [X].
+The top claim (G4.1) in this argument pattern is that the development of the learned model [V] is sufficient. The strategy is to argue over the internal testing of the model and that the ML development was appropriate (S4.1) in context of creating a valid model that meets practical constraints such as real-time performance and cost (C4.2). Sub-claim (G4.2) is that the ML model satisfies the ML safety requirements when using the internal test data [O]. We justify that the internal test results indicate that the ML model satisfies the ML safety requirements (J3.1) by presenting evidence from the internal test results [X].
 
-Sub-claim G4.3 addresses the approach that was used when developing the model. The claim is supported by three claims regarding the type of model selected, the transfer learning process used, and the model parameters selected, respectively. First, G4.5 claims that the type of model is appropriate for the specified ML safety requirements and the other model constraints. Second, G4.6 claims that the process followed to allow transfer learning is appropriate. ML development processes, including transfer learning, are highly iterative thus rationales for development decisions must be recorded. Third, G4.7 claims that the parameters of the ML model are appropiately selected to tune performance toward the object detection task in the specified ODD. Rationales for any decisions in G4.5-G4.7 are recorded in the model development log [U].
+Sub-claim G4.3 addresses the approach that was used when developing the model. The claim is supported by three claims regarding the type of model selected, the transfer learning process used, and the model parameters selected, respectively. First, G4.5 claims that the type of model is appropriate for the specified ML safety requirements and the other model constraints. Second, G4.6 claims that the process followed to allow transfer learning is appropriate. ML development processes, including transfer learning, are highly iterative thus rationales for development decisions must be recorded. Third, G4.7 claims that the parameters of the ML model are appropriately selected to tune performance toward the object detection task in the specified ODD. Rationales for any decisions in G4.5-G4.7 are recorded in the model development log [U].
 
 # 6 ML Learning Argument [Y]
-SMIRK instantiates the ML Learning Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Learning Argument Pattern [W]](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>), as well as the following artefacts from preceding AMLAS activities:
+SMIRK instantiates the ML Learning Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Learning Argument Pattern [W]](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>), as well as the following artifacts from preceding AMLAS activities:
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
 - [Development Data](TBD) [N]
 - [Internal Test Data](TBD) [O]
