@@ -53,7 +53,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-The testing process must be independent from the development. Neither developers nor ML developers can have access to this document.
+The testing process must be independent of the development. Neither developers nor ML developers can have access to this document.
 
 - Developers: Must not have access to the document.
 - ML developers: Must not have access to the document.
@@ -108,7 +108,7 @@ System-level testing of SMIRK involves integrating the ML model into the object 
 ## 4.1 Operational scenarios [EE] ##
 ISO/IEC/IEEE 29148:2018 defines an operational scenario as "a description of an imagined sequence of events that includes the interaction of the product or service with its environment and users, as well as interaction among its product or service components." Consequently, the set of operational scenarios used for testing SMIRK on the system level must represent the diversity of real scenarios that may be encountered when SMIRK is in operation. Furthermore, for testing purposes, it is vital that the set of defined scenarios are meaningful with respect to verification of SMIRK's safety requirements.
 
-As SMIRK is designed to operate in ESI Pro-SiVIC, the difference between defining operational scenarios in text and implementating scripts to exectute the same scenarios in the simulated environment is very small. We will not define any operational scenarios that cannot be scripted for execution in ESI Pro-SiVIC. To identify a meaningful set of operational scenarios, we use equivalence paritioning as proposed by Masuda (2017) as one approach to limit the number of test scenarios to execute in vehicle simulators. Originating in the equivalence classes, we use combinatorial testing to reduce the set of operational scenarios. Using combinatorial testing to create test cases for system testing of a PAEB testing in a vehicle simulator has previously been reported by Tao et al. (2019). We create operational scenarios that provide complete pair-wise testing of SMIRK considering the identified equivalence classes.
+As SMIRK is designed to operate in ESI Pro-SiVIC, the difference between defining operational scenarios in text and implementation scripts to execute the same scenarios in the simulated environment is very small. We will not define any operational scenarios that cannot be scripted for execution in ESI Pro-SiVIC. To identify a meaningful set of operational scenarios, we use equivalence partitioning as proposed by Masuda (2017) as one approach to limit the number of test scenarios to execute in vehicle simulators. Originating in the equivalence classes, we use combinatorial testing to reduce the set of operational scenarios. Using combinatorial testing to create test cases for system testing of a PAEB testing in a vehicle simulator has previously been reported by Tao et al. (2019). We create operational scenarios that provide complete pair-wise testing of SMIRK considering the identified equivalence classes.
 
 Based on an analysis of the [ML Safety Requirements](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#33-machine-learning-safety-requirements-h-) and the [Data Requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we define operational scenarios addressing SYS-ML-REQ1 and SYS-ML-REQ2 separately. For each subset of operational scenarios, we identify key variation dimensions (i.e., parameters in test scenario generation) and split dimensions into equivalence classes using explicit ranges. Note that ESI Pro-SiVIC enables limited configurability of basic shapes compared to pedestrians, thus the corresponding number of operational scenarios is lower.
 
@@ -120,7 +120,7 @@ Based on an analysis of the [ML Safety Requirements](https://github.com/RI-SE/sm
 - Pedestrian crossing angle (degrees): Toward ego car (0), Diagonal toward (45), Perpendicular (90), Diagonal away (135), Away from car (180)
 - Ego car speed (m/s): Slow (<10 m/s), Medium (10-15 m/s), Fast (15-20 m/s)
 
-The dimensions and ranges listed above results in 2,430 possible combinations. Using combinatatorial testing, we create a set of 18 operational scenarios that provides pair-wise coverage of all equivalence classes.
+The dimensions and ranges listed above result in 2,430 possible combinations. Using combinatorial testing, we create a set of 18 operational scenarios that provides pair-wise coverage of all equivalence classes.
 
 **Operational Scenarios for SYS-ML-REQ2:**
 - Object starting point (lateral offset from the road in meters): Left side of the road (-5 m), On the road (0 m), Right side of the road (5 m)
@@ -129,14 +129,14 @@ The dimensions and ranges listed above results in 2,430 possible combinations. U
 - Object speed (m/s): Stationary (0 m/s), Slow (1 m/s), Fast (3 m/s)
 - Ego car speed (m/s): Slow (<10 m/s), Medium (10-15 m/s), Fast (15-20 m/s)
 
-The dimensions and ranges listed above results in 324 possible combinations. Using combinatatorial testing, we create a set of 14 operational scenarios that provides pair-wise coverage of all equivalence classes.
+The dimensions and ranges listed above result in 324 possible combinations. Using combinatorial testing, we create a set of 14 operational scenarios that provides pair-wise coverage of all equivalence classes.
 
 For each operational scenario, two test parameters represent ranges of values, i.e., the longitudinal distance between ego car and the pedestrian and the speed of ego car. For these two test parameters, we identify a combination of values that result in a collision unless the SMIRK system initiates emergency braking. 
 
 The complete set of operational scenarios, realized as 32 executable test scenarios in ESI Pro-SiVIC, are available in TODO: upload the test scripts.
 
 ## 4.2 System Test Cases ##
-The system test cases are split into three categories. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the stritly reproducable Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analaguous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that introduceing random jitter to the test input does lead to the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not (TC-RAND-[1-18]. Furthermore, for the test cases related to false positives, we know that emergency braking shall not commence. Consequently, the entries in the "Then" column are straightforward.
+The system test cases are split into three categories. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the straitly reproducible Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analogous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that introducing random jitter to the test input does lead to the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not (TC-RAND-[1-18]. Furthermore, for the test cases related to false positives, we know that emergency braking shall not commence. Consequently, the entries in the "Then" column are straightforward.
 
 | Test Case ID   | Type                 | Given               | When       | Then         |
 |----------------|----------------------|---------------------|------------|--------------|
@@ -145,7 +145,7 @@ The system test cases are split into three categories. First, each operational s
 | TC-RAND-[1-18] | Random Testing       | TC-OS-[1-18]+jitter | Pedestrian crosses the street | PAEB commences, no collision |
 | TC-RAND-[19-32] | Random Testing       | TC-OS-[19-32]+jitter | Object crosses the street | PAEB does not commence |
 
-The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The Table below lists all system test cases, of all three categories, using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements.
+The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The table below lists all system test cases, of all three categories, using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements.
 
 | Test Case ID | Requirement | Given    | When       | Then         |
 |--------------|-------------|----------|------------|--------------|
@@ -163,10 +163,11 @@ The figure below shows the ML verification argument pattern using GSN. The patte
 
 The top claim (G5.1) corresponds to the bottom claim in the safety requirements argument pattern [I], i.e., that all ML safety requirements are satisfied. The argumentation builds on a sub-claim and an argumentation strategy. First, sub-claim G5.2 is that the verification of the ML model is independent of its development. The verification log [AA] specifies how this has been achieved for SMIRK (Sn5.1). Second, the strategy S5.1 argues that test-based verification is an appropriate approach to generate evidence that the ML safety requirements are met. The justification is that the SMIRK [test strategy](#strategy) follows the proposed organization in peer-reviewed literature on ML testing, which is a better fit than using less mature formal methods for ML models as complex as YOLO. 
 
-Following the test-based verification approach, the sub-claim G5.3 argues that that the ML model satisfies the ML safety requirement when the verification data (C5.1) is applied. The testing claim is supported by three sub-claims. First, G5.4 argues that the test results demonstrate that the ML safety requirements are satisfied, for which Verification Test Results [Z] are presented as evidence. Second, G5.5 argues that the Verification Data [P] is sufficient to verify the intent of the ML safety requirements in the ODD. Third, G5.6 argues that the test platform is representative of the operational platform. Evidence for both G5.5 and G5.6 is presented in the Verification Log [AA].
+Following the test-based verification approach, the sub-claim G5.3 argues that the ML model satisfies the ML safety requirement when the verification data (C5.1) is applied. The testing claim is supported by three sub-claims. First, G5.4 argues that the test results demonstrate that the ML safety requirements are satisfied, for which Verification Test Results [Z] are presented as evidence. Second, G5.5 argues that the Verification Data [P] is sufficient to verify the intent of the ML safety requirements in the ODD. Third, G5.6 argues that the test platform is representative of the operational platform. Evidence for both G5.5 and G5.6 is presented in the Verification Log [AA].
 
 # 6 ML Verification Argument [CC]
 SMIRK instantiates the ML Verification Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Verification Argument Pattern [BB]](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>), as well as the following artefacts from preceding AMLAS activities:
+
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
 - [Verification Data](TBD) [P]
 - [ML Model](TBD) [V]
