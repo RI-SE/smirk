@@ -166,7 +166,8 @@ The top claim (G5.1) corresponds to the bottom claim in the safety requirements 
 Following the test-based verification approach, the sub-claim G5.3 argues that the ML model satisfies the ML safety requirement when the verification data (C5.1) is applied. The testing claim is supported by three sub-claims. First, G5.4 argues that the test results demonstrate that the ML safety requirements are satisfied, for which Verification Test Results [Z] are presented as evidence. Second, G5.5 argues that the Verification Data [P] is sufficient to verify the intent of the ML safety requirements in the ODD. Third, G5.6 argues that the test platform is representative of the operational platform. Evidence for both G5.5 and G5.6 is presented in the Verification Log [AA].
 
 # 6 ML Verification Argument [CC]
-SMIRK instantiates the ML Verification Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Verification Argument Pattern [BB]](<docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>), as well as the following artifacts from preceding AMLAS activities:
+SMIRK instantiates the ML Verification Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Verification Argument Pattern [BB]](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>), as well as the following artefacts from preceding AMLAS activities:
+
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
 - [Verification Data](TBD) [P]
 - [ML Model](TBD) [V]
