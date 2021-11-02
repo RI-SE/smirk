@@ -205,7 +205,7 @@ The generated SMIRK data will be used in sequestered data sets as follows:
 
 - Development data: [P2], [P3], and [N1]
 - Internal test data: [P1], [P4], and [N2] 
-- Verification data: [P5], [P6], and [N3]
+- Verification data: [P5], [P6], [N3], and [N4]
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 The figure below shows the ML data argument pattern using GSN. The pattern follows the example provided in AMLAS, but adapts it to the specific SMIRK case.
