@@ -73,6 +73,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK implements its own perception based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide SMIRK with input. This is not yet the case. 
 
 ## 1.6 References ##
+- [System Architecture Description](</docs/System Architecture Description.md>)
 - Ben Abdessalem, Nejati, Briand, and Stifter, 2018. Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms, in Proc. of the 40th Int’l. Conf. on Software Engineering.  
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
 - Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
@@ -89,7 +90,7 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We e
 # 2 System Description [C] <a name="system_reqts"></a>
 SMIRK is an Open-Source Software (OSS) ML-based ADAS under development. It is a research prototype that provides pedestrian emergency braking that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem et al., 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking. The system combines Python source code and a trained DNN for object detection that demonstrates safety-critical driving automation on SAE Level 1.
 
-The SMIRK system architecture is described in ARCHITECTURE SPEC.
+The SMIRK system architecture is further described in the [System Architecture Description](</docs/System Architecture Description.md>).
 
 ## 2.1 Product Perspective ##
 SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios and a general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems.
