@@ -51,7 +51,7 @@ SMIRK assists the driver on country roads by performing emergency braking in the
 This document provides the foundation for the SMIRK minimum viable product (MVP).
 
 ## 1.2 Document Conventions ##
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process. In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
+Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process (Guidance on the Assurance of Machine Learning in Autonomous Systems). In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
@@ -141,7 +141,7 @@ SMIRK and ESI Pro-SiVIC communicate through two different python APIs provided b
 This section specifies the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are largely inspired by Gauerhof *et al.* (2020).
 
 ## 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
-This subsection specifies the highest level SMIRK requirement.
+This section specifies the highest level SMIRK requirement.
 
 - **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if collision with a pedestrian is imminent.**
 
@@ -164,24 +164,24 @@ This section refines SYS-SAF-REQ into two separate requirements corresponding to
 Rationale: SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2018) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
 ## 3.3.1 Performance Requirements
-This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets. All requirements below are restricted to pedestrians on or close to the road.
+This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets for the pedestrian recognition component. All requirements below are restricted to pedestrians on or close to the road.
 
-- **SYS-PER-REQ1: The object detection component shall identify pedestrians with an accuracy of 0.93 when they are within 50 meters.**
-- **SYS-PER-REQ2: The false negative rate of the object detection component shall not exceed 7% for pedestrians when they are within 50 meters.**
-- **SYS-PER-REQ3: The false positive rate shall not exceed 0.01% for objects detected by the radar tracking component with a TTC < 4s** 
-- **SYS-PER-REQ4: In a sequence of images from a video feed any object to be detected shall not be missed in more than 1 out of 5 frames.**
-- **SYS-PER-REQ5: The position of pedestrians shall be determined within 50 cm of their actual position.**
-- **SYS-PER-REQ6: The object detection component shall allow an inference speed of at least 10 FPS on the target platform.**
+- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with an accuracy of 0.93 when they are within 50 meters.**
+- **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% for pedestrians when they are detected by the radar tracking component within 50 meters.**
+- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01% for objects detected by the radar tracking component with a TTC < 4s** 
+- **SYS-PER-REQ4: In a sequence of images from a video feed any pedestrian to be detected shall not be missed in more than 1 out of 5 frames.**
+- **SYS-PER-REQ5: The pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
+- **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS on the target platform.**
 
-Rationale: SMIRK adapts the performance requirements specified by Gauerhof et al. (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson et al. (2019). SYS-PER-REQ6 means that any further improvements to reaction time have a negligible impact on the total brake distance. 
+Rationale: SMIRK adapts the performance requirements specified by Gauerhof *et al.* (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson *et al.* (2019). SYS-PER-REQ6 means that any further improvements to reaction time have a negligible impact on the total brake distance. 
 
 ## 3.3.2 Robustness Requirements
 This section specifies robustness requirements corresponding to the ML safety requirements.
 
-- **SYS-ROB-REQ1: The object detection component shall perform as required in all situations Ego may encounter within the defined ODD.**
-- **SYS-ROB-REQ2: The ML component shall identify a person irrespective of their pose with respect to the camera.**
+- **SYS-ROB-REQ1: The pedestrian recognition component shall perform as required in all situations Ego may encounter within the defined ODD.**
+- **SYS-ROB-REQ2: The pedestrian recognition component shall identify pedestrians irrespective of their pose with respect to the camera.**
 
-Rationale: SMIRK reuses robustness requirements for pedestrian detection from previous work. SYS-ROB-REQ1 is specified in Gauerhof et al. (2020). SYS-ROB-REQ2 is presented as Example 7 in AMLAS.
+Rationale: SMIRK reuses robustness requirements for pedestrian detection from previous work. SYS-ROB-REQ1 is specified in Gauerhof *et al.* (2020). SYS-ROB-REQ2 is presented as Example 7 in AMLAS.
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn et al., 2018). Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
