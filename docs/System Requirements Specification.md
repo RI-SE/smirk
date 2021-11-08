@@ -51,7 +51,7 @@ SMIRK assists the driver on country roads by performing emergency braking in the
 This document provides the foundation for the SMIRK minimum viable product (MVP).
 
 ## 1.2 Document Conventions ##
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
+Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process. In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
@@ -76,13 +76,13 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We e
 
 ## 1.6 References ##
 - [System Architecture Description](</docs/System Architecture Description.md>)
-- Ben Abdessalem, Nejati, Briand, and Stifter, 2018. Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms, in Proc. of the 40th Int’l. Conf. on Software Engineering.  
-- Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
-- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
-- Hawkins, Paterson, Picardi, Jia, Calinescu, and Habli. [Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS)](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf), v1.1, Techincal Report, University of York, 2021.
-- Henriksson, Berger, Borg, Tornberg, Englund, Sathyamoorthy, and Ursing, 2019. Towards Structured Evaluation of Deep Neural Network Supervisors, In Proc. of the International Conference On Artificial Intelligence Testing, pp. 27-34.
-- Henriksson, Berger, Borg, Tornberg, Sathyamoorthy, and Englund, 2021. Performance Analysis of Out-of-Distribution Detection on Trained Neural Networks. Information and Software Technology, 130.
-- Nair, De La Vara, Sabetzadeh, and Briand, 2014. [An extended systematic literature review on provision of evidence for safety certification](https://www.sciencedirect.com/science/article/abs/pii/S0950584914000603). *Information and Software Technology*, 56(7), 689-717.
+- Ben Abdessalem, Nejati, Briand, and Stifter, 2018. [Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms](https://dl.acm.org/doi/abs/10.1145/3180155.3180160), in *Proc. of the 40th Int’l. Conf. on Software Engineering*.  
+- Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. [Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems](https://arxiv.org/abs/2103.09051), In *Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice*.
+- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
+- Hawkins, Paterson, Picardi, Jia, Calinescu, and Habli, 2021. [Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS)](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf), v1.1, Techincal Report, University of York.
+- Henriksson, Berger, Borg, Tornberg, Englund, Sathyamoorthy, and Ursing, 2019. [Towards Structured Evaluation of Deep Neural Network Supervisors](https://arxiv.org/abs/1903.01263), In *Proc. of the International Conference On Artificial Intelligence Testing*, pp. 27-34.
+- Henriksson, Berger, Borg, Tornberg, Sathyamoorthy, and Englund, 2021. [Performance Analysis of Out-of-Distribution Detection on Trained Neural Networks](https://arxiv.org/abs/2103.15580). *Information and Software Technology*, 130.
+- Nair, De La Vara, Sabetzadeh, and Briand, 2014. [An Extended Systematic Literature Review on Provision of Evidence for Safety Certification](https://www.sciencedirect.com/science/article/abs/pii/S0950584914000603). *Information and Software Technology*, 56(7), 689-717.
 - Object Management Group (OMG) Data Distribution Service (DDS)(https://www.dds-foundation.org/what-is-dds-3/), Last checked: 2021-09-09.
 - Picardi, Paterson, Hawkins, Calinescu, and Habli, 2020. [Assurance Argument Patterns and Processes for Machine Learning in Safety-Related Systems](http://ceur-ws.org/Vol-2560/paper17.pdf). In *Proceedings of the Workshop on Artificial Intelligence Safety (SafeAI 2020)*, pp. 23-30.
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
