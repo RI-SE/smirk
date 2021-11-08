@@ -184,9 +184,11 @@ This section specifies robustness requirements corresponding to the ML safety re
 Rationale: SMIRK reuses robustness requirements for pedestrian detection from previous work. SYS-ROB-REQ1 is specified in Gauerhof *et al.* (2020). SYS-ROB-REQ2 is presented as Example 7 in AMLAS.
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
-This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn et al., 2018). Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
+This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn *et al.*, 2018) and the introductory text for each ODD category originates in the same techincal report. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
 
 ## 4.1 Physical Infrastructure
+>Physical infrastructure refers to facilities and systems that serve a country, city, or area and enable its economy to function. Physical infrastructure is typically characterized by technical structures, such as roads, bridges, tunnels, water supply, sewers, electrical grids, telecommunications, etc., that are for the most part interrelated. ADAS features may depend on such infrastructure elements, which are a critical part of the ODD environment. (Thorn *et al.*, 2018)
+
 <table>
 <thead>
   <tr>
@@ -458,6 +460,8 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </table>
 
 ## 4.2 Operational Constraints
+>There are several operational constraints that need to be considered when designing and testing ADAS applications. These include elements such as dynamic changes in speed limits, traffic characteristics, construction, etc. For example, an ADAS entering a school zone is subjected to lower speed limits and must respond appropriately to ensure the safety of its passengers and other road users. (Thorn *et al.*, 2018)
+
 <table> 
   <thead>
   <tr>
@@ -507,6 +511,8 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </table>
 
 ## 4.3 Objects
+>For an ADAS to properly navigate within an ODD, it must detect and respond to certain objects. This category of the ODD identifies objects that can reasonably be expected to exist within the ODD. For example, a pedestrian may be expected at an intersection but rarely on a freeway. (Thorn *et al.*, 2018)
+
 <table> 
   <thead>
   <tr>
@@ -622,6 +628,8 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </table>
 
 ## 4.4 Connectivity
+>Connectivity and automation are increasingly being integrated into cars and trucks with the objective of improving safety, mobility, and providing a better driving experience. Connectivity is an enabling technology that may define where an ADS feature can operate. For example, low-speed shuttles may depend on traffic light signal phase and timing messages to reduce the dependence on sensors alone to detect the signal. (Thorn *et al.*, 2018)
+
 SMIRK does not rely on any external connectivity. All items below are either N or N/A.
 
 <table> 
@@ -728,8 +736,10 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   </tbody>
 </table>
 
-
 ## 4.5 Environmental Conditions
+>Environmental conditions play a crucial role in the safe operation of a variety of ADAS applications, and pose one of the biggest challenges to deployment
+, particularly early deployment. The environment can impact visibility, sensor fidelity, vehicle maneuverability, and communications systems. Today, ADAS technologies are tested most often in clear, rather than adverse, weather conditions. (Thorn *et al.*, 2018)
+ 
 <table> 
   <thead>
   <tr>
@@ -872,6 +882,9 @@ SMIRK does not rely on any external connectivity. All items below are either N o
 </table>
 
 ## 4.6 Zones
+>ADAS features may be limited spatially by zones. The boundaries of these zones may be fixed or dynamic, and conditions that define a boundary may be based on complexity, operating procedures, or other factors. One example is work zones, which can confuse ADAS as the road configuration (pavement markings and new lane alignments) differs from typical conditions. In a work zone, cones may replace double yellow lines, bollards may replace curbs, and construction 
+worker hand signals may overrule traffic lights. (Thorn *et al*, 2018)
+
 SMIRK does not rely on any zone specifics. All items below are either N or N/A.
 
 <table> 
