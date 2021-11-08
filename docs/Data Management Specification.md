@@ -73,6 +73,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 
 ## 1.6 References ##
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
+- [ML Component Specification](</docs/ML Component Specification.md>)
 - Development Data [N]
 - Internal Test Data [O]
 - Verification Data [P]
@@ -157,12 +158,12 @@ In total, we generate data representing 6 x 616 = 3,696 execution scenarios with
 ### 4.1.1 Positive examples:
 We generate positive examples from humans with six visual appearances available in the ESI Pro-SiVIC object catalog.
 
-- [P1] Casual female pedestrian [female_casual.yaml]
-- [P2] Casual male pedestrian [male_casual.yaml]
-- [P3] Business female pedestrian [female_business.yaml]
-- [P4] Business male pedestrian [male_business.yaml]
-- [P5] Child [child.yaml]
-- [P6] Male construction worker [male_construction.yaml]
+- [P1] Casual female pedestrian [TBD: female_casual.yaml]
+- [P2] Casual male pedestrian [TBD: male_casual.yaml]
+- [P3] Business female pedestrian [TBD: female_business.yaml]
+- [P4] Business male pedestrian [TBD: male_business.yaml]
+- [P5] Child [TBD: child.yaml]
+- [P6] Male construction worker [TBD: male_construction.yaml]
 
 Each configuration file for positive examples specify the execution of 616 scenarios in ESI Pro-SiVIC. The configurations are organized into four groups (A-D). The pedestrians always follow rectilinear motion (a straight line) at a constant speed during scenario execution. Groups A and B describe pedestrians crossing the road, either from the left (Group A) or from the right (Group B). There are three variation points, i.e., 1) the speed of the pedestrian, 2) the angle at which the pedestrian crosses the road (see [SRS Sec 2.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#21-product-perspective)), and 3) the longitudinal distance between ego car and the pedestrian's starting point. In all scenarios, the distance between the starting point of the pedestrian and the edge of the road is 5 m. 
 
@@ -190,27 +191,25 @@ Groups C and D describe pedestrians moving parallel to the road, either toward e
 We generate negative examples using four basic shapes available in the ESI Pro-SiVIC object catalog.
 
 Negative examples:
-- [N1] Sphere [sphere.yaml]
-- [N2] Cube [cube.yaml]
-- [N3] Cone [cone.yaml]
-- [N4] Pyramid [pyramid.yaml]
+- [N1] Sphere [TBD: sphere.yaml]
+- [N2] Cube [TBD: cube.yaml]
+- [N3] Cone [TBD: cone.yaml]
+- [N4] Pyramid [TBD: pyramid.yaml]
 
 All four configuration files for negative examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
 
 - Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
 ## 4.2 Preprocessing
-As the SMIRK data collection campaign relies on data generation in ESI Pro-SiVIC, the need for pre-processing differs from counterparts using naturalistic data. To follow convention, we refer to the data processing between data collection and model training as pre-processing - although post-processing would be a more accurate term in SMIRK. We have developed scripts that generate data sets representing the scenarios listed in Section 4.1. The scripts ensure that the crossing pedestrians and objects appear at the right distance with specified conditions and without occlusion. All output images share the same characteristics, thus no normalization is needed.
+As the SMIRK data collection campaign relies on data generation in ESI Pro-SiVIC, the need for pre-processing differs from counterparts using naturalistic data. To follow convention, we refer to the data processing between data collection and model training as pre-processing - although post-processing would be a more accurate term for the SMIRK development. We have developed scripts that generate data sets representing the scenarios listed in Section 4.1. The scripts ensure that the crossing pedestrians and objects appear at the right distance with specified conditions and with controlled levels of occlusion. All output images share the same characteristics, thus no normalization is needed.
 
-SMIRK includes a script to generate bounding boxes for training the object detection model. Pro-SiVIC generates ground truth image segmentation on a pixel-level. [The script](TBD) is used to convert the output to the appropriate input format for model training. TBD...
-
-DESCRIBE SAMPLING HERE?
+SMIRK includes a script to generate bounding boxes for training the object detection model. ESI Pro-SiVIC generates ground truth image segmentation on a pixel-level. [The script](TBD) is used to convert the output to the appropriate input format for model training. Note that the diversity of the synthetic imagery is limited, thus we do not train the model on the entire data set. As part of the model training described in the [ML Component Specification](</docs/ML Component Specification.md>), we analyze different sample sizes during the SMIRK ML development.
 
 ## 4.3 Data Splitting
 The generated SMIRK data will be used in sequestered data sets as follows:
 
-- Development data: [P2], [P3], and [N1]
-- Internal test data: [P1], [P4], and [N2] 
+- Development data: [P2] and [P3]
+- Internal test data: [P1], [P4], [N1], and [N2] 
 - Verification data: [P5], [P6], [N3], and [N4]
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
@@ -223,7 +222,7 @@ The top claim is that the data used during the development and verification of t
 Claim G3.3 states that the generated data satisfies the data requirements in context of the decisions made during data collection. The details of the data collection, along with rationales, are recorded in the Data Collection Log [Q]. The argumentation strategy (S2.2) uses refinement mapping to the assurance-related desiderata of the data requirements. The refinement of the desiderata into concrete data requirements for the object detection component of SMIRK, given the ODD, is justified by an analysis of the expected traffic agents and objects that can appear in ESI Pro-SiVIC. For each subclaim corresponding to a desideratum, i.e., relevance (G3.4), completeness (G3.5), accuracy (G3.6), and balance (G3.7), there is evidence in a matching section in the ML Data Validation Report [S].
 
 # 6 ML Data Validation Results [S] <a name="data_validation_results"></a>
-The SMIRK ML data validation consists of two activities, a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the data requirements and an analysis of the datasets. Moreover, as the SMIRK data is generated in ESI Pro-SiVIC, we argue that the corresponding [scripts](https://github.com/RI-SE/smirk/tree/main/pedestrian-generator) result in data that complies with most data requirements.
+The SMIRK ML data validation consists of two activities, a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the data requirements and an analysis of the data sets. Moreover, as the SMIRK data is generated in ESI Pro-SiVIC, we argue that the corresponding [scripts](https://github.com/RI-SE/smirk/tree/main/pedestrian-generator) result in data that implicitly complies with most of the data requirements.
 
 First, the SMILE project conducted a Fagan inspection, i.e., a formal inspection, consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire DMS.
 
@@ -236,12 +235,12 @@ First, the SMILE project conducted a Fagan inspection, i.e., a formal inspection
 
 The inspection protocol is available at TBD.
 
-Second, the SMILE project analyzed the characteristics of the datasets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE reviewers manually analyzed a random sample of images from the dataset <TBD, DESCRIBE HOW WE DO THIS>.
+Second, the SMILE project analyzed the characteristics of the data sets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE reviewers manually analyzed a random sample of images from the data set <TBD, DESCRIBE HOW WE DO THIS>.
 
 Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-)
-- Relevant: DAT-REL-REQ1 to DAT-REL-REQ7 are implicitly met by the data generation scripts. Everything present in the dataset has been explicitly added by the SMIRK developers in the scripts. Only relevant data samples captured using a forward-facing camera in a valid sensor position have been added to the scripts. No outlier objects exist in the data sets.
+- Relevant: DAT-REL-REQ1 to DAT-REL-REQ7 are implicitly met by the data generation scripts. Everything present in the data set has been explicitly added by the SMIRK developers in the scripts. Only relevant data samples captured using a forward-facing camera in a valid sensor position have been added to the scripts. No outlier objects exist in the data sets.
 - Complete: DAT-COM-REQ is satisfied as the ODD is restricted to excellent driving conditions. The data set complies with DAT-COM-REQ2 since we explicitly cover six pedestrian types available in the ESI Pro-SiVIC object catalog. DAT-COM-REQ3 is satisfied through scripts that explicitly generate data that covers longitudinal distances between 10 meters and 100 meters. DAT-COM-REQ4 is met since the scripts ensure data collection from the point in time that pedestrians enter the camera's field of vision (a hand becomes available) until the pedestrian leaves (only a foot remains). DAT-COM-REQ5 is implicitly satisfied as the ideal camera in ESI Pro-SiVIC does not fail, i.e., there will be no dirt on the lens or cracks in the optics.
-- Balanced: DAT-BAL-REQ1 and DAT-BAL-REQ2 are validated automatically using TBD.
+- Balanced: DAT-BAL-REQ1 and DAT-BAL-REQ2 are validated automatically using <TBD, DESCRIBE THAT KASPER IS DOING>.
 - Accurate: DAT-ACC-REQ1 and DAT-ACC-REQ3 are implicitly met as ESI Pro-SiVIC generates the ground truth on pixel-level. DAT-ACC-REQ2 is also implicitly satisfied as we extract bounding boxes using a script that identifies the smallest possible rectangle around the pedestrian.
 
 # 7 ML Data Argument [T] <a name="data_argument"></a>
