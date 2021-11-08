@@ -63,13 +63,14 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DDS: Data Distribution Service
 - DNN: Deep Neural Network
-- FPS: Frames Per Second
 - GSN: Goal Structuring Notation
 - HARA: Hazard and Risk Analysis
 - ML: Machine Learning
 - MVP: Minimum Viable Product
 - ODD: Operational Design Domain
+- OOD: Out Of Distribution
 - OSS: Open-Source Software
+- PAEB: Pedestrian Automatic Emergency Braking
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
@@ -86,7 +87,7 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We e
 - [System Architecture Description](</docs/System Architecture Description.md>)
 - Ben Abdessalem, Nejati, Briand, and Stifter, 2018. [Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms](https://dl.acm.org/doi/abs/10.1145/3180155.3180160), in *Proc. of the 40th Int’l. Conf. on Software Engineering*.  
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. [Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems](https://arxiv.org/abs/2103.09051), In *Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice*.
-- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
+- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP)*.
 - Hawkins, Paterson, Picardi, Jia, Calinescu, and Habli, 2021. [Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS)](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf), v1.1, Techincal Report, University of York.
 - Henriksson, Berger, Borg, Tornberg, Englund, Sathyamoorthy, and Ursing, 2019. [Towards Structured Evaluation of Deep Neural Network Supervisors](https://arxiv.org/abs/1903.01263), In *Proc. of the International Conference On Artificial Intelligence Testing*, pp. 27-34.
 - Henriksson, Berger, Borg, Tornberg, Sathyamoorthy, and Englund, 2021. [Performance Analysis of Out-of-Distribution Detection on Trained Neural Networks](https://arxiv.org/abs/2103.15580). *Information and Software Technology*, 130.
