@@ -119,14 +119,14 @@ Sensors:
 
 Algorithms:
 - Time-to-collision (TTC) calculation for objects on collision course.
-- Pedestrian detection and recognition based on the camera input.
-- Out-of-distribution (OOD) detection of never-seen-before input (part of the [safety cage mechanism](</docs/ML%20Component%20Specification.md#4-outlier-detection-for-the-safety-cage-architecturesafety-cage>)).
+- Pedestrian detection and recognition based on the camera input where the radar detected an object. 
+- Out-of-distribution (OOD) detection of never-seen-before input (part of the [safety cage mechanism](</docs/ML%20Component%20Specification.md#4-outlier-detection-for-the-safety-cage-architecturesafety-cage>)). 
 - A braking module that commissions emergency braking. (In the MVP, maximum braking power is always used).
 
 Actuators:
 - Brakes (provided by ESI Pro-SiVIC, not elaborated further).
 
-The figure below illustrates detection of a pedestrian on a collision course, i.e., automatic emergency braking shall be commenced.
+The figure below illustrates detection of a pedestrian on a collision course, i.e., automatic emergency braking shall be commenced. The ML-based functionality of pedestrian detection and recognition, including the corresponding OOD detection, is embedded in the **Pedestrian Recognition Component**.
 
 ![pedestrian_detection](/docs/figures/pedestrian_detection.png) <a name="pedestrian_detection"></a>
 
@@ -138,17 +138,17 @@ SMIRK and ESI Pro-SiVIC communicate through two different python APIs provided b
 - All subsequent data communication, i.e., live data during the simulation, is transferred over DDS through the Python API.
 
 # 3 System Requirements
-This section specified the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are inspired by Gauerhof et al. (2020).
+This section specifies the SMIRK system requirements, organized into system safety requirements and ML safety requirements. ML safety requirements are further refined into performance requirements and robustness requirements. The requirements are largely inspired by Gauerhof *et al.* (2020).
 
 ## 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
-This section specifies the highest level SMIRK requirement.
+This subsection specifies the highest level SMIRK requirement.
 
 - **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if collision with a pedestrian is imminent.**
 
 Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avoid a collision. If a collision is inevitable, Ego will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
 
 ## 3.2 Safety Requirements Allocated to ML Component [E] <a name="ml_component_safety_reqts"></a>
-Based on a HARA, two categories of hazards were identified. First, SMIRK might miss pedestrians and fail to commence emergency braking - we refer to this as a false negative. Second, SMIRK might commence emergency braking when it should not - we refer to this as a false positive. A summary of the HARA is presented below.
+Based on a Hazard Analysis and Risk Assessment (HARA), two categories of hazards were identified. First, SMIRK might miss pedestrians and fail to commence emergency braking - we refer to this as a false negative. Second, SMIRK might commence emergency braking when it should not - we refer to this as a false positive. A summary of the HARA is presented below.
 
 - False negative: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego vehicle.
 - False positive: The severity of the hazard is high (can be fatal). Controllability is very low since the driver would have no chance to counteract the braking. 
@@ -158,10 +158,10 @@ To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements 
 ## 3.3 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
 This section refines SYS-SAF-REQ into two separate requirements corresponding to false positives and false negatives, respectively.
 
-- **SYS-ML-REQ1: The object detection component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.**
-- **SYS-ML-REQ2: The object detection component shall reject input that does not resemble the training data.**
+- **SYS-ML-REQ1: The pedestrian recognition component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.**
+- **SYS-ML-REQ2: The pedestrian recognition component shall reject input that does not resemble the training data.**
 
-Rationale: SMIRK follows the reference architecture from Ben Abdessalem et al. (2018) and SYS-ML-REQ1 uses the same TTC threshold (4s). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
+Rationale: SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2018) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
 ## 3.3.1 Performance Requirements
 This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets. All requirements below are restricted to pedestrians on or close to the road.
