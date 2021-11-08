@@ -1,4 +1,4 @@
-# System Requirements Specification v0.4
+# System Requirements Specification v0.9
 
 Revision History
 <table>
@@ -28,9 +28,15 @@ Revision History
 </tr>
 <tr>
 <td>Jens Henriksson, Kasper Socha</td>
-<td>WIP</td>
+<td>2021-11-05</td>
 <td>Updated after internal review.</td>
 <td>0.4</td>
+</tr>
+<tr>
+<td>Markus Borg</td>
+<td>2021-11-08</td>
+<td>Ready for Fagan inspection.</td>
+<td>0.9</td>
 </tr>
 <tr>
 <td></td>
