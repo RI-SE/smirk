@@ -42,27 +42,30 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document contains the data management specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
+This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
 
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK ODD by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual or business casual clothes and young boys wearing jeans and a sweatshirt. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes likely to appear when SMIRK is in operation: boxes, cones, pyramids, and spheres.
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK ODD by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual or business casual clothes, young boys wearing jeans and a sweatshirt, and male road workers. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes from the object catalog to as examples of out-of-distribution objects for SMIRK to handle in operation: boxes, cones, pyramids, and spheres.
 
 ## 1.1 Purpose ##
-This document describes the data management strategy for the object detection component in SMIRK. The object detection component detects pedestrians in input images, i.e., no other classes are detected in the input.
+This document describes the data management strategy for the pedestrian recognition component in SMIRK. The pedestrian recognition component detects pedestrians in input images based on output from the object detection provided by the radar sensor. In the SMIRK minimum viable product (MVP), no other classes but pedestrians are considered by the ML-based pedestrian recognition component.
 
-The document encompasses the entire lifecycle, i.e., data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operations.
+The document encompasses the entire lifecycle, i.e., data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operation.
 
 ## 1.2 Document Conventions ##
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
+Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process (Guidance on the Assurance of Machine Learning in Autonomous Systems). In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DM: Data Management
 - ML: Machine Learning
+- MVP: Minimum Viable Product
 - ODD: Operational Design Domain
+- PAEB: Pedestrian Automatic Emergency Braking
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
 - Developers: the entire document is relevant.
+- ML Developers: the entire document is relevant.
 - Testers: sections 2-6 are particularly important.
 - Safety assessors: focus on headings that map to the AMLAS process.
 - Other stakeholders: read section 2 to understand the expectations on the SMIRK training data.
@@ -72,8 +75,8 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - Development Data [N]
 - Internal Test Data [O]
 - Verification Data [P]
-- Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), ACM Comput. Surv. 54(5).
-- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings. In Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
+- Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), *ACM Computing Surveys* 54(5).
+- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
