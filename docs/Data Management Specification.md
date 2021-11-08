@@ -44,7 +44,7 @@ Revision History
 # 1 Introduction <a name="introduction"></a>
 This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
 
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK ODD by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual or business casual clothes, young boys wearing jeans and a sweatshirt, and male road workers. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes from the object catalog to as examples of out-of-distribution objects for SMIRK to handle in operation: boxes, cones, pyramids, and spheres.
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK operational design domain (ODD) by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual or business casual clothes, young boys wearing jeans and a sweatshirt, and male road workers. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes from the object catalog to as examples of out-of-distribution (OOD) objects (that still can appear in the ODD) for SMIRK to handle in operation: boxes, cones, pyramids, and spheres.
 
 ## 1.1 Purpose ##
 This document describes the data management strategy for the pedestrian recognition component in SMIRK. The pedestrian recognition component detects pedestrians in input images based on output from the object detection provided by the radar sensor. In the SMIRK minimum viable product (MVP), no other classes but pedestrians are considered by the ML-based pedestrian recognition component.
@@ -60,6 +60,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - ML: Machine Learning
 - MVP: Minimum Viable Product
 - ODD: Operational Design Domain
+- OOD: Out Of Distribution
 - PAEB: Pedestrian Automatic Emergency Braking
 - TTC: Time To Collission
 
@@ -75,18 +76,18 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - Development Data [N]
 - Internal Test Data [O]
 - Verification Data [P]
-- Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), *ACM Computing Surveys* 54(5).
+- Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), *ACM Computing Surveys*, 54(5).
 - Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
-This section specifies requirements on the data used to train and test the object detection component in SMIRK. The data requirements are specified to comply with the [Machine Learning Safety Requirements](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#33-machine-learning-safety-requirements-h-) in the System Requirements Specification. All data requirements are organized according to the assurance-related desiderata proposed by Ashmore et al. (2021),  i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
+This section specifies requirements on the data used to train and test the pedestrian recognition component in SMIRK. The data requirements are specified to comply with the [Machine Learning Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) in the System Requirements Specification. All data requirements are organized according to the assurance-related desiderata proposed by Ashmore *et al.* (2021), i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
 
 The table below shows a requirements traceability matrix between ML Safety Requirements and Data Requirements. Entries in individual cells denote that the ML safety requirement is addressed, at least partly, by the corresponding data requirement.
 ![ML-Data Requirements Matrix](/docs/figures/ml-data_matrix.png) <a name="ML-Data Requirements Matrix"></a>
 
 ## 2.1 Relevant
-This desideratum considers the intersection between the dataset and the supported dynamic driving task in the intended ODD. The SMIRK training data will not cover operational environments that are outside of the ODD, e.g., images collected in heavy snowfall. 
+This desideratum considers the intersection between the dataset and the supported dynamic driving task in the [ODD](</docs/System Requirements Specification.md#odd>). The SMIRK training data will not cover operational environments that are outside of the ODD, e.g., images collected in heavy snowfall. 
 
 - DAT-REL-REQ1: All data samples shall represent images of a road from the perspective of a vehicle.
 - DAT-REL-REQ2: The format of each data sample shall be representative of that which is captured using sensors deployed on the ego vehicle.
@@ -94,28 +95,28 @@ This desideratum considers the intersection between the dataset and the supporte
 - DAT-REL-REQ4: All data samples shall represent images of a road that corresponds to the ODD.
 - DAT-REL-REQ5: All data samples containing pedestrians shall include one single pedestrian.
 - DAT-REL-REQ6: Pedestrians included in data samples shall be of a type that may appear in the ODD.
-- DAT-REL-REQ7: All data samples containing non-pedestrian objects shall be of a type that may appear in the ODD.
+- DAT-REL-REQ7: All data samples representing non-pedestrian OOD objects shall be of a type that may appear in the ODD.
 
-Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. DAT-REL-REQ5 is added based on the corresponding fundamental restriction of the SMIRK ODD. DAT-REL-REQ7 restricts data samples providing negative training examples.
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. DAT-REL-REQ5 is added based on the corresponding fundamental restriction of the ODD of the SMIRK MVP. DAT-REL-REQ7 restricts data samples providing negative examples for testing.
 
 ## 2.2 Complete
-This desideratum considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore et al. (2021) refer to this as the external perspective on the data.
+This desideratum considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore *et al.* (2021) refer to this as the external perspective on the data.
 
 - DAT-COM-REQ1: The data samples shall include a sufficient range of environmental factors within the scope of the ODD.
 - DAT-COM-REQ2: The data samples shall include a sufficient range of pedestrians within the scope of the ODD.
-- DAT-COM-REQ3: The data samples shall include images representing a sufficient range of distances to crossing pedestrians up to that required by the decision making aspect of the perception pipeline.
+- DAT-COM-REQ3: The data samples shall include images representing a sufficient range of distances to crossing pedestrians up to that required by the decision making aspect of the pedestrian recognition component.
 - DAT-COM-REQ4: The data samples shall include examples with a sufficient range of levels of occlusion giving partial view of pedestrians crossing the road.
 - DAT-COM-REQ5: The data samples shall include a sufficient range of examples reflecting the effects of identified system failure modes.
 
-Rationale: SMIRK adapts the requirements from the Complete desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
+Rationale: SMIRK adapts the requirements from the Complete desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. 
 
 ## 2.3 Balanced
-This desideratum considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore et al. (2021) refer to this as an internal perspective on the data.
+This desideratum considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore *et al.* (2021) refer to this as an internal perspective on the data.
 
 - DAT-BAL-REQ1: The data set shall have a comparable representation of samples for each relevant class and feature.
-- DAT-BAL-REQ2: The data set shall have an equal share of positive and negative examples.
+- DAT-BAL-REQ2: The data set shall contain both positive and negative examples.
 
-Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof et al. (2020) for the SMIRK ODD. 
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. Note that *comparable* in DAT-BAL-REQ1 shall not be interpreted as *equal share* in this context. For example, considering the gender of pedestrians, the ESI Pro-SiVIC object catalog does only contain male children and road workers. Furthermore, DAT-BAL-REQ2 is primarily included to align with Gauerhof *et al.* (2020) and to preempt related questions by safety assessors. In practice, the concept of negative examples when training object detection models are typically satisfied implicitly as the parts of the images that do not belong to the annotated class are *de facto* negatives.  
 
 ## 2.4 Accurate
 This desideratum considers how measurement issues can affect the way that samples reflect the intended ODD, e.g., sensor accuracy and labeling errors. 
