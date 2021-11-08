@@ -123,32 +123,32 @@ This desideratum considers how measurement issues can affect the way that sample
 
 - DAT-ACC-REQ1: All bounding boxes produced shall be sufficiently large to include the entirety of the pedestrian.
 - DAT-ACC-REQ2: All bounding boxes produced shall be no more than 10% larger in any dimension than the minimum sized box capable of including the entirety of the pedestrian.
-- DAT-ACC-REQ3: All pedestrians present in the data samples must be correctly labeled.
+- DAT-ACC-REQ3: All pedestrians present in the data samples shall be correctly labeled.
 
-Rationale: SMIRK reuses the requirements from the Accurate desiderata specified by Gauerhof et al. (2020). 
+Rationale: SMIRK reuses the requirements from the Accurate desiderata specified by Gauerhof *et al.* (2020). 
 
 # 3 Data Requirements Justification Report [M] <a name="data_rqts_just"></a>
 The SMIRK data requirements have evolved during the Swedish [SMILE3 research project](https://www.ri.se/en/what-we-do/projects/smile-iii-safety-analysis-and-verificationvalidation-of-ml-based-systems), in turn based on two previous research projects on safety analysis and verification & validation of machine learning-based automotive systems. All SMIRK requirements have been individually reviewed by SMILE3 project partners and discussed in regular project meetings. Furthermore, we have organized dedicated workshops focusing on hazard and risk analysis and subsequent requirements engineering.
 
-SMIRK requirements are based on examples from analogous systems presented in peer-reviewed publications, white papers, and technical reports from academic authors. Both system requirements and data requirements are largely reused from a research paper by Gauershof et al. (2020), describing requirements for a pedestrian detection system at UK crossings - peer-reviewed and accepted for publication in the Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP). Moreover, we have reused requirements from the AMLAS examples and from the SaFAD white paper.
+SMIRK requirements are based on examples from analogous systems presented in peer-reviewed publications, white papers, and technical reports from academic authors. Both system requirements and data requirements are largely reused from a research paper by Gauershof *et al.* (2020), describing requirements for a pedestrian detection system at UK crossings - peer-reviewed and accepted for publication in the *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP)*. Moreover, we have reused requirements from the AMLAS examples and aligned the results with the SaFAD white paper.
 
-SMIRK has specified a very restricted ODD to support our efforts in requirements engineering for data. Based on several iterations with representatives from different organizations, we posit that the current data requirements fulfill the desiderata. A data set collected according to the requirements will be relevant, complete, balanced, and accurate. Representatives from the following organizations, all active in automotive R&D, have reviewed this work.
+For the SMIRK MVP, we have specified a very restricted ODD to support our efforts in requirements engineering for data. Based on several iterations with representatives from different organizations, we posit that the current data requirements fulfill the desiderata. A data set collected according to the requirements will be relevant, complete, balanced, and accurate. Representatives from the following organizations, all active in automotive R&D, have reviewed this work.
 
-- RISE Research Institutes of Sweden
-- Semcon
-- Infotiv
-- QRTech
-- Combitech
+- [RISE Research Institutes of Sweden](https://www.ri.se/en)
+- [Semcon](https://semcon.com/)
+- [Infotiv](https://www.infotiv.se/en)
+- [QRTech](https://www.qrtech.se/en/)
+- [Combitech](https://www.combitech.com/)
 
 # 4 Data Generation Log [Q] <a name="data_gen"></a>
-The SMIRK vision component uses transfer learning as it is pre-trained on publicly available image data from the [COCO dataset](https://cocodataset.org/). Pretraining on COCO dataset provides features from real-world imagery, from basic shapes to more complex features. Subsequently, the SMIRK vision component is [fine-tuned](https://www.tensorflow.org/tutorials/images/transfer_learning) for the task of pedestrian detection in the specific ODD. Based on the [data requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we generate data for fine-tuning. The data are split into three sets in accordance with AMLAS. 
+The SMIRK pedestrian recognition component uses transfer learning as it is pre-trained on publicly available image data from the [KITTI Vision Benchmark Suite](http://www.cvlibs.net/datasets/kitti/). Pretraining on the KITTI dataset provides features from real-world imagery, from basic shapes to more complex features. Subsequently, the SMIRK pedestrian recognition component is [fine-tuned](https://www.tensorflow.org/tutorials/images/transfer_learning) for the task of pedestrian detection in the specific ODD. Based on the [data requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we generate data for fine-tuning. The data are split into three sets in accordance with AMLAS. 
 
 - Development data: Covering both training and validation data used by developers to create models during ML development.
 - Internal test data: Used by developers to test the model.
-- Verification data: Used by the independent testers at Infotiv when the model is ready for release. 
+- Verification data: Used in the independent test activity, led by Infotiv, when the model is ready for release. 
 
 ## 4.1 Data Collection
-The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and is fully reproducible. The following two lists present the scripts used to play scenarios and capture corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes negative examples [NX], i.e., objects that shall not be classified as pedestrians. For each listed item, there is a link to a YAML configuration file that is used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
+The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and fully reproducible. The following two lists present the scripts used to play scenarios and capture the corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes examples that represent OOD shapes [NX], i.e., objects that shall not be classified as pedestrians. For each listed item, there is a link to a YAML configuration file that is used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
 
 In total, we generate data representing 6 x 616 = 3,696 execution scenarios with positive examples and 4 x 40 = 160 execution scenarios with negative examples. In total, the data collection campaign generates roughly 120 GB of image data, annotations, and meta-data (including bounding boxes).
 
