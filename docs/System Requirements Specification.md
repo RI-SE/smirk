@@ -41,7 +41,7 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
+This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
 
 We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
 
@@ -56,12 +56,14 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DDS: Data Distribution Service
+- DNN: Deep Neural Network
 - FPS: Frames Per Second
 - GSN: Goal Structuring Notation
 - HARA: Hazard and Risk Analysis
 - ML: Machine Learning
 - MVP: Minimum Viable Product
 - ODD: Operational Design Domain
+- OSS: Open-Source Software
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
@@ -90,7 +92,7 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We e
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 System Description [C] <a name="system_reqts"></a>
-SMIRK is an Open-Source Software (OSS) ML-based ADAS under development. It is a research prototype that provides pedestrian emergency braking that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem et al., 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking. The system combines Python source code and a trained DNN for object detection that demonstrates safety-critical driving automation on SAE Level 1.
+SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provides PAEB that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem *et al.*, 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking when needed. The system combines Python source code, a radar sensor providing object detection, and a trained deep neural network (DNN) for pedestrian detection and recognition. SMIRK demonstrates safety-critical ML-based driving automation on SAE Level 1.
 
 The SMIRK system architecture is further described in the [System Architecture Description](</docs/System Architecture Description.md>).
 
@@ -104,7 +106,7 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 ![Scenario5](/docs/figures/scenario5.png) <a name="scenario5"></a>
 ![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
 
-The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is pedestrian emergency braking. The design of the SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. Other ADAS 1 - N). We also expect that sensors and actuators will be shared between ADAS. On the other hand, we do not assume a central perception system that fuses various types of sensor input for individual ADAS to use. SMIRK uses a standalone ML model trained for pedestrian detection. Solid lines in the figure show how SMIRK interacts with sensors and actuators in the ego vehicle. Dashed lines indicate how other ADAS might use sensors and actuators.
+The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAEB. The design of SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. "Other ADAS 1 - N"). We also expect that sensors and actuators will be shared between ADAS. On the other hand, we do not assume a central perception system that fuses various types of sensor input for individual ADAS to use. SMIRK uses a standalone ML model trained for pedestrian detection and recognition. Solid lines in the figure show how SMIRK interacts with sensors and actuators in the ego vehicle. Dashed lines indicate how other ADAS might use sensors and actuators.
 
 ![Context](/docs/figures/context_diagram.png) <a name="context"></a>
 
@@ -112,14 +114,14 @@ The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is ped
 SMIRK comprises the following product functions, organized into the categories sensors, algorithms, and actuators in line with ISO 21448.
 
 Sensors:
-- Radar detection and tracking of objects in front of the vehicle (provided by ESI Pro-SiVIC, not elaborated further).
-- A forward-facing mono-camera (provided by ESI Pro-SiVIC, not elaborated further).
+- Radar detection and tracking of objects in front of the vehicle (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>)).
+- A forward-facing mono-camera (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>).
 
 Algorithms:
-- Time-to-collision calculation for objects on collision course.
-- Pedestrian detection based on the camera input.
-- Out-of-distribution detection of never-seen-before input (part of the safety-cage mechanism).
-- A braking module that commissions emergency braking. 
+- Time-to-collision (TTC) calculation for objects on collision course.
+- Pedestrian detection and recognition based on the camera input.
+- Out-of-distribution (OOD) detection of never-seen-before input (part of the [safety cage mechanism](</docs/ML%20Component%20Specification.md#4-outlier-detection-for-the-safety-cage-architecturesafety-cage>)).
+- A braking module that commissions emergency braking. (In the MVP, maximum braking power is always used).
 
 Actuators:
 - Brakes (provided by ESI Pro-SiVIC, not elaborated further).
