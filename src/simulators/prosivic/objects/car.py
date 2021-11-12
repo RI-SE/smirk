@@ -3,6 +3,7 @@ from typing import List
 
 import ProSivicDDS as psvdds
 
+import simulators.prosivic.utils as utils
 from simulators.prosivic.simulation import Simulation
 
 
@@ -19,19 +20,17 @@ class Car:
         self.order_handler = psvdds.carOrderHandler(name)
         self.environment_handler = psvdds.carEnvironmentHandler(name)
 
-    # Doesn't work in Prosivic 2020
-    # def set_speed(self, speed: float) -> None:
-    #     self.simulation.cmd(f"{self.name}.SetSpeed {speed}")
+    def set_init_speed(self, speed_ms: float) -> None:
+        speed_kmh = utils.ms_to_kmh(speed_ms)
+        self.simulation.cmd(f"{self.name}.SetInitSpeed {speed_kmh}")
 
-    def set_init_speed(self, speed: float) -> None:
-        self.simulation.cmd(f"{self.name}.SetInitSpeed {speed}")
-
-    def set_cruise_control(self, speed: float) -> None:
+    def set_cruise_control(self, speed_ms: float) -> None:
+        speed_kmh = utils.ms_to_kmh(speed_ms)
         self.simulation.cmd(
             f"{self.name}.SetCruiseControlPosition {CruiseControlPositions.SpeedControl.value}"
         )
-        self.simulation.cmd(f"{self.name}.SetInitSpeedControl {speed}")
-        self.simulation.cmd(f"{self.name}.SetSpeedControl {speed}")
+        self.simulation.cmd(f"{self.name}.SetInitSpeedControl {speed_kmh}")
+        self.simulation.cmd(f"{self.name}.SetSpeedControl {speed_kmh}")
 
     def brake(self) -> None:
         order = psvdds.carOrder()
@@ -39,10 +38,10 @@ class Car:
         order.brake = 1
         self.order_handler.transmit(order)
 
-    def ms_to_kmh(self, speed: float) -> float:
-        return speed * (3600 / 1000)
-
     def get_speed(self) -> float:
-        speed: List[float] = self.environment_handler.receive().speed
+        # TODO: Return undocumented in manual. Assauming list of speeds along the cars axis [x,y,z].
+        #       Could also be along world axis?
+        #       Seems to be in ms whereas other car values tend to be in kmh.
+        speed_ms: List[float] = self.environment_handler.receive().speed
 
-        return self.ms_to_kmh(speed[0])
+        return speed_ms[0]
