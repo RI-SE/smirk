@@ -1,4 +1,4 @@
-# System Requirements Specification v0.9
+# System Requirements Specification v0.91
 
 Revision History
 <table>
@@ -37,6 +37,14 @@ Revision History
 <td>2021-11-08</td>
 <td>Ready for Fagan inspection.</td>
 <td>0.9</td>
+</tr>
+<tr>
+<td>Markus Borg</td>
+<td>WIP</td>
+<td>Updated according to 
+<a href="https://github.com/RI-SE/smirk/blob/main/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx">inspection protocol</a>.
+</td>
+<td>0.91</td>
 </tr>
 <tr>
 <td></td>
