@@ -65,7 +65,9 @@ SMIRK assists the driver on country roads by performing emergency braking in the
 This document provides the foundation for the SMIRK minimum viable product (MVP).
 
 ## 1.2 Document Conventions ##
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process (Guidance on the Assurance of Machine Learning in Autonomous Systems). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text. In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
+This document largely follows the structure proposed in [IEEE 830-1998 - IEEE Recommended Practice for Software Requirements Specifications](https://standards.ieee.org/standard/830-1998.html) and the [template](https://www.modernanalyst.com/Resources/Templates/tabid/146/ID/497/Karl-Wiegers-Software-Requirements-Specification-SRS-Template.aspx) provided by Wiegers. While the standard has been replaced by [ISO/IEC/IEEE 29148:2011](https://www.iso.org/standard/45171.html), the old standard serves the SMIRK development well.
+
+Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process (Guidance on the Assurance of Machine Learning in Autonomous Systems). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text. Explanatory text copied verbatim from public documents are highlighted using the quote formatting available in GitHub Markdown. In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
