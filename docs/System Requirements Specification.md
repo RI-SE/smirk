@@ -65,7 +65,7 @@ SMIRK assists the driver on country roads by performing emergency braking in the
 This document provides the foundation for the SMIRK minimum viable product (MVP).
 
 ## 1.2 Document Conventions ##
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process (Guidance on the Assurance of Machine Learning in Autonomous Systems). In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
+Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process (Guidance on the Assurance of Machine Learning in Autonomous Systems). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text. In the name of open science, links to academic publications primarily point to preprints on arXiv rather than peer-reviewed revisions being publishers' paywalls.
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
@@ -112,18 +112,37 @@ SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provid
 The SMIRK system architecture is further described in the [System Architecture Description](</docs/System Architecture Description.md>).
 
 ## 2.1 Product Perspective ##
-SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. The figures below show five standard scenarios and a general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems.
+SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. Figures 1 to 6 below show five standard scenarios and a general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems. Trajectories are illustrated with blue arrows accompanied by a speed (*v*) and possible an angle (*θ*). *c* and *p* in the superscript denotes car and pedestrian, respectively, and *0* in the subscript indicates initial speed.
 
 ![Scenario1](/docs/figures/scenario1.png) <a name="scenario1"></a>
+
+*Figure 1: Example scenario with pedestrian crossing the road from the right.*
+
 ![Scenario2](/docs/figures/scenario2.png) <a name="scenario2"></a>
+
+*Figure 2: Example scenario with pedestrian crossing the road from the left.*
+
 ![Scenario3](/docs/figures/scenario3.png) <a name="scenario3"></a>
+
+*Figure 3: Example scenario with pedestrian moving on the road toward ego car.*
+
 ![Scenario4](/docs/figures/scenario4.png) <a name="scenario4"></a>
+
+*Figure 4: Example scenario with pedestrian moving on the road away from ego car.*
+
 ![Scenario5](/docs/figures/scenario5.png) <a name="scenario5"></a>
+
+*Figure 5: Example scenario with a stationary pedestrian on the road.*
+
 ![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
+
+*Figure 6: Example scenario illustrating a pedestrian crossing the road at an arbitrary angle.*
 
 The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAEB. The design of SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. "Other ADAS 1 - N"). We also expect that sensors and actuators will be shared between ADAS. On the other hand, we do not assume a central perception system that fuses various types of sensor input for individual ADAS to use. SMIRK uses a standalone ML model trained for pedestrian detection and recognition. Solid lines in the figure show how SMIRK interacts with sensors and actuators in the ego vehicle. Dashed lines indicate how other ADAS might use sensors and actuators.
 
 ![Context](/docs/figures/context_diagram.png) <a name="context"></a>
+
+*Figure 7: SMIRK context diagram.*
 
 ## 2.2 Product Functions ##
 SMIRK comprises the following product functions, organized into the categories sensors, algorithms, and actuators in line with ISO 21448.
@@ -144,6 +163,8 @@ Actuators:
 The figure below illustrates detection of a pedestrian on a collision course, i.e., automatic emergency braking shall be commenced. The ML-based functionality of pedestrian detection and recognition, including the corresponding OOD detection, is embedded in the **Pedestrian Recognition Component**.
 
 ![pedestrian_detection](/docs/figures/pedestrian_detection.png) <a name="pedestrian_detection"></a>
+
+*Figure 8: Illustrative example of pedestrian detection.*
 
 ## 2.3 External Interface Requirements ##
 SMIRK and ESI Pro-SiVIC communicate through two different python APIs provided by ESI, the Pro-SiVIC TCP remote controls API, and the Pro-SiVIC DDS API. OMG Data Distribution Service (DDS) is a middleware protocol and API standard for data-centric connectivity from the Object Management Group. In summary,
@@ -204,6 +225,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 ## 4.1 Physical Infrastructure
 >Physical infrastructure refers to facilities and systems that serve a country, city, or area and enable its economy to function. Physical infrastructure is typically characterized by technical structures, such as roads, bridges, tunnels, water supply, sewers, electrical grids, telecommunications, etc., that are for the most part interrelated. ADAS features may depend on such infrastructure elements, which are a critical part of the ODD environment. (Thorn *et al.*, 2018)
 
+*Table 1: Roadway Types.*
 <table>
 <thead>
   <tr>
@@ -324,6 +346,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
   </tr>
 </table>
 
+*Table 2: Roadway Surfaces.*
 <table> 
   <thead>
   <tr>
@@ -386,6 +409,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
   </tbody>
 </table>
 
+*Table 3: Roadway Edges and Markings.*
 <table> 
   <thead>
   <tr>
@@ -432,6 +456,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
   </tbody>
 </table>
 
+*Table 4: Roadway Geometry.*
 <table> 
   <thead>
   <tr>
@@ -477,6 +502,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 ## 4.2 Operational Constraints
 >There are several operational constraints that need to be considered when designing and testing ADAS applications. These include elements such as dynamic changes in speed limits, traffic characteristics, construction, etc. For example, an ADAS entering a school zone is subjected to lower speed limits and must respond appropriately to ensure the safety of its passengers and other road users. (Thorn *et al.*, 2018)
 
+*Table 5: Speed Limits.*
 <table> 
   <thead>
   <tr>
@@ -503,6 +529,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
   </tbody>
 </table>
 
+*Table 6: Traffic Conditions.*
 <table> 
   <thead>
   <tr>
@@ -528,6 +555,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 ## 4.3 Objects
 >For an ADAS to properly navigate within an ODD, it must detect and respond to certain objects. This category of the ODD identifies objects that can reasonably be expected to exist within the ODD. For example, a pedestrian may be expected at an intersection but rarely on a freeway. (Thorn *et al.*, 2018)
 
+*Table 7: Signage.*
 <table> 
   <thead>
   <tr>
@@ -582,6 +610,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 </tbody>
 </table>
 
+*Table 8: Roadway Users.*
 <table> 
   <thead>
   <tr>
@@ -616,6 +645,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
   </tbody>
 </table>
 
+*Table 9: Non-Roadway Users Obstacles.*
 <table> 
   <thead>
   <tr>
@@ -647,6 +677,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
 
 SMIRK does not rely on any external connectivity. All items below are either N or N/A.
 
+*Table 10: Vehicles.*
 <table> 
   <thead>
   <tr>
@@ -669,6 +700,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   </tbody>
 </table>
 
+*Table 11: Remote Fleet Management System.*
 <table> 
   <thead>
   <tr>
@@ -691,6 +723,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   </tbody>
 </table>
 
+*Table 12: Infrastructure Sensors.*
 <table> 
   <thead>
   <tr>
@@ -717,6 +750,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   </tbody>
 </table>
 
+*Table 13: Digital Infrastructure.*
 <table> 
   <thead>
   <tr>
@@ -755,6 +789,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
 >Environmental conditions play a crucial role in the safe operation of a variety of ADAS applications, and pose one of the biggest challenges to deployment
 , particularly early deployment. The environment can impact visibility, sensor fidelity, vehicle maneuverability, and communications systems. Today, ADAS technologies are tested most often in clear, rather than adverse, weather conditions. (Thorn *et al.*, 2018)
  
+ *Table 14: Weather.*
 <table> 
   <thead>
   <tr>
@@ -789,6 +824,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   </tbody>
 </table>
 
+*Table 15: Weather-Induced Roadway Conditions.*
 <table> 
   <thead>
   <tr>
@@ -819,6 +855,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   </tbody>
 </table>
 
+*Table 16: Particulate Matter.*
 <table> 
   <thead>
   <tr>
@@ -854,6 +891,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   </tbody>
 </table>
 
+*Table 17: Illumination.*
 <table> 
   <thead>
   <tr>
@@ -902,6 +940,7 @@ worker hand signals may overrule traffic lights. (Thorn *et al*, 2018)
 
 SMIRK does not rely on any zone specifics. All items below are either N or N/A.
 
+*Table 18: Geofencing.*
 <table> 
   <thead>
   <tr>
@@ -932,6 +971,7 @@ SMIRK does not rely on any zone specifics. All items below are either N or N/A.
   </tbody>
 </table>
 
+*Table 19: Traffic Management Zones.*
 <table> 
   <thead>
   <tr>
@@ -970,6 +1010,7 @@ SMIRK does not rely on any zone specifics. All items below are either N or N/A.
   </tbody>
 </table>
 
+*Table 20: School/Construction Zones.*
 <table> 
   <thead>
   <tr>
@@ -996,6 +1037,7 @@ SMIRK does not rely on any zone specifics. All items below are either N or N/A.
   </tbody>
 </table>
 
+*Table 21: Regions/States.*
 <table> 
   <thead>
   <tr>
@@ -1022,6 +1064,7 @@ SMIRK does not rely on any zone specifics. All items below are either N or N/A.
   </tbody>
 </table>
 
+*Table 22: Interference Zones.*
 <table> 
   <thead>
   <tr>
@@ -1061,6 +1104,8 @@ The figure below shows the ML assurance scoping argument pattern using goal stru
 
 ![GSN-ML-Assurance_Scoping_Argument_Pattern](/docs/figures/gsn-ml_assurance_scoping_argument_pattern.png) <a name="gsn-ml_assurance_scoping"></a>
 
+*Figure 9: SMIRK ML Assurance Scoping Argument Pattern.*
+
 The top claim, i.e., the starting point for the safety argument for the SMIRK ML-based object detection component, is that the system safety requirements that have been allocated to the pedestrian recognition component are satisfied in the ODD (G1.1). The safety claim for the pedestrian recognition component is made within the context of the information that was used to establish the safety requirements allocation, i.e., the system description ([C]), the ODD ([B]), and the ML component description ([D]). The allocated system safety requirements ([E]) are also provided as context. An explicit assumption is made that the allocated safety requirements have been correctly defined (A1.1), as this is part of the overall system safety process preceding AMLAS. Our claim to the validity of this assumption is presented in relation to the HARA described in [E]. As stated in AMLAS, "the primary aim of the ML Safety Assurance Scoping argument is to explain and justify the essential relationship between, on the one hand, the system-level safety requirements and associated hazards and risks, and on the other hand, the ML-specific safety requirements and associated ML performance and failure conditions."
 
 The ML safety claim is supported by an argument split into two parts. First, the development of the ML component is considered with an argument that starts with the elicitation of the ML safety requirements argument. Second, the deployment of the ML component is addressed with a corresponding argument. 
@@ -1072,6 +1117,8 @@ SMIRK instantiates the ML safety assurance scoping argument through the artifact
 The figure below shows the ML safety requirements argument pattern using GSN. The pattern largely follows the example provided in AMLAS, but adapts it to the specific SMIRK case. The major difference is the introduction of G2.2 targeting false positives and the safety cage mechanism as the corresponding solution 2.2.
 
 ![GSN-ML-Safety_Reqts_Argument_Pattern](/docs/figures/gsn-ml_safety_reqts_argument_pattern.png) <a name="gsn-ml_safety_reqts_argument"></a>
+
+*Figure 10: SMIRK ML Safety Requirements Argument Pattern.*
 
 The top claim is that system safety requirements that have been allocated to the ML component are satisfied by the model that is developed (G2.1). This is demonstrated through considering explicit ML safety requirements defined for the ML model [H]. The argument approach is a refinement strategy translating the allocated safety requirements into two concrete ML safety requirements (S2.1) provided as context (C2.1). Justification J2.1 explains how we allocated safety requirements to the ML component as part of the system safety process, including the HARA. 
 
