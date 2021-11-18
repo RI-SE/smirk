@@ -81,6 +81,7 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - OOD: Out Of Distribution
 - OSS: Open-Source Software
 - PAEB: Pedestrian Automatic Emergency Braking
+- SAE: (Formerly) Society of Automotive Engineers. Now known as [SAE International](https://www.sae.org/).
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
