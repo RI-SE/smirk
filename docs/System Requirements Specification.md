@@ -55,7 +55,7 @@ Revision History
 </table>
 
 # 1 Introduction
-This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
+This system requirements specification (SRS) contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
 
 We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
 
@@ -121,7 +121,7 @@ Product development inevitably necessitates quality trade-offs. While we have no
 - **Fairness**: Obviously a vital quality characteristic for a PAEB ADAS that primarily impacts the data requirements specified in the [Data Management Specification](</docs/Data Management Specification.md>). We have elaborated on SMIRK fairness in an academic publication (Borg et al., 2021). **[High priority]**
 
 ## 1.6 References ##
-The references are organized into 1) internal SMIRK documentation, 2) peer-reviewed publications, and 3) gray literature and white papers.
+The references are organized into 1) internal SMIRK documentation, 2) peer-reviewed publications, and 3) gray literature and white papers. When a reference listed under category 2) or 3) to motivate a design decision or a specific requirement, there is an explicit reference in the running text. Note that this SRS is self-contained, the references are provided for traceability to the underlying design rationales. Interested readers are referred to the discussions in the original sources.
 
 **Internal SMIRK documentation**
 - [Data Management Specification](</docs/Data Management Specification.md>)
