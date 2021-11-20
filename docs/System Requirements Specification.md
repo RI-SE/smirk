@@ -87,14 +87,15 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large.
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
 
 **Internal stakeholders**
 
 The entire document is relevant to the internal development organization. Specific stakeholders are recommended to pay particular attention as follows. 
-- Developers: [Section 3 (System Requirements)](#3-system-requirements)
+- Software developers: [Section 3 (System Requirements)](#3-system-requirements)
 - ML developers: [Section 3.2 (Safety Requirements Allocated to ML Component)](#32-safety-requirements-allocated-to-ml-component-e-)
-- Testers: [Section 3 (System Requirements)](#3-system-requirements) and [Section 4 (Operational Design Domain)](#4-operational-design-domain-b-).
+- Internal testers: [Section 3 (System Requirements)](#3-system-requirements).
+- Independent testers: [Section 3 (System Requirements)](#3-system-requirements) and [Section 4 (Operational Design Domain)](#4-operational-design-domain-b-).
 
 **External stakeholders**
 - Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
