@@ -72,6 +72,7 @@ The number of academic publications in the list of references is unconventional 
 Headings with a reference in brackets [X] refer to artifacts prescribed by the AMLAS process ([Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf)). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text. Explanatory text copied verbatim from public documents are highlighted using the quote formatting available in GitHub Markdown.
 
 ## 1.3 Glossary
+- ADAS: Advanced Driver-Assistance Systems
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DDS: Data Distribution Service
 - DNN: Deep Neural Network
