@@ -1,6 +1,9 @@
 absl-py==0.13.0; python_version >= "3.6" \
     --hash=sha256:6953272383486044699fd0e9f00aad167a27e08ce19aae66c6c4b10e7e767793 \
     --hash=sha256:62bd4e248ddb19d81aec8f9446b407ff37c8175c2ba88266a7afa9b4ce4a333b
+allpairspy==2.5.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0") \
+    --hash=sha256:66dbcb30c22a2c73e1cccae9ae7093f8e18bdf542e4ba2864ce822463735b5b4 \
+    --hash=sha256:9358484c91abe74ba18daf9d6d6904c5be7cc8818397d05248c9d336023c28b1
 antlr4-python3-runtime==4.8; python_version >= "3.6" \
     --hash=sha256:15793f5d0512a372b4e7d2284058ad32ce7dd27126b105fb0b2245130445db33
 astunparse==1.6.3 \
