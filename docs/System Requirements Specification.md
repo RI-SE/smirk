@@ -54,7 +54,7 @@ Revision History
 </tr>
 </table>
 
-# 1 Introduction <a name="introduction"></a>
+# 1 Introduction
 This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
 
 We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
@@ -87,11 +87,20 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-- Developers: the entire document is relevant.
-- ML developers: the entire document is relevant.
-- Testers: sections 3 (requirements) and 4 (ODD) are particularly important.
-- Safety assessors: focus on headings that map to the AMLAS process.
-- Other stakeholders: read sections 1 and 2 to get an overview of SMIRK.
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large.
+
+**Internal stakeholders**
+
+The entire document is relevant to the internal development organization. Specific stakeholders are recommended to pay particular attention as follows. 
+- Developers: [Section 3 (System Requirements)](#3-system-requirements)
+- ML developers: [Section 3.2 (Safety Requirements Allocated to ML Component)](#32-safety-requirements-allocated-to-ml-component-e-)
+- Testers: [Section 3 (System Requirements)](#3-system-requirements) and [Section 4 (Operational Design Domain)](#4-operational-design-domain-b-).
+
+**External stakeholders**
+- Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find most value in [Section 3 (System Requirements)](#3-system-requirements).
+- Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Assurance Scoping Argument Pattern)](#5-ml-assurance-scoping-argument-pattern-f-).
+- Curious readers: For an overview of SMIRK, read [Section 1 (Introduction)](#1-introduction) and [Section 2 (System Description)](#2-system-description-c-).
 
 ## 1.5 Product Scope ##
 SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK implements its own perception based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide SMIRK with input. This is not yet the case for the SMIRK MVP. The SMIRK scope is further explained through the context diagram in [Section 2.1](#21-product-perspective).  
