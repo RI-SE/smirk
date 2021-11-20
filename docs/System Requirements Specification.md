@@ -120,7 +120,13 @@ Product development inevitably necessitates quality trade-offs. While we have no
 - **Fairness**: Obviously a vital quality characteristic for a PAEB ADAS that primarily impacts the data requirements specified in the [Data Management Specification](</docs/Data Management Specification.md>). We have elaborated on SMIRK fairness in an academic publication (Borg et al., 2021). **[High priority]**
 
 ## 1.6 References ##
+The references are organized into 1) internal SMIRK documentation, 2) peer-reviewed publications, and 3) gray literature and white papers.
+
+**Internal SMIRK documentation**
+- [Data Management Specification](</docs/Data Management Specification.md>)
 - [System Architecture Description](</docs/System Architecture Description.md>)
+
+**Peer-reviewed publication**
 - Ben Abdessalem, Nejati, Briand, and Stifter, 2018. [Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms](https://dl.acm.org/doi/abs/10.1145/3180155.3180160), in *Proc. of the 40th Int’l. Conf. on Software Engineering*.
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. [Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems](https://arxiv.org/abs/2103.09051), In *Proc. of the 2nd IEEE/ACM International Workshop on Ethics in Software Engineering Research and Practice*, pp. 5-12.
 - Chen, Babar, and Nuseibeh, 2012. [Characterizing Architecturally Significant Requirements](https://core.ac.uk/download/pdf/59350157.pdf), *IEEE Software*, 30(2), pp. 38-45.
@@ -130,8 +136,10 @@ Product development inevitably necessitates quality trade-offs. While we have no
 - Henriksson, Berger, Borg, Tornberg, Sathyamoorthy, and Englund, 2021. [Performance Analysis of Out-of-Distribution Detection on Trained Neural Networks](https://arxiv.org/abs/2103.15580). *Information and Software Technology*, 130.
 - Horkoff, 2019. [Non-functional Requirements for Machine Learning: Challenges and New Directions](http://www.cse.chalmers.se/~jenho/PaperFiles/NFRsforMLRENext.pdf). In *Proc. of the 2019 IEEE 27th International Requirements Engineering Conference*, pp. 386-391.
 - Kassab and Kilicay-Ergin, 2015. [Applying Analytical Hierarchy Process to System Quality Requirements Prioritization](https://link.springer.com/article/10.1007/s11334-015-0260-8). *Innovations in Systems and Software Engineering*, 11(4), pp. 303-312.
-- Object Management Group (OMG) Data Distribution Service (DDS)(https://www.dds-foundation.org/what-is-dds-3/), Last checked: 2021-09-09.
-- The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard, Version 2](https://scsc.uk/r141B:1?t=1), SCSC-141B. 
+
+**Gray literature and white papers**
+- Object Management Group (OMG), [Data Distribution Service (DDS)](https://www.dds-foundation.org/what-is-dds-3/), Last checked: 2021-09-09.
+- The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 System Description [C] <a name="system_reqts"></a>
