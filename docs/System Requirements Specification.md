@@ -222,7 +222,7 @@ This section specifies the SMIRK system requirements, organized into system safe
 ## 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
 This section specifies the highest level SMIRK requirement.
 
-- **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if collision with a pedestrian is imminent.**
+- **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if and only if collision with a pedestrian is imminent.**
 
 Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avoid a collision. If a collision is inevitable, Ego will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
 
