@@ -148,7 +148,7 @@ SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provid
 The SMIRK system architecture is further described in the [System Architecture Description](</docs/System Architecture Description.md>).
 
 ## 2.1 Product Perspective ##
-SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. Figures 1 to 6 below show five standard scenarios and a general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems. Trajectories are illustrated with blue arrows accompanied by a speed (*v*) and possible an angle (*θ*). *c* and *p* in the superscript denotes car and pedestrian, respectively, and *0* in the subscript indicates initial speed.
+SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. Figures 1 to 7 below show five standard scenarios, a general scenario illustrating that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement, and robustness against false positives. Note that the fifth scenario represents a stationary pedestrian, a scenario that is known to be different to pedestrian detection systems. Trajectories are illustrated with blue arrows accompanied by a speed (*v*) and possible an angle (*θ*). *c* and *p* in the superscript denotes car and pedestrian, respectively, and *0* in the subscript indicates initial speed. The ghost in Figure 7 illustrates a potential false positive, also known as "braking for ghosts."
 
 ![Scenario1](/docs/figures/scenario1.png) <a name="scenario1"></a>
 
@@ -173,6 +173,10 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 ![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
 
 *Figure 6: Example scenario illustrating a pedestrian crossing the road at an arbitrary angle.*
+
+![Scenario7](/docs/figures/scenario7.png) <a name="scenario7"></a>
+
+*Figure 7: Example scenario illustrating that ego car shall not commence PAEB for false positives.*
 
 The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAEB. The design of SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. "Other ADAS 1 - N"). We also expect that sensors and actuators will be shared between ADAS. On the other hand, we do not assume a central perception system that fuses various types of sensor input for individual ADAS to use. SMIRK uses a standalone ML model trained for pedestrian detection and recognition. Solid lines in the figure show how SMIRK interacts with sensors and actuators in the ego vehicle. Dashed lines indicate how other ADAS might use sensors and actuators.
 
