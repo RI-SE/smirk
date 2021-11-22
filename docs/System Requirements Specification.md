@@ -247,10 +247,10 @@ This section specifies performance requirements corresponding to the ML safety r
 
 **For objects detected by the radar tracking component with a TTC < 4s, the following requirements must be fulfilled:**
 
-- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with an accuracy of 0.93 when they are within 50 meters.**
-- **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 meters.**
+- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with an accuracy of 93% when they are within 50 m.**
+- **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 m.**
 - **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01%.** 
-- **SYS-PER-REQ4: In a sequence of images from a video feed any pedestrian shall not be missed in more than 1 out of 5 frames.**
+- **SYS-PER-REQ4: In a sequence of images from a video feed any pedestrian shall not be missed in more than 20% of the frames.**
 - **SYS-PER-REQ5: The pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS on the target platform.**
 
