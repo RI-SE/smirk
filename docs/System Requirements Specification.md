@@ -55,14 +55,12 @@ Revision History
 </table>
 
 # 1 Introduction
-This system requirements specification (SRS) contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
-
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
+This system requirements specification (SRS) contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
 ## 1.1 Purpose ##
-SMIRK assists the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2.
+The SMIRK *product goal* is to assist the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2. This document provides the foundation for the SMIRK minimum viable product (MVP), i.e., an implementation limited to a highly restricted operational design domain (ODD).
 
-This document provides the foundation for the SMIRK minimum viable product (MVP).
+The *project goal* of the SMIRK development endeavor, as part of the research project SMILE3, is twofold. First, the project team will benefit substantially from having a concrete example of ADAS development as a basis for discussion. We will all learn how challenging it is to perform safety case development for ML-based perception systems by practically doing it for the SMIRK MVP. Nothing can substitute the experience of a hands-on engineering effort. Second, SMIRK will be provided as a completely open research protoype that can be used as a case under study in future research studies. As we keep expanding the ODD beyond the MVP limitations, the SMIRK ADAS can be used to study various aspects of AI engineering. For our subsequent research projects, we expect to primarily study the efficiency and effectiveness of various solution proposals related to software testing, verification, and validation.
 
 ## 1.2 Document Conventions ##
 This document largely follows the structure proposed in [IEEE 830-1998 - IEEE Recommended Practice for Software Requirements Specifications](https://standards.ieee.org/standard/830-1998.html) and the [template](https://www.modernanalyst.com/Resources/Templates/tabid/146/ID/497/Karl-Wiegers-Software-Requirements-Specification-SRS-Template.aspx) provided by Wiegers. While the standard has been replaced by [ISO/IEC/IEEE 29148:2011](https://www.iso.org/standard/45171.html), the old standard serves the SMIRK development well.
@@ -127,7 +125,7 @@ The references are organized into 1) internal SMIRK documentation, 2) peer-revie
 - [Data Management Specification](</docs/Data Management Specification.md>)
 - [System Architecture Description](</docs/System Architecture Description.md>)
 
-**Peer-reviewed publication**
+**Peer-reviewed publications**
 - Ben Abdessalem, Nejati, Briand, and Stifter, 2018. [Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms](https://dl.acm.org/doi/abs/10.1145/3180155.3180160), in *Proc. of the 40th Int’l. Conf. on Software Engineering*.
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. [Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems](https://arxiv.org/abs/2103.09051), In *Proc. of the 2nd IEEE/ACM International Workshop on Ethics in Software Engineering Research and Practice*, pp. 5-12.
 - Chen, Babar, and Nuseibeh, 2012. [Characterizing Architecturally Significant Requirements](https://core.ac.uk/download/pdf/59350157.pdf), *IEEE Software*, 30(2), pp. 38-45.
@@ -139,6 +137,7 @@ The references are organized into 1) internal SMIRK documentation, 2) peer-revie
 - Kassab and Kilicay-Ergin, 2015. [Applying Analytical Hierarchy Process to System Quality Requirements Prioritization](https://link.springer.com/article/10.1007/s11334-015-0260-8). *Innovations in Systems and Software Engineering*, 11(4), pp. 303-312.
 
 **Gray literature and white papers**
+- International Organization for Standardization, [ISO/PAS 21448:2019](https://www.iso.org/standard/70939.html) Road vehicles — Safety of the intended functionality 
 - Object Management Group (OMG), [Data Distribution Service (DDS)](https://www.dds-foundation.org/what-is-dds-3/), Last checked: 2021-09-09.
 - The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
