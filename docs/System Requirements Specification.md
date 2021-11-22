@@ -75,6 +75,7 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DDS: Data Distribution Service
 - DNN: Deep Neural Network
+- FPS: Frames Per Second
 - GSN: Goal Structuring Notation
 - HARA: Hazard and Risk Analysis
 - ML: Machine Learning
@@ -250,7 +251,7 @@ This section specifies performance requirements corresponding to the ML safety r
 - **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with an accuracy of 93% when they are within 50 m.**
 - **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 m.**
 - **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01%.** 
-- **SYS-PER-REQ4: In a sequence of images from a video feed any pedestrian shall not be missed in more than 20% of the frames.**
+- **SYS-PER-REQ4: In a sequence of consecutive images from a 10 FPS video feed any pedestrian shall not be missed in more than 20% of the frames.**
 - **SYS-PER-REQ5: The pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS on the target platform.**
 
