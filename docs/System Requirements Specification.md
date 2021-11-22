@@ -126,7 +126,7 @@ The references are organized into 1) internal SMIRK documentation, 2) peer-revie
 - [System Architecture Description](</docs/System Architecture Description.md>)
 
 **Peer-reviewed publications**
-- Ben Abdessalem, Nejati, Briand, and Stifter, 2018. [Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms](https://dl.acm.org/doi/abs/10.1145/3180155.3180160), in *Proc. of the 40th Int’l. Conf. on Software Engineering*.
+- Ben Abdessalem, Nejati, Briand, and Stifter, 2016. [Testing Advanced Driver Assistance Systems using Multi-objective Search and Neural Networks](https://core.ac.uk/download/pdf/42923634.pdf), in *Proc. of the 31st IEEE Conference on Automated Software Engineering*, pp. 63-74.
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. [Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems](https://arxiv.org/abs/2103.09051), In *Proc. of the 2nd IEEE/ACM International Workshop on Ethics in Software Engineering Research and Practice*, pp. 5-12.
 - Chen, Babar, and Nuseibeh, 2012. [Characterizing Architecturally Significant Requirements](https://core.ac.uk/download/pdf/59350157.pdf), *IEEE Software*, 30(2), pp. 38-45.
 - Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP)*.
@@ -143,7 +143,7 @@ The references are organized into 1) internal SMIRK documentation, 2) peer-revie
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 System Description [C] <a name="system_reqts"></a>
-SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provides PAEB that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem *et al.*, 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking when needed. The system combines Python source code, a radar sensor providing object detection, and a trained deep neural network (DNN) for pedestrian detection and recognition. SMIRK demonstrates safety-critical ML-based driving automation on SAE Level 1.
+SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provides PAEB that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem *et al.*, 2016). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking when needed. The system combines Python source code, a radar sensor providing object detection, and a trained deep neural network (DNN) for pedestrian detection and recognition. SMIRK demonstrates safety-critical ML-based driving automation on SAE Level 1.
 
 The SMIRK system architecture is further described in the [System Architecture Description](</docs/System Architecture Description.md>).
 
@@ -233,7 +233,7 @@ This section refines SYS-SAF-REQ into two separate requirements corresponding to
 - **SYS-ML-REQ1: The pedestrian recognition component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.**
 - **SYS-ML-REQ2: The pedestrian recognition component shall reject input that does not resemble the training data.**
 
-Rationale: SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2018) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
+Rationale: SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2016) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds, confirmed with the original authors) . We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
 ## 3.3.1 Performance Requirements
 This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets for the pedestrian recognition component. All requirements below are restricted to pedestrians on or close to the road.
