@@ -229,8 +229,8 @@ Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avo
 ## 3.2 Safety Requirements Allocated to ML Component [E] <a name="ml_component_safety_reqts"></a>
 Based on a Hazard Analysis and Risk Assessment (HARA), two categories of hazards were identified. First, SMIRK might miss pedestrians and fail to commence emergency braking - we refer to this as a false negative. Second, SMIRK might commence emergency braking when it should not - we refer to this as a false positive. A summary of the HARA is presented below.
 
-- False negative: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego vehicle.
-- False positive: The severity of the hazard is high (can be fatal). Controllability is very low since the driver would have no chance to counteract the braking. 
+- **False negative**: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego vehicle.
+- **False positive**: The severity of the hazard is high (can be fatal). Controllability is very low since the driver would have no chance to counteract the braking. 
  
 To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements in relation to false negatives. Furthermore, the false positive hazard necessitates the introduction of SYS-ML-REQ2.
 
