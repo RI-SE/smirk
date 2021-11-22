@@ -192,10 +192,10 @@ Sensors:
 - A forward-facing mono-camera (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>).
 
 Algorithms:
-- Time-to-collision (TTC) calculation for objects on collision course.
+- Time-to-collision (TTC) calculation for objects on collision course (threshold 4 s).
 - Pedestrian detection and recognition based on the camera input where the radar detected an object. 
 - Out-of-distribution (OOD) detection of never-seen-before input (part of the [safety cage mechanism](</docs/ML%20Component%20Specification.md#4-outlier-detection-for-the-safety-cage-architecturesafety-cage>)). 
-- A braking module that commissions emergency braking. (In the MVP, maximum braking power is always used).
+- A braking module that commissions emergency braking. In the MVP, maximum braking power is always used.
 
 Actuators:
 - Brakes (provided by ESI Pro-SiVIC, not elaborated further).
