@@ -54,24 +54,23 @@ Revision History
 </tr>
 </table>
 
-# 1 Introduction <a name="introduction"></a>
-This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
-
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
+# 1 Introduction
+This system requirements specification (SRS) contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
 ## 1.1 Purpose ##
-SMIRK assists the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2.
+The SMIRK *product goal* is to assist the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2. This document provides the foundation for the SMIRK minimum viable product (MVP), i.e., an implementation limited to a highly restricted operational design domain (ODD).
 
-This document provides the foundation for the SMIRK minimum viable product (MVP).
+The *project goal* of the SMIRK development endeavor, as part of the research project SMILE3, is twofold. First, the project team will benefit substantially from having a concrete example of ADAS development as a basis for discussion. We will all learn how challenging it is to perform safety case development for ML-based perception systems by practically doing it for the SMIRK MVP. Nothing can substitute the experience of a hands-on engineering effort. Second, SMIRK will be provided as a completely open research protoype that can be used as a case under study in future research studies. As we keep expanding the ODD beyond the MVP limitations, the SMIRK ADAS can be used to study various aspects of AI engineering. For our subsequent research projects, we expect to primarily study the efficiency and effectiveness of various solution proposals related to software testing, verification, and validation.
 
 ## 1.2 Document Conventions ##
 This document largely follows the structure proposed in [IEEE 830-1998 - IEEE Recommended Practice for Software Requirements Specifications](https://standards.ieee.org/standard/830-1998.html) and the [template](https://www.modernanalyst.com/Resources/Templates/tabid/146/ID/497/Karl-Wiegers-Software-Requirements-Specification-SRS-Template.aspx) provided by Wiegers. While the standard has been replaced by [ISO/IEC/IEEE 29148:2011](https://www.iso.org/standard/45171.html), the old standard serves the SMIRK development well.
 
-The number of academic publications in the list of references is unconventional for techincal project doumentation. This is a conscious decision. SMIRK is developed as a prototype in the context of a research project with limited resources. As part of our research, we aim to integrate (sometimes scattered) pieces from the state-of-the-art literature. Synthesis is a fundamental tool in our research and we seek novel insights while focusing on refinement and integration. We actively choose to rely on reuse of design decisions from previously peer-reviewed publications. Building on previous work, i.e., [standing on the shoulders of others](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants), is a core concept in research that allows validation of previous work, incl. previously proposed requirements. When available, links to academic publications point to preprints on [arXiv](https://arxiv.org/) rather than peer-reviewed revisions behind paywalls.
+The number of academic publications in the list of references is unconventional for techincal project doumentation. This is a conscious decision. SMIRK is developed as a prototype in the context of a research project with limited resources. As part of our research, we aim to integrate (sometimes scattered) pieces from the state-of-the-art literature. Synthesis is a fundamental tool in our research and we seek novel insights while focusing on refinement and integration. We actively choose to rely on reuse of design decisions from previously peer-reviewed publications. Building on previous work, i.e., [standing on the shoulders of others](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants), is a core concept in research that allows validation of previous work, incl. previously proposed requirements. When available, and unless open access publication models have been used, links to academic publications point to preprints on open repositories such as [arXiv](https://arxiv.org/) rather than peer-reviewed revisions behind paywalls.
 
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process ([Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf)). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text. Explanatory text copied verbatim from public documents are highlighted using the quote formatting available in GitHub Markdown.
+Headings with a reference in brackets [X] refer to artifacts prescribed by the AMLAS process ([Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf)). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text. Explanatory text copied verbatim from public documents are highlighted using the quote formatting available in GitHub Markdown.
 
 ## 1.3 Glossary
+- ADAS: Advanced Driver-Assistance Systems
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DDS: Data Distribution Service
 - DNN: Deep Neural Network
@@ -87,28 +86,64 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-- Developers: the entire document is relevant.
-- ML developers: the entire document is relevant.
-- Testers: sections 3 (requirements) and 4 (ODD) are particularly important.
-- Safety assessors: focus on headings that map to the AMLAS process.
-- Other stakeholders: read sections 1 and 2 to get an overview of SMIRK.
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
+
+**Internal stakeholders**
+
+The entire document is relevant to the internal development organization. Specific stakeholders are recommended to pay particular attention as follows. 
+- Software developers: [Section 3 (System Requirements)](#3-system-requirements)
+- ML developers: [Section 3.2 (Safety Requirements Allocated to ML Component)](#32-safety-requirements-allocated-to-ml-component-e-)
+- Internal testers: [Section 3 (System Requirements)](#3-system-requirements).
+- Independent testers: [Section 3 (System Requirements)](#3-system-requirements) and [Section 4 (Operational Design Domain)](#4-operational-design-domain-b-).
+
+**External stakeholders**
+- Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find most value in [Section 3 (System Requirements)](#3-system-requirements).
+- Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Assurance Scoping Argument Pattern)](#5-ml-assurance-scoping-argument-pattern-f-).
+- Curious readers: For an overview of SMIRK, read [Section 1 (Introduction)](#1-introduction) and [Section 2 (System Description)](#2-system-description-c-).
 
 ## 1.5 Product Scope ##
-SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK implements its own perception based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide SMIRK with input. This is not yet the case for the SMIRK MVP. The SMIRK scope is further explained through the context diagram in [Section 2.1](#21-product-perspective).  
+SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK currently implements its own perception system based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide reliable input to SMIRK. This is not yet the case for the SMIRK MVP and this version of the SRS does not specify any requirements related to shared resources. The SMIRK scope is further explained through the context diagram in [Section 2.1](#21-product-perspective).
+
+Product development inevitably necessitates quality trade-offs. While we have not conducted a systematic quality requirements prioritization, such as an analytical hierarchy process workshop (Kassab and Kilicay-Ergin, 2015), this section shares our general aims with SMIRK. The software product quality model defined in the ISO/IEC 25010 standard consists of eight characteristics. Furthermore, as recommend in requirements engineering research (Horkoff, 2019), we add the two novel quality characteristics explainability and fairness. For each characteristic, we share how important it is considered during the development and assign it a low, medium or high priority. Our priorities influence architectural decisions in SMIRK and support elicitation of architecturally significant requirements (Chen et al., 2012).
+
+- **Functional suitability**: No matter how functionally restricted the SMIRK MVP is, it must meet the stated and implied needs of a prototype ADAS. This quality characteristic is fundamentally important. **[High priority]**
+- **Performance efficiency**: When deployed in the simulated environment, SMIRK must be able to process input, conduct ML inference, and possibly commission emergency braking in realistic driving scenarios. As a real-time system, SMIRK must be sufficiently fast and finding when performance efficiency reached excessive levels is vital in the requirements engineering process. **[Medium priority]**
+- **Compatibility**: A product goal is to make SMIRK compatible with other ADAS. So far we have not explored this further, thus this is a primarily an ambition beyond the MVP development. **[Low priority]**
+- **Usability**: SMIRK is an ADAS that operates in the background and ideally never intervenes in the dynamic driving task. SMIRK does not have a user interface for the direct driver interaction. **[Low priority]**
+- **Reliability**: A top priority in the SMIRK development that motivates the application of AMLAS. Note, however, that safety is not covered in the ISO/IEC 25010 product quality model but in its complementary quality-in-use model. **[High priority]**
+- **Security**: Not prioritized in the SMIRK MVP. ISO/PAS 21448 is limited to "reasonably foreseeable misuse" but does not address antagonistic attacks. While safety and security shall be co-engineered, we leave this quality characteristic as future work. **[Low priority]**
+- **Maintainability**: As mentioned in [Section 1.1 Purpose](#11-purpose), evolvability from the SMIRK MVP is a key concern. Consequently, maintainability is important, although not more important than functional suitability and reliability. **[Medium priority]**
+- **Portability**: We aim to develop SMIRK in a manner that allows porting the ADAS to both other simulated environments and to physical demonstration platforms in future projects. We consider this  quality characteristic during the SMIRK development, but it is not a primary concern. **[Low priority]**
+- **Explainability**: Explainability is an important characteristic for any cyber-physical system, but the challenge grows with the introduction of DNNs. There is considerable research momentum on “Explainable AI” and we expect that new findings will be applicable to SMIRK. For the MVP development, however, our explainability focus is restricted to the auditability resulting in following AMLAS. **[Medium priority]**
+- **Fairness**: Obviously a vital quality characteristic for a PAEB ADAS that primarily impacts the data requirements specified in the [Data Management Specification](</docs/Data Management Specification.md>). We have elaborated on SMIRK fairness in an academic publication (Borg et al., 2021). **[High priority]**
 
 ## 1.6 References ##
+The references are organized into 1) internal SMIRK documentation, 2) peer-reviewed publications, and 3) gray literature and white papers. When a reference listed under category 2) or 3) to motivate a design decision or a specific requirement, there is an explicit reference in the running text. Note that this SRS is self-contained, the references are provided for traceability to the underlying design rationales. Interested readers are referred to the discussions in the original sources.
+
+**Internal SMIRK documentation**
+- [Data Management Specification](</docs/Data Management Specification.md>)
 - [System Architecture Description](</docs/System Architecture Description.md>)
-- Ben Abdessalem, Nejati, Briand, and Stifter, 2018. [Testing Vision-based Control Systems Using Learnable Evolutionary Algorithms](https://dl.acm.org/doi/abs/10.1145/3180155.3180160), in *Proc. of the 40th Int’l. Conf. on Software Engineering*.  
+
+**Peer-reviewed publications**
+- Ben Abdessalem, Nejati, Briand, and Stifter, 2016. [Testing Advanced Driver Assistance Systems using Multi-objective Search and Neural Networks](https://core.ac.uk/download/pdf/42923634.pdf), in *Proc. of the 31st IEEE Conference on Automated Software Engineering*, pp. 63-74.
+- Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. [Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems](https://arxiv.org/abs/2103.09051), In *Proc. of the 2nd IEEE/ACM International Workshop on Ethics in Software Engineering Research and Practice*, pp. 5-12.
+- Chen, Babar, and Nuseibeh, 2012. [Characterizing Architecturally Significant Requirements](https://core.ac.uk/download/pdf/59350157.pdf), *IEEE Software*, 30(2), pp. 38-45.
 - Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP)*.
 - Hawkins, Paterson, Picardi, Jia, Calinescu, and Habli, 2021. [Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS)](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf), v1.1, Techincal Report, University of York.
 - Henriksson, Berger, Borg, Tornberg, Englund, Sathyamoorthy, and Ursing, 2019. [Towards Structured Evaluation of Deep Neural Network Supervisors](https://arxiv.org/abs/1903.01263), In *Proc. of the International Conference On Artificial Intelligence Testing*, pp. 27-34.
 - Henriksson, Berger, Borg, Tornberg, Sathyamoorthy, and Englund, 2021. [Performance Analysis of Out-of-Distribution Detection on Trained Neural Networks](https://arxiv.org/abs/2103.15580). *Information and Software Technology*, 130.
-- Object Management Group (OMG) Data Distribution Service (DDS)(https://www.dds-foundation.org/what-is-dds-3/), Last checked: 2021-09-09.
-- The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard, Version 2](https://scsc.uk/r141B:1?t=1), SCSC-141B. 
+- Horkoff, 2019. [Non-functional Requirements for Machine Learning: Challenges and New Directions](http://www.cse.chalmers.se/~jenho/PaperFiles/NFRsforMLRENext.pdf). In *Proc. of the 2019 IEEE 27th International Requirements Engineering Conference*, pp. 386-391.
+- Kassab and Kilicay-Ergin, 2015. [Applying Analytical Hierarchy Process to System Quality Requirements Prioritization](https://link.springer.com/article/10.1007/s11334-015-0260-8). *Innovations in Systems and Software Engineering*, 11(4), pp. 303-312.
+
+**Gray literature and white papers**
+- International Organization for Standardization, [ISO/PAS 21448:2019](https://www.iso.org/standard/70939.html) Road vehicles — Safety of the intended functionality 
+- Object Management Group (OMG), [Data Distribution Service (DDS)](https://www.dds-foundation.org/what-is-dds-3/), Last checked: 2021-09-09.
+- The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 System Description [C] <a name="system_reqts"></a>
-SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provides PAEB that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem *et al.*, 2018). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking when needed. The system combines Python source code, a radar sensor providing object detection, and a trained deep neural network (DNN) for pedestrian detection and recognition. SMIRK demonstrates safety-critical ML-based driving automation on SAE Level 1.
+SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provides PAEB that adheres to development practices mandated by the candidate standard ISO 21448. To ensure industrial relevance, SMIRK builds on the reference architecture from PeVi, an ADAS studied in previous work (Ben Abdessalem *et al.*, 2016). SMIRK uses a radar sensor and a camera to detect pedestrians on collision course and commissions emergency braking when needed. The system combines Python source code, a radar sensor providing object detection, and a trained deep neural network (DNN) for pedestrian detection and recognition. SMIRK demonstrates safety-critical ML-based driving automation on SAE Level 1.
 
 The SMIRK system architecture is further described in the [System Architecture Description](</docs/System Architecture Description.md>).
 
@@ -198,7 +233,7 @@ This section refines SYS-SAF-REQ into two separate requirements corresponding to
 - **SYS-ML-REQ1: The pedestrian recognition component shall detect pedestrians if the radar tracking component returns TTC < 4s for the corresponding object.**
 - **SYS-ML-REQ2: The pedestrian recognition component shall reject input that does not resemble the training data.**
 
-Rationale: SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2018) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
+Rationale: SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2016) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds, confirmed with the original authors) . We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
 ## 3.3.1 Performance Requirements
 This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets for the pedestrian recognition component. All requirements below are restricted to pedestrians on or close to the road.
