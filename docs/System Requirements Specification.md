@@ -71,6 +71,7 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 
 ## 1.3 Glossary
 - ADAS: Advanced Driver-Assistance Systems
+- API: Application Programming Interface
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DDS: Data Distribution Service
 - DNN: Deep Neural Network
@@ -83,6 +84,7 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - OSS: Open-Source Software
 - PAEB: Pedestrian Automatic Emergency Braking
 - SAE: (Formerly) Society of Automotive Engineers. Now known as [SAE International](https://www.sae.org/).
+- TCP: Transmission Control Protocol
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
