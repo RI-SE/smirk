@@ -185,7 +185,7 @@ The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAE
 *Figure 7: SMIRK context diagram.*
 
 ## 2.2 Product Functions ##
-SMIRK comprises the following product functions, organized into the categories sensors, algorithms, and actuators in line with ISO 21448.
+SMIRK comprises implementations of four algorithms and uses external vehicle functions. In line with ISO 21448, we organize all constituents into the categories sensors, algorithms, and actuators.
 
 Sensors:
 - Radar detection and tracking of objects in front of the vehicle (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>)).
