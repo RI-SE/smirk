@@ -237,7 +237,7 @@ To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements 
 ## 3.3 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
 This section refines SYS-SAF-REQ into two separate requirements corresponding to false positives and false negatives, respectively.
 
-- **SYS-ML-REQ1: The pedestrian recognition component shall detect pedestrians in all valid scenarios when the radar tracking component returns a TTC below 4s for the corresponding object.**
+- **SYS-ML-REQ1: The pedestrian recognition component shall detect pedestrians in all valid scenarios when the radar tracking component returns a TTC < 4s for the corresponding object.**
 - **SYS-ML-REQ2: The pedestrian recognition component shall reject input that does not resemble the training data.**
 
 Rationale: SYS-SAF-REQ1 is interpreted in the light of false negatives and false positives and then broken down into the separate ML safety requirements SYS-ML-REQ1 and SYS-ML-REQ2. The former requirement deals with the "if" aspect of SYS-SAF-REQ1 whereas its "and only if" aspect is targetted by SYS-SAF-REQ2. SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2016) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds, confirmed with the original authors). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
@@ -245,10 +245,12 @@ Rationale: SYS-SAF-REQ1 is interpreted in the light of false negatives and false
 ## 3.3.1 Performance Requirements
 This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets for the pedestrian recognition component. All requirements below are restricted to pedestrians on or close to the road.
 
+**For objects detected by the radar tracking component with a TTC < 4s, the following requirements must be fulfilled:**
+
 - **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with an accuracy of 0.93 when they are within 50 meters.**
-- **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% for pedestrians when they are detected by the radar tracking component within 50 meters.**
-- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01% for objects detected by the radar tracking component with a TTC < 4s** 
-- **SYS-PER-REQ4: In a sequence of images from a video feed any pedestrian to be detected shall not be missed in more than 1 out of 5 frames.**
+- **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 meters.**
+- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01%.** 
+- **SYS-PER-REQ4: In a sequence of images from a video feed any pedestrian shall not be missed in more than 1 out of 5 frames.**
 - **SYS-PER-REQ5: The pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS on the target platform.**
 
