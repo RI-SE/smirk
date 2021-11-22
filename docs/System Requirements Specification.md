@@ -209,7 +209,8 @@ The figure below illustrates detection of a pedestrian on a collision course, i.
 ## 2.3 External Interface Requirements ##
 SMIRK and ESI Pro-SiVIC communicate through two different python APIs provided by ESI, the Pro-SiVIC TCP remote controls API, and the Pro-SiVIC DDS API. OMG Data Distribution Service (DDS) is a middleware protocol and API standard for data-centric connectivity from the Object Management Group. In summary,
 
-- All dynamic Pro-SiVIC setup is communicated as Pro-SiVIC commands  over TCP.
+- SMIRK is developed for ESI Pro-SiVIC 2020.0 64-bit.
+- All dynamic Pro-SiVIC setup is communicated as Pro-SiVIC commands over TCP.
 - Scenarios are started over TCP.	
 - All subsequent data communication, i.e., live data during the simulation, is transferred over DDS through the Python API.
 
