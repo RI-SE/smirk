@@ -63,6 +63,11 @@ class Pedestrian:
             package_data=self.APPEARANCE_TO_PACKAGE_DATA_MAP[self.appearance],
         )
 
+        self.set_rcs_enabled(True)
+
+    def set_rcs_enabled(self, enabled: bool) -> None:
+        self.simulation.cmd(f"{self.package_name}/RCS.SetDisabled {int((not enabled))}")
+
     def get_mesh_names(self):
         return [f"{self.name}/{mesh_name}" for mesh_name in self.MESH_OBJECTS]
 
