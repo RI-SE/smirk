@@ -68,7 +68,7 @@ SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We e
 - Kruchten, 1995. The 4+1 View Model of Architecture. IEEE Software, 12(6), pp. 42-50.
 
 # 2 Architecture Viewpoints
-SMIRK is a pedestrian emergency braking ADAS. The system consists of two sensors (camera and radar/LiDAR) and a deep neural network trained for pedestrian detection. To minimize hazardous false positives, SMIRK implements a SMILE safety cage to reject input that is out-of-distribution.
+SMIRK is a pedestrian emergency braking ADAS. The system uses input from two sensors (camera and radar/LiDAR), implements a deep neural network trained for pedestrian detection and recognition. To minimize hazardous false positives, SMIRK implements a SMILE safety cage to reject input that is out-of-distribution.
 
 If the radar detects an imminent collision between the ego car and an object, SMIRK will evaluate if the object is a pedestrian. If SMIRK is confident that the object is a pedestrian, it will apply emergency braking.
 
@@ -94,20 +94,23 @@ The SMIRK logical view is constituted by a description of the entities that real
 
 ![Logical_View](/docs/figures/logical_view.png) <a name="logical_view"></a>
 
-SMIRK consists of the following main components:
-- Hardware sensors and actuators in ESI Pro-SiVIC
-	- Mono **Camera** (752x480 (WVGA), sensor dimension 3.13 cm x 2.00 cm, focal length 3.73 cm, angle of view 45 degrees)
-	- **Radar** unit (providing object tracking and relative lateral and longitudinal speeds)
-	- **Ego Car** (Audi A4 for which we are mostly concerned with the brake system)
-- Software components implemented in Python
-	- **Radar Logic** (calculating TTC based on relative speeds)
-	- **Perception Orchestrator** (the overall perception logic)
-	- **Rule Engine** (part of the safety cage, implementing heuristics such as pedestrians do not fly in the air)
-	- **Uncertainty Manager** (main part of the safety cage, implementing logic to avoid false positives)
-	- **Brake Manager** (calculating and sending brake signals to the ego car)
-- Trained Machine Learning models
-	- **Pedestrian Detector** (a YOLO model trained using PyTorch)
-	- **Anomaly Detector** (a third party component from [Seldon](https://github.com/SeldonIO/alibi-detect))
+SMIRK interacts with three external resources, i.e., hardware sensors and actuators in ESI Pro-SiVIC:
+	- A) Mono **Camera** (752x480 (WVGA), sensor dimension 3.13 cm x 2.00 cm, focal length 3.73 cm, angle of view 45 degrees)
+	- B) **Radar** unit (providing object tracking and relative lateral and longitudinal speeds)
+	- C) **Ego Car** (Audi A4 for which we are mostly concerned with the brake system)
+
+SMIRK consists of the following constituents.
+- Software components implemented in Python:
+	- D) **Radar Logic** (calculating TTC based on relative speeds)
+	- E) **Perception Orchestrator** (the overall perception logic)
+	- F) **Rule Engine** (part of the safety cage, implementing heuristics such as pedestrians do not fly in the air)
+	- G) **Uncertainty Manager** (main part of the safety cage, implementing logic to avoid false positives)
+	- H) **Brake Manager** (calculating and sending brake signals to the ego car)
+- Trained Machine Learning models:
+	- I) **Pedestrian Detector** (a YOLO model trained using PyTorch)
+	- J) **Anomaly Detector** (a third party component from [Seldon](https://github.com/SeldonIO/alibi-detect))
+
+We refer to E), F), G), I), and J) as the **Pedestrian Recognition Component**, i.e., the ML-based component for which we present a safety case.
 
 ## 3.2 Process View
 The process view deals with the dynamic aspects of SMIRK including an overview of the run time behavior of the system. The overall SMIRK flow is as follows:
