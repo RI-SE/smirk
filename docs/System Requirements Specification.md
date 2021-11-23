@@ -239,7 +239,7 @@ To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements 
 This section refines SYS-SAF-REQ into two separate requirements corresponding to false positives and false negatives, respectively.
 
 - **SYS-ML-REQ1: The pedestrian recognition component shall identify pedestrians in all valid scenarios when the radar tracking component returns a TTC < 4s for the corresponding object.**
-- **SYS-ML-REQ2: The pedestrian recognition component shall reject input that does not resemble the training data.**
+- **SYS-ML-REQ2: The pedestrian recognition component shall reject false positive input that does not resemble the training data.**
 
 Rationale: SYS-SAF-REQ1 is interpreted in the light of false negatives and false positives and then broken down into the separate ML safety requirements SYS-ML-REQ1 and SYS-ML-REQ2. The former requirement deals with the "if" aspect of SYS-SAF-REQ1 whereas its "and only if" aspect is targetted by SYS-SAF-REQ2. SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2016) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds, confirmed with the original authors). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
