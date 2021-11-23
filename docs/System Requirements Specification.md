@@ -849,7 +849,7 @@ SMIRK does not rely on any external connectivity. All items below are either N o
   <tbody>
   <tr>
     <td>Wind</td>
-    <td>Calm winds</td>
+    <td>Calm winds (< 0.5 m/s)</td>
   </tr>
   <tr>
     <td>Rain</td>
