@@ -263,11 +263,11 @@ This section specifies robustness requirements corresponding to the ML safety re
 **For pedestrians present within 50 m of Ego, captured in the field of view of the camera:**
 
 - **SYS-ROB-REQ1: The pedestrian recognition component shall perform as required in all situations Ego may encounter within the defined ODD.**
-- **SYS-ROB-REQ2: The pedestrian recognition component shall identify pedestrians irrespective of their pose with respect to the camera.**
+- **SYS-ROB-REQ2: The pedestrian recognition component shall identify pedestrians irrespective of their upright pose with respect to the camera.**
 - **SYS-ROB-REQ3: The pedestrian recognition component shall identify pedestrians irrespective of their size with respect to the camera.**
 - **SYS-ROB-REQ4: The pedestrian recognition component shall identify pedestrians irrespective of their appearance with respect to the camera.**
 
-Rationale: SMIRK reuses robustness requirements for pedestrian detection from previous work. SYS-ROB-REQ1 is specified in Gauerhof *et al.* (2020). SYS-ROB-REQ2 is presented as Example 7 in AMLAS. SYS-ROB-REQ3 and SYS-ROB-REQ4 are additions identified during the [Fagan inspection](/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx).
+Rationale: SMIRK reuses robustness requirements for pedestrian detection from previous work. SYS-ROB-REQ1 is specified in Gauerhof *et al.* (2020). SYS-ROB-REQ2 is presented as Example 7 in AMLAS, which has been limited to upright poses, i.e., SMIRK is not designed to work for pedestrians sitting or lying on the road. SYS-ROB-REQ3 and SYS-ROB-REQ4 are additions identified during the [Fagan inspection](/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx). 
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
 This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn *et al.*, 2018) and the introductory text for each ODD category originates in the same techincal report. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
