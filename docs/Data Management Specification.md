@@ -11,7 +11,7 @@ Revision History
 <tr>
 <td>Olof Lennartsson, Elias Sonnsjö</th>
 <td>2021-05-20</th>
-<td>Initial SMILE version.</th>
+<td>Initial SMILE3 version.</th>
 <td>0.1</th>
 </tr>
 <tr>
@@ -265,7 +265,7 @@ Claim G3.3 states that the generated data satisfies the data requirements in con
 # 6 ML Data Validation Results [S] <a name="data_validation_results"></a>
 The SMIRK ML data validation consists of two activities, a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the data requirements and an analysis of the data sets. Moreover, as the SMIRK data is generated in ESI Pro-SiVIC, we argue that the corresponding [scripts](https://github.com/RI-SE/smirk/tree/main/pedestrian-generator) result in data that implicitly complies with most of the data requirements.
 
-First, the SMILE project conducted a Fagan inspection, i.e., a formal inspection, consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire DMS.
+First, the SMILE3 project conducted a Fagan inspection, i.e., a formal inspection, consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire DMS.
 
 1. Planning: The authors prepared the DMS and invited the required reviewers to an inspection meeting.
 1. Overview: During one of the regular project meetings, the lead authors explained the fundamental structure of the DMS to the reviewers. The partly relevant SRS inspection checklist was also introduced. Reviewers were also assigned particular inspection perspectives based on their individual expertise. All information was repeated in an email, as not all reviewers were present at the meeting.
@@ -276,7 +276,7 @@ First, the SMILE project conducted a Fagan inspection, i.e., a formal inspection
 
 The inspection protocol is available at TBD.
 
-Second, the SMILE project analyzed the characteristics of the data sets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE reviewers manually analyzed a random sample of images from the data set <TBD, DESCRIBE HOW WE DO THIS>.
+Second, the SMILE3 project analyzed the characteristics of the data sets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE3 reviewers manually analyzed a random sample of images from the data set <TBD, DESCRIBE HOW WE DO THIS>.
 
 Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-)
 - Relevant: DAT-REL-REQ1 to DAT-REL-REQ7 are implicitly met by the data generation scripts. Everything present in the data set has been explicitly added by the SMIRK developers in the scripts. Only relevant data samples captured using a forward-facing camera in a valid sensor position have been added to the scripts. No outlier objects exist in the data sets.
