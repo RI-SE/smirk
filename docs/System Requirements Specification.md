@@ -40,7 +40,7 @@ Revision History
 </tr>
 <tr>
 <td>Markus Borg</td>
-<td>WIP</td>
+<td>2021-11-23</td>
 <td>Updated according to 
 <a href="https://github.com/RI-SE/smirk/blob/main/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx">inspection protocol</a>.
 </td>
