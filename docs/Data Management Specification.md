@@ -143,7 +143,7 @@ This desideratum considers the intersection between the dataset and the supporte
 - DAT-REL-REQ6: Pedestrians included in data samples shall be of a type that may appear in the ODD.
 - DAT-REL-REQ7: All data samples representing non-pedestrian OOD objects shall be of a type that may appear in the ODD.
 
-Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. DAT-REL-REQ5 is added based on the corresponding fundamental restriction of the ODD of the SMIRK MVP. DAT-REL-REQ7 restricts data samples providing negative examples for testing.
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. DAT-REL-REQ5 is added based on the corresponding fundamental restriction of the ODD of the SMIRK MVP. DAT-REL-REQ7 restricts data samples providing OOD examples for testing.
 
 ## 2.2 Complete
 This desideratum considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore *et al.* (2021) refer to this as the external perspective on the data.
@@ -197,11 +197,11 @@ This section descibres how the data used for the fine-tuning of the ML model in 
 - Verification data: Used in the independent test activity, led by Infotiv, when the model is ready for release. 
 
 ## 4.1 Data Collection
-The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and fully reproducible. The following two lists present the scripts used to play scenarios and capture the corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes examples that represent OOD shapes [NX], i.e., objects that shall not initiate PAEB in case of an imminent collision. These images, referred to as negative examples, shall either not be recognized as a pedestrian or be rejected by the SMIRK safety cage. 
+The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and fully reproducible. The following two lists present the scripts used to play scenarios and capture the corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes examples that represent OOD shapes [NX], i.e., objects that shall not initiate PAEB in case of an imminent collision. These images, referred to as OOD examples, shall either not be recognized as a pedestrian or be rejected by the SMIRK safety cage. 
 
 For each listed item, there is a link to a YAML configuration file that is used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
 
-In total, we generate data representing 6 x 616 = 3,696 execution scenarios with positive examples and 4 x 40 = 160 execution scenarios with negative examples. In total, the data collection campaign generates roughly 120 GB of image data, annotations, and meta-data (including bounding boxes).
+In total, we generate data representing 6 x 616 = 3,696 execution scenarios with positive examples and 4 x 40 = 160 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 120 GB of image data, annotations, and meta-data (including bounding boxes).
 
 ### 4.1.1 Positive examples:
 We generate positive examples from humans with six visual appearances available in the ESI Pro-SiVIC object catalog.
@@ -235,16 +235,16 @@ Groups C and D describe pedestrians moving parallel to the road, either toward e
 	- 1. Speed (m/s): [1, 2, 3, 4]
 	- 2. Lateral offset (m): [-3, -2, -1, 0, 1, 2, 3]
 
-### 4.1.2 Negative examples:
-We generate negative examples using four basic shapes available in the ESI Pro-SiVIC object catalog.
+### 4.1.2 Out-of-Distribution examples:
+We generate OOD examples using four basic shapes available in the ESI Pro-SiVIC object catalog.
 
-Negative examples:
+OOD examples:
 - [N1] Sphere [TBD: sphere.yaml]
 - [N2] Cube [TBD: cube.yaml]
 - [N3] Cone [TBD: cone.yaml]
 - [N4] Pyramid [TBD: pyramid.yaml]
 
-All four configuration files for negative examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
+All four configuration files for OOD examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
 
 - Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
