@@ -1,4 +1,4 @@
-# Data Management Specification v0.9
+# Data Management Specification v0.91
 
 Revision History
 <table>
@@ -40,12 +40,21 @@ Revision History
 <td>0.9</td>
 </tr>
 <tr>
+<td>Markus Borg</td>
+<td>WIP</td>
+<td>Updated according to 
+<a href="https://github.com/RI-SE/smirk/blob/main/docs/protocols/DMS%20Inspection%20Protocol%202021-11-15.xlsx">inspection protocol</a>.
+</td>
+<td>0.91</td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 </table>
+DMS Inspection Protocol 2021-11-15.xlsx
 
 # 1 Introduction <a name="introduction"></a>
 This document contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
