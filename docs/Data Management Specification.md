@@ -137,7 +137,7 @@ This desideratum considers the intersection between the dataset and the supporte
 - DAT-REL-REQ1: All data samples shall represent images of a road from the perspective of a vehicle.
 - DAT-REL-REQ2: The format of each data sample shall be representative of that which is captured using sensors deployed on the ego vehicle.
 - DAT-REL-REQ3: Each data sample shall assume sensor positioning representative of the positioning used on the ego vehicle.
-- DAT-REL-REQ4: All data samples shall represent images of a road that corresponds to the ODD.
+- DAT-REL-REQ4: All data samples shall represent images of a road environment that corresponds to the ODD.
 - DAT-REL-REQ5: All data samples containing pedestrians shall include one single pedestrian.
 - DAT-REL-REQ6: Pedestrians included in data samples shall be of a type that may appear in the ODD.
 - DAT-REL-REQ7: All data samples representing non-pedestrian OOD objects shall be of a type that may appear in the ODD.
