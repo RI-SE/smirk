@@ -100,15 +100,27 @@ The entire document is relevant to the internal development organization. Specif
 - Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Data Argument Pattern)](#5-ml-data-argument-pattern-r-).
 - Curious readers: For an overview of data management in SMIRK, read [Section 1 (Introduction)](#1-introduction).
 
-## 1.6 References ##
+## 1.5 References ##
+The references are organized into 1) internal SMIRK documentation, 2) SMIRK data sets, 3) peer-reviewed publications, and 4) gray literature and white papers. When a reference listed under category 2) or 3) is used to motivate a design decision or a specific requirement, there is an explicit reference in the running text. Note that this DMS is self-contained, the references are provided for traceability to the underlying design rationales. Interested readers are referred to the discussions in the original sources.
+
+**Internal SMIRK documentation**
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
+- [System Architecture Description](</docs/System Architecture Description.md>)
 - [ML Component Specification](</docs/ML Component Specification.md>)
+
+**SMIRK data sets**
 - Development Data [N]
 - Internal Test Data [O]
 - Verification Data [P]
+
+**Peer-reviewed publications**
 - Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), *ACM Computing Surveys*, 54(5).
 - Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
+
+**Gray literature and white papers**
+- The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
+- Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
 This section specifies requirements on the data used to train and test the pedestrian recognition component in SMIRK. The data requirements are specified to comply with the [Machine Learning Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) in the System Requirements Specification. All data requirements are organized according to the assurance-related desiderata proposed by Ashmore *et al.* (2021), i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
