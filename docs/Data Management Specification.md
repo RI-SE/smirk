@@ -84,11 +84,21 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-- Developers: the entire document is relevant.
-- ML Developers: the entire document is relevant.
-- Testers: sections 2-6 are particularly important.
-- Safety assessors: focus on headings that map to the AMLAS process.
-- Other stakeholders: read section 2 to understand the expectations on the SMIRK training data.
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
+
+**Internal stakeholders**
+
+The entire document is relevant to the internal development organization. Specific stakeholders are recommended to pay particular attention as follows. 
+- Software developers: [Section 2 (Data Requirements)](#2-data-requirements-l-).
+- ML developers: [Section 2 (Data Requirements)](#2-data-requirements-l-) and [Section 4 (Data Generation Log)](#4-data-generation-log-q-).
+- Internal testers: [Section 2 (Data Requirements)](#2-data-requirements-l-) and [Section 4 (Data Generation Log)](#4-data-generation-log-q-).
+- Independent testers: [Section 2 (Data Requirements)](#2-data-requirements-l-).
+
+**External stakeholders**
+- Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find most value in [Section 2 (Data Requirements)](#2-data-requirements-l-).
+- Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Data Argument Pattern)](#5-ml-data-argument-pattern-r-).
+- Curious readers: For an overview of data management in SMIRK, read [Section 1 (Introduction)](#1-introduction).
 
 ## 1.6 References ##
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
