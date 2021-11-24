@@ -119,6 +119,7 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 
 **Gray literature and white papers**
 - The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
+- High-Level Expert Group on Artificial Intelligence, 2019. [Ethics Guidelines for Trustworthy AI](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai), European Commission.
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
@@ -160,10 +161,11 @@ Rationale: SMIRK adapts the requirements from the Complete desiderata specified 
 ## 2.3 Balanced
 This desideratum considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore *et al.* (2021) refer to this as an internal perspective on the data.
 
-- DAT-BAL-REQ1: The data set shall have a comparable representation of samples for each relevant class and feature.
-- DAT-BAL-REQ2: The data set shall contain both positive and negative examples.
+- DAT-BAL-REQ1: The data set shall have a representation of samples for each relevant class and feature that ensures AI fairness with respect to gender.
+- DAT-BAL-REQ2: The data set shall have a representation of samples for each relevant class and feature that ensures AI fairness with respect to age.
+- DAT-BAL-REQ3: The data set shall contain both positive and negative examples.
 
-Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. Note that *comparable* in DAT-BAL-REQ1 shall not be interpreted as *equal share* in this context. For example, considering the gender of pedestrians, the ESI Pro-SiVIC object catalog does only contain male children and road workers. Furthermore, DAT-BAL-REQ2 is primarily included to align with Gauerhof *et al.* (2020) and to preempt related questions by safety assessors. In practice, the concept of negative examples when training object detection models are typically satisfied implicitly as the parts of the images that do not belong to the annotated class are *de facto* negatives.  
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. The concept of AI fairness is to be interpreted in the light of the Ethics guidelines for trustworthy AI published by the European Commission. Note that the number of ethical dimensions that can be explored in through the ESI Pro-SiVIC object catalog is limited to gender (DAT-BAL-REQ1) and age (DAT-BAL-REQ2). Moreover, the object catalog does only contain male road workers and all children are boys. Furthermore, DAT-BAL-REQ3 is primarily included to align with Gauerhof *et al.* (2020) and to preempt related questions by safety assessors. In practice, the concept of negative examples when training object detection models are typically satisfied implicitly as the parts of the images that do not belong to the annotated class are *de facto* negatives.  
 
 ## 2.4 Accurate
 This desideratum considers how measurement issues can affect the way that samples reflect the intended ODD, e.g., sensor accuracy and labeling errors. 
