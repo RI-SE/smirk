@@ -682,7 +682,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
   </tr>
   <tr>
     <td>Pedestrians</td>
-    <td>0-1 pedestrians, either stationary or moving with a constant speed (<20 km/h) and direction </td>
+    <td>0-1 pedestrians, either stationary or moving with a constant speed (<15 km/h) and direction </td>
   </tr>
   <tr>
     <td>Cyclists</td>
