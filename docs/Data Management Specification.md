@@ -119,6 +119,7 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 
 **Gray literature and white papers**
 - The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
+- High-Level Expert Group on Artificial Intelligence, 2019. [Ethics Guidelines for Trustworthy AI](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai), European Commission.
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
@@ -142,7 +143,7 @@ This desideratum considers the intersection between the dataset and the supporte
 - DAT-REL-REQ6: Pedestrians included in data samples shall be of a type that may appear in the ODD.
 - DAT-REL-REQ7: All data samples representing non-pedestrian OOD objects shall be of a type that may appear in the ODD.
 
-Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. DAT-REL-REQ5 is added based on the corresponding fundamental restriction of the ODD of the SMIRK MVP. DAT-REL-REQ7 restricts data samples providing negative examples for testing.
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. DAT-REL-REQ5 is added based on the corresponding fundamental restriction of the ODD of the SMIRK MVP. DAT-REL-REQ7 restricts data samples providing OOD examples for testing.
 
 ## 2.2 Complete
 This desideratum considers the sampling strategy across the input domain and its subspaces. Suitable distributions and combinations of features are particularly important. Ashmore *et al.* (2021) refer to this as the external perspective on the data.
@@ -160,15 +161,16 @@ Rationale: SMIRK adapts the requirements from the Complete desiderata specified 
 ## 2.3 Balanced
 This desideratum considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore *et al.* (2021) refer to this as an internal perspective on the data.
 
-- DAT-BAL-REQ1: The data set shall have a comparable representation of samples for each relevant class and feature.
-- DAT-BAL-REQ2: The data set shall contain both positive and negative examples.
+- DAT-BAL-REQ1: The data set shall have a representation of samples for each relevant class and feature that ensures AI fairness with respect to gender.
+- DAT-BAL-REQ2: The data set shall have a representation of samples for each relevant class and feature that ensures AI fairness with respect to age.
+- DAT-BAL-REQ3: The data set shall contain both positive and negative examples.
 
-Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. Note that *comparable* in DAT-BAL-REQ1 shall not be interpreted as *equal share* in this context. For example, considering the gender of pedestrians, the ESI Pro-SiVIC object catalog does only contain male children and road workers. Furthermore, DAT-BAL-REQ2 is primarily included to align with Gauerhof *et al.* (2020) and to preempt related questions by safety assessors. In practice, the concept of negative examples when training object detection models are typically satisfied implicitly as the parts of the images that do not belong to the annotated class are *de facto* negatives.  
+Rationale: SMIRK adapts the requirements from the Relevant desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. The concept of AI fairness is to be interpreted in the light of the Ethics guidelines for trustworthy AI published by the European Commission. Note that the number of ethical dimensions that can be explored in through the ESI Pro-SiVIC object catalog is limited to gender (DAT-BAL-REQ1) and age (DAT-BAL-REQ2). Moreover, the object catalog does only contain male road workers and all children are boys. Furthermore, DAT-BAL-REQ3 is primarily included to align with Gauerhof *et al.* (2020) and to preempt related questions by safety assessors. In practice, the concept of negative examples when training object detection models are typically satisfied implicitly as the parts of the images that do not belong to the annotated class are *de facto* negatives.  
 
 ## 2.4 Accurate
 This desideratum considers how measurement issues can affect the way that samples reflect the intended ODD, e.g., sensor accuracy and labeling errors. 
 
-- DAT-ACC-REQ1: All bounding boxes produced shall be sufficiently large to include the entirety of the pedestrian.
+- DAT-ACC-REQ1: All bounding boxes produced shall include the entirety of the pedestrian.
 - DAT-ACC-REQ2: All bounding boxes produced shall be no more than 10% larger in any dimension than the minimum sized box capable of including the entirety of the pedestrian.
 - DAT-ACC-REQ3: All pedestrians present in the data samples shall be correctly labeled.
 
@@ -195,11 +197,11 @@ This section descibres how the data used for the fine-tuning of the ML model in 
 - Verification data: Used in the independent test activity, led by Infotiv, when the model is ready for release. 
 
 ## 4.1 Data Collection
-The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and fully reproducible. The following two lists present the scripts used to play scenarios and capture the corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes examples that represent OOD shapes [NX], i.e., objects that shall not initiate PAEB in case of an imminent collision. These images, referred to as negative examples, shall either not be recognized as a pedestrian or be rejected by the SMIRK safety cage. 
+The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and fully reproducible. The following two lists present the scripts used to play scenarios and capture the corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes examples that represent OOD shapes [NX], i.e., objects that shall not initiate PAEB in case of an imminent collision. These images, referred to as OOD examples, shall either not be recognized as a pedestrian or be rejected by the SMIRK safety cage. 
 
 For each listed item, there is a link to a YAML configuration file that is used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
 
-In total, we generate data representing 6 x 616 = 3,696 execution scenarios with positive examples and 4 x 40 = 160 execution scenarios with negative examples. In total, the data collection campaign generates roughly 120 GB of image data, annotations, and meta-data (including bounding boxes).
+In total, we generate data representing 6 x 616 = 3,696 execution scenarios with positive examples and 4 x 40 = 160 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 120 GB of image data, annotations, and meta-data (including bounding boxes).
 
 ### 4.1.1 Positive examples:
 We generate positive examples from humans with six visual appearances available in the ESI Pro-SiVIC object catalog.
@@ -233,23 +235,23 @@ Groups C and D describe pedestrians moving parallel to the road, either toward e
 	- 1. Speed (m/s): [1, 2, 3, 4]
 	- 2. Lateral offset (m): [-3, -2, -1, 0, 1, 2, 3]
 
-### 4.1.2 Negative examples:
-We generate negative examples using four basic shapes available in the ESI Pro-SiVIC object catalog.
+### 4.1.2 Out-of-Distribution examples:
+We generate OOD examples using four basic shapes available in the ESI Pro-SiVIC object catalog.
 
-Negative examples:
+OOD examples:
 - [N1] Sphere [TBD: sphere.yaml]
 - [N2] Cube [TBD: cube.yaml]
 - [N3] Cone [TBD: cone.yaml]
 - [N4] Pyramid [TBD: pyramid.yaml]
 
-All four configuration files for negative examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
+All four configuration files for OOD examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
 
 - Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
 ## 4.2 Preprocessing
 As the SMIRK data collection campaign relies on data generation in ESI Pro-SiVIC, the need for pre-processing differs from counterparts using naturalistic data. To follow convention, we refer to the data processing between data collection and model training as pre-processing - although post-processing would be a more accurate term for the SMIRK development. We have developed scripts that generate data sets representing the scenarios listed in Section 4.1. The scripts ensure that the crossing pedestrians and objects appear at the right distance with specified conditions and with controlled levels of occlusion. All output images share the same characteristics, thus no normalization is needed.
 
-SMIRK includes a script to generate bounding boxes for training the object detection model. ESI Pro-SiVIC generates ground truth image segmentation on a pixel-level. [The script](TBD) is used to convert the output to the appropriate input format for model training. Note that the diversity of the synthetic imagery is limited, thus we do not train the model on the entire data set. As part of the model training described in the [ML Component Specification](</docs/ML Component Specification.md>), we analyze different sample sizes during the SMIRK ML development.
+SMIRK includes a script to generate bounding boxes for training the object detection model. ESI Pro-SiVIC generates ground truth image segmentation on a pixel-level. The script is used to convert the output to the appropriate input format for model training. Note that the diversity of the synthetic imagery is limited, thus we do not train the model on the entire data set. As part of the model training described in the [ML Component Specification](</docs/ML Component Specification.md>), we analyze different sample sizes during the SMIRK ML development.
 
 ## 4.3 Data Splitting
 The generated SMIRK data will be used in sequestered data sets as follows:
@@ -257,6 +259,8 @@ The generated SMIRK data will be used in sequestered data sets as follows:
 - Development data: [P2] and [P3]
 - Internal test data: [P1], [P4], [N1], and [N2] 
 - Verification data: [P5], [P6], [N3], and [N4]
+
+Note that we deliberately avoid mixing pedestrian models from the ESI Pro-SiVIC object catalog in the data sets due to the limited diversity in the images within the ODD for the SMIRK MVP.
 
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 The figure below shows the ML data argument pattern using GSN. The pattern follows the example provided in AMLAS, but adapts it to the specific SMIRK case.
