@@ -260,6 +260,8 @@ The generated SMIRK data will be used in sequestered data sets as follows:
 - Internal test data: [P1], [P4], [N1], and [N2] 
 - Verification data: [P5], [P6], [N3], and [N4]
 
+Note that we deliberately avoid mixing pedestrian models from the ESI Pro-SiVIC object catalog in the data sets due to the limited diversity in the images within the ODD for the SMIRK MVP.
+
 # 5 ML Data Argument Pattern [R] <a name="data_argument_pattern"></a>
 The figure below shows the ML data argument pattern using GSN. The pattern follows the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
