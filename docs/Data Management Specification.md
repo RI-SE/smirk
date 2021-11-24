@@ -149,11 +149,13 @@ This desideratum considers the sampling strategy across the input domain and its
 
 - DAT-COM-REQ1: The data samples shall include the complete range of environmental factors within the scope of the ODD.
 - DAT-COM-REQ2: The data samples shall include images representing all types of pedestrians according to the demographics of the ODD.
-- DAT-COM-REQ3: The data samples shall include images representing all distances to crossing pedestrians from 10 m up to 100 m away from ego car.
-- DAT-COM-REQ4: The data samples shall include examples with different levels of occlusion giving partial views of pedestrians crossing the road.
-- DAT-COM-REQ5: The data samples shall include a range of examples reflecting the effects of identified system failure modes.
+- DAT-COM-REQ3: The data samples shall include images representing pedestrians paces from standing still up to running at 15 km/h.
+- DAT-COM-REQ4: The data samples shall include images representing all angles an upright pedestrian can be captured by the given sensors on the ego vehicle.
+- DAT-COM-REQ5: The data samples shall include images representing all distances to crossing pedestrians from 10 m up to 100 m away from ego car.
+- DAT-COM-REQ6: The data samples shall include examples with different levels of occlusion giving partial views of pedestrians crossing the road.
+- DAT-COM-REQ7: The data samples shall include a range of examples reflecting the effects of identified system failure modes.
 
-Rationale: SMIRK adapts the requirements from the Complete desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. We deliberately replaced the original adjective "sufficient" to make the data requirements more specific.
+Rationale: SMIRK adapts the requirements from the Complete desiderata specified by Gauerhof *et al.* (2020) for the SMIRK ODD. We deliberately replaced the original adjective "sufficient" to make the data requirements more specific. Furthermore, we add DAT-COM-REQ3 to cover different poses related to the pace of the pedestrian and DAT-COM-REQ4 to cover different observation angles.
 
 ## 2.3 Balanced
 This desideratum considers the distribution of features in the dataset, e.g., the balance between the number of samples in each class. Ashmore *et al.* (2021) refer to this as an internal perspective on the data.
