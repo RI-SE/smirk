@@ -170,7 +170,7 @@ Rationale: SMIRK adapts the requirements from the Relevant desiderata specified 
 ## 2.4 Accurate
 This desideratum considers how measurement issues can affect the way that samples reflect the intended ODD, e.g., sensor accuracy and labeling errors. 
 
-- DAT-ACC-REQ1: All bounding boxes produced shall be sufficiently large to include the entirety of the pedestrian.
+- DAT-ACC-REQ1: All bounding boxes produced shall include the entirety of the pedestrian.
 - DAT-ACC-REQ2: All bounding boxes produced shall be no more than 10% larger in any dimension than the minimum sized box capable of including the entirety of the pedestrian.
 - DAT-ACC-REQ3: All pedestrians present in the data samples shall be correctly labeled.
 
