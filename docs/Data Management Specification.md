@@ -126,6 +126,9 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 This section specifies requirements on the data used to train and test the pedestrian recognition component in SMIRK. The data requirements are specified to comply with the [Machine Learning Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) in the System Requirements Specification. All data requirements are organized according to the assurance-related desiderata proposed by Ashmore *et al.* (2021), i.e., the key assurance requirements for the data management. The dataset used to train SMIRK must fulfill four desiderata that ensure that the data set is relevant, complete, balanced, and accurate.
 
 The table below shows a requirements traceability matrix between ML Safety Requirements and Data Requirements. Entries in individual cells denote that the ML safety requirement is addressed, at least partly, by the corresponding data requirement.
+
+*Table 1: Requirements tracability matrix.*
+
 ![ML-Data Requirements Matrix](/docs/figures/ml-data_matrix.png) <a name="ML-Data Requirements Matrix"></a>
 
 ## 2.1 Relevant
@@ -257,6 +260,8 @@ The generated SMIRK data will be used in sequestered data sets as follows:
 The figure below shows the ML data argument pattern using GSN. The pattern follows the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
 ![GSN-ML_Data_Argument_Pattern](/docs/figures/gsn-ml_data_argument_pattern.png) <a name="gsn-ml_data_argument"></a>
+
+*Figure 1: ML data argument pattern.*
 
 The top claim is that the data used during the development and verification of the ML model is sufficient (G3.1). This claim is made for all three data sets: development data [N], internal test data [O], and verification data [P]. The argumentation strategy (S2.1) involves how the sufficiency of these data sets is demonstrated given the Data Requirements [L]. The strategy is supported by arguing over subclaims demonstrating sufficiency of the Data Requirements (G3.2) and that the Data Requirements are satisfied (G3.3). Claim G3.2 is supported by evidence in the form of a data requirements justification report [M]. As stated in AMLAS, "It is not possible to claim that the data alone can guarantee that the ML safety requirements will be satisfied, however the data used must be sufficient to enable the model that is developed to do so."
 
