@@ -122,7 +122,7 @@ Product development inevitably necessitates quality trade-offs. While we have no
 - **Fairness**: Obviously a vital quality characteristic for a PAEB ADAS that primarily impacts the data requirements specified in the [Data Management Specification](</docs/Data Management Specification.md>). We have elaborated on SMIRK fairness in an academic publication (Borg et al., 2021). **[High priority]**
 
 ## 1.6 References ##
-The references are organized into 1) internal SMIRK documentation, 2) peer-reviewed publications, and 3) gray literature and white papers. When a reference listed under category 2) or 3) to motivate a design decision or a specific requirement, there is an explicit reference in the running text. Note that this SRS is self-contained, the references are provided for traceability to the underlying design rationales. Interested readers are referred to the discussions in the original sources.
+The references are organized into 1) internal SMIRK documentation, 2) peer-reviewed publications, and 3) gray literature and white papers. When a reference listed under category 2) or 3) is used to motivate a design decision or a specific requirement, there is an explicit reference in the running text. Note that this SRS is self-contained, the references are provided for traceability to the underlying design rationales. Interested readers are referred to the discussions in the original sources.
 
 **Internal SMIRK documentation**
 - [Data Management Specification](</docs/Data Management Specification.md>)
