@@ -105,6 +105,9 @@ class Radar:
         v_y = delta_y / delta_t
         v_x = delta_x / delta_t
 
+        if math.isclose(v_y, 0):
+            return math.inf
+
         time_to_y0 = current_detection.y / v_y
         x_at_y0 = current_detection.x + v_x * time_to_y0
 
