@@ -33,8 +33,9 @@ class Car:
         self.simulation.cmd(f"{self.name}.SetSpeedControl {speed_kmh}")
 
     def brake(self) -> None:
-        order = psvdds.carOrder()
+        order = self.order_handler.receive()
         order.movementOrderMode = psvdds.emovementOrder.pedals
+        order.cruiseControlPosition = psvdds.ecruiseControl.off
         order.brake = 1
         self.order_handler.transmit(order)
 
