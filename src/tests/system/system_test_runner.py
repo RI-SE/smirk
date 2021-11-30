@@ -102,7 +102,7 @@ class SystemTestRunner:
                     result["timestamp_ttc_triggered"] = radar_data.timestamp
 
                 if result["distance_aeb_triggered"] is None and self.smirk.is_aeb(
-                    min_ttc, camera_data.frame_data
+                    radar_data.detections, camera_data.frame_data
                 ):
                     result["distance_aeb_triggered"] = collision_data.distance
                     result["timestamp_aeb_triggered"] = camera_data.timestamp
