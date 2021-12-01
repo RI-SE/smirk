@@ -69,7 +69,25 @@ The section is organized into internal stakeholders, i.e., roles that are direct
 - Other stakeholders: TBD
 
 ## 1.6 References ##
+The references are organized into 1) internal SMIRK documentation, 2) SMIRK data sets, 3) peer-reviewed publications, and 4) gray literature and white papers. When a reference listed under category 2) or 3) is used to motivate a design decision or a specific requirement, there is an explicit reference in the running text. Note that this DMS is self-contained, the references are provided for traceability to the underlying design rationales. Interested readers are referred to the discussions in the original sources.
+
+**Internal SMIRK documentation**
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
+- [System Architecture Description](</docs/System Architecture Description.md>)
+- [Data Management Specification](</docs/Data Management Specification.md>)
+
+**SMIRK data sets**
+- Development Data [N]
+- Internal Test Data [O]
+- Verification Data [P]
+
+**Peer-reviewed publications**
+- Redmon, Diwala, Girshik, and Farhadi, 2016. You Only Look Once: Unified, Real-Time Object Detection. In *Proc. of the IEEE Conference on Computer Vision and Pattern Recognition*, pp. 779-788.
+
+**Gray literature and white papers**
+- The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B.
+- Jocher *et al.*, 2021. YOLOv5n 'Nano' models, Roboflow Integration, TensorFlow Export, OpenCV DNN Support, [10.5281/zenodo.5563715](https://zenodo.org/record/5563715).
+- Van Looveren, Vacanti, Klaise, Coca, and Cobb, 2019. [Alibi Detect: Algorithms for Outlier, Adversarial and Drift Detection](https://github.com/SeldonIO/alibi-detect), GitHub.
 
 # 2 ML Component Description [D] <a name="ml_comp_desc"></a>
 This section describes the object detection component in SMIRK. 
