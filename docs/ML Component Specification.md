@@ -76,7 +76,7 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 - Verification Data [P]
 
 **Peer-reviewed publications**
-- Redmon, Diwala, Girshik, and Farhadi, 2016. You Only Look Once: Unified, Real-Time Object Detection. In *Proc. of the IEEE Conference on Computer Vision and Pattern Recognition*, pp. 779-788.
+- Redmon, Diwala, Girshik, and Farhadi, 2016. [You Only Look Once: Unified, Real-Time Object Detection](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Redmon_You_Only_Look_CVPR_2016_paper.pdf). In *Proc. of the IEEE Conference on Computer Vision and Pattern Recognition*, pp. 779-788.
 
 **Gray literature and white papers**
 - The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B.
@@ -87,6 +87,8 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 The SMIRK pedestrian recognition component consists of, among other things, two ML-based constituents: a pedestrian detector and an anomaly detector. Further details are available in the [Logical View](</docs/System Architecture Description.md#31-logical-view>) of the system architecture. In this section, we describe the pedestrian detector. The anomaly detection is described in Section 4.
 
 The SMIRK pedestrian detector uses the third-party OSS framework YOLOv5 by Ultralytics. YOLO is an established real-time object detection algorithm that was originally released by Redmon *et al.* (2015). The first version of YOLO introduced a novel object detection process that uses a single deep neural network (DNN) to perform both prediction of bounding boxes around objects and classification at once. Compared to the alternatives, YOLO was heavily optimized for fast inference to support real-time applications. A fundamental concept of YOLO is that the algorithm considers each image only once, hence its name "You Only Look Once." While there have been several versions of YOLO (and the original authors maintained them until v3), the fundamental ideas of YOLO remains the same across versions - including YOLOv5 used in SMIRK.
+
+YOLO segments input images into smaller images. Each input image is split into a square grid of individual cells. Each cell predicts bounding boxes capturing potential objects and provides confidence scores for each box. Furthermore, YOLO does a class prediction for objects in the bounding boxes. Note that for the SMIRK MVP, the only class we predict is pedestrian. Relying on the [Intersection over Union](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/) method for evaluating bounding boxes, YOLO eliminates redundant bounding boxes. The final output from YOLO consists of unique bounding boxes with class predictions. Further details are available in the original paper by Redmon *et al.* (2015).
 
 # 3 Model Development Log [U] 
 TBD
