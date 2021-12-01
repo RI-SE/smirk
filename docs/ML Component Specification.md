@@ -107,13 +107,13 @@ In SMIRK, we use the default configurations proposed in YOLOv5s regarding activa
 # 3 Model Development Log [U] 
 This section describes how the YOLOv5s model has been trained for the SMIRK MVP. We followed the general process presented by Ultralytics for [training on custom data](https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data).
 
-First, we manually prepared two SMIRK datasets to match the input format of YOLOv5. In this step, we prepared the development data [N] and the internal test data [O] according to Ultrlytic's instructions. We created a dataset.yaml with the paths to the two data sets and specified that we train YOLOv5 for a single class, i.e., pedestrians. The data sets were already annotated using ESI Pro-SiVIC, thus we only needed to export the labels to the YOLO format with one txt-file per image. Finally, we organize the individual files (images and labels) according to the YOLOv5 instructions. More specifically, each label file contains the following information:
+First, we manually prepared two SMIRK datasets to match the input format of YOLOv5. In this step, we prepared the development data [N] and the internal test data [O] according to Ultralytic's instructions. We created a dataset.yaml with the paths to the two data sets and specified that we train YOLOv5 for a single class, i.e., pedestrians. The data sets were already annotated using ESI Pro-SiVIC, thus we only needed to export the labels to the YOLO format with one txt-file per image. Finally, we organize the individual files (images and labels) according to the YOLOv5 instructions. More specifically, each label file contains the following information:
 - One row per object
 - Each row contains class, x_center, y_center, width, and height.
 - Box coordinates are stored in normalized xywh format (from 0 - 1).
 - Class numbers are zero-indexed, i.e., they start from 0.
 
-The [Internal Test Report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/ML%20Model%20Internal%20Test%20Report.md) [X] provides evidence that the ML model satisfies the requirements on the internal test data. 
+Second, we trained the YOLOv5s model using the development data (as specified in dataset.yaml) from the pretrained weights in yolov5s.pt. The model was trained for 3 epochs with a batch-size of 16. The [Internal Test Report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/ML%20Model%20Internal%20Test%20Report.md) [X] provides evidence that the ML model satisfies the requirements on the internal test data. 
 
 # 4 Outlier Detection for the Safety Cage Architecture
 SMIRK relies on the open-source third-party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture.
