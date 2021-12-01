@@ -32,7 +32,7 @@ Revision History
 This document contains the machine learning (ML) component specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system. SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
 ## 1.1 Purpose ##
-This document describes the ML-based pedestrian recognition component used in SMIRK. Two established third-party OSS libraries are important constituents. First, the document describes how the object detection architecture [Yolov5](https://github.com/ultralytics/yolov5) by Ultralytics is used and trained for the SMIRK operational design domain (ODD). Second, we introduce how the safety cage architecture is realized using out-of-distribution (OOD) detection provided by SeldonIO's [Alibi Detect](https://github.com/SeldonIO/alibi-detect). Third, we provide the ML model learning argument patterns in line with the Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS).
+This document describes the ML-based pedestrian recognition component used in SMIRK. Two established third-party OSS libraries are important constituents. First, the document describes how the object detection architecture [YOLOv5](https://github.com/ultralytics/yolov5) by Ultralytics is used and trained for the SMIRK operational design domain (ODD). Second, we introduce how the safety cage architecture is realized using out-of-distribution (OOD) detection provided by SeldonIO's [Alibi Detect](https://github.com/SeldonIO/alibi-detect). Third, we provide the ML model learning argument patterns in line with the Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS).
 
 ## 1.2 Document Conventions ##
 The number of academic publications in the list of references is unconventional for techincal project doumentation. This is a conscious decision. SMIRK is developed as a prototype in the context of a research project with limited resources. As part of our research, we aim to integrate (sometimes scattered) pieces from the state-of-the-art literature. Synthesis is a fundamental tool in our research and we seek novel insights while focusing on refinement and integration. We actively choose to rely on reuse of design decisions from previously peer-reviewed publications. Building on previous work, i.e., [standing on the shoulders of others](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants), is a core concept in research that allows validation of previous work, incl. previously proposed requirements. When available, and unless open access publication models have been used, links to academic publications point to preprints on open repositories such as [arXiv](https://arxiv.org/) rather than peer-reviewed revisions behind paywalls.
@@ -82,10 +82,10 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 - Jocher *et al.*, 2021. YOLOv5n 'Nano' models, Roboflow Integration, TensorFlow Export, OpenCV DNN Support, [10.5281/zenodo.5563715](https://zenodo.org/record/5563715).
 - Van Looveren, Vacanti, Klaise, Coca, and Cobb, 2019. [Alibi Detect: Algorithms for Outlier, Adversarial and Drift Detection](https://github.com/SeldonIO/alibi-detect), GitHub.
 
-# 2 ML Component Description [D] <a name="ml_comp_desc"></a>
-This section describes the object detection component in SMIRK. 
+# 2 ML Component Description [D]
+The SMIRK pedestrian recognition component consists of, among other things, two ML-based constituents: a pedestrian detector and an anomaly detector. Further details are available in the [Logical View](</docs/System Architecture Description.md#31-logical-view>) of the system architecture. In this section, we describe the pedestrian detector. The anomaly detection is described in Section 4.
 
-- Neural Network Architecture 
+The SMIRK pedestrian detector uses the third-party OSS framework YOLOv5 by Ultralytics.  
 
 # 3 Model Development Log [U] 
 TBD
