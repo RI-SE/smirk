@@ -47,6 +47,21 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - OSS: Opens Source Software
 
 ## 1.4 Intended Audience and Reading Suggestions ##
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
+
+**Internal stakeholders**
+- Software developers: TBD
+- ML developers: TBD.
+- Internal testers: TBD.
+- Independent testers: TBD.
+
+**External stakeholders**
+- Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
+- Researchers: TBD
+- Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Component Specification)](#5-ml-model-learning-argument-pattern-w).
+- Curious readers: For an overview of the use of ML components in SMIRK, read [Section 1 (Introduction)](#1-introduction).
+
+
 - Developers: TBD
 - ML developers: The entire document is relevant.
 - Testers: sections 2-6 are particularly important.
