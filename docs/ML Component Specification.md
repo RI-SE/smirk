@@ -41,6 +41,7 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
+- DNN: Deep Neural Network
 - ML: Machine Learning
 - ODD: Operational Design Domain
 - OOD: Out-Of-Distribution
@@ -85,7 +86,7 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 # 2 ML Component Description [D]
 The SMIRK pedestrian recognition component consists of, among other things, two ML-based constituents: a pedestrian detector and an anomaly detector. Further details are available in the [Logical View](</docs/System Architecture Description.md#31-logical-view>) of the system architecture. In this section, we describe the pedestrian detector. The anomaly detection is described in Section 4.
 
-The SMIRK pedestrian detector uses the third-party OSS framework YOLOv5 by Ultralytics.  
+The SMIRK pedestrian detector uses the third-party OSS framework YOLOv5 by Ultralytics. YOLO is an established real-time object detection algorithm that was originally released by Redmon *et al.* (2015). The first version of YOLO introduced a novel object detection process that uses a single deep neural network (DNN) to perform both prediction of bounding boxes around objects and classification at once. Compared to the alternatives, YOLO was heavily optimized for fast inference to support real-time applications. A fundamental concept of YOLO is that the algorithm considers each image only once, hence its name "You Only Look Once." While there have been several versions of YOLO (and the original authors maintained them until v3), the fundamental ideas of YOLO remains the same across versions - including YOLOv5 used in SMIRK.
 
 # 3 Model Development Log [U] 
 TBD
