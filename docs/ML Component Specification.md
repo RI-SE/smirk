@@ -29,22 +29,20 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document contains the ML component specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
-
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
+This document contains the machine learning (ML) component specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system. SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
 ## 1.1 Purpose ##
-This document describes the ML-based object detection component and the underlying neural network architecture for the perception model used in SMIRK. The object detection component detects pedestrians in input images, i.e., no other classes are detected in the input.
+This document describes the ML-based pedestrian recognition component used in SMIRK. Two established third-party OSS libraries are important constituents. First, the document describes how the object detection architecture [Yolov5](https://github.com/ultralytics/yolov5) by Ultralytics is used and trained for the SMIRK operational design domain (ODD). Second, we introduce how the safety cage architecture is realized using out-of-distribution (OOD) detection provided by SeldonIO's [Alibi Detect](https://github.com/SeldonIO/alibi-detect). Third, we provide the ML model learning argument patterns in line with the Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS).
 
 ## 1.2 Document Conventions ##
 Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
 
 ## 1.3 Glossary
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
-- DM: Data Management
 - ML: Machine Learning
 - ODD: Operational Design Domain
-- TTC: Time To Collission
+- OOD: Out-Of-Distribution
+- OSS: Opens Source Software
 
 ## 1.4 Intended Audience and Reading Suggestions ##
 - Developers: TBD
