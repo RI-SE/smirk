@@ -61,13 +61,6 @@ The section is organized into internal stakeholders, i.e., roles that are direct
 - Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Component Specification)](#5-ml-model-learning-argument-pattern-w).
 - Curious readers: For an overview of the use of ML components in SMIRK, read [Section 1 (Introduction)](#1-introduction).
 
-
-- Developers: TBD
-- ML developers: The entire document is relevant.
-- Testers: sections 2-6 are particularly important.
-- Safety assessors: focus on headings that map to the AMLAS process.
-- Other stakeholders: TBD
-
 ## 1.6 References ##
 The references are organized into 1) internal SMIRK documentation, 2) SMIRK data sets, 3) peer-reviewed publications, and 4) gray literature and white papers. When a reference listed under category 2) or 3) is used to motivate a design decision or a specific requirement, there is an explicit reference in the running text. Note that this DMS is self-contained, the references are provided for traceability to the underlying design rationales. Interested readers are referred to the discussions in the original sources.
 
