@@ -76,6 +76,7 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 - Verification Data [P]
 
 **Peer-reviewed publications**
+- Liu, Qi, Qin, Shi, and Jia, 2018. [Path Aggregation Network for Instance Segmentation](https://arxiv.org/abs/1803.01534). In *Proc. of the IEEE Conference on Computer Vision and Pattern Recognition*, pp. 8759-8768.
 - Redmon, Diwala, Girshik, and Farhadi, 2016. [You Only Look Once: Unified, Real-Time Object Detection](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Redmon_You_Only_Look_CVPR_2016_paper.pdf). In *Proc. of the IEEE Conference on Computer Vision and Pattern Recognition*, pp. 779-788.
 
 **Gray literature and white papers**
@@ -91,7 +92,9 @@ The SMIRK pedestrian detector uses the third-party OSS framework YOLOv5 by Ultra
 
 YOLO segments input images into smaller images. Each input image is split into a square grid of individual cells. Each cell predicts bounding boxes capturing potential objects and provides confidence scores for each box. Furthermore, YOLO does a class prediction for objects in the bounding boxes. Note that for the SMIRK MVP, the only class we predict is pedestrian. Relying on the [Intersection over Union](https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/) method for evaluating bounding boxes, YOLO eliminates redundant bounding boxes. The final output from YOLO consists of unique bounding boxes with class predictions. Further details are available in the original paper by Redmon *et al.* (2015).
 
-The pedestrian recognition component in SMIRK uses the YOLOv5 architecture without any modifications. This paragraph presents a high-level description of the model architecture and the key techincal details. We refer the interested reader to further details provided by Rajput (2020) and the OSS repository on GitHub. YOLOv5 provides four alternative DNN architectures. To enable real-time performance for SMIRK, we rely on the fastest model **YOLOv5s**. As an single-stage object detector, YOLOv5s consists of three core parts: 1) the model backbone, 2) the model neck, and 3) the model head. The model backbone extracts important features from input images. The model neck generates so called "feature pyramids" using PANet (REF) that support generalization to different sizes and scales. The model head 
+The pedestrian recognition component in SMIRK uses the YOLOv5 architecture without any modifications. This paragraph presents a high-level description of the model architecture and the key techincal details. We refer the interested reader to further details provided by Rajput (2020) and the OSS repository on GitHub. YOLOv5 provides four alternative DNN architectures. To enable real-time performance for SMIRK, we rely on the fastest model **YOLOv5s** with 191 layers and ~7.5 million parameters. As an single-stage object detector, YOLOv5s consists of three core parts: 1) the model backbone, 2) the model neck, and 3) the model head. The model backbone extracts important features from input images. The model neck generates so called "feature pyramids" using PANet (Liu *et al.*, 2018) that support generalization to different sizes and scales. The model head performs the detection task, i.e., it generates the final output vectors with bounding boxes and class probabilities.
+
+In SMIRK, we use the default configurations proposed in YOLOv5s regarding activation, optimization, and cost functions. 
 
 # 3 Model Development Log [U] 
 TBD
