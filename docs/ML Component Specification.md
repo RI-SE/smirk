@@ -115,6 +115,8 @@ First, we manually prepared two SMIRK datasets to match the input format of YOLO
 
 Second, we trained the YOLOv5s model using the development data (as specified in dataset.yaml) from the pretrained weights in yolov5s.pt. The model was trained for 3 epochs with a batch-size of 16. The [Internal Test Report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/ML%20Model%20Internal%20Test%20Report.md) [X] provides evidence that the ML model satisfies the requirements on the internal test data. 
 
+The final pedestrian detection model, i.e., the ML model [V], has a size of ~14 MB.
+
 # 4 Outlier Detection for the Safety Cage Architecture
 SMIRK relies on the open-source third-party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture.
 
