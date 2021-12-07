@@ -6,7 +6,7 @@ from typing import cast
 
 from omegaconf import DictConfig, ListConfig, OmegaConf
 
-import utils.paths
+import config.paths
 from simple_aeb_scene import SimpleAebScene
 
 
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     config_path = (
         Path(args.config)
         if args.config
-        else Path(utils.paths.example_data_generation_config)
+        else Path(config.paths.example_data_generation_config)
     )
 
     if not config_path.exists():

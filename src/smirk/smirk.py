@@ -8,7 +8,7 @@ from smirk.pedestrian_detector.pedestrian_detector import (
     BoundingBox,
     PedestrianDetector,
 )
-from smirk.pedestrian_detector.ssd_hub_detector import SsdHubDetector
+from smirk.pedestrian_detector.yolo_detector import YoloDetector
 from smirk.safety_cage.noop_cage import NoopCage
 from smirk.safety_cage.safety_cage import SafetyCage
 
@@ -23,7 +23,7 @@ class Smirk:
         pedestrian_detector: PedestrianDetector = None,
         safety_cage: SafetyCage = None,
     ):
-        self.pedestrian_detector = pedestrian_detector or SsdHubDetector()
+        self.pedestrian_detector = pedestrian_detector or YoloDetector()
         self.safety_cage = safety_cage or NoopCage()
 
     def is_aeb(self, radar_detections: List[RadarDetection], camera_frame: np.ndarray):

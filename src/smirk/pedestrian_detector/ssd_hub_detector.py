@@ -11,7 +11,7 @@ from smirk.pedestrian_detector.pedestrian_detector import (
 
 
 class SsdHubDetector(PedestrianDetector):
-    PERSON_CLASS_ID = 1
+    PEDESTRIAN_CLASS_ID = 1
     DETECTION_THRESHOLD = 0.5
 
     def __init__(self):
@@ -24,12 +24,17 @@ class SsdHubDetector(PedestrianDetector):
 
     def detect_pedestrians(self, camera_frame: np.ndarray) -> List[BoundingBox]:
         detections: Dict = self.model(np.expand_dims(camera_frame, axis=0))
-        person_mask = detections["detection_classes"] == self.PERSON_CLASS_ID
-        person_scores: np.ndarray = detections["detection_scores"][person_mask]
+        pedestrian_boxes_above_threshold = detections["detection_boxes"][
+            (detections["detection_classes"] == self.PEDESTRIAN_CLASS_ID)
+            & (detections["detection_scores"] > self.DETECTION_THRESHOLD)
+        ].numpy()
 
         return [
-            BoundingBox(x_min.numpy(), x_max.numpy(), y_min.numpy(), y_max.numpy())
-            for y_min, x_min, y_max, x_max in detections["detection_boxes"][
-                person_mask
-            ][person_scores > self.DETECTION_THRESHOLD]
+            self.detection_boxes_to_bounding_box(detection)
+            for detection in pedestrian_boxes_above_threshold
         ]
+
+    def detection_boxes_to_bounding_box(self, detection: List[float]) -> BoundingBox:
+        y_min, x_min, y_max, x_max = detection
+
+        return BoundingBox(x_min=x_min, y_min=y_min, x_max=x_max, y_max=y_max)
