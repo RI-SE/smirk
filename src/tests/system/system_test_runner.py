@@ -2,7 +2,7 @@ import dataclasses
 import math
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Dict, Iterable, List, cast
+from typing import Dict, Iterable, List, Union, cast
 
 import pandas as pd
 
@@ -11,13 +11,28 @@ from smirk.smirk import Smirk
 
 
 @dataclass
-class SystemTestConfiguration:
+class ObjectTestConfiguration:
+    object_type: str
+    start_x: float
+    start_y: float
+    end_x: float
+    end_y: float
+    angle: float
+    speed: float
+    car_speed: float
+
+
+@dataclass
+class PedestrianTestConfiguration:
     pedestrian_appearance: str
     pedestrian_start_x: float
     pedestrian_start_y: float
     pedestrian_angle: float
     pedestrian_speed: float
     car_speed: float
+
+
+SystemTestConfiguration = Union[PedestrianTestConfiguration, ObjectTestConfiguration]
 
 
 DEFAULT_CONFIG = dict(simulation_step_size=1, min_car_speed=0.1)
@@ -30,19 +45,23 @@ class SystemTestRunner:
         self.smirk = Smirk()
         self.results: List[Dict] = []
 
-    def results_to_csv(self, path: str = None):
-        if path is None:
-            path = f"system_test_results_{datetime.now():%Y%m%d_%H%M%S}.csv"
-
+    def results_to_csv(self):
+        path = f"system_test_results_{datetime.now():%Y%m%d_%H%M%S}.csv"
         pd.DataFrame(self.results).to_csv(path)
 
     def run_all(self, configurations: Iterable[SystemTestConfiguration]):
         for configuration in configurations:
             self.run_configuration(configuration)
 
-    def run_configuration(self, test_config):
+    def run_configuration(self, test_config: SystemTestConfiguration):
         param_dict = dataclasses.asdict(test_config)
-        self.scene.setup_pedestrian_scenario(**param_dict)
+
+        if isinstance(test_config, PedestrianTestConfiguration):
+            self.scene.setup_pedestrian_scenario(**param_dict)
+        elif isinstance(test_config, ObjectTestConfiguration):
+            self.scene.setup_object_scenario(**param_dict)
+        else:
+            raise Exception("Invalid system test config")
 
         result = dict(
             min_distance=math.inf,

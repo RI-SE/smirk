@@ -1,74 +1,37 @@
 """
 TODO: This is all tigthly and implicitly coupled to the simple_aeb_scene! It makes a number of implicit assumptions about angles, object positions, coordinate system etc. Try to at least make that more explicit.
 """
+import random
 from collections import OrderedDict
-from random import shuffle
-from typing import Any, List, Sequence, Tuple, Union, cast
+from typing import Any, Sequence, Tuple, Union, cast
 
 import numpy as np
 from allpairspy import AllPairs
 
-from tests.system.system_test_runner import SystemTestConfiguration
+from tests.system.system_test_runner import (
+    ObjectTestConfiguration,
+    PedestrianTestConfiguration,
+)
 
 Interval = Tuple[float, float]
 
+
 # Equivalence classes
 latteral_offset_mapping = dict(right=-5, center=0, left=5)
-pedestrian_speed_mapping = dict(stationary=0, slow=1, fast=3)
-pedestrian_angle_mapping = dict(
-    away=0, diagonal_away=45, perpendicular=90, diagonal_towards=135, towards=180
-)
-pedestrian_distance_mapping = {
+object_speed_mapping = dict(stationary=0, slow=1, fast=3)
+object_distance_mapping = {
     "close": (5, 25),
     "medium": (25, 50),
     "far": (50, 100),
 }
+object_angle_mapping = dict(
+    away=0, diagonal_away=45, perpendicular=90, diagonal_towards=135, towards=180
+)
 car_speed_mapping = {
     "slow": (3, 9),
     "medium": (10, 15),
     "fast": (15, 20),
 }
-
-
-test_parameters = OrderedDict(
-    {
-        "pedestrian_start_y": [
-            "left",
-            "center",
-            "right",
-        ],
-        "pedestrian_start_x": [
-            "close",
-            "medium",
-            "far",
-        ],
-        "pedestrian_speed": [
-            "stationary",
-            "slow",
-            "fast",
-        ],
-        "pedestrian_angle": [
-            "away",
-            "diagonal_away",
-            "perpendicular",
-            "diagonal_towards",
-            "towards",
-        ],
-        "car_speed": [
-            "slow",
-            "medium",
-            "fast",
-        ],
-        "pedestrian_appearance": [
-            "child",
-            "female_business",
-            "female_casual",
-            "male_business",
-            "male_casual",
-            "male_worker",
-        ],
-    }
-)
 
 
 def get_overlapping_interval(a: Interval, b: Interval) -> Union[Interval, None]:
@@ -96,115 +59,86 @@ def get_random_int_on_interval(interval: Interval) -> int:
 
 
 def calculate_collision_values(
-    start_y_category: str,
-    start_x_category: str,
-    pedestrian_speed_category: str,
-    pedestrian_angle_category: str,
-    car_speed_category: str,
-    pedestrian_appearance="",
-    collision_offsets: List[float] = None,
+    start_y_class: str,
+    start_x_class: str,
+    obj_speed_class: str,
+    obj_angle_class: str,
+    car_speed_class: str,
+    collision_offsets: Sequence[float] = (-0.5, 0, 0.5),
     latteral_offset_paddings: Sequence[int] = (0, -1, 1),
 ):
-    if collision_offsets is None:
-        collision_offsets = [-0.5, 0, 0.5]
-    shuffle(collision_offsets)
-
-    pedestrian_y0 = latteral_offset_mapping[start_y_category]
-    pedestrian_speed = pedestrian_speed_mapping[pedestrian_speed_category]
-    pedestrian_angle = pedestrian_angle_mapping[pedestrian_angle_category]
-    pedestrian_x0_interval = pedestrian_distance_mapping[start_x_category]
-    car_speed_interval = car_speed_mapping[car_speed_category]
-
-    if start_y_category == "center" and (
-        pedestrian_speed_category == "stationary"
-        or pedestrian_angle_category in ["towards", "away"]
-    ):
-        return SystemTestConfiguration(
-            pedestrian_appearance=pedestrian_appearance,
-            pedestrian_start_x=get_random_int_on_interval(pedestrian_x0_interval),
-            pedestrian_start_y=pedestrian_y0,
-            pedestrian_angle=pedestrian_angle,
-            pedestrian_speed=pedestrian_speed,
-            car_speed=get_random_int_on_interval(car_speed_interval),
-        )
-
-    elif start_y_category in ["left", "right"] and (
-        pedestrian_speed == "stationary" or pedestrian_angle in ["away", "towards"]
+    if start_y_class in ["left", "right"] and (
+        obj_speed_class == "stationary" or obj_angle_class in ["away", "towards"]
     ):
         return None
 
+    obj_y0 = latteral_offset_mapping[start_y_class]
+    obj_speed = object_speed_mapping[obj_speed_class]
+    obj_angle = object_angle_mapping[obj_angle_class]
+
+    obj_x0_interval = object_distance_mapping[start_x_class]
+    car_speed_interval = car_speed_mapping[car_speed_class]
+
+    if start_y_class == "center" and (
+        obj_speed_class == "stationary" or obj_angle_class in ["towards", "away"]
+    ):
+        return get_random_int_on_interval(obj_x0_interval), get_random_int_on_interval(
+            car_speed_interval
+        )
+
     # Angle relative perpendicular
-    pedestrian_angle_perp_rad = np.deg2rad(90 - pedestrian_angle)
-    # Pedestrian speed perpendicular to road
-    pedestrian_v_y = pedestrian_speed * np.cos(pedestrian_angle_perp_rad)
-    # Pedestrian speed paralell to road
-    pedestrian_v_x = pedestrian_speed * np.sin(pedestrian_angle_perp_rad)
+    obj_angle_perp_rad = np.deg2rad(90 - obj_angle)
+    # Object speed perpendicular to road
+    obj_vy = obj_speed * np.cos(obj_angle_perp_rad)
+    # Object speed paralell to road
+    obj_vx = obj_speed * np.sin(obj_angle_perp_rad)
+
+    collision_offsets = list(collision_offsets)
+    random.shuffle(collision_offsets)
 
     for offset_padding in latteral_offset_paddings:
         for collision_offset in collision_offsets:
-            pedestrian_y0_padded = pedestrian_y0 + offset_padding
-            pedestrian_delta_y = abs(pedestrian_y0_padded) + collision_offset
-            delta_t = pedestrian_delta_y / pedestrian_v_y
-            pedestrian_delta_x = pedestrian_v_x * delta_t
+            obj_y0_padded = obj_y0 + offset_padding
+            obj_delta_y = abs(obj_y0_padded) + collision_offset
+            delta_t = obj_delta_y / obj_vy
+            obj_delta_x = obj_vx * delta_t
 
-            pedestrian_x1_interval = pedestrian_delta_x + np.array(
-                pedestrian_x0_interval
-            )
+            obj_x1_interval = obj_delta_x + np.array(obj_x0_interval)
             car_x1_interval = delta_t * np.array(car_speed_interval)
 
             overlapping_interval = get_overlapping_interval(
-                pedestrian_x1_interval, car_x1_interval
+                obj_x1_interval, car_x1_interval
             )
 
             if overlapping_interval is None:
                 continue
 
             x_collision = get_random_int_on_interval(overlapping_interval)
-            pedestrian_x0 = x_collision - pedestrian_delta_x
+            obj_x0 = x_collision - obj_delta_x
             car_v = x_collision / delta_t
 
-            if start_y_category == "left":
-                pedestrian_angle = -pedestrian_angle
-
-            if start_y_category == "center":
-                pedestrian_angle = (
-                    pedestrian_angle if np.random() > 0.5 else -pedestrian_angle
-                )
-
-            return SystemTestConfiguration(
-                pedestrian_appearance=pedestrian_appearance,
-                pedestrian_start_x=pedestrian_x0,
-                pedestrian_start_y=pedestrian_y0_padded,
-                pedestrian_angle=pedestrian_angle,
-                pedestrian_speed=np.round(pedestrian_speed, 2),
-                car_speed=np.round(car_v, 2),
-            )
+            return obj_x0, np.round(car_v, 2)
 
     return None
 
 
 def is_valid_combination(row) -> bool:
-    n = len(row)
+    n_params = len(row)
 
-    [
-        pedestrian_start_y,
-        pedestrian_start_x,
-        pedestrian_speed,
-        pedestrian_angle,
-        car_speed,
-        _,
-    ] = row + [None] * (6 - n)
+    [start_y, start_x, obj_speed, obj_angle, car_speed, _] = row + [None] * (
+        6 - n_params
+    )
 
-    if pedestrian_start_y in ["left", "right"] and (
-        pedestrian_speed == "stationary" or pedestrian_angle in ["away", "towards"]
+    if start_y in ["left", "right"] and (
+        obj_speed == "stationary" or obj_angle in ["away", "towards"]
     ):
         return False
 
-    if n >= 5 and not calculate_collision_values(
-        pedestrian_start_y,
-        pedestrian_start_x,
-        pedestrian_speed,
-        pedestrian_angle,
+    if n_params >= 5 and not calculate_collision_values(
+        start_y,
+        start_x,
+        obj_speed,
+        obj_angle,
         car_speed,
     ):
         return False
@@ -212,15 +146,145 @@ def is_valid_combination(row) -> bool:
     return True
 
 
-for pair in AllPairs(test_parameters, filter_func=is_valid_combination):
-    pair = cast(Any, pair)
-    print(
-        calculate_collision_values(
-            start_y_category=pair.pedestrian_start_y,
-            start_x_category=pair.pedestrian_start_x,
-            pedestrian_speed_category=pair.pedestrian_speed,
-            pedestrian_angle_category=pair.pedestrian_angle,
-            car_speed_category=pair.car_speed,
-            pedestrian_appearance=pair.pedestrian_appearance,
-        )
+def generate_object_all_pairs():
+    test_parameters = OrderedDict(
+        {
+            "obj_start_y": [
+                "left",
+                "right",
+            ],
+            "obj_start_x": [
+                "close",
+                "medium",
+                "far",
+            ],
+            "obj_speed": [
+                "stationary",
+                "slow",
+                "fast",
+            ],
+            "obj_angle": [
+                "perpendicular",
+            ],
+            "car_speed": [
+                "slow",
+                "medium",
+                "fast",
+            ],
+            "obj_type": [
+                "box",
+                "cone",
+                "pyramid",
+                "sphere",
+            ],
+        }
     )
+
+    for pair in AllPairs(test_parameters, filter_func=is_valid_combination):
+        pair = cast(Any, pair)
+        collision_values = calculate_collision_values(
+            start_y_class=pair.obj_start_y,
+            start_x_class=pair.obj_start_x,
+            obj_speed_class=pair.obj_speed,
+            obj_angle_class=pair.obj_angle,
+            car_speed_class=pair.car_speed,
+        )
+
+        if not collision_values:
+            raise Exception("Expected collision values to exists")
+
+        obj_x0, car_speed = collision_values
+        obj_y0 = latteral_offset_mapping[pair.obj_start_y]
+
+        print(
+            ObjectTestConfiguration(
+                object_type=pair.obj_type,
+                start_x=obj_x0,
+                start_y=obj_y0,
+                end_x=obj_x0,
+                end_y=-obj_y0,
+                angle=-np.sign(obj_y0) * 90,
+                speed=object_speed_mapping[pair.obj_speed],
+                car_speed=car_speed,
+            )
+        )
+
+
+def generate_pedestrian_all_pairs():
+    test_parameters = OrderedDict(
+        {
+            "obj_start_y": [
+                "left",
+                "center",
+                "right",
+            ],
+            "obj_start_x": [
+                "close",
+                "medium",
+                "far",
+            ],
+            "obj_speed": [
+                "stationary",
+                "slow",
+                "fast",
+            ],
+            "obj_angle": [
+                "away",
+                "diagonal_away",
+                "perpendicular",
+                "diagonal_towards",
+                "towards",
+            ],
+            "car_speed": [
+                "slow",
+                "medium",
+                "fast",
+            ],
+            "pedestrian_appearance": [
+                "child",
+                "female_business",
+                "female_casual",
+                "male_business",
+                "male_casual",
+                "male_worker",
+            ],
+        }
+    )
+
+    for pair in AllPairs(test_parameters, filter_func=is_valid_combination):
+        pair = cast(Any, pair)
+        collision_values = calculate_collision_values(
+            start_y_class=pair.obj_start_y,
+            start_x_class=pair.obj_start_x,
+            obj_speed_class=pair.obj_speed,
+            obj_angle_class=pair.obj_angle,
+            car_speed_class=pair.car_speed,
+        )
+
+        if not collision_values:
+            raise Exception("Expected collision values to exists")
+
+        obj_x0, car_speed = collision_values
+        obj_angle = object_angle_mapping[pair.obj_angle]
+
+        if pair.obj_start_y == "left":
+            obj_angle = -obj_angle
+        elif pair.obj_start_y == "center":
+            obj_angle = random.choice([obj_angle, -obj_angle])
+
+        print(
+            PedestrianTestConfiguration(
+                pedestrian_appearance=pair.pedestrian_appearance,
+                pedestrian_start_x=obj_x0,
+                pedestrian_start_y=latteral_offset_mapping[pair.obj_start_y],
+                pedestrian_angle=obj_angle,
+                pedestrian_speed=object_speed_mapping[pair.obj_speed],
+                car_speed=car_speed,
+            )
+        )
+
+
+if __name__ == "__main__":
+    generate_pedestrian_all_pairs()
+    print()
+    generate_object_all_pairs()

@@ -1,7 +1,10 @@
-from tests.system.system_test_runner import SystemTestConfiguration, SystemTestRunner
+from tests.system.system_test_runner import (
+    PedestrianTestConfiguration,
+    SystemTestRunner,
+)
 
-all_pairs = [
-    SystemTestConfiguration(
+pedestrian_all_pairs = [
+    PedestrianTestConfiguration(
         pedestrian_appearance="child",
         pedestrian_start_x=21.5,
         pedestrian_start_y=5,
@@ -9,7 +12,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=3.47,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="child",
         pedestrian_start_x=26,
         pedestrian_start_y=5,
@@ -17,7 +20,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=5.78,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="child",
         pedestrian_start_x=38,
         pedestrian_start_y=0,
@@ -25,7 +28,7 @@ all_pairs = [
         pedestrian_speed=0,
         car_speed=14,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="child",
         pedestrian_start_x=54.5,
         pedestrian_start_y=-5,
@@ -33,7 +36,7 @@ all_pairs = [
         pedestrian_speed=3,
         car_speed=18.9,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
         pedestrian_start_x=20,
         pedestrian_start_y=0,
@@ -41,7 +44,7 @@ all_pairs = [
         pedestrian_speed=3,
         car_speed=16,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
         pedestrian_start_x=23.5,
         pedestrian_start_y=5,
@@ -49,7 +52,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=3.73,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
         pedestrian_start_x=46,
         pedestrian_start_y=5,
@@ -57,7 +60,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=5.8,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
         pedestrian_start_x=50,
         pedestrian_start_y=-5,
@@ -65,7 +68,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=10,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
         pedestrian_start_x=15,
         pedestrian_start_y=0,
@@ -73,7 +76,7 @@ all_pairs = [
         pedestrian_speed=0,
         car_speed=11,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
         pedestrian_start_x=24.5,
         pedestrian_start_y=-5,
@@ -81,7 +84,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=3.14,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
         pedestrian_start_x=45,
         pedestrian_start_y=5,
@@ -89,7 +92,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=5.66,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
         pedestrian_start_x=46,
         pedestrian_start_y=5,
@@ -97,7 +100,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=10.22,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
         pedestrian_start_x=50.5,
         pedestrian_start_y=6,
@@ -105,7 +108,7 @@ all_pairs = [
         pedestrian_speed=3,
         car_speed=18.6,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
         pedestrian_start_x=21,
         pedestrian_start_y=-5,
@@ -113,7 +116,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=3.68,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
         pedestrian_start_x=25,
         pedestrian_start_y=5,
@@ -121,7 +124,7 @@ all_pairs = [
         pedestrian_speed=3,
         car_speed=15,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
         pedestrian_start_x=26.5,
         pedestrian_start_y=5,
@@ -129,7 +132,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=3.46,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
         pedestrian_start_x=54,
         pedestrian_start_y=0,
@@ -137,7 +140,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=9,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
         pedestrian_start_x=34,
         pedestrian_start_y=-5,
@@ -145,7 +148,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=5.52,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
         pedestrian_start_x=34.5,
         pedestrian_start_y=5,
@@ -153,7 +156,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=4.71,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
         pedestrian_start_x=47.5,
         pedestrian_start_y=4,
@@ -161,7 +164,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=10.3,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
         pedestrian_start_x=74,
         pedestrian_start_y=0,
@@ -169,7 +172,7 @@ all_pairs = [
         pedestrian_speed=0,
         car_speed=19,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_worker",
         pedestrian_start_x=10,
         pedestrian_start_y=5,
@@ -177,7 +180,7 @@ all_pairs = [
         pedestrian_speed=3,
         car_speed=6,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_worker",
         pedestrian_start_x=17.5,
         pedestrian_start_y=-5,
@@ -185,7 +188,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=3.46,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_worker",
         pedestrian_start_x=39,
         pedestrian_start_y=5,
@@ -193,7 +196,7 @@ all_pairs = [
         pedestrian_speed=1,
         car_speed=4.81,
     ),
-    SystemTestConfiguration(
+    PedestrianTestConfiguration(
         pedestrian_appearance="male_worker",
         pedestrian_start_x=86.5,
         pedestrian_start_y=5,
@@ -204,11 +207,11 @@ all_pairs = [
 ]
 
 
-def test_all_pairs(result_path=None):
+def test_pedestrian_all_pairs():
     runner = SystemTestRunner()
-    runner.run_all(all_pairs)
-    runner.results_to_csv(result_path)
+    runner.run_all(pedestrian_all_pairs)
+    runner.results_to_csv()
 
 
 if __name__ == "__main__":
-    test_all_pairs()
+    test_pedestrian_all_pairs()

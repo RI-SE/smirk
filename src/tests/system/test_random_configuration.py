@@ -4,7 +4,10 @@ import random
 import numpy as np
 
 from simple_aeb_scene import SimpleAebScene
-from tests.system.system_test_runner import SystemTestConfiguration, SystemTestRunner
+from tests.system.system_test_runner import (
+    PedestrianTestConfiguration,
+    SystemTestRunner,
+)
 
 SCENARIO_TYPES = ("left", "right", "towards", "away")
 PEDESTRIAN_APPEARANCES = (
@@ -26,7 +29,7 @@ def get_single_random_configuration(
     pedestrian_walking_speed_range=(0, 2),
     pedestrian_offset_from_road_center_range=(-3, 3),
     car_speed_range=(2, 20),
-) -> SystemTestConfiguration:
+) -> PedestrianTestConfiguration:
     scenario_type = random.choice(scenario_types)
     pedestrian_appearance = random.choice(pedestrian_appearances)
     car_speed = np.random.uniform(*car_speed_range)
@@ -43,7 +46,7 @@ def get_single_random_configuration(
     pedestrian_walking_speed = np.random.uniform(*pedestrian_walking_speed_range)
 
     if scenario_type == "left":
-        return SystemTestConfiguration(
+        return PedestrianTestConfiguration(
             pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=SimpleAebScene.ROAD_LEFT_Y
@@ -53,7 +56,7 @@ def get_single_random_configuration(
             car_speed=car_speed,
         )
     elif scenario_type == "right":
-        return SystemTestConfiguration(
+        return PedestrianTestConfiguration(
             pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=SimpleAebScene.ROAD_RIGHT_Y
@@ -63,7 +66,7 @@ def get_single_random_configuration(
             car_speed=car_speed,
         )
     elif scenario_type == "towards":
-        return SystemTestConfiguration(
+        return PedestrianTestConfiguration(
             pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=pedestrian_offset_from_road_center,
@@ -72,7 +75,7 @@ def get_single_random_configuration(
             car_speed=car_speed,
         )
     elif scenario_type == "away":
-        return SystemTestConfiguration(
+        return PedestrianTestConfiguration(
             pedestrian_appearance=pedestrian_appearance,
             pedestrian_start_x=pedestrian_distance_from_car,
             pedestrian_start_y=pedestrian_offset_from_road_center,
