@@ -309,6 +309,8 @@ class SimpleAebScene:
         self.object_observer = ObjectObserver(self.simulation)
         self.object_observer.set_object(self.crossing_object.name)
 
+        self.collision_observer.set_object2(self.crossing_object.name)
+
         self.position_interpolator = PositionInterpolator(self.simulation)
         self.position_interpolator.set_controlled_object(self.crossing_object.name)
         self.position_interpolator.add_key_frame(x=start_x, y=start_y, rotation_z=angle)
