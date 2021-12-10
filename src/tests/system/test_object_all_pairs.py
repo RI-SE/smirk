@@ -1,3 +1,5 @@
+import argparse
+
 from tests.system.system_test_runner import ObjectTestConfiguration, SystemTestRunner
 
 object_all_pairs = [
@@ -134,11 +136,19 @@ object_all_pairs = [
 ]
 
 
-def test_object_all_pairs():
+def test_object_all_pairs(add_noise: bool = False):
     runner = SystemTestRunner()
-    runner.run_all(object_all_pairs)
+    runner.run_all(object_all_pairs, add_noise)
     runner.results_to_csv()
 
 
 if __name__ == "__main__":
-    test_object_all_pairs()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--noisy",
+        help="Randomly add jitter in the range from -10% to +10% to all numerical values.",
+        action="store_true",
+    )
+    args = parser.parse_args()
+
+    test_object_all_pairs(args.noisy)

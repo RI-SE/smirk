@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Dict, Iterable, List, Union, cast
 
+import numpy as np
 import pandas as pd
 
 from simple_aeb_scene import SimpleAebScene
@@ -49,12 +50,20 @@ class SystemTestRunner:
         path = f"system_test_results_{datetime.now():%Y%m%d_%H%M%S}.csv"
         pd.DataFrame(self.results).to_csv(path)
 
-    def run_all(self, configurations: Iterable[SystemTestConfiguration]):
+    def run_all(
+        self, configurations: Iterable[SystemTestConfiguration], add_noise: bool = False
+    ):
         for configuration in configurations:
-            self.run_configuration(configuration)
+            self.run_configuration(configuration, add_noise)
 
-    def run_configuration(self, test_config: SystemTestConfiguration):
+    def run_configuration(self, test_config: SystemTestConfiguration, add_noise: bool):
         param_dict = dataclasses.asdict(test_config)
+
+        if add_noise:
+            for k, v in param_dict.items():
+                if type(v) in [int, float]:
+                    param_dict[k] *= 1 + np.random.uniform(-0.1, 0.1)
+                    print(k, v, param_dict[k])
 
         if isinstance(test_config, PedestrianTestConfiguration):
             self.scene.setup_pedestrian_scenario(**param_dict)
