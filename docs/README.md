@@ -37,9 +37,9 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [K]   |     ML Safety Requirements Argument                |                 |            2       | [SRS Sec 10](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#10-ml-safety-requirements-argument-k) | Done |
 |     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) | Done |
 |     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) | Done |
-|     [N]   | Development Data                                   |                 |          3         | TBD | Sampling needed |
-|     [O]   | Internal Test Data                                 |                 |          3         | TBD | Sampling needed |
-|     [P]   | Verification Data                                  |                 |          3         | TBD | Sampling needed |
+|     [N]   | Development Data                                   |                 |          3         | TBD | Hosting needed |
+|     [O]   | Internal Test Data                                 |                 |          3         | TBD | Hosting needed |
+|     [P]   | Verification Data                                  |                 |          3         | TBD | Hosting needed |
 |     [Q]   | Data Generation Log                            |                 |            3       | [DMS Sec 4](</docs/Data Management Specification.md#data_gen>) | Sampling needed |
 |     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) | Done |
 |     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | Formal inspection needed |
