@@ -27,7 +27,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [A]   |     System Safety Requirements                     |         1, 6    |                    | [SRS Sec 3.1](</docs/System Requirements Specification.md#system_safety_reqts>)    | Done |
 |     [B]   |     Description of Operating Environment of System |         1, 6    |                    | [SRS Sec 4](</docs/System Requirements Specification.md#odd>)    | Done |
 |     [C]   |     System Description                             |         1, 6    |                    | [SRS Sec 2](</docs/System Requirements Specification.md#system_reqts>)    | Done |
-|     [D]   |     ML Component Description                       |          1      |                    | [MLCS Sec 2](</docs/ML Component Specification.md#ml_comp_desc>)    | In progress |
+|     [D]   |     ML Component Description                       |          1      |                    | [MLCS Sec 2](</docs/ML Component Specification.md#ml_comp_desc>)    | Outlier detection missing |
 |     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       | [SRS Sec 3.2](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    | Done |
 |     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    | [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    | Done |
 |     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       | [SRS Sec 7](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    | Done |
