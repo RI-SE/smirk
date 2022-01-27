@@ -50,7 +50,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [X]   | Internal Test Results                          |                 |            4       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | In progress |
 |     [Y]   | ML Learning Argument                           |                 |            4       | [MLCS Sec 6](</docs/ML%20Component%20Specification.md#6-ml-learning-argument-y>) | Done |
 |     [Z]   | ML Verification Results                        |                 |            5       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | In progress |
-|     [AA]  | Verification Log                               |                 |            5       | TBD | In progress |
+|     [AA]  | Verification Log                               |                 |            5       | [STS Sec 3](</docs/System%20Test%20Specification.md#3-ml-model-testing-aa>) | Need to describe metrics (M) |
 |     [BB]  | ML Verification Argument Pattern               |          5      |                    | [STS Sec 5](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>) | Done |
 |     [CC]  | ML Verification Argument                       |                 |            5       | [STS Sec 6](https://github.com/RI-SE/smirk/blob/main/docs/System%20Test%20Specification.md#6-ml-verification-argument-cc) | Done |
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
