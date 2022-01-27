@@ -50,11 +50,11 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [X]   | Internal Test Results                          |                 |            4       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | (K) Create test report |
 |     [Y]   | ML Learning Argument                           |                 |            4       | [MLCS Sec 6](</docs/ML%20Component%20Specification.md#6-ml-learning-argument-y>) | Done |
 |     [Z]   | ML Verification Results                        |                 |            5       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | (J) Measure slices |
-|     [AA]  | Verification Log                               |                 |            5       | [STS Sec 3](</docs/System%20Test%20Specification.md#3-ml-model-testing-aa>) | Need to describe metrics (M) |
+|     [AA]  | Verification Log                               |                 |            5       | [STS Sec 3](</docs/System%20Test%20Specification.md#3-ml-model-testing-aa>) | (M) Need to describe metrics |
 |     [BB]  | ML Verification Argument Pattern               |          5      |                    | [STS Sec 5](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>) | Done |
 |     [CC]  | ML Verification Argument                       |                 |            5       | [STS Sec 6](https://github.com/RI-SE/smirk/blob/main/docs/System%20Test%20Specification.md#6-ml-verification-argument-cc) | Done |
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | (M) Not started |
 |     [EE]  | Operational scenarios                          |         6       |                    | [STS Sec 4.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Test%20Specification.md#41-operational-scenarios-ee) | Done |
-|     [FF]  | Integration Testing Results                        |                 |          6         | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | Not started |
+|     [FF]  | Integration Testing Results                        |                 |          6         | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | (K?) Not started |
 |     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | [DS Sec 5](</docs/Deployment%20Specification.md#5-ml-deployment-argument-pattern-bb>) | Done |
 |     [HH]  | ML Deployment Argument                         |                 |            6       | TBD | (M) Not started |
