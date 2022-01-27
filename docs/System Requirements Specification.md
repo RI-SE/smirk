@@ -1186,7 +1186,7 @@ The SMILE3 project conducted a [Fagan inspection](https://en.wikipedia.org/wiki/
 1. Rework: The lead authors updated the SRS according to the inspection protocol.
 1. Follow-up: Selected reviewers verified that the previously found issues had been correctly resolved. 
 
-The inspection protocol is available at TBD.
+The [inspection protocol](https://github.com/RI-SE/smirk/blob/main/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx) is available.
 
 # 9 ML Safety Requirements Argument [K]
 SMIRK instantiates the ML safety requirements argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Safety Requirements Argument Pattern [I]](</docs/System Requirements Specification.md#5-ml-assurance-scoping-argument-pattern-f->), as well as the following artifacts from preceding AMLAS activities:
