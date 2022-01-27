@@ -27,7 +27,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [A]   |     System Safety Requirements                     |         1, 6    |                    | [SRS Sec 3.1](</docs/System Requirements Specification.md#system_safety_reqts>)    | Done |
 |     [B]   |     Description of Operating Environment of System |         1, 6    |                    | [SRS Sec 4](</docs/System Requirements Specification.md#odd>)    | Done |
 |     [C]   |     System Description                             |         1, 6    |                    | [SRS Sec 2](</docs/System Requirements Specification.md#system_reqts>)    | Done |
-|     [D]   |     ML Component Description                       |          1      |                    | [MLCS Sec 2](</docs/ML Component Specification.md#ml_comp_desc>)    | Outlier detection missing |
+|     [D]   |     ML Component Description                       |          1      |                    | [MLCS Sec 2](</docs/ML Component Specification.md#ml_comp_desc>)    | (J) Outlier detection missing |
 |     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       | [SRS Sec 3.2](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    | Done |
 |     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    | [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    | Done |
 |     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       | [SRS Sec 7](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    | Done |
@@ -37,24 +37,24 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [K]   |     ML Safety Requirements Argument                |                 |            2       | [SRS Sec 10](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#10-ml-safety-requirements-argument-k) | Done |
 |     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) | Done |
 |     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) | Done |
-|     [N]   | Development Data                                   |                 |          3         | TBD | Hosting needed |
-|     [O]   | Internal Test Data                                 |                 |          3         | TBD | Hosting needed |
-|     [P]   | Verification Data                                  |                 |          3         | TBD | Hosting needed |
+|     [N]   | Development Data                                   |                 |          3         | TBD | (M) Hosting needed |
+|     [O]   | Internal Test Data                                 |                 |          3         | TBD | (M) Hosting needed |
+|     [P]   | Verification Data                                  |                 |          3         | TBD | (M) Hosting needed |
 |     [Q]   | Data Generation Log                            |                 |            3       | [DMS Sec 4](</docs/Data Management Specification.md#data_gen>) | Links to code needed |
 |     [R]   | ML Data Argument Pattern                           |        3        |                    | [DMS Sec 5](</docs/Data Management Specification.md#data_argument_pattern>) | Done |
 |     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | Validation scripts needed |
 |     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) | Done |
 |     [U]   | Model Development Log                          |                 |          4         | [MLCS Sec 3](</docs/ML%20Component%20Specification.md#3-model-development-log-u>) | In progress |
-|     [V]   | ML Model                                           |       5, 6      |          4         | TBD | Need to upload model |
+|     [V]   | ML Model                                           |       5, 6      |          4         | TBD | (K) Need to upload model |
 |     [W]   | ML Learning Argument Pattern                   |          4      |                    | [MLCS Sec 5](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>) | Done |
-|     [X]   | Internal Test Results                          |                 |            4       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | In progress |
+|     [X]   | Internal Test Results                          |                 |            4       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | (K) Create test report |
 |     [Y]   | ML Learning Argument                           |                 |            4       | [MLCS Sec 6](</docs/ML%20Component%20Specification.md#6-ml-learning-argument-y>) | Done |
-|     [Z]   | ML Verification Results                        |                 |            5       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | In progress |
+|     [Z]   | ML Verification Results                        |                 |            5       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | (J) Measure slices |
 |     [AA]  | Verification Log                               |                 |            5       | [STS Sec 3](</docs/System%20Test%20Specification.md#3-ml-model-testing-aa>) | Need to describe metrics (M) |
 |     [BB]  | ML Verification Argument Pattern               |          5      |                    | [STS Sec 5](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>) | Done |
 |     [CC]  | ML Verification Argument                       |                 |            5       | [STS Sec 6](https://github.com/RI-SE/smirk/blob/main/docs/System%20Test%20Specification.md#6-ml-verification-argument-cc) | Done |
-|     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | Not started |
+|     [DD]  | Erroneous Behaviour Log                        |                 |            6       | TBD | (M) Not started |
 |     [EE]  | Operational scenarios                          |         6       |                    | [STS Sec 4.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Test%20Specification.md#41-operational-scenarios-ee) | Done |
 |     [FF]  | Integration Testing Results                        |                 |          6         | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/) | Not started |
 |     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | [DS Sec 5](</docs/Deployment%20Specification.md#5-ml-deployment-argument-pattern-bb>) | Done |
-|     [HH]  | ML Deployment Argument                         |                 |            6       | TBD | Not started |
+|     [HH]  | ML Deployment Argument                         |                 |            6       | TBD | (M) Not started |
