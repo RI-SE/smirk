@@ -3,7 +3,9 @@ from typing import List
 
 import numpy as np
 
+import config.paths
 from shared.radar_detection import RadarDetection
+from smirk.pedestrian_detector.noop_detector import NoopDetector
 from smirk.pedestrian_detector.pedestrian_detector import (
     BoundingBox,
     PedestrianDetector,
@@ -23,8 +25,15 @@ class Smirk:
         pedestrian_detector: PedestrianDetector = None,
         safety_cage: SafetyCage = None,
     ):
-        self.pedestrian_detector = pedestrian_detector or YoloDetector()
         self.safety_cage = safety_cage or NoopCage()
+
+        # TODO: Improve config of this. Probably make it non-optional.
+        if pedestrian_detector:
+            self.pedestrian_detector = pedestrian_detector
+        elif config.paths.yolo_model.exists():
+            self.pedestrian_detector = YoloDetector()
+        else:
+            self.pedestrian_detector = NoopDetector()
 
     def is_aeb(self, radar_detections: List[RadarDetection], camera_frame: np.ndarray):
         radar_detections_below_threshold = [
