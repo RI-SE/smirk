@@ -20,7 +20,6 @@ new mgPositionable collision_position_car
 new sivicPackage main_camera
 new sivicPackage radar
 new sivicDistanceObserver collision_observer
-new sivicManObserver pedestrian_observer
 
 
 # Object configuration
@@ -57,8 +56,8 @@ editor/cam.SetLocalPosition	-0.1903552 12.9347982 19.4348717
 editor/cam.SetLocalRotation	2.6223187 -67.2977219 -162.4710846
 #editor/cam.SetLocalRotationAngles	44.9999886 0.0000155 -175.5371399
 editor/cam.SetLocalScale	1.0000000 1.0000000 1.0000000
-editor/cam.SetFrustum	-0.1243794 0.1243794 -0.0767327 0.0767327 0.1000000 5000.0000000
-editor/cam.SetRenderSize 1099 678
+editor/cam.SetFrustum	-0.1410162 0.1410162 -0.0767327 0.0767327 0.1000000 5000.0000000
+editor/cam.SetRenderSize 1246 678
 editor/cam.SetRenderer editor/ren
 editor/cam.SetCaptureFileName MGEngine
 editor/cam.SetClearColorBufferRegion 1
@@ -902,7 +901,7 @@ main_camera.SetLocalScale	1.0000000 1.0000000 1.0000000
 main_camera.SetPackageData	generic_camera.zip
 
 # Object main_camera/cam with type sivicCamera
-main_camera/cam.SetPeriod 0.0400000
+main_camera/cam.SetPeriod 0.0500000
 main_camera/cam.SetOMGDDSEnabled true
 main_camera/cam.SetFileName cam
 main_camera/cam.SetExtension .cap
@@ -957,7 +956,7 @@ main_camera/cam.SetOccludeLabels 1
 # Object main_camera/view with type sivicCameraViewport
 main_camera/view.SetDisabled	1
 main_camera/view.SetAutoResize 1
-main_camera/view.SetViewport 54.7770691% 0.0000000% 33.6669693% 44.2477875%
+main_camera/view.SetViewport 54.8154106% 0.0000000% 33.6276093% 44.2477875%
 main_camera/view.SetCamera main_camera/cam
 main_camera/view.SetColorMask 1 1 1
 main_camera/view.SetMinDepthRange 0.0000000
@@ -1131,19 +1130,19 @@ radar/radar.SetAntennaType 1
 radar/radar.SetModellingMode 0
 radar/radar.SetComputationMode 1
 radar/radar.SetDetectionMode 1
-radar/radar.SetModulation 2
+radar/radar.SetModulation 3
 radar/radar.SetCarrierFrequency 76.5000000
-radar/radar.SetBandWidth 1.0000000
-radar/radar.SetSampleRate 20.0000000
-radar/radar.SetPeriodDuration 0.0000005
+radar/radar.SetBandWidth 300.0000000
+radar/radar.SetSampleRate 40.0000000
+radar/radar.SetPeriodDuration 0.0000100
 radar/radar.SetChirpDuration 0.0000000
-radar/radar.SetListenningDuration 0.0015000
+radar/radar.SetListenningDuration 0.0018000
 radar/radar.SetThresholdDetection -500.0000000
 radar/radar.SetAntennaMaxGain 24.0000000
 radar/radar.SetAntennaStepAngle 0.5000000
 radar/radar.SetAntennaOpenAngle 120.0000000
 radar/radar.SetUseTracking 0
-radar/radar.SetNbTargetsMax 2
+radar/radar.SetNbTargetsMax 16
 radar/radar.SetFixSweepingGhostTargets 1
 radar/radar.SetSweepingFixDistanceThreshold 1.0000000
 radar/radar.SetSweepingFixAngleThreshold 5.0000000
@@ -1248,7 +1247,7 @@ ego_car/car.SetSubMode 0
 ego_car/car.SetPeriod 0.0050000
 ego_car/car.SetOMGDDSEnabled true
 ego_car/car.SetCarDescriptionCommunicationMode 0
-ego_car/car.SetCarOrdersCommunicationMode 2
+ego_car/car.SetCarOrdersCommunicationMode 3
 ego_car/car.SetCarEnvironmentCommunicationMode 1
 # Car dynamic model for ego_car/car (0: Internal ; 1: External): 
 ego_car/car.SetModelSelector 0
@@ -1265,7 +1264,7 @@ ego_car/car.SetInitSpeed 0.0000000
 ego_car/car.SetInitSpeedControl 0.0000000
 ego_car/car.SetInitSpeedLimit 0.0000000
 ego_car/car.SetACCSpeed 0.0000000
-ego_car/car.SetPIDKp 500.0000000
+ego_car/car.SetPIDKp 50000.0000000
 ego_car/car.SetPIDKi 0.0000000
 ego_car/car.SetPIDKd 0.0000000
 ego_car/car.SetLateralCorrectionTimeTarget 4.0000000
@@ -1283,16 +1282,7 @@ collision_observer.SetDisabled	0
 collision_observer.SetPrecision 2
 collision_observer.SetObject1 collision_position_car
 
-# Object pedestrian_observer with type sivicManObserver
-pedestrian_observer.SetPeriod 0.0400000
-pedestrian_observer.SetOMGDDSEnabled true
-pedestrian_observer.SetFileName pedestrian_observer
-pedestrian_observer.SetExtension .cap
-pedestrian_observer.On 
-pedestrian_observer.SetRecordEnabled false
-pedestrian_observer.SetExportFormat tsv
-pedestrian_observer.SetDisabled	0
-pedestrian_observer.SetPrecision 2
+
 
 # Viewport ordering
 
