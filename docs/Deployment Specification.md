@@ -59,7 +59,10 @@ Headings with a reference in brackets [X] refer to artifacts mandated by the AML
 
 # 3 Operating Environment <a name="env"></a>
 
-# 4 ML Deployment Argument Pattern [GG]
+# 4 Erroneous Behaviour Log [DD]
+The development of the ML-based Pedestrian Recognition Component is undertaken in the context of assumptions that are made about the system to which it will be integrated and its ODD. The **safety cage** is a conrete mechanism implemenented to monitor that the assumptions reamain valid during SMIRK operation, i.e., it provides out-of-distribution detection. ML engineering always results in some level of uncertainty associated with the outputs produced by the ML models. During development, the safety cage supported our analysis of *erroneous output* from the YOLOv5 model embedded in the Pedestrian Recognition Component. Furthermore, the safety cage provided insights into what shall be considered *erroneous input* to the YOLOv5 model. As the SMIRK MVP has a restricted ODD, common types of noise and hardware sensor issues are out of scope - as are adversarial attacks. Still, this section reports the predicted and documented erroneous behaviours overall identified during development.
+
+# 5 ML Deployment Argument Pattern [GG]
 The figure below shows the ML deployment argument pattern using GSN. Since SMIRK is developed for a simulated environment, the pattern is adapted accordingly.
 
 ![GSN-ML-Deployment_Argument_Pattern](/docs/figures/gsn-ml_deployment_argument_pattern.png) <a name="gsn-ml_deployment_argument"></a>
@@ -68,7 +71,7 @@ The top claim (G6.1) is that the ML safety requirements SYS-ML-REQ1 and SYS-ML-R
 
 Second, sub-claim G6.3 argues that SYS-ML-REQ1 and SYS-ML-REQ2 continue to be satisfied during the operation of SMIRK. The supporting argumentation strategy (S6.3) relates to the design of SMIRK and is again two-fold. First, sub-claim G6.6 argues that the operational achievement of the deployed component satisfies the ML safety requirements. Second, sub-claim G6.5 argues that the design of SMIRK into which the ML component is integrated ensures that SYS-ML-REQ1 and SYS-ML-REQ2 are satisfied throughout operation. The argumentation strategy (S6.4) is based on demonstrating that the design is robust by taking into account identified erroneous behavior in the context (C5.1) of the Erroneous Behavior Log [DD]. More specifically, the argumentation entails that predicted erroneous behavior will not result in the violation of the ML safety requirements. This is supported by two sub-claims, i.e., that the system design provides sufficient monitoring of erroneous inputs and outputs (G6.7) and that the system design provides acceptable response to erroneous inputs and outputs (G6.8). Both G6.7 and G6.8 are addressed by the safety cage architecture that monitors input through out-of-distribution detection and rejects anomalies accordingly. The acceptable system response is to avoid emergency braking and instead let the human driver control ego car. 
 
-# 5 ML Deployment Argument [HH]
+# 6 ML Deployment Argument [HH]
 SMIRK instantiates the ML Deployment Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Deployment Argument Pattern [GG]](</docs/System%20Test%20Specification.md#4-ml-deployment-argument-pattern-gg>), as well as the following artefacts from preceding AMLAS activities:
 
 - [System Safety Requirements](</docs/System Requirements Specification.md#31-system-safety-requirements-a->) [A]
