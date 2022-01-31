@@ -101,7 +101,7 @@ The entire document is relevant to the internal development organization. Specif
 
 **External stakeholders**
 - Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
-- Researchers: Academic and industrial reserachers active in ML safety are likely to find most value in [Section 3 (System Requirements)](#3-system-requirements).
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in [Section 3 (System Requirements)](#3-system-requirements).
 - Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Assurance Scoping Argument Pattern)](#5-ml-assurance-scoping-argument-pattern-f-).
 - Curious readers: For an overview of SMIRK, read [Section 1 (Introduction)](#1-introduction) and [Section 2 (System Description)](#2-system-description-c-).
 

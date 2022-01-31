@@ -96,7 +96,7 @@ The entire document is relevant to the internal development organization. Specif
 
 **External stakeholders**
 - Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
-- Researchers: Academic and industrial reserachers active in ML safety are likely to find most value in [Section 2 (Data Requirements)](#2-data-requirements-l-).
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in [Section 2 (Data Requirements)](#2-data-requirements-l-).
 - Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Data Argument Pattern)](#5-ml-data-argument-pattern-r-).
 - Curious readers: For an overview of data management in SMIRK, read [Section 1 (Introduction)](#1-introduction).
 
