@@ -35,31 +35,46 @@ Revision History
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document contains the system test specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
-
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
+This document contains the system test specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
 ## 1.1 Purpose ##
-This document describes the test strategy for the ML-based object detection component. The object detection component detects pedestrians in input images, i.e., no other classes are detected in the input.
+This document describes the test strategy for the ML-based pedestrian detection component in SMIRK. The pedestrian recognition component detects pedestrians in input images from the camera when the radar sensor indicates the risk of an immediate collision with an external object. In the SMIRK minimum viable product (MVP), no other classes but pedestrians are considered by the ML-based pedestrian recognition component.
+
+The SMIRK *product goal* is to assist the driver on country roads in rural areas by performing emergency braking in the case of an imminent collision with a pedestrian. The *project goal* of the SMIRK development endeavor, as part of the research project SMILE3 is to provide a concrete ADAS case study as a basis for discussion - at the same time providing an open research prototype for the community. The goals are further elaborated in the [System Requirements Specification](</docs/System%20Requirements%20Specification.md#11-purpose>).
 
 ## 1.2 Document Conventions ##
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
+The number of academic publications in the list of references is unconventional for techincal project doumentation. This is a conscious decision. SMIRK is developed as a prototype in the context of a research project with limited resources. As part of our research, we aim to integrate (sometimes scattered) pieces from the state-of-the-art literature. Synthesis is a fundamental tool in our research and we seek novel insights while focusing on refinement and integration. We actively choose to rely on reuse of design decisions from previously peer-reviewed publications. Building on previous work, i.e., [standing on the shoulders of others](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants), is a core concept in research that allows validation of previous work, incl. previously proposed requirements. When available, and unless open access publication models have been used, links to academic publications point to preprints on open repositories such as [arXiv](https://arxiv.org/) rather than peer-reviewed revisions behind paywalls.
+
+Headings with a reference in brackets [X] refer to artifacts prescribed by the AMLAS process ([Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf)). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text.
 
 ## 1.3 Glossary
+- ADAS: Advanced Driver-Assistance Systems
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DM: Data Management
+- GSN: Goal Structuring Notation
 - ML: Machine Learning
+- MVP: Minimum Viable Product
 - ODD: Operational Design Domain
+- OOD: Out Of Distribution
+- OSS: Open-Source Software
+- PAEB: Pedestrian Automatic Emergency Braking
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-The testing process must be independent of the development. Neither developers nor ML developers can have access to this document.
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
 
-- Developers: Must not have access to the document.
+**Internal stakeholders**
+
+- Software developers: Must not have access to the document.
 - ML developers: Must not have access to the document.
-- Testers: The entire document is important.
-- Safety assessors: The entire document is important.
-- Other stakeholders: TBD
+- Internal testers: Must not have access to the document.
+- Independent testers: The entire document is important.
+
+**External stakeholders**
+- Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in our approach to model testing and system testing.
+- Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Data Argument Pattern)](#5-ml-data-argument-pattern-r-).
+- Curious readers: For an overview of the SMIRK test stratefy, read [Section 2 (ML Test Strategy)](#2-ml-test-strategy).
 
 ## 1.6 References ##
 - [System Requirements Specification](</docs/System Requirements Specification.md>)

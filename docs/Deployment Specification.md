@@ -32,30 +32,48 @@ Revision History
 # 1 Introduction <a name="introduction"></a>
 This document contains the deployment specification for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
 
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As we run both the simulator and SMIRK on the same workstation, the deployment specification of the SMIRK MVP is different compared to the platform that would be used in a real vechicle, e.g., the NVIDIA DRIVE platform.
 
 ## 1.1 Purpose ##
-This document describes the deployment of SMIRK on the experimental platform that runs ESI Pro-SiVIC.
+This document describes the deployment of SMIRK on the experimental platform that runs ESI Pro-SiVIC. The pedestrian recognition component detects pedestrians in input images from the camera when the radar sensor indicates the risk of an immediate collision with an external object. In the SMIRK minimum viable product (MVP), no other classes but pedestrians are considered by the ML-based pedestrian recognition component. The document encompasses the entire lifecycle, i.e., data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operation.
+
+The SMIRK *product goal* is to assist the driver on country roads in rural areas by performing emergency braking in the case of an imminent collision with a pedestrian. The *project goal* of the SMIRK development endeavor, as part of the research project SMILE3 is to provide a concrete ADAS case study as a basis for discussion - at the same time providing an open research prototype for the community. The goals are further elaborated in the [System Requirements Specification](</docs/System%20Requirements%20Specification.md#11-purpose>).
 
 ## 1.2 Document Conventions ##
-Headings with a reference in brackets [X] refer to artifacts mandated by the AMLAS process.
+Headings with a reference in brackets [X] refer to artifacts prescribed by the AMLAS process ([Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf)). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text.
 
 ## 1.3 Glossary
+- ADAS: Advanced Driver-Assistance Systems
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
-- DM: Data Management
+- GSN: Goal Structuring Notation
 - ML: Machine Learning
+- MVP: Minimum Viable Product
 - ODD: Operational Design Domain
+- OOD: Out Of Distribution
+- OSS: Open-Source Software
+- PAEB: Pedestrian Automatic Emergency Braking
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-- Developers: The entire document is relevant.
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
+
+**Internal stakeholders**
+
+The entire document is relevant to the internal development organization. Specific stakeholders are recommended to pay particular attention as follows. 
+- Software developers: The entire document is relevant.
 - ML developers: The entire document is relevant.
-- Testers: The entire document is relevant.
-- Safety assessors: The entire document is relevant.
-- Other stakeholders: TBD
+- Internal testers: The entire document is relevant.
+- Independent testers: The entire document is relevant.
+
+**External stakeholders**
+- Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in the headings that map to the AMLAS process.
+- Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Deployment Argument Pattern)](#5-ml-deployment-argument-pattern-gg-).
+- Curious readers: The entire document is relevant
 
 ## 1.6 References ##
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
+- [ML Component Specification](</docs/ML Component Specification.md>)
 
 # 3 Operating Environment <a name="env"></a>
 
