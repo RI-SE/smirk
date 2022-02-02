@@ -192,7 +192,7 @@ SMIRK comprises implementations of four algorithms and uses external vehicle fun
 
 Sensors:
 - Radar detection and tracking of objects in front of the vehicle (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>)).
-- A forward-facing mono-camera (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>).
+- A forward-facing mono-camera (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>)).
 
 Algorithms:
 - Time-to-collision (TTC) calculation for objects on collision course (threshold 4 s).
