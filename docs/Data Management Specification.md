@@ -190,7 +190,7 @@ For the SMIRK MVP, we have specified a very restricted ODD to support our effort
 - [Combitech](https://www.combitech.com/)
 
 # 4 Data Generation Log [Q] <a name="data_gen"></a>
-This section descibres how the data used for the fine-tuning of the ML model in the pedestrian recognition component was generated. Based on the [data requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we generate data for fine-tuning in ESI Pro-SIVIC. The data are split into three sets in accordance with AMLAS. 
+This section describes how the data used for the fine-tuning of the ML model in the pedestrian recognition component was generated. Based on the [data requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we generate data for fine-tuning in ESI Pro-SIVIC. The data are split into three sets in accordance with AMLAS. 
 
 - Development data: Covering both training and validation data used by developers to create models during ML development.
 - Internal test data: Used by developers to test the model.
