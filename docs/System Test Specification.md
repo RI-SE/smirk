@@ -155,14 +155,14 @@ The complete set of operational scenarios, realized as 32 executable test scenar
 ## 4.2 System Test Cases ##
 The system test cases are split into three categories. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the straightly reproducible Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analogous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that introducing random jitter to the test input does not lead to the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not (TC-RAND-[1-18]). Furthermore, for the test cases related to false positives, we know that emergency braking shall not commence. Consequently, the entries in the "Then" column are straightforward.
 
+The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The table below lists all system test cases, of all three categories, using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements.
+
 | Test Case ID   | Type                 | Given               | When       | Then         |
 |----------------|----------------------|---------------------|------------|--------------|
 | TC-OS-[1-18]   | Operational Scenario | Scenario [1-18]     | Pedestrian crosses the street | PAEB commences, no collision |
 | TC-OS-[19-32]   | Operational Scenario | Scenario [19-32]     | Object crosses the street | PAEB does not commence |
 | TC-RAND-[1-18] | Random Testing       | TC-OS-[1-18]+jitter | Pedestrian crosses the street | PAEB commences, no collision |
 | TC-RAND-[19-32] | Random Testing       | TC-OS-[19-32]+jitter | Object crosses the street | PAEB does not commence |
-
-The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The table below lists all system test cases, of all three categories, using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements.
 
 | Test Case ID | Requirement | Given    | When       | Then         |
 |--------------|-------------|----------|------------|--------------|
