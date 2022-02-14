@@ -80,7 +80,9 @@ The section is organized into internal stakeholders, i.e., roles that are direct
 - [System Requirements Specification](</docs/System Requirements Specification.md>)
 - [Data Management Specification](</docs/Data Management Specification.md>)
 - [Machine Learning Component Specification](</docs/ML Component Specification.md>)
+- Bolya, Foley, Hays, and Hoffman, 2020. Tide: A General Toolbox for Identifying Object Detection Errors, In *Proc. of the European Conference on Computer Vision*, pp. 558-573. 
 - Borg, Bronson, Christensson, Olsson, Lennartsson, Sonnsjö, Ebadi, and Karsberg, 2021. Exploring the Assessment List for Trustworthy AI in the Context of Advanced Driver-Assistance Systems, In Proc. of the 2nd Workshop on Ethics in Software Engineering Research and Practice.
+- Dollar, Wojek, Schiele, and Perona, 2011. Pedestrian Detection: An Evaluation of the State of the Art, *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 34(4), pp. 743-761.
 - Hauer, Schmidt, Holzmüller, and Pretschner, 2019. Did We Test All Scenarios for Automated and Autonomous Driving Systems?. In Proc. of the 2019 IEEE Intelligent Transportation Systems Conference, pp. 2950-2955.
 - ISO/IEC/IEEE, 2018. [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) Systems and Software Engineering - Life Cycle Processes - Requirements Engineering.
 - Masuda, 2017. Software Testing Design Techniques Used in Automated Vehicle Simulations. In Proc. of the 2017 IEEE International Conference on Software Testing, Verification and Validation Workshops, pp. 300-303.
@@ -115,7 +117,7 @@ Consequently, we measure the performance for the following sets of data. Identif
 1. Female pedestrians (DAT-COM-REQ2)
 1. Children (DAT-COM-REQ2)
 
-TBD: Describe how we measure the results on verification dataset and all slices. Intersection over union or perhaps https://dbolya.github.io/tide/
+We rely on the established IOU metric to evaluate the accuracy of the Yolov5 model. After discussions in the development team, supported by [visualizations](https://zapire.com/docs/visualizing-ml/iou.html), we set the target at 0.5. We recognize that there are alternative measures tailored for pedestrian detection, such as the log-average miss rate proposed by Dollar et al. (2011) but we find such metrics to be unnecessarily complex for the restricted SMIRK ODD with a single pedestrian. There are also entire toolboxes that can be used to assess object detection (Bolya et al., 2020). In our safety argumentation, however, we argue that the higher explainability of a simpler - but valid - evaluation metric outweighs the potential benefits of a customized metric customized for a more complex ODD.
 
 Results from running ML model testing, i.e., ML Verification Results [Z], are documented in the [Protocols folder](https://github.com/RI-SE/smirk/blob/main/docs/protocols/).
 
