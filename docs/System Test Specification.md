@@ -192,13 +192,13 @@ The set of metrics includes:
 
 Comments regarding individual test cases:
 - TC-OS-[1-32]: Each TC represents an operational scenario in which SMIRK either shall or shall not commence PAEB.
-- TC-RAND-[1-32]: Each TC represents an operational scenario with random perturbations compared to TC-OS-[1-32]. Note that the new scenarios might no longer lead to a collision. If the object and ego car are on a collission course, however, SMIRK shall or shall not commence PAEB.
+- TC-RAND-[1-32]: Each TC represents an operational scenario with random perturbations compared to TC-OS-[1-32]. Note that the new scenarios might no longer lead to a collision. If the object and ego car are on a collision course, however, SMIRK shall or shall not commence PAEB.
 - TC-REQ-1: For all collected frames with a detected pedestrian with TTC < 4s, calculate how many pedestrians are not identified. A passing test case means none were missed.
 - TC-REQ-2: For all collected frames with a basic shape with TTC < 4s, calculate how many pedestrians are identified. A passing test case means no pedestrian were found.
 - TC-REQ-3: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, calculate the true positive rate. At least 93% is required for a passing test case.
 - TC-REQ-4: For all collected frames with a detected pedestrian with TTC < 4s within 50 m, calculate the false negative rate. No more than 7% is allowed for a passing test case.
 - TC-REQ-5: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, calculate the false positive rate. No more than 0.01% is allowed for a passing test case.
-- TC-REQ-6: For all collected sequences of five consequtive frames with a detected pedestrian with TTC < 4s within 80 m, count the number of pedestrian recognitions. No more than one missed frame is allowed for a passing test case.
+- TC-REQ-6: For all collected sequences of five consecutive frames with a detected pedestrian with TTC < 4s within 80 m, count the number of pedestrian recognitions. No more than one missed frame is allowed for a passing test case.
 - TC-REQ-7: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, compare the position of the bounding box and the ESI Pro-SiVIC ground truth. A passing test case means that no differences where larger than 50 cm.
 - TC-REQ-8: For all collected frames with a detected object with TTC < 4s within 80 m, measure that the model successfully performed inference before the next frame is collected. A passing test case means that no frames are missed.
 - TC-REQ-9: For all collected frames with an object with TTC < 4s within 80 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for any variations within the ODD.
