@@ -49,7 +49,7 @@ Revision History
 <tr>
 <td>Markus Borg</td>
 <td>2022-02-16</td>
-<td>Updated according to Issue #8.
+<td>Updated according to <a href="https://github.com/RI-SE/smirk/issues/8">Issue #8</a>.
 </td>
 <td>0.92</td>
 </tr>
