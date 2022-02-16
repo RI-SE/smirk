@@ -162,8 +162,8 @@ The third category is requirements-based testing (RBT). RBT is used to gain conf
 
 The set of metrics includes:
 - Minimum distance between ego car and the pedestrian during a scenario.
-- Time when the radar tracking component first returned TTC < 4 for an object.
-- Distance between ego car and the object when the radar component first returned TTC < 4 for an object.
+- Time when the radar tracking component first returned TTC < 4s for an object.
+- Distance between ego car and the object when the radar component first returned TTC < 4s for an object.
 - Time when emergency braking was commenced.
 - Distance between ego car and the object when emergency braking commenced.
 - Whether a scenario involved a collision between ego car and an pedestrian.
