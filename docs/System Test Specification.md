@@ -58,6 +58,7 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - OOD: Out Of Distribution
 - OSS: Open-Source Software
 - PAEB: Pedestrian Automatic Emergency Braking
+- RBT: Requirements-Based Testing
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
