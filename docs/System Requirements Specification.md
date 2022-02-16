@@ -47,6 +47,13 @@ Revision History
 <td>0.91</td>
 </tr>
 <tr>
+<td>Markus Borg</td>
+<td>2022-02-16</td>
+<td>Updated according to Issue #8.
+</td>
+<td>0.92</td>
+</tr>
+<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -248,14 +255,14 @@ This section specifies performance requirements corresponding to the ML safety r
 
 **For objects detected by the radar tracking component with a TTC < 4s, the following requirements must be fulfilled:**
 
-- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with an accuracy of 93% when they are within 50 m.**
+- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with a true positive rate of 93% when they are within 50 m.**
 - **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 m.**
-- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01%. within 50 m.** 
+- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01% within 50 m.** 
 - **SYS-PER-REQ4: In a sequence of consecutive images from a 10 FPS video feed, any pedestrian within 50 m shall not be missed in more than 20% of the frames.**
 - **SYS-PER-REQ5: For pedestrians within 50 m, the pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS in the ESI Pro-SiVIC simulation.**
 
-Rationale: SMIRK adapts the performance requirements specified by Gauerhof *et al.* (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson *et al.* (2019). SYS-PER-REQ6 means that any further improvements to reaction time have a negligible impact on the total brake distance. 
+Rationale: SMIRK adapts the performance requirements specified by Gauerhof *et al.* (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the threshold from Example 7 in AMLAS, but clarifies that we consider accuracy as the true positive rate. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson *et al.* (2019). SYS-PER-REQ6 means that any further improvements to reaction time have a negligible impact on the total brake distance. 
 
 ## 3.3.2 Robustness Requirements
 This section specifies robustness requirements corresponding to the ML safety requirements.
