@@ -49,7 +49,7 @@ Revision History
 <tr>
 <td>Markus Borg</td>
 <td>2022-02-16</td>
-<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/8">#8</a> and <a href="https://github.com/RI-SE/smirk/issues/9">#9</a>.
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/8">#8</a>, <a href="https://github.com/RI-SE/smirk/issues/9">#9</a>, and <a href="https://github.com/RI-SE/smirk/issues/10">#10</a>.
 </td>
 <td>0.92</td>
 </tr>
@@ -188,7 +188,7 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 
 *Figure 7: Example scenario illustrating that ego car shall not commence PAEB for false positives.*
 
-The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAEB. The design of SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. "Other ADAS 1 - N"). We also expect that sensors and actuators will be shared between ADAS. For the SMIRK MVP, however, we do not elaborate any further on ADAS co-existence and we do not adhere to any particular higher-level automotive architecture. In the same vein, we do not assume a central perception system that fuses various types of sensor input for individual ADAS such as SMIRK to use. SMIRK uses a standalone ML model trained for pedestrian detection and recognition. In the SMIRK terminology, to mitigate confusion, the radar *detects* objects and the ML-based pedestrian recognition component *identifies* potential pedestrians in the camera input. Solid lines in the figure show how SMIRK interacts with sensors and actuators in the ego vehicle. Dashed lines indicate how other ADAS might use sensors and actuators.
+The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAEB. The design of SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. "Other ADAS 1 - N"). We also expect that sensors and actuators will be shared between ADAS. For the SMIRK MVP, however, we do not elaborate any further on ADAS co-existence and we do not adhere to any particular higher-level automotive architecture. In the same vein, we do not assume a central perception system that fuses various types of sensor input for individual ADAS such as SMIRK to use. SMIRK uses a standalone ML model trained for pedestrian detection and recognition. In the SMIRK terminology, to mitigate confusion, the radar *detects* objects and the ML-based pedestrian recognition component *identifies* potential pedestrians in the camera input. Solid lines in the figure show how SMIRK interacts with sensors and actuators in ego car. Dashed lines indicate how other ADAS might use sensors and actuators.
 
 ![Context](/docs/figures/context_diagram.png) <a name="context"></a>
 
@@ -230,14 +230,14 @@ This section specifies the SMIRK system requirements, organized into system safe
 ## 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
 This section specifies the highest level SMIRK requirement.
 
-- **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if and only if collision with a pedestrian on collision course is imminent.**
+- **SYS-SAF-REQ1: SMIRK shall commence automatic emergency braking if and only if collision with a pedestrian on collision course is imminent.**
 
-Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avoid a collision. If a collision is inevitable, Ego will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
+Rationale: This is the main purpose of SMIRK. If possible, ego car will stop and avoid a collision. If a collision is inevitable, ego car will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
 
 ## 3.2 Safety Requirements Allocated to ML Component [E] <a name="ml_component_safety_reqts"></a>
 Based on a Hazard Analysis and Risk Assessment (HARA), two categories of hazards were identified. First, SMIRK might miss pedestrians and fail to commence emergency braking - we refer to this as a false negative. Second, SMIRK might commence emergency braking when it should not - we refer to this as a false positive. A summary of the HARA is presented below.
 
-- **False negative**: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego vehicle.
+- **False negative**: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego car.
 - **False positive**: The severity of the hazard is high (can be fatal). Controllability is very low since the driver would have no chance to counteract the braking. 
  
 To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements in relation to false negatives. Furthermore, the false positive hazard necessitates the introduction of SYS-ML-REQ2.
@@ -255,11 +255,11 @@ This section specifies performance requirements corresponding to the ML safety r
 
 **For objects detected by the radar tracking component with a TTC < 4s, the following requirements must be fulfilled:**
 
-- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with a true positive rate of 93% when they are within 50 m.**
+- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with a true positive rate of 93% when they are within 80 m.**
 - **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 m.**
-- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01% within 50 m.** 
-- **SYS-PER-REQ4: In any sequence of 5 consecutive frames from a 10 FPS video feed, no pedestrian within 50 m shall be missed in more than 20% of the frames.**
-- **SYS-PER-REQ5: For pedestrians within 50 m, the pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
+- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01% within 80 m.** 
+- **SYS-PER-REQ4: In any sequence of 5 consecutive frames from a 10 FPS video feed, no pedestrian within 80 m shall be missed in more than 20% of the frames.**
+- **SYS-PER-REQ5: For pedestrians within 80 m, the pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS in the ESI Pro-SiVIC simulation.**
 
 Rationale: SMIRK adapts the performance requirements specified by Gauerhof *et al.* (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the threshold from Example 7 in AMLAS, but clarifies that we consider accuracy as the true positive rate. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson *et al.* (2019). SYS-PER-REQ6 means that any further improvements to reaction time have a negligible impact on the total brake distance. 
@@ -267,9 +267,9 @@ Rationale: SMIRK adapts the performance requirements specified by Gauerhof *et a
 ## 3.3.2 Robustness Requirements
 This section specifies robustness requirements corresponding to the ML safety requirements.
 
-**For pedestrians present within 50 m of Ego, captured in the field of view of the camera:**
+**For pedestrians present within 80 m of ego car, captured in the field of view of the camera:**
 
-- **SYS-ROB-REQ1: The pedestrian recognition component shall perform as required in all situations Ego may encounter within the defined ODD.**
+- **SYS-ROB-REQ1: The pedestrian recognition component shall perform as required in all situations ego car may encounter within the defined ODD.**
 - **SYS-ROB-REQ2: The pedestrian recognition component shall identify pedestrians irrespective of their upright pose with respect to the camera.**
 - **SYS-ROB-REQ3: The pedestrian recognition component shall identify pedestrians irrespective of their size with respect to the camera.**
 - **SYS-ROB-REQ4: The pedestrian recognition component shall identify pedestrians irrespective of their appearance with respect to the camera.**
