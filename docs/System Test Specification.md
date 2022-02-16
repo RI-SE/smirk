@@ -155,9 +155,20 @@ For each operational scenario, two test parameters represent ranges of values, i
 The complete set of operational scenarios, realized as 32 executable test scenarios in ESI Pro-SiVIC, are available in TODO: upload the test scripts.
 
 ## 4.2 System Test Cases ##
-The system test cases are split into three categories. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the straightly reproducible Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analogous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that introducing random jitter to the test input does not lead to the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not (TC-RAND-[1-18]). Furthermore, for the test cases related to false positives, we know that emergency braking shall not commence. Consequently, the entries in the "Then" column are straightforward.
+The system test cases are split into three categories specified using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the straightly reproducible Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analogous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that introducing random jitter to the test input does not lead to the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not (TC-RAND-[1-18]). Furthermore, for the test cases related to false positives, we know that emergency braking shall not commence. Consequently, the entries in the "Then" column are straightforward. 
 
-The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The table below lists all system test cases, of all three categories, using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements.
+The third category is requirements-based testing. Requirements-based testing is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements. The test strategy relies on calculating a set of metrics during execution of TC-OS-[1-32] and TC-RAND-[1-32] and comparing the results to the individual requirements. The table below lists all system test cases of all three categories. For the test cases TC-REQ-[1-12], the "Given" condition is that all metrics have been collected during execution of TC-OS-[1-32] and TC-RAND-[1-32]. 
+
+The set of metrics includes:
+- Minimum distance between ego car and the pedestrian during a scenario.
+- Time when the radar tracking component first returned TTC < 4 for an object.
+- Distance between ego car and the object when the radar component first returned TTC < 4 for an object.
+- Time when emergency braking was commenced.
+- Distance between ego car and the object when emergency braking commenced.
+- Whether a scenario involved a collision between ego car and an pedestrian.
+- Speed of ego car at the time of collision.
+
+*Table 1: System test cases. VMC means valid metrics collected.*
 
 | Test Case ID   | Type                 | Given               | When       | Then         |
 |----------------|----------------------|---------------------|------------|--------------|
@@ -168,12 +179,18 @@ The third category is requirements-based testing. Requirements-based testing is 
 
 | Test Case ID | Requirement | Given    | When       | Then         |
 |--------------|-------------|----------|------------|--------------|
-| TC-REQ1-A    | SYS-ML-REQ1 | Scenario | Pedestrian | No collision |
-| TC-REQ1-B    | SYS-ML-REQ1 | Scenario | Pedestrian | No collision |
-| TC-REQ2-A    | SYS-ML-REQ2 | Scenario | Pedestrian | No collision |
-| TC-REQ2-B    | SYS-ML-REQ2 | Scenario | Pedestrian | No collision |
-| TC-REQ2-C    | SYS-ML-REQ2 | Scenario | Pedestrian | No collision |
+| TC-REQ-1    | SYS-ML-REQ1 | VMC | The radar tracking component returns a pedestrian with TTC < 4s | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-2    | SYS-ML-REQ1 | VMC | The radar tracking component returns a basic shape with TTC < 4s | The pedestrian recognition component does not identify a pedestrian |
+| TC-REQ-3    | SYS-PER-REQ1 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-4    | SYS-PER-REQ2 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 50 m | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-5    | SYS-ML-REQ2 | VMC | Pedestrian | No collision |
 |              |             |          |            |              |
+
+Comments regarding individual test cases:
+- TC-REQ-1-A: For all collected frames with a detected pedestrian with TTC < 4s, calculate how many pedestrians are not identified. A passing test case means none were missed.
+- TC-REQ-2-A: For all collected frames with a basic shape with TTC < 4s, calculate how many pedestrians are identified. A passing test case means no pedestrian were found.
+- TC-REQ-3-A: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, calculate the true positive rate. At least 93% is required for a passing test case.
+- TC-REQ-4-A: For all collected frames with a detected pedestrian with TTC < 4s within 50 m, calculate the false negative rate. No more than 7% is required for a passing test case.
 
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
