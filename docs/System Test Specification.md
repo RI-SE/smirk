@@ -168,7 +168,7 @@ The set of metrics includes:
 - Whether a scenario involved a collision between ego car and an pedestrian.
 - Speed of ego car at the time of collision.
 
-*Table 1: System test cases. VMC means valid metrics collected.*
+*Table 1: System test cases. VMC means valid metrics collected during execution of TC-OS-[1-32] and TC-RAND-[1-32].*
 
 | Test Case ID   | Type                 | Given               | When       | Then         |
 |----------------|----------------------|---------------------|------------|--------------|
@@ -188,7 +188,6 @@ The set of metrics includes:
 | TC-REQ-10    | SYS-ROB-REQ2 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
 | TC-REQ-11    | SYS-ROB-REQ3 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
 | TC-REQ-12    | SYS-ROB-REQ4 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
-
 
 Comments regarding individual test cases:
 - TC-REQ-1: For all collected frames with a detected pedestrian with TTC < 4s, calculate how many pedestrians are not identified. A passing test case means none were missed.
