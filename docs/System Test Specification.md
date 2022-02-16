@@ -166,7 +166,7 @@ The set of metrics includes:
 - Distance between ego car and the object when the radar component first returned TTC < 4s for an object.
 - Time when emergency braking was commenced.
 - Distance between ego car and the object when emergency braking commenced.
-- Whether a scenario involved a collision between ego car and an pedestrian.
+- Whether a scenario involved a collision between ego car and a pedestrian.
 - Speed of ego car at the time of collision.
 
 *Table 1: System test cases. VMC means valid metrics collected during execution of TC-OS-[1-32] and TC-RAND-[1-32].*
