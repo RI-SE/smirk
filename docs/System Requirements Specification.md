@@ -49,7 +49,7 @@ Revision History
 <tr>
 <td>Markus Borg</td>
 <td>2022-02-16</td>
-<td>Updated according to <a href="https://github.com/RI-SE/smirk/issues/8">Issue #8</a>.
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/8">#8</a> and <a href="https://github.com/RI-SE/smirk/issues/9">#9</a>.
 </td>
 <td>0.92</td>
 </tr>
@@ -258,7 +258,7 @@ This section specifies performance requirements corresponding to the ML safety r
 - **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with a true positive rate of 93% when they are within 50 m.**
 - **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 m.**
 - **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01% within 50 m.** 
-- **SYS-PER-REQ4: In a sequence of consecutive images from a 10 FPS video feed, any pedestrian within 50 m shall not be missed in more than 20% of the frames.**
+- **SYS-PER-REQ4: In any sequence of 5 consecutive frames from a 10 FPS video feed, no pedestrian within 50 m shall be missed in more than 20% of the frames.**
 - **SYS-PER-REQ5: For pedestrians within 50 m, the pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS in the ESI Pro-SiVIC simulation.**
 
