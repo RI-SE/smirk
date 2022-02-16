@@ -179,21 +179,30 @@ The set of metrics includes:
 | TC-REQ-1    | SYS-ML-REQ1 | VMC | The radar tracking component returns a pedestrian with TTC < 4s | The pedestrian recognition component identifies the pedestrian |
 | TC-REQ-2    | SYS-ML-REQ2 | VMC | The radar tracking component returns a basic shape with TTC < 4s | The pedestrian recognition component does not identify a pedestrian |
 | TC-REQ-3    | SYS-PER-REQ1 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-4    | SYS-PER-REQ2 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 50 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-5    | SYS-PER-REQ3 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 50 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-6    | SYS-PER-REQ5 | VMC | The camera returns consecutive frames at 10 FPS showing a pedestrian with TTC < 4s within 50 m | The pedestrian recognition component consistently identifies the pedestrian in consecutive frames |
-| TC-REQ-7    | SYS-PER-REQ6 | VMC | The pedestrian recognition component returns a pedestrian within 50 m | The position of the bounding box matches the ground truth position in ESI Pro-SiVIC |
-| TC-REQ-8    | SYS-PER-REQ7 | VMC | The camera returns consecutive frames at 10 FPS showing an object with TTC < 4s within 50 m | The ML model performs inference on each individual frame |
+| TC-REQ-4    | SYS-PER-REQ2 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-5    | SYS-PER-REQ3 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-6    | SYS-PER-REQ5 | VMC | The camera returns consecutive frames at 10 FPS showing a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component consistently identifies the pedestrian in consecutive frames |
+| TC-REQ-7    | SYS-PER-REQ6 | VMC | The pedestrian recognition component returns a pedestrian within 75 m | The position of the bounding box matches the ground truth position in ESI Pro-SiVIC |
+| TC-REQ-8    | SYS-PER-REQ7 | VMC | The camera returns consecutive frames at 10 FPS showing an object with TTC < 4s within 75 m | The ML model performs inference on each individual frame |
+| TC-REQ-9    | SYS-ROB-REQ1 | VMC | The radar tracking component returns an object with TTC < 4s within 75 m | The pedestrian recognition component correctly identifies the object as a pedestrian or not |
+| TC-REQ-10    | SYS-ROB-REQ2 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-11    | SYS-ROB-REQ3 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-12    | SYS-ROB-REQ4 | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 75 m | The pedestrian recognition component identifies the pedestrian |
+
 
 Comments regarding individual test cases:
 - TC-REQ-1: For all collected frames with a detected pedestrian with TTC < 4s, calculate how many pedestrians are not identified. A passing test case means none were missed.
 - TC-REQ-2: For all collected frames with a basic shape with TTC < 4s, calculate how many pedestrians are identified. A passing test case means no pedestrian were found.
 - TC-REQ-3: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, calculate the true positive rate. At least 93% is required for a passing test case.
-- TC-REQ-4: For all collected frames with a detected pedestrian with TTC < 4s within 50 m, calculate the false negative rate. No more than 7% is allowed for a passing test case.
-- TC-REQ-5: For all collected frames with a detected pedestrian with TTC < 4s within 50 m, calculate the false positive rate. No more than 0.01% is allowed for a passing test case.
-- TC-REQ-6: For all collected sequences of five consequtive frames with a detected pedestrian with TTC < 4s within 50 m, count the number of pedestrian recognitions. No more than one missed frame is allowed for a passing test case.
-- TC-REQ-7: For all collected frames with a detected pedestrian with TTC < 4s within 50 m, compare the position of the bounding box and the ESI Pro-SiVIC ground truth. A passing test case means that no differences where larger than 50 cm.
-- TC-REQ-8: For all collected frames with a detected object with TTC < 4s within 50 m, measure that the model successfully performed inference before the next frame is collected. A passing test case means that no frames are missed.
+- TC-REQ-4: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, calculate the false negative rate. No more than 7% is allowed for a passing test case.
+- TC-REQ-5: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, calculate the false positive rate. No more than 0.01% is allowed for a passing test case.
+- TC-REQ-6: For all collected sequences of five consequtive frames with a detected pedestrian with TTC < 4s within 75 m, count the number of pedestrian recognitions. No more than one missed frame is allowed for a passing test case.
+- TC-REQ-7: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, compare the position of the bounding box and the ESI Pro-SiVIC ground truth. A passing test case means that no differences where larger than 50 cm.
+- TC-REQ-8: For all collected frames with a detected object with TTC < 4s within 75 m, measure that the model successfully performed inference before the next frame is collected. A passing test case means that no frames are missed.
+- TC-REQ-9: For all collected frames with an object with TTC < 4s within 75 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for any variations within the ODD.
+- TC-REQ-10: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for different pedestrian speeds (resulting in different poses in ESI Pro-SiVIC).
+- TC-REQ-11: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for any of the pedestrian types  in ESI Pro-SiVIC (males, females, and children).
+- TC-REQ-11: For all collected frames with a detected pedestrian with TTC < 4s within 75 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for any of the pedestrian types  in ESI Pro-SiVIC (representing casual wear, business wear, and construction work wear).
 
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
