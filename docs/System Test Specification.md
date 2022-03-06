@@ -109,7 +109,7 @@ The ML model test cases provide results for both 1) the entire verification data
 Consequently, we measure the performance for the following sets of data. Identifiers in parentheses show direct connections to requirements.
 1. The entire verification dataset
 1. Pedestrians close to the ego car (longitudinal distance <50 m) (SYS-PER-REQ1, SYS-PER-REQ2)
-1. Pedestrians far from the ego car (longitudinal distance >= 50m)
+1. Pedestrians far from the ego car (50 m <= longitudinal distance <= 80 m)
 1. Running pedestrians (speed >= 3 m/s) (SYS-ROB-REQ2)
 1. Walking pedestrians (speed > 0 m/s but < 3 m/s) (SYS-ROB-REQ2)
 1. Pedestrians standing still (speed = 0 m/s) (SYS-ROB-REQ2)
