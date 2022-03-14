@@ -107,7 +107,7 @@ SMIRK consists of the following constituents.
 	- G) **Uncertainty Manager** (main part of the safety cage, implementing logic to avoid false positives)
 	- H) **Brake Manager** (calculating and sending brake signals to the ego car)
 - Trained Machine Learning models:
-	- I) **Pedestrian Detector** (a YOLO model trained using PyTorch)
+	- I) **Pedestrian Detector** (a YOLOv5 model trained using PyTorch)
 	- J) **Anomaly Detector** (a third party component from [Seldon](https://github.com/SeldonIO/alibi-detect))
 
 We refer to E), F), G), I), and J) as the **Pedestrian Recognition Component**, i.e., the ML-based component for which we present a safety case.
