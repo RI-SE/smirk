@@ -13,6 +13,7 @@ from smirk.pedestrian_detector.pedestrian_detector import (
 from smirk.pedestrian_detector.yolo_detector import YoloDetector
 from smirk.safety_cage.noop_cage import NoopCage
 from smirk.safety_cage.safety_cage import SafetyCage
+from smirk.safety_cage.vae_cage import VaeCage
 
 
 class Smirk:
@@ -25,7 +26,13 @@ class Smirk:
         pedestrian_detector: PedestrianDetector = None,
         safety_cage: SafetyCage = None,
     ):
-        self.safety_cage = safety_cage or NoopCage()
+        # TODO: Improve config of this. Probably make it non-optional.
+        if safety_cage:
+            self.safety_cage = safety_cage
+        elif config.paths.vae_model.exists():
+            self.safety_cage = VaeCage()
+        else:
+            self.safety_cage = NoopCage()
 
         # TODO: Improve config of this. Probably make it non-optional.
         if pedestrian_detector:
@@ -50,6 +57,9 @@ class Smirk:
         )
 
         if not pedestrian_detections:
+            return False
+
+        if not self.safety_cage.is_accepted(camera_frame):
             return False
 
         radar_angles_distance_adjucted = [
