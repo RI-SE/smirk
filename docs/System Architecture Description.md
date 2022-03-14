@@ -161,4 +161,4 @@ Scenario 6 - Pedestrian crossing the road from the right with the angle θ.
 ![Scenario6](/docs/figures/scenario6.png) <a name="scenario6"></a>
 
 # 4 Architecture Decisions and Rationale
-TBD: Elaborate on the particularly important architectural design decisions.
+Tradeoffs between quality requirements motivate architectural design decisions. We elaborate on quality prioritization in the [SRS](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#15-product-scope).
