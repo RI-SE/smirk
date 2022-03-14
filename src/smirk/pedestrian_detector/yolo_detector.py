@@ -8,26 +8,62 @@ from smirk.pedestrian_detector.pedestrian_detector import (
     BoundingBox,
     PedestrianDetector,
 )
+from yolov5.models.common import DetectMultiBackend
+from yolov5.utils.augmentations import letterbox
+from yolov5.utils.general import check_img_size, non_max_suppression, scale_coords
+from yolov5.utils.torch_utils import select_device
 
 
 class YoloDetector(PedestrianDetector):
-    DETECTION_THRESHOLD = 0.5
+    # TODO: Store model parameters somewhere else
+    NMS_IOU_THRESHOLD = 0.6
+    DETECTION_THRESHOLD = 0.451
+
+    IMG_SIZE = [640, 640]
 
     def __init__(self):
-        # TODO: use local yolov5 project
-        self.model = torch.hub.load(
-            "ultralytics/yolov5", "custom", path=config.paths.yolo_model.absolute()
+        self.conf = self.DETECTION_THRESHOLD
+        self.device = select_device()
+        self.model = DetectMultiBackend(config.paths.yolo_model, device=self.device)
+        self.imgsz = check_img_size(self.IMG_SIZE, s=self.model.stride)
+        self.half = self.device.type != "cpu"
+
+        if self.half:
+            self.model.model.half()
+        else:
+            self.model.model.float()
+
+        self.model.warmup(imgsz=(1, 3, *self.imgsz), half=self.half)
+
+    @torch.no_grad()
+    def detect_pedestrians(self, camera_frame: np.ndarray) -> List[BoundingBox]:
+        # Pre-process
+        im = letterbox(camera_frame, self.imgsz, stride=self.model.stride)[0]
+        im = np.ascontiguousarray(im.transpose(2, 0, 1))
+
+        im = torch.from_numpy(np.expand_dims(im, 0)).to(self.device)
+        im = im.half() if self.half else im.float()
+        im /= 255
+
+        # Inference
+        pred = self.model(im)
+
+        # NMS
+        pred = non_max_suppression(
+            pred, conf_thres=self.conf, iou_thres=self.NMS_IOU_THRESHOLD
+        )[0]
+
+        # Scale predictions to original image coordinates
+        pred_boxes = (
+            scale_coords(im.shape[:2], pred[:, :4], camera_frame.shape)
+            .round()
+            .cpu()
+            .numpy()
         )
 
-        self.model.conf = self.DETECTION_THRESHOLD
+        return [self.detection_to_bounding_box(det) for det in pred_boxes]
 
-    def detect_pedestrians(self, camera_frame: np.ndarray) -> List[BoundingBox]:
-        detections = self.model(camera_frame).xyxyn[0].cpu().numpy()
-
-        return [self.detection_to_bounding_box(detection) for detection in detections]
-
-    def detection_to_bounding_box(self, detection: List[float]) -> BoundingBox:
-        # Detection: [x_min, y_min, x_max, y_max, conf, cls]
-        x_min, y_min, x_max, y_max, *_ = detection
+    def detection_to_bounding_box(self, detection: np.ndarray) -> BoundingBox:
+        x_min, y_min, x_max, y_max = detection
 
         return BoundingBox(x_min=x_min, y_min=y_min, x_max=x_max, y_max=y_max)
