@@ -1,4 +1,4 @@
-# System Test Specification v0.9
+# System Test Specification v0.91
 
 Revision History
 <table>
@@ -24,13 +24,19 @@ Revision History
 <td>Markus Borg</th>
 <td>2022-02-01</th>
 <td>Toward a complete draft.</th>
-<td>0.9</th>
+<td>0.3</th>
 </tr>
 <tr>
 <td>Markus Borg</th>
 <td>2022-03-06</th>
 <td>Complete draft.</th>
 <td>0.9</th>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</th>
+<td>2022-03-14</th>
+<td>Remove slice for standing pedestrian. Not part of model testing.</th>
+<td>0.91</th>
 </tr>
 </table>
 
@@ -104,7 +110,7 @@ This section corresponds to the **Verification Log [AA]** in AMLAS Step 5, i.e.,
 
 The testing of the SMIRK ML model is based on assessing the object detection accuracy for the sequestered verification dataset. A fundamental aspect of the verification argument is that this dataset was never used in any way during the development of the ML model. To further ensure the independence of the ML verification, engineers from [Infotiv](https://www.infotiv.se/), part of the SMILE3 research consortium, led the verification activities. Infotiv led the corresponding V\&V work package and were not in any way involved in the development of the ML model. As described in the [Machine Learning Component Specification](</docs/ML Component Specification.md>), the ML development was led by [Semcon](https://semcon.com/) with support from [RISE Research Institutes of Sweden](https://www.ri.se/en).
 
-The ML model test cases provide results for both 1) the entire verification dataset and 2) nine slices of the dataset that are deemed particularly important. The selection of slices was motivated by either an analysis of the available technology or ethical considerations, especially from the perspective of AI fairness (Borg et al., 2021).
+The ML model test cases provide results for both 1) the entire verification dataset and 2) eight slices of the dataset that are deemed particularly important. The selection of slices was motivated by either an analysis of the available technology or ethical considerations, especially from the perspective of AI fairness (Borg et al., 2021).
 
 Consequently, we measure the performance for the following sets of data. Identifiers in parentheses show direct connections to requirements.
 1. The entire verification dataset
@@ -112,7 +118,6 @@ Consequently, we measure the performance for the following sets of data. Identif
 1. Pedestrians far from the ego car (50 m <= longitudinal distance <= 80 m)
 1. Running pedestrians (speed >= 3 m/s) (SYS-ROB-REQ2)
 1. Walking pedestrians (speed > 0 m/s but < 3 m/s) (SYS-ROB-REQ2)
-1. Pedestrians standing still (speed = 0 m/s) (SYS-ROB-REQ2)
 1. Occluded pedestrians (entering or leaving the field of view) (DAT-COM-REQ4)
 1. Male pedestrians (DAT-COM-REQ2)
 1. Female pedestrians (DAT-COM-REQ2)
