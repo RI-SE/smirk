@@ -1,4 +1,4 @@
-# System Architecture Description v0.3
+# System Architecture Description v0.9
 
 Revision History
 <table>
@@ -22,15 +22,15 @@ Revision History
 </tr>
 <tr>
 <td>Markus Borg, Kasper Socha</th>
-<td>WIP</th>
+<td>2022-02-01</th>
 <td>Toward a complete draft.</th>
 <td>0.3</th>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Markus Borg</th>
+<td>2022-03-14</th>
+<td>Complete draft.</th>
+<td>0.9</th>
 </tr>
 </table>
 
