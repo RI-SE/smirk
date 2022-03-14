@@ -44,8 +44,14 @@ class SimpleObject:
             package_data=self.description.package_data_name,
         )
 
+        self.rcs_name = f"{self.package_name}_RCS"
+        self.simulation.create_object("sivicRCS", self.rcs_name)
+        self.simulation.cmd(f"{self.rcs_name}.SetParent {self.name}")
+        self.simulation.cmd(f"{self.rcs_name}.SetLocalPosition 0 0 0")
+
     def set_position(self, x: float, y: float, z: float = 0) -> None:
         self.simulation.cmd(f"{self.package_name}.SetLocalPosition {x} {y} {z}")
 
     def delete(self) -> None:
+        self.simulation.delete_object(self.rcs_name)
         self.simulation.delete_object(self.package_name)
