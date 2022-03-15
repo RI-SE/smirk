@@ -63,7 +63,7 @@ Revision History
 <tr>
 <td>Markus Borg</td>
 <td>2022-03-15</td>
-<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/13">#11</a> and <a href="https://github.com/RI-SE/smirk/issues/14">#12</a>.
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/13">#13</a> and <a href="https://github.com/RI-SE/smirk/issues/14">#14</a>.
 </td>
 <td>0.94</td>
 </tr>
