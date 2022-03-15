@@ -61,7 +61,7 @@ Revision History
 <td>0.93</td>
 </tr>
 <tr>
-<td>Markus Borg</td>
+<td>Markus Borg, Kasper Socha</td>
 <td>2022-03-15</td>
 <td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/13">#13</a> and <a href="https://github.com/RI-SE/smirk/issues/14">#14</a>.
 </td>
