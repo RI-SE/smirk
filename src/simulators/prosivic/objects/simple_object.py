@@ -55,3 +55,6 @@ class SimpleObject:
     def delete(self) -> None:
         self.simulation.delete_object(self.rcs_name)
         self.simulation.delete_object(self.package_name)
+
+    def get_mesh_names(self):
+        return [self.name]

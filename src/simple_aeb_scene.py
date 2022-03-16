@@ -311,6 +311,9 @@ class SimpleAebScene:
 
         self.collision_observer.set_object2(self.crossing_object.name)
 
+        for mesh in self.crossing_object.get_mesh_names():
+            self.camera.add_mesh_to_labeling(mesh)
+
         self.position_interpolator = PositionInterpolator(self.simulation)
         self.position_interpolator.set_controlled_object(self.crossing_object.name)
         self.position_interpolator.add_key_frame(x=start_x, y=start_y, rotation_z=angle)
