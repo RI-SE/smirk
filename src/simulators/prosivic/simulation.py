@@ -1,3 +1,6 @@
+import ProSivicDDS as psvdds
+
+import config.paths
 from simulators.prosivic.prosivic_tcp import ProsivicTCP
 
 
@@ -7,6 +10,8 @@ class Simulation:
         self.tcp.connect()
         self.tcp.load(script_filename)
         self.tcp.synchro()
+
+        psvdds.initcomms(str(config.paths.prosivic_dds_config_path.resolve()))
 
     def play(self) -> None:
         self.tcp.play()
