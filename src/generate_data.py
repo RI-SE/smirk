@@ -1,13 +1,37 @@
 import argparse
 import itertools
+import subprocess
 import sys
+from dataclasses import dataclass
 from pathlib import Path
-from typing import cast
+from typing import List, Optional, Tuple, Union, cast
 
 from omegaconf import DictConfig, ListConfig, OmegaConf
+from typing_extensions import Literal
 
 import config.paths
 from simple_aeb_scene import SimpleAebScene
+
+MAX_RETRIES = 10
+
+
+@dataclass
+class PedestrianScenario:
+    object = "pedestrian"
+    type: Literal["left", "right", "towards", "away"]
+    args: Tuple
+    max_travel_distance: Optional[float] = None
+
+
+@dataclass
+class ObjectScenario:
+    object = "object"
+    type: Literal["left", "right"]
+    args: Tuple
+    max_travel_distance: Optional[float] = None
+
+
+Scenario = Union[PedestrianScenario, ObjectScenario]
 
 
 def load_config(config_path: Path) -> DictConfig:
@@ -66,10 +90,8 @@ def get_object_left_right_args(scenario_config):
     )
 
 
-def step_until_end_condition(
-    scenario_config: DictConfig, scene: SimpleAebScene
-) -> None:
-    max_travel_distance = scenario_config.get("max_travel_distance", float("inf"))
+def step_until_end_condition(scenario: Scenario, scene: SimpleAebScene) -> None:
+    max_travel_distance = scenario.max_travel_distance or float("inf")
 
     while True:
         scene.simulation.step(20)
@@ -81,50 +103,83 @@ def step_until_end_condition(
             return
 
 
-def handle_pedestrian_scenario(scenario_config: DictConfig, scene: SimpleAebScene):
-    if scenario_config.type == "left":
-        for scenario_args in get_pedestrian_left_right_args(scenario_config):
-            scene.setup_scenario_pedestrian_from_left(*scenario_args)
-            step_until_end_condition(scenario_config, scene)
-    elif scenario_config.type == "right":
-        for scenario_args in get_pedestrian_left_right_args(scenario_config):
-            scene.setup_scenario_pedestrian_from_right(*scenario_args)
-            step_until_end_condition(scenario_config, scene)
-    elif scenario_config.type == "towards":
-        for scenario_args in get_pedestrian_towards_away_args(scenario_config):
-            scene.setup_scenario_pedestrian_towards(*scenario_args)
-            step_until_end_condition(scenario_config, scene)
-    elif scenario_config.type == "away":
-        for scenario_args in get_pedestrian_towards_away_args(scenario_config):
-            scene.setup_scenario_pedestrian_away(*scenario_args)
-            step_until_end_condition(scenario_config, scene)
-    else:
-        raise ValueError(f"Unknown pedestrian scenario type: {scenario_config.type}")
+def build_scenario_list(datagen_config: DictConfig):
+    scenarios: List[Scenario] = []
 
-
-def handle_object_scenario(scenario_config: DictConfig, scene: SimpleAebScene):
-    for scenario_args in get_object_left_right_args(scenario_config):
-        if scenario_config.type == "left":
-            scene.setup_scenario_object_from_left(*scenario_args)
-        elif scenario_config.type == "right":
-            scene.setup_scenario_object_from_left(*scenario_args)
+    for scenario_config in datagen_config.scenarios:
+        if scenario_config.get("pedestrian"):
+            if scenario_config.type in ["left", "right"]:
+                for scenario_args in get_pedestrian_left_right_args(scenario_config):
+                    scenarios.append(
+                        PedestrianScenario(
+                            type=scenario_config.type,
+                            args=scenario_args,
+                            max_travel_distance=scenario_config.get(
+                                "max_travel_distance"
+                            ),
+                        )
+                    )
+            elif scenario_config.type in ["towards", "away"]:
+                for scenario_args in get_pedestrian_towards_away_args(scenario_config):
+                    scenarios.append(
+                        PedestrianScenario(
+                            type=scenario_config.type,
+                            args=scenario_args,
+                            max_travel_distance=scenario_config.get(
+                                "max_travel_distance"
+                            ),
+                        )
+                    )
+            else:
+                raise ValueError(
+                    f"Unknown pedestrian scenario type: {scenario_config.type}"
+                )
+        elif scenario_config.get("object"):
+            for scenario_args in get_object_left_right_args(scenario_config):
+                scenarios.append(
+                    ObjectScenario(
+                        type=scenario_config.type,
+                        args=scenario_args,
+                        max_travel_distance=scenario_config.get("max_travel_distance"),
+                    )
+                )
         else:
-            raise ValueError(f"Unknown object scenario type: {scenario_config.type}")
+            raise ValueError(
+                "Invalid scenario, expected object or pedestrian configuration."
+            )
 
-        step_until_end_condition(scenario_config, scene)
+    return scenarios
 
 
 def generate_data(config_path: Path) -> None:
-    config = load_config(config_path)
+    datagen_config = load_config(config_path)
+    scenarios = build_scenario_list(datagen_config)
     scene = SimpleAebScene()
 
-    for i, scenario_config in enumerate(config.scenarios):
-        print(f"\nRunning configuration {i} type={scenario_config.type}")
+    for scenario in scenarios:
+        for _ in range(MAX_RETRIES):
+            try:
+                if scenario.object == "pedestrian":
+                    if scenario.type == "left":
+                        scene.setup_scenario_pedestrian_from_left(*scenario.args)
+                    elif scenario.type == "right":
+                        scene.setup_scenario_pedestrian_from_right(*scenario.args)
+                    elif scenario.type == "towards":
+                        scene.setup_scenario_pedestrian_towards(*scenario.args)
+                    elif scenario.type == "away":
+                        scene.setup_scenario_pedestrian_away(*scenario.args)
+                else:
+                    if scenario.type == "left":
+                        scene.setup_scenario_object_from_left(*scenario.args)
+                    elif scenario.type == "right":
+                        scene.setup_scenario_object_from_right(*scenario.args)
 
-        if scenario_config.get("pedestrian"):
-            handle_pedestrian_scenario(scenario_config, scene)
-        elif scenario_config.get("object"):
-            handle_object_scenario(scenario_config, scene)
+                step_until_end_condition(scenario, scene)
+                break
+            except ConnectionError:
+                print("Prosivic crashed, restarting and retrying scenario.")
+                subprocess.Popen([str(config.paths.prosivic_exe_path)])
+                scene.reload()
 
 
 if __name__ == "__main__":

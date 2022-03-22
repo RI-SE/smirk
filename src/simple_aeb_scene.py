@@ -66,6 +66,9 @@ class SimpleAebScene:
         self.position_interpolator: Optional[PositionInterpolator] = None
         self.current_setup: Optional[ScenarioSetup] = None
 
+    def reload(self):
+        self.simulation = Simulation(self.SCRIPT_NAME)
+
     def get_collision_data(self) -> CollisionData:
         distance_data = self.collision_observer.get_data()
         car_collision_position = distance_data.position_object1
