@@ -219,7 +219,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--noisy",
-        help="Randomly add jitter in the range from -10% to +10% to all numerical values.",
+        help="Randomly add jitter in the range from -10%% to +10%% to all numerical values.",
         action="store_true",
     )
     args = parser.parse_args()
