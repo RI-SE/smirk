@@ -6,12 +6,7 @@ from typing_extensions import Literal
 
 from simulators.prosivic.simulation import Simulation
 
-SimpleObjectType = Literal[
-    "box",
-    "cone",
-    "pyramid",
-    "sphere",
-]
+SimpleObjectType = Literal["box", "cone", "pyramid", "sphere", "cylinder"]
 
 
 @dataclass
@@ -29,6 +24,9 @@ class SimpleObject:
         ),
         "sphere": SimpleObjectDescription(
             "Basic_shapes_Sphere", "Basic_shapes_Sphere.zip"
+        ),
+        "cylinder": SimpleObjectDescription(
+            "Basic_shapes_Cylinder", "Basic_shapes_Cylinder.zip"
         ),
     }
 
