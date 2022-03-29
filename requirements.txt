@@ -288,6 +288,9 @@ matplotlib==3.5.1; python_version >= "3.7" and python_full_version == "3.7.9" \
     --hash=sha256:6803299cbf4665eca14428d9e886de62e24f4223ac31ab9c5d6d5339a39782c7 \
     --hash=sha256:14334b9902ec776461c4b8c6516e26b450f7ebe0b3ef8703bf5cdfbbaecf774a \
     --hash=sha256:b2e9810e09c3a47b73ce9cab5a72243a1258f61e7900969097a817232246ce1c
+nanoid==2.0.0 \
+    --hash=sha256:90aefa650e328cffb0893bbd4c236cfd44c48bc1f2d0b525ecc53c3187b653bb \
+    --hash=sha256:5a80cad5e9c6e9ae3a41fa2fb34ae189f7cb420b2a5d8f82bd9d23466e4efa68
 networkx==2.6.3; python_version >= "3.7" \
     --hash=sha256:80b6b89c77d1dfb64a4c7854981b60aeea6360ac02c6d4e4913319e0a313abef \
     --hash=sha256:c0946ed31d71f1b732b5aaa6da5a0388a345019af232ce2f49c766e2d6795c51
