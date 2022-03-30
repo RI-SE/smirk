@@ -66,6 +66,10 @@ class SimpleAebScene:
         self.position_interpolator: Optional[PositionInterpolator] = None
         self.current_setup: Optional[ScenarioSetup] = None
 
+        # HACK: Workaround to allow setting first simulation name (prosivic bug?).
+        #       Probably since inital folder is created at DDS synchonization.
+        self.simulation.stop()
+
     def get_collision_data(self) -> CollisionData:
         distance_data = self.collision_observer.get_data()
         car_collision_position = distance_data.position_object1
@@ -177,8 +181,10 @@ class SimpleAebScene:
         pedestrian_angle: float,
         pedestrian_speed: float,
         car_speed: float,
+        scenario_id: str,
     ) -> None:
         self.reset_scene()
+        self.simulation.set_simulation_name(scenario_id)
 
         self.current_setup = ScenarioSetup(
             pedestrian_appearance,
@@ -218,6 +224,7 @@ class SimpleAebScene:
         pedestrian_walking_angle: float,
         pedestrian_walking_speed: float,
         car_speed: float,
+        scenario_id: str,
     ) -> None:
         transformed_angle = -pedestrian_walking_angle
 
@@ -228,6 +235,7 @@ class SimpleAebScene:
             pedestrian_angle=transformed_angle,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
 
     def setup_scenario_pedestrian_from_right(
@@ -238,6 +246,7 @@ class SimpleAebScene:
         pedestrian_walking_angle: float,
         pedestrian_walking_speed: float,
         car_speed: float,
+        scenario_id: str,
     ) -> None:
         self.setup_pedestrian_scenario(
             pedestrian_appearance=pedestrian_appearance,
@@ -246,6 +255,7 @@ class SimpleAebScene:
             pedestrian_angle=pedestrian_walking_angle,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
 
     def setup_scenario_pedestrian_away(
@@ -255,6 +265,7 @@ class SimpleAebScene:
         pedestrian_offset_from_road_center: float,
         pedestrian_walking_speed: float,
         car_speed: float,
+        scenario_id: str,
     ) -> None:
         self.setup_pedestrian_scenario(
             pedestrian_appearance=pedestrian_appearance,
@@ -263,6 +274,7 @@ class SimpleAebScene:
             pedestrian_angle=0,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
 
     def setup_scenario_pedestrian_towards(
@@ -272,6 +284,7 @@ class SimpleAebScene:
         pedestrian_offset_from_road_center: float,
         pedestrian_walking_speed: float,
         car_speed: float,
+        scenario_id: str,
     ) -> None:
         self.setup_pedestrian_scenario(
             pedestrian_appearance=pedestrian_appearance,
@@ -280,6 +293,7 @@ class SimpleAebScene:
             pedestrian_angle=180,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
 
     def setup_object_scenario(
@@ -292,8 +306,10 @@ class SimpleAebScene:
         angle: float,
         speed: float,
         car_speed: float,
+        scenario_id: str,
     ):
         self.reset_scene()
+        self.simulation.set_simulation_name(scenario_id)
 
         self.current_setup = ScenarioSetup(
             object_type,
@@ -336,6 +352,7 @@ class SimpleAebScene:
         distance_from_road: float,
         speed: float,
         car_speed: float,
+        scenario_id: str,
     ) -> None:
         self.setup_object_scenario(
             object_type=object_type,
@@ -346,6 +363,7 @@ class SimpleAebScene:
             angle=-90,
             speed=speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
 
     def setup_scenario_object_from_right(
@@ -355,6 +373,7 @@ class SimpleAebScene:
         distance_from_road: float,
         speed: float,
         car_speed: float,
+        scenario_id: str,
     ) -> None:
         self.setup_object_scenario(
             object_type=object_type,
@@ -365,4 +384,5 @@ class SimpleAebScene:
             angle=90,
             speed=speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )

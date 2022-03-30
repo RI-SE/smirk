@@ -41,3 +41,6 @@ class Simulation:
 
     def delete_object(self, object_name: str) -> None:
         self.cmd(f"delete {object_name}")
+
+    def set_simulation_name(self, name: str) -> None:
+        self.cmd(f"setsimulationname {name}")
