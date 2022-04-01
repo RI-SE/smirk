@@ -10,6 +10,8 @@ prosivic_projects_folder = Path(r"C:\Users\eitn35\Pro-SiVIC\My project")
 prosivic_sensor_folder = prosivic_projects_folder / "sensors"
 prosivic_distance_out_filename = "collision_observer.csv"
 
+temp_dir_path = project_root_path / "temp"
+
 example_dir_path = project_root_path / "examples"
 example_data_generation_config = example_dir_path / "data-generation-config.yaml"
 

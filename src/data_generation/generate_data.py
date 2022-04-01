@@ -1,7 +1,8 @@
 import argparse
+import pickle
 from pathlib import Path
 from time import sleep, time
-from typing import List, Optional
+from typing import List, Optional, cast
 
 import pandas as pd
 from PIL import Image
@@ -103,15 +104,33 @@ def read_scenario_data_from_disk(scenario_id: str, result_dir: Path, img_ext="pn
     return ScenarioResults(camera_frames, distance_data)
 
 
-def create_result_dir(name: str) -> Path:
+def create_result_dir(name: str, resume: bool) -> Path:
     result_dir = paths.prosivic_sensor_folder / name
 
-    if result_dir.exists():
+    if not resume and result_dir.exists():
         result_dir = result_dir.with_name(f"{result_dir.name}_{int(time())}")
 
-    result_dir.mkdir()
+    result_dir.mkdir(exist_ok=resume)
 
     return result_dir
+
+
+def get_pickle_path_from_config(config_path: Path) -> Path:
+    return paths.temp_dir_path / f"{config_path.stem}-scenarios.pickle"
+
+
+def read_scenarios_pickle(config_path: Path):
+    with get_pickle_path_from_config(config_path).open("rb") as f:
+        return cast(List[Scenario], pickle.load(f))
+
+
+def write_scenario_pickle(config_path: Path, scenarios: List[Scenario]):
+    with get_pickle_path_from_config(config_path).open("wb") as f:
+        pickle.dump(scenarios, f)
+
+
+def is_scenario_generated(scenario_id: str, result_dir: Path):
+    return (result_dir / scenario_id).exists()
 
 
 def setup_scenario_in_scene(scenario: Scenario, scene: SimpleAebScene):
@@ -132,20 +151,26 @@ def setup_scenario_in_scene(scenario: Scenario, scene: SimpleAebScene):
         raise ValueError(f"Unexpected scenario type {scenario}")
 
 
-def generate_data(config_path: Path) -> None:
+def generate_data(config_path: Path, resume: bool) -> None:
     scene = SimpleAebScene()
-    scenarios = data_generation.parser.parse_scenario_config(config_path)
+
+    if resume:
+        scenarios = read_scenarios_pickle(config_path)
+    else:
+        scenarios = data_generation.parser.parse_scenario_config(config_path)
+        write_scenario_pickle(config_path, scenarios)
 
     result_rows = []
-    result_dir = create_result_dir(config_path.stem)
+    result_dir = create_result_dir(config_path.stem, resume)
 
     for scenario in scenarios:
-        setup_scenario_in_scene(scenario, scene)
-        step_until_end_condition(scenario, scene)
+        if not is_scenario_generated(scenario.id, result_dir):
+            setup_scenario_in_scene(scenario, scene)
+            step_until_end_condition(scenario, scene)
 
-        # Make sure prosivic disk lock is released
-        scene.simulation.stop()
-        sleep(0.1)
+            # Make sure prosivic disk lock is released
+            scene.simulation.stop()
+            sleep(0.1)
 
         scenario.results = read_scenario_data_from_disk(scenario.id, result_dir)
         result_rows.extend(scenario.to_label_rows())
@@ -168,10 +193,19 @@ if __name__ == "__main__":
         required=True,
         help="path to config file",
     )
+    parser.add_argument(
+        "-r", "--resume", action="store_true", help="resume previous run"
+    )
 
     args = parser.parse_args()
+
     config_paths = [Path(path) for path in args.config]
     assert_all_paths_exist(config_paths)
 
+    if args.resume:
+        assert_all_paths_exist(
+            [get_pickle_path_from_config(path) for path in config_paths]
+        )
+
     for path in config_paths:
-        generate_data(path)
+        generate_data(path, args.resume)
