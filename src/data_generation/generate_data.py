@@ -1,5 +1,6 @@
 import argparse
 import pickle
+import shutil
 from pathlib import Path
 from time import sleep, time
 from typing import List, Optional, cast
@@ -21,6 +22,19 @@ from data_generation.scenario import (
     ScenarioResults,
 )
 from simple_aeb_scene import SimpleAebScene
+from simulators.prosivic.supervisor import Supervisor
+
+MAX_SCENARIO_RETRIES = 10
+MIN_EXPECTED_FRAMES = 10
+LABELS_FILENAME = "labels.csv"
+
+
+class DirCountException(Exception):
+    pass
+
+
+class NotEnoughFramesException(Exception):
+    pass
 
 
 def step_until_end_condition(scenario: Scenario, scene: SimpleAebScene) -> None:
@@ -34,10 +48,6 @@ def step_until_end_condition(scenario: Scenario, scene: SimpleAebScene) -> None:
             or scene.get_object_distance_traveled() >= max_travel_distance
         ):
             return
-
-
-class DirCountException(Exception):
-    pass
 
 
 def find_scenario_dir(id: str) -> Optional[Path]:
@@ -70,6 +80,7 @@ def read_scenario_data_from_disk(scenario_id: str, result_dir: Path, img_ext="pn
                 out_dir.rename(new_path)
                 break
             except Exception as e:
+                sleep(0.1)
                 if attempt == 2:
                     raise e
 
@@ -102,6 +113,13 @@ def read_scenario_data_from_disk(scenario_id: str, result_dir: Path, img_ext="pn
     )
 
     return ScenarioResults(camera_frames, distance_data)
+
+
+def delete_scenario_dir(scenario_id: str):
+    scenario_dir = find_scenario_dir(scenario_id)
+
+    if scenario_dir:
+        shutil.rmtree(scenario_dir)
 
 
 def create_result_dir(name: str, resume: bool) -> Path:
@@ -152,6 +170,7 @@ def setup_scenario_in_scene(scenario: Scenario, scene: SimpleAebScene):
 
 
 def generate_data(config_path: Path, resume: bool) -> None:
+    prosivic_supervisor = Supervisor(paths.prosivic_exe_path)
     scene = SimpleAebScene()
 
     if resume:
@@ -164,18 +183,34 @@ def generate_data(config_path: Path, resume: bool) -> None:
     result_dir = create_result_dir(config_path.stem, resume)
 
     for scenario in scenarios:
-        if not is_scenario_generated(scenario.id, result_dir):
-            setup_scenario_in_scene(scenario, scene)
-            step_until_end_condition(scenario, scene)
+        for _ in range(MAX_SCENARIO_RETRIES):
+            try:
+                if not is_scenario_generated(scenario.id, result_dir):
+                    setup_scenario_in_scene(scenario, scene)
+                    step_until_end_condition(scenario, scene)
 
-            # Make sure prosivic disk lock is released
-            scene.simulation.stop()
-            sleep(0.1)
+                    # Make sure prosivic disk lock is released
+                    scene.simulation.stop()
 
-        scenario.results = read_scenario_data_from_disk(scenario.id, result_dir)
-        result_rows.extend(scenario.to_label_rows())
+                scenario.results = read_scenario_data_from_disk(scenario.id, result_dir)
 
-    pd.DataFrame(result_rows).to_csv(result_dir / "labels.csv", index=False)
+                # TODO: Better way to check if scenario is not complete?
+                #       Seems to have at most 1-2 frames when this happens.
+                if len(scenario.results.camera_frames) < MIN_EXPECTED_FRAMES:
+                    raise NotEnoughFramesException("Too few frames...")
+
+                result_rows.extend(scenario.to_label_rows())
+
+                break
+            except Exception as e:  # Try to catch (almost) everything prosivic throws our way...
+                print(e)
+                print(f"Retrying scenario {scenario}")
+
+                prosivic_supervisor.restart()
+                scene.reload()
+                delete_scenario_dir(scenario.id)
+
+    pd.DataFrame(result_rows).to_csv(result_dir / LABELS_FILENAME, index=False)
 
 
 def assert_all_paths_exist(paths: List[Path]):

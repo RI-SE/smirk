@@ -54,21 +54,25 @@ class SimpleAebScene:
     ROAD_RIGHT_Y = -2.8
 
     def __init__(self) -> None:
-        self.simulation = Simulation(self.SCRIPT_NAME)
+        self.simulation = Simulation()
+        self.simulation.load_scene(self.SCRIPT_NAME)
+
         self.car = Car(self.simulation, self.EGO_CAR_NAME)
         self.camera = Camera(self.simulation, self.CAMERA_NAME)
         self.radar = Radar(self.RADAR_NAME, self.CAR_WIDTH / 2)
         self.collision_observer = DistanceObserver(
             self.simulation, self.DISTANCE_OBSERVER_NAME
         )
+
         self.object_observer: Optional[Union[PedestrianObserver, ObjectObserver]] = None
         self.crossing_object: Optional[Union[Pedestrian, SimpleObject]] = None
         self.position_interpolator: Optional[PositionInterpolator] = None
         self.current_setup: Optional[ScenarioSetup] = None
 
-        # HACK: Workaround to allow setting first simulation name (prosivic bug?).
-        #       Probably since inital folder is created at DDS synchonization.
+    def reload(self):
+        self.simulation = Simulation()
         self.simulation.stop()
+        self.simulation.load_scene(self.SCRIPT_NAME)
 
     def get_collision_data(self) -> CollisionData:
         distance_data = self.collision_observer.get_data()
@@ -144,14 +148,20 @@ class SimpleAebScene:
         )
 
     def _step_until_dds_init(self) -> None:
-        """Step simulation until all DDS data samples are available."""
+        """
+        Step simulation until all DDS data samples are available.
+
+        TODO: Is there a better way?
+              Ideally we probably want to check everything that communicates over DDS.
+              Looks like stale values can cause trouble after prosivic crash.
+        """
         # Radar has lowest sample rate.
         prev_timestamp = self.radar.get_detections().timestamp
         while True:
-            self.simulation.step(1)
+            self.simulation.step(5)
             current_timestamp = self.radar.get_detections().timestamp
 
-            if not prev_timestamp == current_timestamp:
+            if prev_timestamp != current_timestamp:
                 return
 
             prev_timestamp = current_timestamp

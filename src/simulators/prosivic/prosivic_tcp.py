@@ -4,7 +4,13 @@ import time
 from typing import Optional
 
 
+class ProsivicConnectionException(Exception):
+    pass
+
+
 class ProsivicTCP:
+    MAX_CONNECTION_ATTEMTPS = 15
+
     def __init__(self, ip: str = "127.0.0.1", port: int = 4444) -> None:
         self._ip = ip
         self._port = port
@@ -13,14 +19,20 @@ class ProsivicTCP:
 
     def connect(self) -> None:
         self.log.info("[ProSiVIC_TCP]: Trying to connect to TCP host .. ")
-        try:
-            self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self._socket.connect((self._ip, self._port))
-        except Exception:
-            self._socket = None
-            time.sleep(1)
-        if self._socket is None:
-            self.connect()
+
+        for _ in range(self.MAX_CONNECTION_ATTEMTPS):
+            try:
+                self._socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self._socket.connect((self._ip, self._port))
+                break
+            except Exception as e:
+                self.log.error(e)
+                self._socket = None
+                time.sleep(1)
+        else:
+            raise ProsivicConnectionException("Failed to connect to prosivic.")
+
+        self._socket.close()
 
     def step(self, steps: int = 1) -> None:
         self._send_cmd(f"COMD pass {steps}")

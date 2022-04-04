@@ -5,11 +5,9 @@ from simulators.prosivic.prosivic_tcp import ProsivicTCP
 
 
 class Simulation:
-    def __init__(self, script_filename: str) -> None:
+    def __init__(self) -> None:
         self.tcp = ProsivicTCP()
         self.tcp.connect()
-        self.tcp.load(script_filename)
-        self.tcp.synchro()
 
         psvdds.initcomms(str(config.paths.prosivic_dds_config_path.resolve()))
 
@@ -44,3 +42,12 @@ class Simulation:
 
     def set_simulation_name(self, name: str) -> None:
         self.cmd(f"setsimulationname {name}")
+
+    def load_scene(self, script_filename: str):
+        self.clear()
+        self.tcp.load(script_filename)
+
+    def clear(self):
+        self.stop()
+        self.cmd("clear")
+        self.cmd("cleanup")
