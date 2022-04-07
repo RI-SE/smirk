@@ -155,16 +155,21 @@ class SimpleAebScene:
               Ideally we probably want to check everything that communicates over DDS.
               Looks like stale values can cause trouble after prosivic crash.
         """
-        # Radar has lowest sample rate.
-        prev_timestamp = self.radar.get_detections().timestamp
+        radar_init_timestamp = self.radar.get_detections().timestamp
+        camera_init_timestamp = self.camera.get_frame().timestamp
+        distance_init_timestamp = self.collision_observer.get_data().timestamp
+
         while True:
             self.simulation.step(5)
-            current_timestamp = self.radar.get_detections().timestamp
 
-            if prev_timestamp != current_timestamp:
+            radar_ready = radar_init_timestamp != self.radar.get_detections().timestamp
+            camera_ready = camera_init_timestamp != self.camera.get_frame().timestamp
+            distance_ready = (
+                distance_init_timestamp != self.collision_observer.get_data().timestamp
+            )
+
+            if radar_ready and camera_ready and distance_ready:
                 return
-
-            prev_timestamp = current_timestamp
 
     def reset_scene(self):
         if self.current_setup:
