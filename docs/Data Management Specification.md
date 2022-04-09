@@ -206,7 +206,7 @@ In total, we generate data representing 8 x 616 = 4,928 execution scenarios with
 
 The figure below shows the visual appearance of all assets used from the ESI Pro-SiVIC object catalog. 
 
-![GSN-ML_Data_Argument_Pattern](/docs/figures/gsn-ml_data_argument_pattern.png) <a name="gsn-ml_data_argument"></a>
+![object_catalog](/docs/figures/object_catalog.png) <a name="object_catalog"></a>
 
 *Figure 1: Visual appearance of pedestrians (P1–P8) and basic shapes (N1–N5).*
 
