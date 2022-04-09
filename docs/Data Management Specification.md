@@ -48,7 +48,7 @@ Revision History
 <td>0.91</td>
 </tr>
 <tr>
-<td>Markus Borg</td>
+<td>Markus Borg, Kasper Socha</td>
 <td>2022-04-09</td>
 <td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/15">#15</a> and <a href="https://github.com/RI-SE/smirk/issues/16">#16</a>.
 </td>
@@ -200,9 +200,15 @@ This section describes how the data used for the fine-tuning of the ML model in 
 ## 4.1 Data Collection
 The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and fully reproducible. The following two lists present the scripts used to play scenarios and capture the corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes examples that represent OOD shapes [NX], i.e., objects that shall not initiate PAEB in case of an imminent collision. These images, referred to as OOD examples, shall either not be recognized as a pedestrian or be rejected by the SMIRK safety cage. 
 
-For each listed item, there is a link to a YAML configuration file that is used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
+For each listed item, there is a YAML configuration file used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
 
 In total, we generate data representing 8 x 616 = 4,928 execution scenarios with positive examples and 5 x 40 = 200 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 185 GB of image data, annotations, and meta-data (including bounding boxes).
+
+The figure below shows the visual appearance of all assets used from the ESI Pro-SiVIC object catalog. 
+
+![GSN-ML_Data_Argument_Pattern](/docs/figures/gsn-ml_data_argument_pattern.png) <a name="gsn-ml_data_argument"></a>
+
+*Figure 1: Visual appearance of pedestrians (P1–P8) and basic shapes (N1–N5).*
 
 ### 4.1.1 Positive examples:
 We generate positive examples from humans with eight visual appearances available in the ESI Pro-SiVIC object catalog.
@@ -271,7 +277,7 @@ The figure below shows the ML data argument pattern using GSN. The pattern follo
 
 ![GSN-ML_Data_Argument_Pattern](/docs/figures/gsn-ml_data_argument_pattern.png) <a name="gsn-ml_data_argument"></a>
 
-*Figure 1: ML data argument pattern.*
+*Figure 2: ML data argument pattern.*
 
 The top claim is that the data used during the development and verification of the ML model is sufficient (G3.1). This claim is made for all three data sets: development data [N], internal test data [O], and verification data [P]. The argumentation strategy (S2.1) involves how the sufficiency of these data sets is demonstrated given the Data Requirements [L]. The strategy is supported by arguing over subclaims demonstrating sufficiency of the Data Requirements (G3.2) and that the Data Requirements are satisfied (G3.3). Claim G3.2 is supported by evidence in the form of a data requirements justification report [M]. As stated in AMLAS, "It is not possible to claim that the data alone can guarantee that the ML safety requirements will be satisfied, however the data used must be sufficient to enable the model that is developed to do so."
 
