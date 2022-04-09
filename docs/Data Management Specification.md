@@ -1,4 +1,4 @@
-# Data Management Specification v0.91
+# Data Management Specification v0.92
 
 Revision History
 <table>
@@ -48,10 +48,11 @@ Revision History
 <td>0.91</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Markus Borg</td>
+<td>2022-04-09</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/15">#15</a> and <a href="https://github.com/RI-SE/smirk/issues/16">#16</a>.
+</td>
+<td>0.92</td>
 </tr>
 </table>
 
@@ -201,19 +202,21 @@ The SMIRK data collection campaign focuses on generation of annotated data in ES
 
 For each listed item, there is a link to a YAML configuration file that is used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
 
-In total, we generate data representing 6 x 616 = 3,696 execution scenarios with positive examples and 4 x 40 = 160 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 120 GB of image data, annotations, and meta-data (including bounding boxes).
+In total, we generate data representing 8 x 616 = 4,928 execution scenarios with positive examples and 5 x 40 = 200 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 185 GB of image data, annotations, and meta-data (including bounding boxes).
 
 ### 4.1.1 Positive examples:
-We generate positive examples from humans with six visual appearances available in the ESI Pro-SiVIC object catalog.
+We generate positive examples from humans with eight visual appearances available in the ESI Pro-SiVIC object catalog.
 
-- [P1] Casual female pedestrian [TBD: female_casual.yaml]
-- [P2] Casual male pedestrian [TBD: male_casual.yaml]
-- [P3] Business female pedestrian [TBD: female_business.yaml]
-- [P4] Business male pedestrian [TBD: male_business.yaml]
-- [P5] Child [TBD: child.yaml]
-- [P6] Male construction worker [TBD: male_construction.yaml]
+- [P1] Casual female pedestrian
+- [P2] Casual male pedestrian
+- [P3] Business casual female pedestrian
+- [P4] Business casual male pedestrian
+- [P5] Business female pedestrian
+- [P6] Business male pedestrian
+- [P7] Child
+- [P8] Male construction worker
 
-Each configuration file for positive examples specify the execution of 616 scenarios in ESI Pro-SiVIC. The configurations are organized into four groups (A-D). The pedestrians always follow rectilinear motion (a straight line) at a constant speed during scenario execution. Groups A and B describe pedestrians crossing the road, either from the left (Group A) or from the right (Group B). There are three variation points, i.e., 1) the speed of the pedestrian, 2) the angle at which the pedestrian crosses the road (see [SRS Sec 2.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#21-product-perspective)), and 3) the longitudinal distance between ego car and the pedestrian's starting point. In all scenarios, the distance between the starting point of the pedestrian and the edge of the road is 5 m. 
+For each positive example, we specify the execution of 616 scenarios in ESI Pro-SiVIC. The configurations are organized into four groups (A-D). The pedestrians always follow rectilinear motion (a straight line) at a constant speed during scenario execution. Groups A and B describe pedestrians crossing the road, either from the left (Group A) or from the right (Group B). There are three variation points, i.e., 1) the speed of the pedestrian, 2) the angle at which the pedestrian crosses the road (see [SRS Sec 2.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#21-product-perspective)), and 3) the longitudinal distance between ego car and the pedestrian's starting point. In all scenarios, the distance between the starting point of the pedestrian and the edge of the road is 5 m. 
 
 - A. Crossing the road from left to right (280 scenario configurations)
 	- 1. Speed (m/s): [1, 2, 3, 4]
@@ -236,15 +239,16 @@ Groups C and D describe pedestrians moving parallel to the road, either toward e
 	- 2. Lateral offset (m): [-3, -2, -1, 0, 1, 2, 3]
 
 ### 4.1.2 Out-of-Distribution examples:
-We generate OOD examples using four basic shapes available in the ESI Pro-SiVIC object catalog.
+We generate OOD examples using five basic shapes available in the ESI Pro-SiVIC object catalog.
 
 OOD examples:
-- [N1] Sphere [TBD: sphere.yaml]
-- [N2] Cube [TBD: cube.yaml]
-- [N3] Cone [TBD: cone.yaml]
-- [N4] Pyramid [TBD: pyramid.yaml]
+- [N1] Sphere
+- [N2] Cube
+- [N3] Cone
+- [N4] Pyramid
+- [N5] Cylinder
 
-All four configuration files for OOD examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
+For each OOD example, we specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
 
 - Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
@@ -256,9 +260,9 @@ SMIRK includes a script to generate bounding boxes for training the object detec
 ## 4.3 Data Splitting
 The generated SMIRK data will be used in sequestered data sets as follows:
 
-- Development data: [P2] and [P3]
-- Internal test data: [P1], [P4], [N1], and [N2] 
-- Verification data: [P5], [P6], [N3], and [N4]
+- Development data: [P2], [P3], [P6], and [N5]
+- Internal test data: [P1], [P4], [N1], and [N3] 
+- Verification data: [P5], [P6], [N2], and [N4]
 
 Note that we deliberately avoid mixing pedestrian models from the ESI Pro-SiVIC object catalog in the data sets due to the limited diversity in the images within the ODD for the SMIRK MVP.
 
