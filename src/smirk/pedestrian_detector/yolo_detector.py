@@ -55,7 +55,7 @@ class YoloDetector(PedestrianDetector):
 
         # Scale predictions to original image coordinates
         pred_boxes = (
-            scale_coords(im.shape[:2], pred[:, :4], camera_frame.shape)
+            scale_coords(im.shape[2:], pred[:, :4], camera_frame.shape)
             .round()
             .cpu()
             .numpy()
