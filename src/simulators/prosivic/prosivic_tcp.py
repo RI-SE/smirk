@@ -81,6 +81,5 @@ class ProsivicTCP:
             " ".join(["SETP", psv_object_name, object_property_name, property_value])
         )
 
-    # Get value of any proSiVIC object property (example _get("time","SimuTime")  )
-    def get(self, psv_object_name: str, object_property_name: str) -> None:
-        self._send_cmd("GETP " + psv_object_name + " " + object_property_name)
+    def get(self, psv_object_name: str, object_property_name: str) -> str:
+        return self._send_cmd("GETP " + psv_object_name + " " + object_property_name)

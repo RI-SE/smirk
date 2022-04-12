@@ -51,3 +51,6 @@ class Simulation:
         self.stop()
         self.cmd("clear")
         self.cmd("cleanup")
+
+    def get(self, psv_object_name: str, object_property_name: str) -> str:
+        return self.tcp.get(psv_object_name, object_property_name)
