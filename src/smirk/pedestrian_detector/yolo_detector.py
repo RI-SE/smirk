@@ -10,7 +10,7 @@ from smirk.pedestrian_detector.pedestrian_detector import (
 )
 from yolov5.models.common import DetectMultiBackend
 from yolov5.utils.augmentations import letterbox
-from yolov5.utils.general import check_img_size, non_max_suppression, scale_coords
+from yolov5.utils.general import non_max_suppression, scale_coords
 from yolov5.utils.torch_utils import select_device
 
 
@@ -25,24 +25,18 @@ class YoloDetector(PedestrianDetector):
         self.conf = self.DETECTION_THRESHOLD
         self.device = select_device()
         self.model = DetectMultiBackend(config.paths.yolo_model, device=self.device)
-        self.imgsz = check_img_size(self.IMG_SIZE, s=self.model.stride)
-        self.half = self.device.type != "cpu"
+        self.model.model.half()
 
-        if self.half:
-            self.model.model.half()
-        else:
-            self.model.model.float()
-
-        self.model.warmup(imgsz=(1, 3, *self.imgsz), half=self.half)
+        self.model.warmup(imgsz=(1, 3, *self.IMG_SIZE), half=True)
 
     @torch.no_grad()
     def detect_pedestrians(self, camera_frame: np.ndarray) -> List[BoundingBox]:
         # Pre-process
-        im = letterbox(camera_frame, self.imgsz, stride=self.model.stride)[0]
+        im = letterbox(camera_frame, self.IMG_SIZE, stride=self.model.stride)[0]
         im = np.ascontiguousarray(im.transpose(2, 0, 1))
 
         im = torch.from_numpy(np.expand_dims(im, 0)).to(self.device)
-        im = im.half() if self.half else im.float()
+        im = im.half()
         im /= 255
 
         # Inference
