@@ -7,9 +7,11 @@ from simulators.prosivic.simulation import Simulation
 
 PedestrianAppearance = Literal[
     "male_business",
+    "male_business_casual",
     "male_casual",
     "male_construction",
     "female_business",
+    "female_business_casual",
     "female_casual",
     "child",
 ]
@@ -19,9 +21,11 @@ class Pedestrian:
     PROSIVIC_OBJECT_NAME = "pedestrian"
     APPEARANCE_TO_PACKAGE_DATA_MAP: Dict[PedestrianAppearance, str] = {
         "male_business": "male_smart.zip",
-        "male_casual": "male_casual.zip",
+        "male_business_casual": "male_casual.zip",
+        "male_casual": "NCAP_Adult_PT.zip",
         "male_construction": "male_worker.zip",
         "female_business": "female_smart.zip",
+        "female_business_casual": "Pedestrian.zip",
         "female_casual": "female_casual.zip",
         "child": "NCAP_Child_PT.zip",
     }
