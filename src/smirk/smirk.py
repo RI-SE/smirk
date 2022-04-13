@@ -1,19 +1,13 @@
 import itertools
-from typing import List
+from dataclasses import dataclass
+from typing import List, Optional
 
 import numpy as np
 
-import config.paths
 from shared.radar_detection import RadarDetection
-from smirk.pedestrian_detector.noop_detector import NoopDetector
-from smirk.pedestrian_detector.pedestrian_detector import (
-    BoundingBox,
-    PedestrianDetector,
-)
+from smirk.pedestrian_detector.pedestrian_detector import BoundingBox
 from smirk.pedestrian_detector.yolo_detector import YoloDetector
-from smirk.safety_cage.noop_cage import NoopCage
-from smirk.safety_cage.safety_cage import SafetyCage
-from smirk.safety_cage.vae_cage import VaeCage
+from smirk.safety_cage.ae_box_cage import AeBoxCage
 
 
 class Smirk:
@@ -21,26 +15,10 @@ class Smirk:
     HORIZONTAL_AOV = 45.5
     CAMERA_RADAR_DISTANCE = 1.8
 
-    def __init__(
-        self,
-        pedestrian_detector: PedestrianDetector = None,
-        safety_cage: SafetyCage = None,
-    ):
-        # TODO: Improve config of this. Probably make it non-optional.
-        if safety_cage:
-            self.safety_cage = safety_cage
-        elif config.paths.vae_model.exists():
-            self.safety_cage = VaeCage()
-        else:
-            self.safety_cage = NoopCage()
+    def __init__(self):
+        self.safety_cage = AeBoxCage()
+        self.pedestrian_detector = YoloDetector()
 
-        # TODO: Improve config of this. Probably make it non-optional.
-        if pedestrian_detector:
-            self.pedestrian_detector = pedestrian_detector
-        elif config.paths.yolo_model.exists():
-            self.pedestrian_detector = YoloDetector()
-        else:
-            self.pedestrian_detector = NoopDetector()
 
     def is_aeb(self, radar_detections: List[RadarDetection], camera_frame: np.ndarray):
         radar_detections_below_threshold = [

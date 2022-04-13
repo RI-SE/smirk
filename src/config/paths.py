@@ -18,6 +18,7 @@ example_data_generation_config = example_dir_path / "data-generation-config.yaml
 model_dir_path = project_root_path / "models"
 yolo_model = model_dir_path / "yolo.pt"
 vae_model = model_dir_path / "vae"
+ae_box_model = model_dir_path / "ae_box"
 
 config_dir_path = project_root_path / "config"
 prosivic_dds_config_path = config_dir_path / "dds.json"
