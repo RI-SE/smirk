@@ -246,7 +246,7 @@ def generate_pedestrian_all_pairs():
                 "female_casual",
                 "male_business",
                 "male_casual",
-                "male_worker",
+                "male_construction",
             ],
         }
     )

@@ -175,7 +175,7 @@ pedestrian_all_pairs = [
         car_speed=19,
     ),
     PedestrianTestConfiguration(
-        pedestrian_appearance="male_worker",
+        pedestrian_appearance="male_construction",
         pedestrian_start_x=10,
         pedestrian_start_y=5,
         pedestrian_angle=-90,
@@ -183,7 +183,7 @@ pedestrian_all_pairs = [
         car_speed=6,
     ),
     PedestrianTestConfiguration(
-        pedestrian_appearance="male_worker",
+        pedestrian_appearance="male_construction",
         pedestrian_start_x=17.5,
         pedestrian_start_y=-5,
         pedestrian_angle=45,
@@ -191,7 +191,7 @@ pedestrian_all_pairs = [
         car_speed=3.46,
     ),
     PedestrianTestConfiguration(
-        pedestrian_appearance="male_worker",
+        pedestrian_appearance="male_construction",
         pedestrian_start_x=39,
         pedestrian_start_y=5,
         pedestrian_angle=-135,
@@ -199,7 +199,7 @@ pedestrian_all_pairs = [
         car_speed=4.81,
     ),
     PedestrianTestConfiguration(
-        pedestrian_appearance="male_worker",
+        pedestrian_appearance="male_construction",
         pedestrian_start_x=86.5,
         pedestrian_start_y=5,
         pedestrian_angle=-135,
