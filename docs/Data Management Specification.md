@@ -1,4 +1,4 @@
-# Data Management Specification v0.92
+# Data Management Specification v0.93
 
 Revision History
 <table>
@@ -54,12 +54,19 @@ Revision History
 </td>
 <td>0.92</td>
 </tr>
+<tr>
+<td>Markus Borg</td>
+<td>2022-04-14</td>
+<td>Updated according to Issue <a href="https://github.com/RI-SE/smirk/issues/18">#18</a>.
+</td>
+<td>0.93</td>
+</tr>
 </table>
 
 # 1 Introduction
 This data management specification (DMS) describes the overall approach to data management for SMIRK and the explicit data requirements. SMIRK is a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML), i.e., an advanced driver-assistance system (ADAS). The ADAS is intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
 
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK operational design domain (ODD) by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual or business casual clothes, young boys wearing jeans and a sweatshirt, and male road workers. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes from the object catalog to as examples of out-of-distribution (OOD) objects (that still can appear in the ODD) for SMIRK to handle in operation: boxes, cones, pyramids, and spheres.
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK operational design domain (ODD) by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual, business casual or business clothes, young boys wearing jeans and a sweatshirt, and male road workers. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes from the object catalog to as examples of out-of-distribution (OOD) objects (that still can appear in the ODD) for SMIRK to handle in operation: boxes, cones, pyramids, spheres, and cylinders.
 
 ## 1.1 Purpose ##
 This document describes the data management strategy for the pedestrian recognition component in SMIRK. The pedestrian recognition component detects pedestrians in input images from the camera when the radar sensor indicates the risk of an immediate collision with an external object. In the SMIRK minimum viable product (MVP), no other classes but pedestrians are considered by the ML-based pedestrian recognition component. The document encompasses the entire lifecycle, i.e., data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operation.
