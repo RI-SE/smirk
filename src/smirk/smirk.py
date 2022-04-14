@@ -70,7 +70,9 @@ class Smirk:
         self, bbox: BoundingBox, padding_fraction=0.1
     ):
         return (
-            (np.array([bbox.x_min, bbox.x_max]) - 0.5)
+            (
+                np.array([bbox.x_min, bbox.x_max]) / self.FRAME_WIDTH - 0.5
+            )  # Normalize & center
             * self.HORIZONTAL_AOV
             * (1 + padding_fraction)
         )

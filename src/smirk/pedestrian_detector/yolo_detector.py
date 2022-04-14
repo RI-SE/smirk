@@ -53,6 +53,7 @@ class YoloDetector(PedestrianDetector):
             .round()
             .cpu()
             .numpy()
+            .astype(int)
         )
 
         return [self.detection_to_bounding_box(det) for det in pred_boxes]
