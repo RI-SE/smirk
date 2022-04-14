@@ -1,4 +1,4 @@
-# System Requirements Specification v0.94
+# System Requirements Specification v0.95
 
 Revision History
 <table>
@@ -66,6 +66,13 @@ Revision History
 <td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/13">#13</a> and <a href="https://github.com/RI-SE/smirk/issues/14">#14</a>.
 </td>
 <td>0.94</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</td>
+<td>2022-04-14</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/16">#16</a> and <a href="https://github.com/RI-SE/smirk/issues/17">#17</a>.
+</td>
+<td>0.95</td>
 </tr>
 </table>
 
