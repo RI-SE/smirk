@@ -1,6 +1,7 @@
 import argparse
 import random
 
+import nanoid
 import numpy as np
 
 from simple_aeb_scene import SimpleAebScene
@@ -45,6 +46,8 @@ def get_single_random_configuration(
     pedestrian_walking_angle = np.random.uniform(*pedestrian_walking_angle_range)
     pedestrian_walking_speed = np.random.uniform(*pedestrian_walking_speed_range)
 
+    scenario_id = nanoid.generate()
+
     if scenario_type == "left":
         return PedestrianTestConfiguration(
             pedestrian_appearance=pedestrian_appearance,
@@ -54,6 +57,7 @@ def get_single_random_configuration(
             pedestrian_angle=-pedestrian_walking_angle,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
     elif scenario_type == "right":
         return PedestrianTestConfiguration(
@@ -64,6 +68,7 @@ def get_single_random_configuration(
             pedestrian_angle=pedestrian_walking_angle,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
     elif scenario_type == "towards":
         return PedestrianTestConfiguration(
@@ -73,6 +78,7 @@ def get_single_random_configuration(
             pedestrian_angle=180,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
     elif scenario_type == "away":
         return PedestrianTestConfiguration(
@@ -82,15 +88,15 @@ def get_single_random_configuration(
             pedestrian_angle=0,
             pedestrian_speed=pedestrian_walking_speed,
             car_speed=car_speed,
+            scenario_id=scenario_id,
         )
 
     raise Exception("Unknown scenario type")
 
 
-def test_random_configurations(count: int, result_path=None):
+def test_random_configurations(count: int):
     runner = SystemTestRunner()
     runner.run_all(get_single_random_configuration() for _ in range(count))
-    runner.results_to_csv(result_path)
 
 
 if __name__ == "__main__":
