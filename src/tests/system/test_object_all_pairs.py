@@ -152,7 +152,6 @@ object_all_pairs = [
 def test_object_all_pairs(add_noise: bool = False):
     runner = SystemTestRunner()
     runner.run_all(object_all_pairs, add_noise)
-    runner.results_to_csv()
 
 
 if __name__ == "__main__":
