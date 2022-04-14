@@ -13,6 +13,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-45,
         pedestrian_speed=1,
         car_speed=3.47,
+        scenario_id="TC-1",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="child",
@@ -21,6 +22,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-90,
         pedestrian_speed=1,
         car_speed=5.78,
+        scenario_id="TC-2",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="child",
@@ -29,6 +31,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=0,
         pedestrian_speed=0,
         car_speed=14,
+        scenario_id="TC-3",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="child",
@@ -37,6 +40,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=135,
         pedestrian_speed=3,
         car_speed=18.9,
+        scenario_id="TC-4",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
@@ -45,6 +49,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=180,
         pedestrian_speed=3,
         car_speed=16,
+        scenario_id="TC-5",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
@@ -53,6 +58,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-45,
         pedestrian_speed=1,
         car_speed=3.73,
+        scenario_id="TC-6",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
@@ -61,6 +67,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-135,
         pedestrian_speed=1,
         car_speed=5.8,
+        scenario_id="TC-7",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_business",
@@ -69,6 +76,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=90,
         pedestrian_speed=1,
         car_speed=10,
+        scenario_id="TC-8",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
@@ -77,6 +85,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=135,
         pedestrian_speed=0,
         car_speed=11,
+        scenario_id="TC-9",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
@@ -85,6 +94,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=135,
         pedestrian_speed=1,
         car_speed=3.14,
+        scenario_id="TC-10",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
@@ -93,6 +103,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-135,
         pedestrian_speed=1,
         car_speed=5.66,
+        scenario_id="TC-11",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
@@ -101,6 +112,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-90,
         pedestrian_speed=1,
         car_speed=10.22,
+        scenario_id="TC-12",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="female_casual",
@@ -109,6 +121,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-45,
         pedestrian_speed=3,
         car_speed=18.6,
+        scenario_id="TC-13",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
@@ -117,6 +130,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=45,
         pedestrian_speed=1,
         car_speed=3.68,
+        scenario_id="TC-14",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
@@ -125,6 +139,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-90,
         pedestrian_speed=3,
         car_speed=15,
+        scenario_id="TC-15",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
@@ -133,6 +148,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-135,
         pedestrian_speed=1,
         car_speed=3.46,
+        scenario_id="TC-16",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_business",
@@ -141,6 +157,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=0,
         pedestrian_speed=1,
         car_speed=9,
+        scenario_id="TC-17",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
@@ -149,6 +166,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=45,
         pedestrian_speed=1,
         car_speed=5.52,
+        scenario_id="TC-18",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
@@ -157,6 +175,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-135,
         pedestrian_speed=1,
         car_speed=4.71,
+        scenario_id="TC-19",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
@@ -165,6 +184,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-45,
         pedestrian_speed=1,
         car_speed=10.3,
+        scenario_id="TC-20",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_casual",
@@ -173,6 +193,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=90,
         pedestrian_speed=0,
         car_speed=19,
+        scenario_id="TC-21",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_construction",
@@ -181,6 +202,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-90,
         pedestrian_speed=3,
         car_speed=6,
+        scenario_id="TC-22",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_construction",
@@ -189,6 +211,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=45,
         pedestrian_speed=1,
         car_speed=3.46,
+        scenario_id="TC-23",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_construction",
@@ -197,6 +220,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-135,
         pedestrian_speed=1,
         car_speed=4.81,
+        scenario_id="TC-24",
     ),
     PedestrianTestConfiguration(
         pedestrian_appearance="male_construction",
@@ -205,6 +229,7 @@ pedestrian_all_pairs = [
         pedestrian_angle=-135,
         pedestrian_speed=1,
         car_speed=12.89,
+        scenario_id="TC-25",
     ),
 ]
 

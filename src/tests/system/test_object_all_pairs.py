@@ -12,6 +12,7 @@ object_all_pairs = [
         angle=-90,
         speed=1,
         car_speed=3.33,
+        scenario_id="TC-26",
     ),
     ObjectTestConfiguration(
         object_type="box",
@@ -22,6 +23,7 @@ object_all_pairs = [
         angle=-90,
         speed=3,
         car_speed=13.64,
+        scenario_id="TC-27",
     ),
     ObjectTestConfiguration(
         object_type="box",
@@ -32,6 +34,7 @@ object_all_pairs = [
         angle=90,
         speed=1,
         car_speed=9,
+        scenario_id="TC-28",
     ),
     ObjectTestConfiguration(
         object_type="cone",
@@ -42,6 +45,7 @@ object_all_pairs = [
         angle=-90,
         speed=1,
         car_speed=4,
+        scenario_id="TC-29",
     ),
     ObjectTestConfiguration(
         object_type="cone",
@@ -52,6 +56,7 @@ object_all_pairs = [
         angle=90,
         speed=3,
         car_speed=15,
+        scenario_id="TC-30",
     ),
     ObjectTestConfiguration(
         object_type="cone",
@@ -62,6 +67,7 @@ object_all_pairs = [
         angle=-90,
         speed=1,
         car_speed=5.27,
+        scenario_id="TC-31",
     ),
     ObjectTestConfiguration(
         object_type="cone",
@@ -72,6 +78,7 @@ object_all_pairs = [
         angle=-90,
         speed=1,
         car_speed=17.78,
+        scenario_id="TC-32",
     ),
     ObjectTestConfiguration(
         object_type="pyramid",
@@ -82,6 +89,7 @@ object_all_pairs = [
         angle=-90,
         speed=1,
         car_speed=3.33,
+        scenario_id="TC-33",
     ),
     ObjectTestConfiguration(
         object_type="pyramid",
@@ -92,6 +100,7 @@ object_all_pairs = [
         angle=-90,
         speed=3,
         car_speed=15,
+        scenario_id="TC-34",
     ),
     ObjectTestConfiguration(
         object_type="pyramid",
@@ -102,6 +111,7 @@ object_all_pairs = [
         angle=90,
         speed=1,
         car_speed=16.91,
+        scenario_id="TC-35",
     ),
     ObjectTestConfiguration(
         object_type="sphere",
@@ -112,6 +122,7 @@ object_all_pairs = [
         angle=90,
         speed=3,
         car_speed=6.67,
+        scenario_id="TC-36",
     ),
     ObjectTestConfiguration(
         object_type="sphere",
@@ -122,6 +133,7 @@ object_all_pairs = [
         angle=-90,
         speed=3,
         car_speed=17.4,
+        scenario_id="TC-37",
     ),
     ObjectTestConfiguration(
         object_type="sphere",
@@ -132,6 +144,7 @@ object_all_pairs = [
         angle=-90,
         speed=1,
         car_speed=14.4,
+        scenario_id="TC-38",
     ),
 ]
 

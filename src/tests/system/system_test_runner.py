@@ -21,6 +21,7 @@ class ObjectTestConfiguration:
     angle: float
     speed: float
     car_speed: float
+    scenario_id: str
 
 
 @dataclass
@@ -31,6 +32,7 @@ class PedestrianTestConfiguration:
     pedestrian_angle: float
     pedestrian_speed: float
     car_speed: float
+    scenario_id: str
 
 
 SystemTestConfiguration = Union[PedestrianTestConfiguration, ObjectTestConfiguration]
