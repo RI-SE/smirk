@@ -7,7 +7,7 @@ import numpy as np
 from shared.radar_detection import RadarDetection
 from smirk.pedestrian_detector.pedestrian_detector import BoundingBox
 from smirk.pedestrian_detector.yolo.yolo_detector import YoloDetector
-from smirk.safety_cage.ae_box_cage import AeBoxCage
+from smirk.safety_cage.ae_box.ae_box_cage import AeBoxCage
 
 
 @dataclass

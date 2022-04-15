@@ -1,4 +1,5 @@
 from typing import Any, Dict, cast
+
 import numpy as np
 import tensorflow as tf
 
@@ -16,8 +17,8 @@ class AeBoxCage(SafetyCage):
         for gpu in tf.config.experimental.list_physical_devices("GPU"):
             tf.config.experimental.set_memory_growth(gpu, True)
 
-        from alibi_detect.utils.saving import load_detector
         from alibi_detect.od.ae import OutlierAE
+        from alibi_detect.utils.saving import load_detector
 
         self.model = cast(OutlierAE, load_detector(config.paths.ae_box_model))
         self.model.threshold = self.THRESHOLD

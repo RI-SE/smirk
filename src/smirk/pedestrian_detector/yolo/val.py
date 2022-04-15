@@ -528,9 +528,11 @@ def results_by_slice(
     fn_dir = save_dir / "fns"
     fn_dir.mkdir(exist_ok=True)
     for i, row in enumerate(df_fn.itertuples()):
-        predictions_above_thresh = row.predictions[
-            row.predictions[:, -2] > conf_threshold
-        ]
+        predictions_above_thresh = (
+            row.predictions[row.predictions[:, -2] > conf_threshold]
+            if len(row.predictions)
+            else row.predictions
+        )
         img_with_boxes = draw_boxes(row.img_path, row.labels, predictions_above_thresh)
         file_name = f"{row.Index}-{i:06}.jpg"
         img_with_boxes.save(fn_dir / file_name)
