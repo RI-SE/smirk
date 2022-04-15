@@ -55,6 +55,7 @@ NON_PEDESTIAN_OBJECTS = {"box", "sphere", "pyramid", "cone", "cylinder"}
 def evaluate(
     data: str,
     weights: str,
+    conf_threshold: float = None,
     batch_size: int = 256,
     img_size: int = 640,
     iou_thres: float = 0.6,
@@ -171,7 +172,7 @@ def evaluate(
     augmented_res_df.reset_index(inplace=True, drop=True)
     augmented_res_df.to_pickle(save_dir / f"{Path(data).stem}-augmented-res.pkl")
 
-    results_by_slice(augmented_res_df, save_dir)
+    results_by_slice(augmented_res_df, save_dir, conf_threshold)
 
 
 def evaluate_single_img(
@@ -591,7 +592,8 @@ if __name__ == "__main__":
         default=str(config.paths.yolo_model),
         help="path to model weights",
     )
+    parser.add_argument("--conf", type=float, help="confidence threshold")
 
     args = parser.parse_args()
 
-    evaluate(args.data, args.weights)
+    evaluate(args.data, args.weights, args.conf)
