@@ -67,14 +67,14 @@ The section is organized into internal stakeholders, i.e., roles that are direct
 The entire document is relevant to the internal development organization. Specific stakeholders are recommended to pay particular attention as follows. 
 - Software developers: [Section 3 (Architecture Views)](#3-architecture-views)
 - ML developers: [Section 3 (Architecture Views)](#3-architecture-views)
-- Internal testers: [Section 3 (Architecture Views)](#3-architecture-views) and [Section 3 (System Requirements)](#3-system-requirements).
-- Independent testers: [Section 3.1 (Scenarios)](#31-scenarios).
+- Internal testers: [Section 3 (Architecture Views)](#3-architecture-views) and [Section 3.5 (Scenarios)](#35-scenarios).
+- Independent testers: [Section 3.5 (Scenarios)](#35-scenarios).
 
 **External stakeholders**
-- Safety assessors: [Section 3.1 (Scenarios)](#31-scenarios).
+- Safety assessors: [Section 3.5 (Scenarios)](#35-scenarios).
 - Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in [Section 3 (Architecture Views)](#3-architecture-views).
-- Standardization bodies and legislators: [Section 3.1 (Scenarios)](#31-scenarios).
-- Curious readers: [Section 3.1 (Scenarios)](#31-scenarios).
+- Standardization bodies and legislators: [Section 3.5 (Scenarios)](#35-scenarios).
+- Curious readers: [Section 3.5 (Scenarios)](#35-scenarios).
 
 ## 1.5 Product Scope ##
 SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK currently implements its own perception system based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide reliable input to SMIRK. This is not yet the case for the SMIRK MVP and this version of the SRS does not specify any requirements related to shared resources. The SMIRK scope is further explained through the context diagram in the [System Requirements Specification](</docs/System Requirements Specification.md>).
