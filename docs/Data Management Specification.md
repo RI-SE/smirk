@@ -1,4 +1,4 @@
-# Data Management Specification v0.94
+# Data Management Specification v0.99
 
 Revision History
 <table>
@@ -67,6 +67,12 @@ Revision History
 <td>Updated according to Issue <a href="https://github.com/RI-SE/smirk/issues/22">#22</a>.
 </td>
 <td>0.94</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha, Jens Henriksson</th>
+<td>2022-06-16</th>
+<td>Beta Release - Ready for peer-review</th>
+<td>0.99</th>
 </tr>
 </table>
 
@@ -316,7 +322,7 @@ Second, the SMILE3 project analyzed the characteristics of the data sets. The an
 
 The [data validation report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Data%20Validation%20Report%202022-06-16.pdf) is available.
 
-Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-)
+Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-).
 - Relevant: DAT-REL-REQ1 to DAT-REL-REQ7 are implicitly met by the data generation scripts. Everything present in the data set has been explicitly added by the SMIRK developers in the scripts. Only relevant data samples captured using a forward-facing camera in a valid sensor position have been added to the scripts. No outlier objects exist in the data sets.
 - Complete: DAT-COM-REQ is satisfied as the ODD is restricted to excellent driving conditions. The data set complies with DAT-COM-REQ2 since we explicitly cover six pedestrian types available in the ESI Pro-SiVIC object catalog. DAT-COM-REQ3 is satisfied through scripts that explicitly generate data that covers longitudinal distances between 10 meters and 100 meters. DAT-COM-REQ4 is met since the scripts ensure data collection from the point in time that pedestrians enter the camera's field of vision (a hand becomes available) until the pedestrian leaves (only a foot remains). DAT-COM-REQ5 is implicitly satisfied as the ideal camera in ESI Pro-SiVIC does not fail, i.e., there will be no dirt on the lens or cracks in the optics.
 - Balanced: DAT-BAL-REQ1 and DAT-BAL-REQ2 are validated automatically using Great Expectations. Note that we designed the SMIRK data generation process to result in a data set corresponding to deadly accidents in Sweden, but, motivated by AI fairness, we increased the fraction of female pedestrians to mitigate a potential gender bias.
