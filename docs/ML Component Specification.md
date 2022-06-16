@@ -122,7 +122,7 @@ First, we manually prepared two SMIRK datasets to match the input format of YOLO
 - Box coordinates are stored in normalized xywh format (from 0 - 1).
 - Class numbers are zero-indexed, i.e., they start from 0.
 
-Second, we trained the YOLOv5s model using the development data (as specified in dataset.yaml) from the pretrained weights in yolov5s.pt. The model was trained for 3 epochs with a batch-size of 16. The [Internal Test Results](https://github.com/RI-SE/smirk/blob/main/docs/protocols/ML%20Model%20Internal%20Test%20Report.md) [X] provides evidence that the ML model satisfies the requirements on the internal test data. 
+Second, we trained the YOLOv5s model using the development data (as specified in dataset.yaml) from the pretrained weights in yolov5s.pt. The model was trained for 3 epochs with a batch-size of 16. The [Internal Test Results [X]](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Internal%20Test%20Results%20[X]%202022-06-16.pdf) provides evidence that the ML model satisfies the requirements on the internal test data. 
 
 The final pedestrian detection model, i.e., the ML model [V], has a size of ~14 MB.
 
