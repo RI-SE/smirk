@@ -55,9 +55,13 @@ Names in bold font in the architecture views represent entities that can be foun
 - ADAS: Advanced Driver-Assistance Systems
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - ML: Machine Learning
+- MVP: Minimum Viable Product
 - ODD: Operational Design Domain
+- OOD: Out Of Distribution
 - PAEB: Pedestrian Automatic Emergency Braking
+- SAE: (Formerly) Society of Automotive Engineers. Now known as SAE International.
 - SOTIF: Safety of the Intended Functionality (ISO/PAS 21448)
+- SRS: System Requirements Specification
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
