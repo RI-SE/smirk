@@ -1,4 +1,4 @@
-# System Architecture Description v0.9
+# System Architecture Description v0.99
 
 Revision History
 <table>
@@ -32,35 +32,52 @@ Revision History
 <td>Complete draft.</th>
 <td>0.9</th>
 </tr>
+<tr>
+<td>Markus Borg, Kasper Socha, Jens Henriksson</th>
+<td>2022-06-16</th>
+<td>Beta Release - Ready for peer-review</th>
+<td>0.99</th>
+</tr>
 </table>
 
 # 1 Introduction <a name="introduction"></a>
-This document contains the architecture description for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an Advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic.
-
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. 
+This document contains the architecture description for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparency under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
 ## 1.1 Purpose ##
-SMIRK assists the driver on country roads by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2.
+The SMIRK *product goal* is to assist the driver on country roads in rural areas by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2. This document provides the foundation for the SMIRK minimum viable product (MVP), i.e., an implementation limited to a highly restricted operational design domain (ODD).
+
+The *project goal* of the SMIRK development endeavor, as part of the research project SMILE3, is twofold. First, the project team will benefit substantially from having a concrete example of ADAS development as a basis for discussion. We will all learn how challenging it is to perform safety case development for ML-based perception systems by practically doing it for the SMIRK MVP. Nothing can substitute the experience of a hands-on engineering effort. Second, SMIRK will be provided as a completely open research prototype that can be used as a case under study in future research studies. As we keep expanding the ODD beyond the MVP limitations, the SMIRK ADAS can be used to study various aspects of AI engineering. For our subsequent research projects, we expect to primarily study the efficiency and effectiveness of various solution proposals related to software testing, verification, and validation.
 
 ## 1.2 Document Conventions ##
 Names in bold font in the architecture views represent entities that can be found in the logical view.
 
 ## 1.3 Glossary
-- DDS: Data Distribution Service
-- FPS: Frames Per Second
+- ADAS: Advanced Driver-Assistance Systems
+- AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - ML: Machine Learning
 - ODD: Operational Design Domain
 - PAEB: Pedestrian Automatic Emergency Braking
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
-- Developers: the entire document is relevant.
-- Testers: TBD
-- Safety assessors: TBD
-- Other stakeholders: TBD
+The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
+
+**Internal stakeholders**
+
+The entire document is relevant to the internal development organization. Specific stakeholders are recommended to pay particular attention as follows. 
+- Software developers: [Section 3 (Architecture Views)](#3-architecture-views)
+- ML developers: [Section 3 (Architecture Views)](#3-architecture-views)
+- Internal testers: [Section 3 (Architecture Views)](#3-architecture-views) and [Section 3 (System Requirements)](#3-system-requirements).
+- Independent testers: [Section 3.1 (Scenarios)](#31-scenarios).
+
+**External stakeholders**
+- Safety assessors: [Section 3.1 (Scenarios)](#31-scenarios).
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in [Section 3 (Architecture Views)](#3-architecture-views).
+- Standardization bodies and legislators: [Section 3.1 (Scenarios)](#31-scenarios).
+- Curious readers: [Section 3.1 (Scenarios)](#31-scenarios).
 
 ## 1.5 Product Scope ##
-SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK implements its own perception based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide SMIRK with input. This is not yet the case. 
+SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK currently implements its own perception system based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide reliable input to SMIRK. This is not yet the case for the SMIRK MVP and this version of the SRS does not specify any requirements related to shared resources. The SMIRK scope is further explained through the context diagram in the [System Requirements Specification](</docs/System Requirements Specification.md>).
 
 ## 1.6 References ##
 - [System Requirements Specification](</docs/System Requirements Specification.md>) (SRS)
