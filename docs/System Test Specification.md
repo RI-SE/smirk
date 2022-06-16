@@ -57,6 +57,7 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - ADAS: Advanced Driver-Assistance Systems
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
 - DM: Data Management
+- FPS: Frames Per Second
 - GSN: Goal Structuring Notation
 - ML: Machine Learning
 - MVP: Minimum Viable Product
@@ -72,9 +73,9 @@ The section is organized into internal stakeholders, i.e., roles that are direct
 
 **Internal stakeholders**
 
-- Software developers: Must not have access to the document.
-- ML developers: Must not have access to the document.
-- Internal testers: Must not have access to the document.
+- Software developers: Must **not** have access to the document.
+- ML developers: Must **not** have access to the document.
+- Internal testers: Must **not** have access to the document.
 - Independent testers: The entire document is important.
 
 **External stakeholders**
@@ -145,7 +146,7 @@ Based on an analysis of the [ML Safety Requirements](https://github.com/RI-SE/sm
 - Pedestrian crossing angle (degrees): Toward ego car (0), Diagonal toward (45), Perpendicular (90), Diagonal away (135), Away from car (180)
 - Ego car speed (m/s): Slow (<10 m/s), Medium (10-15 m/s), Fast (15-20 m/s)
 
-The dimensions and ranges listed above result in 2,430 possible combinations. Using combinatorial testing, we create a set of 18 operational scenarios that provides pair-wise coverage of all equivalence classes.
+The dimensions and ranges listed above result in 2,430 possible combinations. Using combinatorial testing, we create a set of 25 operational scenarios that provides pair-wise coverage of all equivalence classes.
 
 **Operational Scenarios for SYS-ML-REQ2:**
 - Object starting point (lateral offset from the road in meters): Left side of the road (-5 m), On the road (0 m), Right side of the road (5 m)
@@ -154,27 +155,27 @@ The dimensions and ranges listed above result in 2,430 possible combinations. Us
 - Object speed (m/s): Stationary (0 m/s), Slow (1 m/s), Fast (3 m/s)
 - Ego car speed (m/s): Slow (<10 m/s), Medium (10-15 m/s), Fast (15-20 m/s)
 
-The dimensions and ranges listed above result in 324 possible combinations. Using combinatorial testing, we create a set of 14 operational scenarios that provides pair-wise coverage of all equivalence classes.
+The dimensions and ranges listed above result in 324 possible combinations. Using combinatorial testing, we create a set of 13 operational scenarios that provides pair-wise coverage of all equivalence classes.
 
 For each operational scenario, two test parameters represent ranges of values, i.e., the longitudinal distance between ego car and the pedestrian and the speed of ego car. For these two test parameters, we identify a combination of values that result in a collision unless the SMIRK system initiates emergency braking. 
 
-The complete set of operational scenarios, realized as 32 executable test scenarios in ESI Pro-SiVIC, are available in TODO: upload the test scripts.
+The complete set of operational scenarios, realized as 38 executable test scenarios in ESI Pro-SiVIC, are available among the test scripts.
 
 ## 4.2 System Test Cases ##
-The system test cases are split into three categories specified using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-32. Second, to increase the diversity of the test cases in the simulated environment, we complement the straightly reproducible Test Cases 1-32 with test case counterparts adding random jitter to the parameters. For test cases 1-32, we create analogous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that introducing random jitter to the test input does not lead to the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not (TC-RAND-[1-18]). Furthermore, for the test cases related to false positives, we know that emergency braking shall not commence. Consequently, the entries in the "Then" column are straightforward. 
+The system test cases are split into three categories specified using the [Given-When-Then structure](https://en.wikipedia.org/wiki/Given-When-Then) as used in behavior-driven development. First, each operational scenario identified in Section 4.1 constitutes one system test case, i.e., Test Cases 1-38. Second, to increase the diversity of the test cases in the simulated environment, we complement the straightly reproducible Test Cases 1-38 with test case counterparts adding random jitter to the parameters. For test cases 1-38, we create analogous test cases that randomly add jitter in the range from -10\% to +10\% to all numerical values. Partial random testing has been proposed by Masuda (2017) in the context of test scenarios execution in vehicle simulators. Note that introducing random jitter to the test input does not lead to the test oracle problem, as we can automatically assess whether there is a collision between ego car and the pedestrian in ESI Pro-SiVIC or not (TC-RAND-[1-38]). Furthermore, for the test cases related to false positives, we know that emergency braking shall not commence. Consequently, the entries in the "Then" column are straightforward. 
 
-The third category is requirements-based testing (RBT). RBT is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements. The test strategy relies on calculating a set of metrics during execution of TC-OS-[1-32] and TC-RAND-[1-32] and comparing the results to the individual requirements. The table below lists all system test cases of all three categories. For the test cases TC-REQ-[1-12], the "Given" condition is that all metrics have been collected during execution of TC-OS-[1-32] and TC-RAND-[1-32]. 
+The third category is requirements-based testing (RBT). RBT is used to gain confidence that the functionality specified in the ML Safety Requirements has been implemented correctly (Hauer et al., 2019). The top-level safety requirement SYS-SAF-REQ1 will be verified by testing of all underlying requirements, i.e., its constituent detailed requirements. The test strategy relies on calculating a set of metrics during execution of TC-OS-[1-38] and TC-RAND-[1-38] and comparing the results to the individual requirements. The table below lists all system test cases of all three categories. For the test cases TC-REQ-[1-3], the "Given" condition is that all metrics have been collected during execution of TC-OS-[1-38] and TC-RAND-[1-38]. 
 
 The set of metrics includes:
-- Minimum distance between ego car and the pedestrian during a scenario.
-- Time when the radar tracking component first returned TTC < 4s for an object.
-- Distance between ego car and the object when the radar component first returned TTC < 4s for an object.
-- Time when emergency braking was commenced.
-- Distance between ego car and the object when emergency braking commenced.
-- Whether a scenario involved a collision between ego car and a pedestrian.
-- Speed of ego car at the time of collision.
+- *MinDist*: Minimum distance between ego car and the pedestrian during a scenario.
+- *TimeTrig*: Time when the radar tracking component first returned TTC < 4s for an object.
+- *DistTrig*: Distance between ego car and the object when the radar component first returned TTC < 4s for an object.
+- *TimeBrake*: Time when emergency braking was commenced.
+- *DistBrake*: Distance between ego car and the object when emergency braking commenced.
+- *Coll*: Whether a scenario involved a collision between ego car and a pedestrian.
+- *CollSpeed*: Speed of ego car at the time of collision.
 
-*Table 1: System test cases. VMC means valid metrics collected during execution of TC-OS-[1-32] and TC-RAND-[1-32].*
+*Table 1: System test cases. VMC means valid metrics collected during execution of TC-OS-[1-38] and TC-RAND-[1-38].*
 
 | Test Case ID   | Type                 | Given               | When       | Then         |
 |----------------|----------------------|---------------------|------------|--------------|
@@ -184,37 +185,21 @@ The set of metrics includes:
 | TC-RAND-[19-32] | Random Testing       | TC-OS-[19-32]+jitter | Object crosses the street and ego car is on collision course | SMIRK does not commence PAEB |
 | TC-REQ-1    | RBT (SYS-ML-REQ1) | VMC | The radar tracking component returns a pedestrian with TTC < 4s | The pedestrian recognition component identifies the pedestrian |
 | TC-REQ-2    | RBT (SYS-ML-REQ2) | VMC | The radar tracking component returns a basic shape with TTC < 4s | The pedestrian recognition component does not identify a pedestrian |
-| TC-REQ-3    | RBT (SYS-PER-REQ1) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 80 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-4    | RBT (SYS-PER-REQ2) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 50 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-5    | RBT (SYS-PER-REQ3) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 80 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-6    | RBT (SYS-PER-REQ5) | VMC | The camera returns consecutive frames at 10 FPS showing a pedestrian with TTC < 4s within 80 m | The pedestrian recognition component consistently identifies the pedestrian in consecutive frames |
-| TC-REQ-7    | RBT (SYS-PER-REQ6) | VMC | The pedestrian recognition component returns a pedestrian within 80 m | The position of the bounding box matches the ground truth position in ESI Pro-SiVIC |
-| TC-REQ-8    | RBT (SYS-PER-REQ7) | VMC | The camera returns consecutive frames at 10 FPS showing an object with TTC < 4s within 80 m | The ML model performs inference on each individual frame |
-| TC-REQ-9    | RBT (SYS-ROB-REQ1) | VMC | The radar tracking component returns an object with TTC < 4s within 80 m | The pedestrian recognition component correctly identifies the object as a pedestrian or not |
-| TC-REQ-10    | RBT (SYS-ROB-REQ2) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 80 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-11    | RBT (SYS-ROB-REQ3) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 80 m | The pedestrian recognition component identifies the pedestrian |
-| TC-REQ-12    | RBT (SYS-ROB-REQ4) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 80 m | The pedestrian recognition component identifies the pedestrian |
+| TC-REQ-3    | RBT (SYS-PER-REQ1) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 80 m | The inference speed is at least 10 FPS |
 
 Comments regarding individual test cases:
-- TC-OS-[1-32]: Each TC represents an operational scenario in which SMIRK either shall or shall not commence PAEB.
-- TC-RAND-[1-32]: Each TC represents an operational scenario with random perturbations compared to TC-OS-[1-32]. Note that the new scenarios might no longer lead to a collision. If the object and ego car are on a collision course, however, SMIRK shall or shall not commence PAEB.
+- TC-OS-[1-38]: Each TC represents an operational scenario in which SMIRK either shall or shall not commence PAEB depending on the type of the object.
+- TC-RAND-[1-382]: Each TC represents an operational scenario with random perturbations compared to TC-OS-[1-38]. Note that the new scenarios might no longer lead to a collision. If the object and ego car are on a collision course, however, SMIRK shall or shall not commence PAEB depending on the type of the object.
 - TC-REQ-1: For all collected frames with a detected pedestrian with TTC < 4s, calculate how many pedestrians are not identified. A passing test case means none were missed.
 - TC-REQ-2: For all collected frames with a basic shape with TTC < 4s, calculate how many pedestrians are identified. A passing test case means no pedestrian were found.
-- TC-REQ-3: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, calculate the true positive rate. At least 93% is required for a passing test case.
-- TC-REQ-4: For all collected frames with a detected pedestrian with TTC < 4s within 50 m, calculate the false negative rate. No more than 7% is allowed for a passing test case.
-- TC-REQ-5: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, calculate the false positive rate. No more than 0.01% is allowed for a passing test case.
-- TC-REQ-6: For all collected sequences of five consecutive frames with a detected pedestrian with TTC < 4s within 80 m, count the number of pedestrian recognitions. No more than one missed frame is allowed for a passing test case.
-- TC-REQ-7: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, compare the position of the bounding box and the ESI Pro-SiVIC ground truth. A passing test case means that no differences where larger than 50 cm.
-- TC-REQ-8: For all collected frames with a detected object with TTC < 4s within 80 m, measure that the model successfully performed inference before the next frame is collected. A passing test case means that no frames are missed.
-- TC-REQ-9: For all collected frames with an object with TTC < 4s within 80 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for any variations within the ODD.
-- TC-REQ-10: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for different pedestrian speeds (resulting in different poses in ESI Pro-SiVIC).
-- TC-REQ-11: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for any of the pedestrian types  in ESI Pro-SiVIC (males, females, and children).
-- TC-REQ-11: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, calculate the true positive rate, the false negative rate, and the false positive rate. A passing test case means that no performance requirements are violated for any of the pedestrian types  in ESI Pro-SiVIC (representing casual wear, business wear, and construction work wear).
+- TC-REQ-3: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, measure the inference time. A passing test case means no  inference time exceeded 100 ms.
 
 # 5 ML Verification Argument Pattern [BB]
 The figure below shows the ML verification argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
 ![GSN-ML-Verification_Argument_Pattern](/docs/figures/gsn-ml_verification_argument_pattern.png) <a name="gsn-ml_verification_argument"></a>
+
+*Figure 1: SMIRK ML Verification Argument Pattern.*
 
 The top claim (G5.1) corresponds to the bottom claim in the safety requirements argument pattern [I], i.e., that all ML safety requirements are satisfied. The argumentation builds on a sub-claim and an argumentation strategy. First, sub-claim G5.2 is that the verification of the ML model is independent of its development. The verification log [AA] specifies how this has been achieved for SMIRK (Sn5.1). Second, the strategy S5.1 argues that test-based verification is an appropriate approach to generate evidence that the ML safety requirements are met. The justification (J5.1) is that the SMIRK [test strategy](#strategy) follows the proposed organization in peer-reviewed literature on ML testing, which is a better fit than using less mature formal methods for ML models as complex as YOLOv5. 
 
