@@ -1,4 +1,4 @@
-# Deployment Specification v0.9
+# Deployment Specification v0.99
 
 Revision History
 <table>
@@ -26,6 +26,12 @@ Revision History
 <td>2022-06-16</td>
 <td>Complete draft.</td>
 <td>0.9</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha, Jens Henriksson</th>
+<td>2022-06-16</th>
+<td>Beta Release - Ready for peer-review</th>
+<td>0.99</th>
 </tr>
 </table>
 
