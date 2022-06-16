@@ -55,6 +55,6 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [CC]  | ML Verification Argument                       |                 |            5       | [STS Sec 6](</docs/System%20Test%20Specification.md#6-ml-verification-argument-cc>) | Done |
 |     [DD]  | Erroneous Behaviour Log                        |                 |            6       | [DS Sec 4](</docs/Deployment%20Specification.md#4-erroneous-behaviour-log-dd>) | (M) Need to report lessons |
 |     [EE]  | Operational scenarios                          |         6       |                    | [STS Sec 4.1](</docs/System%20Test%20Specification.md#41-operational-scenarios-ee>) | Done |
-|     [FF]  | Integration Testing Results                        |                 |          6         | [Protocols](</docs/protocols/>) | (K?) Not started |
+|     [FF]  | Integration Testing Results                        |                 |          6         | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Integration%20Testing%20Results%20[FF]%202022-06-16.pdf) | Done |
 |     [GG]  | ML Deployment Argument Pattern                     |        6        |                    | [DS Sec 5](</docs/Deployment%20Specification.md#5-ml-deployment-argument-pattern-gg>) | Done |
 |     [HH]  | ML Deployment Argument                         |                 |            6       | [DS Sec 6](</docs/Deployment%20Specification.md#6-ml-deployment-argument-hh>) | Done | 
