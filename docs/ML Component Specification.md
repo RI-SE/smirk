@@ -1,4 +1,4 @@
-# Machine Learning Component Specification v0.2
+# Machine Learning Component Specification v0.9
 
 Revision History
 <table>
@@ -21,10 +21,10 @@ Revision History
 <td>0.2</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Markus Borg</td>
+<td>2022-06-16</td>
+<td>Complete draft.</td>
+<td>0.9</td>
 </tr>
 </table>
 
@@ -35,7 +35,7 @@ This document contains the machine learning (ML) component specification for SMI
 This document describes the ML-based pedestrian recognition component used in SMIRK. Two established third-party OSS libraries are important constituents. First, the document describes how the object detection architecture [YOLOv5](https://github.com/ultralytics/yolov5) by Ultralytics is used and trained for the SMIRK operational design domain (ODD). Second, we introduce how the safety cage architecture is realized using out-of-distribution (OOD) detection provided by SeldonIO's [Alibi Detect](https://github.com/SeldonIO/alibi-detect). Third, we provide the ML model learning argument patterns in line with the Guidance on the Assurance of Machine Learning in Autonomous Systems (AMLAS).
 
 ## 1.2 Document Conventions ##
-The number of academic publications in the list of references is unconventional for techincal project doumentation. This is a conscious decision. SMIRK is developed as a prototype in the context of a research project with limited resources. As part of our research, we aim to integrate (sometimes scattered) pieces from the state-of-the-art literature. Synthesis is a fundamental tool in our research and we seek novel insights while focusing on refinement and integration. We actively choose to rely on reuse of design decisions from previously peer-reviewed publications. Building on previous work, i.e., [standing on the shoulders of others](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants), is a core concept in research that allows validation of previous work, incl. previously proposed requirements. When available, and unless open access publication models have been used, links to academic publications point to preprints on open repositories such as [arXiv](https://arxiv.org/) rather than peer-reviewed revisions behind paywalls.
+The number of academic publications in the list of references is unconventional for technical project doumentation. This is a conscious decision. SMIRK is developed as a prototype in the context of a research project with limited resources. As part of our research, we aim to integrate (sometimes scattered) pieces from the state-of-the-art literature. Synthesis is a fundamental tool in our research and we seek novel insights while focusing on refinement and integration. We actively choose to rely on reuse of design decisions from previously peer-reviewed publications. Building on previous work, i.e., [standing on the shoulders of others](https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants), is a core concept in research that allows validation of previous work, incl. previously proposed requirements. When available, and unless open access publication models have been used, links to academic publications point to preprints on open repositories such as [arXiv](https://arxiv.org/) rather than peer-reviewed revisions behind paywalls.
 
 Headings with a reference in brackets [X] refer to artifacts prescribed by the AMLAS process ([Guidance on the Assurance of Machine Learning in Autonomous Systems](https://www.york.ac.uk/media/assuring-autonomy/documents/AMLASv1.1.pdf)). Due to formatting limitations in GitHub MarkDown, all figure and table captions appear in italic font to distinguish them from the running text. Explanatory text copied verbatim from public documents are highlighted using the quote formatting available in GitHub Markdown.
 
@@ -45,20 +45,20 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - ML: Machine Learning
 - ODD: Operational Design Domain
 - OOD: Out-Of-Distribution
-- OSS: Opens Source Software
+- OSS: Open Source Software
 
 ## 1.4 Intended Audience and Reading Suggestions ##
 The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
 
 **Internal stakeholders**
-- Software developers: TBD
-- ML developers: TBD.
-- Internal testers: TBD.
-- Independent testers: TBD.
+- Software developers: [Section 2 (ML Component Description)](#2-ml-component-description-d-) provides an overview of the ML component.
+- ML developers: The entire document is relevant.
+- Internal testers: The entire document is relevant for ML testers. Other testers should read [Section 2 (ML Component Description)](#2-ml-component-description-d-) for an overview.
+- Independent testers: The entire document is relevant for ML testers. Other testers should read [Section 2 (ML Component Description)](#2-ml-component-description-d-) for an overview.
 
 **External stakeholders**
 - Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
-- Researchers: TBD
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in [Section 2 (ML Component Description)](#2-ml-component-description-d-) and [Section 3 (ML Development Log)](#3-ml-development-log-u-). 
 - Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Component Specification)](#5-ml-model-learning-argument-pattern-w).
 - Curious readers: For an overview of the use of ML components in SMIRK, read [Section 1 (Introduction)](#1-introduction).
 
