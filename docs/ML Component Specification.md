@@ -1,4 +1,4 @@
-# Machine Learning Component Specification v0.9
+# Machine Learning Component Specification v0.99
 
 Revision History
 <table>
@@ -26,6 +26,12 @@ Revision History
 <td>Complete draft.</td>
 <td>0.9</td>
 </tr>
+<tr>
+<td>Markus Borg, Kasper Socha, Jens Henriksson</th>
+<td>2022-06-16</th>
+<td>Beta Release - Ready for peer-review</th>
+<td>0.99</th>
+</tr>
 </table>
 
 # 1 Introduction <a name="introduction"></a>
@@ -46,6 +52,7 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 - ODD: Operational Design Domain
 - OOD: Out-Of-Distribution
 - OSS: Open Source Software
+- YOLO: You Only Look Once
 
 ## 1.4 Intended Audience and Reading Suggestions ##
 The section is organized into internal stakeholders, i.e., roles that are directly involved in the SMIRK development, and external stakeholders who are linked indirectly but have significant contribution in the successful completion of the SMIRK project. External stakeholders also include the ML safety community at large. Note that AMLAS prescribes a split between testers that are involved during the development and testers that are "sufficiently independent from the development activities." We refer to these roles as *internal testers* and *independent testers*, respectively.
