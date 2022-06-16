@@ -1,4 +1,4 @@
-# Data Management Specification v0.93
+# Data Management Specification v0.94
 
 Revision History
 <table>
@@ -60,6 +60,13 @@ Revision History
 <td>Updated according to Issue <a href="https://github.com/RI-SE/smirk/issues/18">#18</a>.
 </td>
 <td>0.93</td>
+</tr>
+<tr>
+<td>Markus Borg</td>
+<td>2022-06-16</td>
+<td>Updated according to Issue <a href="https://github.com/RI-SE/smirk/issues/22">#22</a>.
+</td>
+<td>0.94</td>
 </tr>
 </table>
 
@@ -129,6 +136,7 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 - The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
 - High-Level Expert Group on Artificial Intelligence, 2019. [Ethics Guidelines for Trustworthy AI](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai), European Commission.
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
+- Schyllander, 2014. [Fotgängarolyckor - statistik och analys](https://rib.msb.se/filer/pdf/27438.pdf), Tech. Rep. MSB744, Swedish Civil Contingencies Agency. 
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
@@ -304,12 +312,14 @@ First, the SMILE3 project conducted a Fagan inspection, i.e., a formal inspectio
 
 The [inspection protocol](https://github.com/RI-SE/smirk/blob/main/docs/protocols/DMS%20Inspection%20Protocol%202021-11-15.xlsx) is available.
 
-Second, the SMILE3 project analyzed the characteristics of the data sets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE3 reviewers manually analyzed a random sample of images from the data set <TBD, DESCRIBE HOW WE DO THIS>.
+Second, the SMILE3 project analyzed the characteristics of the data sets. The analysis was partly done using automated data validation with [Great Expectations](https://greatexpectations.io/). We validate the ethical dimension of the data balance by analyzing the gender (DAT-BAL-REQ1) and age (DAT-BAL-REQ2) distributions of the pedestrians in the SMIRK data set. SMIRK evolves as a demonstrator in a Swedish research project, which provides a frame of reference for this analysis. The demographics originate in a study on collisions between vehicles and pedestrians by the Swedish Civil Contingencies Agency (Schyllander, 2014).
+
+The [data validation report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Data%20Validation%20Report%202022-06-16.pdf) is available.
 
 Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-)
 - Relevant: DAT-REL-REQ1 to DAT-REL-REQ7 are implicitly met by the data generation scripts. Everything present in the data set has been explicitly added by the SMIRK developers in the scripts. Only relevant data samples captured using a forward-facing camera in a valid sensor position have been added to the scripts. No outlier objects exist in the data sets.
 - Complete: DAT-COM-REQ is satisfied as the ODD is restricted to excellent driving conditions. The data set complies with DAT-COM-REQ2 since we explicitly cover six pedestrian types available in the ESI Pro-SiVIC object catalog. DAT-COM-REQ3 is satisfied through scripts that explicitly generate data that covers longitudinal distances between 10 meters and 100 meters. DAT-COM-REQ4 is met since the scripts ensure data collection from the point in time that pedestrians enter the camera's field of vision (a hand becomes available) until the pedestrian leaves (only a foot remains). DAT-COM-REQ5 is implicitly satisfied as the ideal camera in ESI Pro-SiVIC does not fail, i.e., there will be no dirt on the lens or cracks in the optics.
-- Balanced: DAT-BAL-REQ1 and DAT-BAL-REQ2 are validated automatically using <TBD, DESCRIBE THAT KASPER IS DOING>.
+- Balanced: DAT-BAL-REQ1 and DAT-BAL-REQ2 are validated automatically using Great Expectations. Note that we designed the SMIRK data generation process to result in a data set corresponding to deadly accidents in Sweden, but, motivated by AI fairness, we increased the fraction of female pedestrians to mitigate a potential gender bias.
 - Accurate: DAT-ACC-REQ1 and DAT-ACC-REQ3 are implicitly met as ESI Pro-SiVIC generates the ground truth on pixel-level. DAT-ACC-REQ2 is also implicitly satisfied as we extract bounding boxes using a script that identifies the smallest possible rectangle around the pedestrian.
 
 # 7 ML Data Argument [T] <a name="data_argument"></a>
