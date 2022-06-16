@@ -111,4 +111,4 @@ SMIRK instantiates the ML Deployment Argument through a subset of the artifacts 
 - [ML Model](TBD) [V]
 - [Erroneous Behaviour Log](</docs/Deployment Specification.md#4-erroneous-behaviour-log-dd>) [DD]
 - [Operational Scenarios](</docs/System Requirements Specification.md#41-operational-scenarios-ee>) [EE]
-- [Integration Testing Results](TBD) [FF]
+- [Integration Testing Results](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Integration%20Testing%20Results%20[FF]%202022-06-16.pdf) [FF]
