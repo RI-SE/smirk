@@ -1,4 +1,4 @@
-# Deployment Specification v0.2
+# Deployment Specification v0.9
 
 Revision History
 <table>
@@ -22,10 +22,10 @@ Revision History
 <td>0.2</th>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Markus Borg</td>
+<td>2022-06-16</td>
+<td>Complete draft.</td>
+<td>0.9</td>
 </tr>
 </table>
 
@@ -45,6 +45,9 @@ Headings with a reference in brackets [X] refer to artifacts prescribed by the A
 ## 1.3 Glossary
 - ADAS: Advanced Driver-Assistance Systems
 - AMLAS: Guidance on the Assurance of Machine Learning in Autonomous Systems
+- AP: Average Precision
+- FN: False Negatives
+- FP: False Positives
 - GSN: Goal Structuring Notation
 - ML: Machine Learning
 - MVP: Minimum Viable Product
@@ -78,12 +81,22 @@ The entire document is relevant to the internal development organization. Specif
 # 3 Operating Environment <a name="env"></a>
 
 # 4 Erroneous Behaviour Log [DD]
-The development of the ML-based Pedestrian Recognition Component is undertaken in the context of assumptions that are made about the system to which it will be integrated and its ODD. The **safety cage** is a conrete mechanism implemenented to monitor that the assumptions reamain valid during SMIRK operation, i.e., it provides out-of-distribution detection. ML engineering always results in some level of uncertainty associated with the outputs produced by the ML models. During development, the safety cage supported our analysis of *erroneous output* from the YOLOv5 model embedded in the Pedestrian Recognition Component. Furthermore, the safety cage provided insights into what shall be considered *erroneous input* to the YOLOv5 model. As the SMIRK MVP has a restricted ODD, common types of noise and hardware sensor issues are out of scope - as are adversarial attacks. Still, this section reports the predicted and documented erroneous behaviours overall identified during development.
+The development of the ML-based Pedestrian Recognition Component is undertaken in the context of assumptions that are made about the system to which it will be integrated and its ODD. The **safety cage** is a conrete mechanism implemenented to monitor that the assumptions reamain valid during SMIRK operation, i.e., it provides out-of-distribution detection. ML engineering always results in some level of uncertainty associated with the outputs produced by the ML models. During development, the safety cage supported our analysis of *erroneous output* from the YOLOv5 model embedded in the Pedestrian Recognition Component. Furthermore, the safety cage provided insights into what shall be considered *erroneous input* to the YOLOv5 model. As the SMIRK MVP has a restricted ODD, common types of noise and hardware sensor issues are out of scope - as are adversarial attacks. Still, this section reports the predicted and documented erroneous behaviours overall identified during development, as prescribed by AMLAS.
+
+The [Internal Test Results [X]](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Internal%20Test%20Results%20[X]%202022-06-16.pdf) and the [ML Verification Results [Z]](https://github.com/RI-SE/smirk/blob/main/docs/protocols/ML%20Verification%20Results%20[Z]%202022-06-16.pdf) show that the AP@0.5 are considerably lower for occluded pedestrians. As occlusion is an acknowledged challenge for object detection this is an expected result. The ML Verification Results also reveal that the number of FPs and FNs for the children is relatively high, resulting in slightly lower AP@0.5. We found that the problem with children is primarily far away, explained by the few pixels available for the object detection at long distances. While the SMIRK fulfils the robustness requirements within the ODD, we recognize this perception issue in the erroneous behavior log.
+
+During the iterative SMIRK development, it became evident that OOD detection using the autoencoder was inadequate at close range. Figure 1 shows reconstruction errors (on the y-axis) for all objects in the validation subset of the development data at A) all distances, B) > 10 m, C) > 20 m, and D) > 30 m. The visualization clearly shows that the autoencoder cannot convincingly distinguish the cylinders from the pedestrians at all distances (in subplot A), different objects appear above the threshold), but the OOD detection is more accurate when objects at close distance are excluded (subplot D) displays high accuracy). Based on validation of the four distances, comparing the consequences of the trade-off between safety cage availability and accuracy, the design decision for SMIRK's autoencoder is to only perform OOD detection for objects that are at least 10 m away. We explain the less accurate behaviour at close range by limited training data, a vast majority of images contain pedestrians at a larger distance - which is reasonable since the SMIRK ODD is limited to rural country roads.
+
+![VAE_Distance](/docs/figures/vae_distance.png) <a name="vae_distance"></a>
+
+*Figure 1: Reconstruction errors for different objects on the validation subset of the development data at different distances from ego car (magenta=cylinder, yellow=female business casual, green=male business, orange=male casual). The dashed lines show the threshold for rejecting objects. In SMIRK, we use alternative B) in the safety cage.*
 
 # 5 ML Deployment Argument Pattern [GG]
 The figure below shows the ML deployment argument pattern using GSN. Since SMIRK is developed for a simulated environment, the pattern is adapted accordingly.
 
 ![GSN-ML-Deployment_Argument_Pattern](/docs/figures/gsn-ml_deployment_argument_pattern.png) <a name="gsn-ml_deployment_argument"></a>
+
+*Figure 2: SMIRK ML Deployment Argument Pattern.*
 
 The top claim (G6.1) is that the ML safety requirements SYS-ML-REQ1 and SYS-ML-REQ2 are satisfied when deployed to the ego car in which SMIRK operates. The argumentation strategy S6.1 is two-fold. First, sub-claim G6.2 is that the ML safety requirements are satisfied under all defined operating scenarios when the ML component is integrated into SMIRK in the context (C6.1) of the specified operational scenarios [EE]. Justification J6.1 explains that the scenarios were identified through an analysis of the SMIRK ODD. G6.2 has another sub-claim (G6.4) that the integration test results [FF] show that SYS-ML-REQ1 and SYS-ML-REQ2 are satisfied. 
 
@@ -96,6 +109,6 @@ SMIRK instantiates the ML Deployment Argument through a subset of the artifacts 
 - [Environment Description](</docs/System Requirements Specification.md#4-operational-design-domain-b->) [B]
 - [System Description](</docs/System Requirements Specification.md#2-system-description-c->) [C]
 - [ML Model](TBD) [V]
-- [Erroneous Behaviour Log](TBD) [DD]
+- [Erroneous Behaviour Log](</docs/Deployment%20Specification.md#4-erroneous-behaviour-log-dd->) [DD]
 - [Operational Scenarios](</docs/System Requirements Specification.md#41-operational-scenarios-ee>) [EE]
 - [Integration Testing Results](TBD) [FF]
