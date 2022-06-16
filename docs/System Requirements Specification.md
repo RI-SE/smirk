@@ -271,7 +271,7 @@ Based on a Hazard Analysis and Risk Assessment (HARA), two categories of hazards
 To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements in relation to the missed pedestrian hazard. Furthermore, the ghost braking hazard necessitates the introduction of SYS-ML-REQ2.
 
 ## 3.3 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
-This section refines SYS-SAF-REQ into two separate requirements corresponding to missed pedestrians and ghost braking, respectively.
+This section refines SYS-SAF-REQ1 into two separate requirements corresponding to missed pedestrians and ghost braking, respectively.
 
 - **SYS-ML-REQ1: The pedestrian recognition component shall identify pedestrians in all valid scenarios when the radar tracking component returns a TTC < 4s for the corresponding object.**
 - **SYS-ML-REQ2: The pedestrian recognition component shall reject false positive input that does not resemble the training data.**
