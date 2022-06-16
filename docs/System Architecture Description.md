@@ -162,7 +162,7 @@ The development view illustrates SMIRK from the perspective of the developers. A
 ## 3.4 Physical View
 The physical view presents the system from a system engineer's point of view. As SMIRK is designed to be deployed in a simulated environment, i.e., ESI Pro-SiVIC, we present only a simple physical view based on the separation into 1) sensors, 2) decision algorithms, and 3) actuators as prescribed in ISO/PAS 21448 SOTIF. The left part of the figure shows the sensors, i.e., the radar unit and the mono camera. In the center part, the decision algorithms of the perception system is presented. YOLOv5 and the anomaly detector are described in the [Machine Learning Component Specification](</docs/ML Component Specification.md>). Finally, the right part of the figure shows the brakes simulated in ESI Pro-SiVIC.
 
-![Logical_View](/docs/figures/logical_view.png) <a name="logical_view"></a>
+![Physical_View](/docs/figures/physical_view.png) <a name="physical_view"></a>
 
 *Figure 2: SMIRK physical view.*
 
