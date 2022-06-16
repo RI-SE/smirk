@@ -76,6 +76,8 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 - Verification Data [P]
 
 **Peer-reviewed publications**
+- An and Cho, 2015. [Variational Autoencoder Based Anomaly Detection Using Reconstruction Probability](http://dm.snu.ac.kr/static/docs/TR/SNUDM-TR-2015-03.pdf). Special Lecture on IE 2(1), SNU Data Mining Center, pp. 1-18.
+- Klaise, Van Looveren, Cox, Vacanti, and Coca, 2020. [Monitoring and Explainability of Models in Production](https://arxiv.org/abs/2007.06299). In *Proc. of the ICML Workshop on Challenges in Deploying and Monitoring Machine Learning Systems*.
 - Liu, Qi, Qin, Shi, and Jia, 2018. [Path Aggregation Network for Instance Segmentation](https://arxiv.org/abs/1803.01534). In *Proc. of the IEEE Conference on Computer Vision and Pattern Recognition*, pp. 8759-8768.
 - Redmon, Diwala, Girshik, and Farhadi, 2016. [You Only Look Once: Unified, Real-Time Object Detection](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Redmon_You_Only_Look_CVPR_2016_paper.pdf). In *Proc. of the IEEE Conference on Computer Vision and Pattern Recognition*, pp. 779-788.
 
@@ -118,14 +120,22 @@ Second, we trained the YOLOv5s model using the development data (as specified in
 The final pedestrian detection model, i.e., the ML model [V], has a size of ~14 MB.
 
 # 4 Outlier Detection for the Safety Cage Architecture
-SMIRK relies on the open-source third-party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture.
+SMIRK relies on the open-source third-party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture. Alibi Detect is a Python library that provides several algorithms for outlier, adversarial, and drift detection for various types of data (Klaise, 2020). For SMIRK, we trained Alibi Detect's autoencoder for outlier detection, with three convolutional and deconvolutional layers for the encoder and decoder respectively. 
 
-TBD
+Figure 2 shows an overview of the DNN architecture of an autoencoder. An encoder and a decoder are trained jointly in two steps to minimize a reconstruction error. First, the autoencoder receives input data *X* and encodes it into a latent space of fewer dimensions. Second, the decoder tries to reconstruct the original data and produces output *X'*. An and Cho (2015) proposed using the reconstruction error from a autoencoder to identify input that differs from the training data. Intuitively, if inlier data is processed by the autoencoder, the difference between *X* and *X'* will be smaller than for outlier data. By carefully selecting a threshold, this approach can be used for OOD detection.
+
+![Autoencoder](/docs/figures/autoencoder.png) <a name="autoencoder"></a>
+
+*Figure 2: Overview architecture of an autoencoder. Adapted from WikiUser:EugenioTL (CC BY-SA 4.0)
+
+For SMIRK, we trained Alibi Detect's autoencoder for OOD detection on the training data subset of the development data. The encoder part is designed with three convolutional layers followed by a dense layer resulting in a bottleneck that compresses the input by 96.66%. The latent dimension is limited to 1,024 variables to limit requirements on processing VRAM of the GPU. The reconstruction error from the autoencoder is measured as the mean squared error between the input and the reconstructed instance. The mean squared error is used for OOD detection by computing the reconstruction error and considering an input image as an outlier if the error surpasses a threshold *theta*. The threshold used for OOD detection in SMIRK is 0.004, roughly corresponding to the threshold that rejects a number of samples that equals the amount of outliers in the validation set. As explained in the [Erroneous Behaviour Log](https://github.com/RI-SE/smirk/blob/main/docs/Deployment%20Specification.md#4-erroneous-behaviour-log-dd), the OOD detection is only active for objects at least 10 m away from ego car as the results for close-up images are highly unreliable. Furthermore, as the constrained SMIRK ODD ensures that only one single object appears in each scenario, the safety cage architecture applies the policy ``once an anomaly, always an anomaly'' - objects that get rejected once will remain anomalous no matter what subsequent frames might contain.
 
 # 5 ML Model Learning Argument Pattern [W]
 The figure below shows the ML model learning argument pattern using GSN. The pattern closely resembles the example provided in AMLAS, but adapts it to the specific SMIRK case.
 
 ![GSN-ML-Model_Learning_Argument_Pattern](/docs/figures/gsn-model_learning_argument_pattern.png) <a name="gsn-ml_model_learning_argument"></a>
+
+*Figure 3: SMIRK ML Model Learning Argument Pattern.*
 
 The top claim (G4.1) in this argument pattern is that the development of the learned model [V] is sufficient. The strategy is to argue over the internal testing of the model and that the ML development was appropriate (S4.1) in context of creating a valid model that meets practical constraints such as real-time performance and cost (C4.2). Sub-claim (G4.2) is that the ML model satisfies the ML safety requirements when using the internal test data [O]. We justify that the internal test results indicate that the ML model satisfies the ML safety requirements (J3.1) by presenting evidence from the internal test results [X].
 
