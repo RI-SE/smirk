@@ -57,6 +57,7 @@ Names in bold font in the architecture views represent entities that can be foun
 - ML: Machine Learning
 - ODD: Operational Design Domain
 - PAEB: Pedestrian Automatic Emergency Braking
+- SOTIF: Safety of the Intended Functionality (ISO/PAS 21448)
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
@@ -80,9 +81,18 @@ The entire document is relevant to the internal development organization. Specif
 SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK currently implements its own perception system based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide reliable input to SMIRK. This is not yet the case for the SMIRK MVP and this version of the SRS does not specify any requirements related to shared resources. The SMIRK scope is further explained through the context diagram in the [System Requirements Specification](</docs/System Requirements Specification.md>).
 
 ## 1.6 References ##
+The references are organized into 1) internal SMIRK documentation, 2) peer-reviewed publications, and 3) gray literature and white papers. 
+
+**Internal SMIRK documentation**
 - [System Requirements Specification](</docs/System Requirements Specification.md>) (SRS)
-- Hillard, 2014. Architecture Description Template For Use With ISO/IEC/IEEE 42010:2011, version 2.2. [link](http://www.iso-architecture.org/42010/templates/)
+- [Machine Learning Component Specification](</docs/ML Component Specification.md>)
+
+**Peer-reviewed publications**
 - Kruchten, 1995. The 4+1 View Model of Architecture. IEEE Software, 12(6), pp. 42-50.
+
+**Gray literature and white papers**
+- Hillard, 2014. Architecture Description Template For Use With ISO/IEC/IEEE 42010:2011, version 2.2. [link](http://www.iso-architecture.org/42010/templates/)
+- International Organization for Standardization, [ISO/PAS 21448:2019](https://www.iso.org/standard/70939.html) Road vehicles — Safety of the intended functionality 
 
 # 2 Architecture Viewpoints
 SMIRK is a pedestrian emergency braking ADAS. The system uses input from two sensors (camera and radar/LiDAR), implements a deep neural network trained for pedestrian detection and recognition. To minimize hazardous false positives, SMIRK implements a SMILE safety cage to reject input that is out-of-distribution.
@@ -110,6 +120,8 @@ Kruchten (1995) developed the 4+1 view model to support documentation and commun
 The SMIRK logical view is constituted by a description of the entities that realize the PAEB.
 
 ![Logical_View](/docs/figures/logical_view.png) <a name="logical_view"></a>
+
+*Figure 1: SMIRK logical view.*
 
 SMIRK interacts with three external resources, i.e., hardware sensors and actuators in ESI Pro-SiVIC:
 	- A) Mono **Camera** (752x480 (WVGA), sensor dimension 3.13 cm x 2.00 cm, focal length 3.73 cm, angle of view 45 degrees)
@@ -148,7 +160,11 @@ The process view deals with the dynamic aspects of SMIRK including an overview o
 The development view illustrates SMIRK from the perspective of the developers. A focus area in the SMIRK development project is to enable a high level of pipeline automation. The training data for the ML-based perception detection is generated using ESI Pro-SiVIC. TBD: Kasper to describe the design choices from the developers persepctive and the pipeline. 
 
 ## 3.4 Physical View
-The physical view presents the system from a system engineer's point of view. As SMIRK is designed to be deployed in a simulated environment, i.e., ESI Pro-SiVIC, the physical view is simplistic. TBD: Kasper to describe how SMIRK is integrated in ESI Pro-SiVIC. 
+The physical view presents the system from a system engineer's point of view. As SMIRK is designed to be deployed in a simulated environment, i.e., ESI Pro-SiVIC, we present only a simple physical view based on the separation into 1) sensors, 2) decision algorithms, and 3) actuators as prescribed in ISO/PAS 21448 SOTIF. The left part of the figure shows the sensors, i.e., the radar unit and the mono camera. In the center part, the decision algorithms of the perception system is presented. YOLOv5 and the anomaly detector are described in the [Machine Learning Component Specification](</docs/ML Component Specification.md>). Finally, the right part of the figure shows the brakes simulated in ESI Pro-SiVIC.
+
+![Logical_View](/docs/figures/logical_view.png) <a name="logical_view"></a>
+
+*Figure 2: SMIRK physical view.*
 
 ## 3.5 Scenarios
 Scenarios demonstrate the architecture through a small set of use cases. The figures below depict six standard PAEB scenarios. In the figures, *v* shows the speed of the car and the pedestrian, respectively. If the constant motion vectors would result in a collision, SMIRK shall commence PAEB when the TTC is less than 4 seconds.
