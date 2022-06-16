@@ -58,6 +58,7 @@ Names in bold font in the architecture views represent entities that can be foun
 - ODD: Operational Design Domain
 - PAEB: Pedestrian Automatic Emergency Braking
 - SOTIF: Safety of the Intended Functionality (ISO/PAS 21448)
+- SRS: System Requirements Specification
 - TTC: Time To Collission
 
 ## 1.4 Intended Audience and Reading Suggestions ##
