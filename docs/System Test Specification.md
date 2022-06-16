@@ -1,4 +1,4 @@
-# System Test Specification v0.91
+# System Test Specification v0.99
 
 Revision History
 <table>
@@ -37,6 +37,12 @@ Revision History
 <td>2022-03-14</th>
 <td>Remove slice for standing pedestrian. Not part of model testing.</th>
 <td>0.91</th>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha, Jens Henriksson</th>
+<td>2022-06-16</th>
+<td>Beta Release - Ready for peer-review</th>
+<td>0.99</th>
 </tr>
 </table>
 
