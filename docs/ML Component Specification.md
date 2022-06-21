@@ -126,7 +126,7 @@ Second, we trained the YOLOv5s model using the development data (as specified in
 
 The final pedestrian detection model, i.e., the ML model [V], has a size of ~14 MB.
 
-# 4 Outlier Detection for the Safety Cage Architecture
+# 4 Outlier Detection for the Safety Cage Architecture <a name="outlier_detection_safety_cage_architecture"></a>
 SMIRK relies on the open-source third-party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture. Alibi Detect is a Python library that provides several algorithms for outlier, adversarial, and drift detection for various types of data (Klaise, 2020). For SMIRK, we trained Alibi Detect's autoencoder for outlier detection, with three convolutional and deconvolutional layers for the encoder and decoder respectively. 
 
 Figure 2 shows an overview of the DNN architecture of an autoencoder. An encoder and a decoder are trained jointly in two steps to minimize a reconstruction error. First, the autoencoder receives input data *X* and encodes it into a latent space of fewer dimensions. Second, the decoder tries to reconstruct the original data and produces output *X'*. An and Cho (2015) proposed using the reconstruction error from a autoencoder to identify input that differs from the training data. Intuitively, if inlier data is processed by the autoencoder, the difference between *X* and *X'* will be smaller than for outlier data. By carefully selecting a threshold, this approach can be used for OOD detection.
