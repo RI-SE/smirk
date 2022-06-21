@@ -1225,6 +1225,6 @@ The [inspection protocol](https://github.com/RI-SE/smirk/blob/main/docs/protocol
 
 # 9 ML Safety Requirements Argument [K] <a name="ml_safety_requirement_argumentation"></a>
 SMIRK instantiates the ML safety requirements argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Safety Requirements Argument Pattern [I]](</docs/System Requirements Specification.md#5-ml-assurance-scoping-argument-pattern-f->), as well as the following artifacts from preceding AMLAS activities:
-- [Safety Requirements Allocated to ML Component](</docs/System Requirements Specification.md#32-safety-requirements-allocated-to-ml-component-e->) [E]
-- [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
-- [ML Safety Requirements Validation Results](</docs/System Requirements Specification.md#8-ml-safety-requirements-validation-results-j>) [J]
+- [Safety Requirements Allocated to ML Component](</docs/System Requirements Specification.md#ml_safety_requirement_pattern>) [E]
+- [ML Safety Requirements](</docs/System Requirements Specification.md#ml_safety_reqts>) [H]
+- [ML Safety Requirements Validation Results](</docs/System Requirements Specification.md#ml_safety_requirement_validation_results>) [J]
