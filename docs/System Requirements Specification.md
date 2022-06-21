@@ -1198,7 +1198,7 @@ The ML safety claim is supported by an argument split into two parts. First, the
 # 6 ML Safety Assurance Scoping Argument [G] <a name="ml_assurance_scoping_argument"></a>
 SMIRK instantiates the ML safety assurance scoping argument through the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). The set of artifacts constitutes the safety case for SMIRK's ML-based pedestrian recognition component.
 
-# 7 ML Safety Requirements Argument Pattern [I]
+# 7 ML Safety Requirements Argument Pattern [I] <a name="ml_safety_requirement_pattern"></a>
 The figure below shows the ML safety requirements argument pattern using GSN. The pattern largely follows the example provided in AMLAS, but adapts it to the specific SMIRK case. The major difference is the introduction of G2.2 targeting ghost braking and the safety cage mechanism as the corresponding solution 2.2.
 
 ![GSN-ML-Safety_Reqts_Argument_Pattern](/docs/figures/gsn-ml_safety_reqts_argument_pattern.png) <a name="gsn-ml_safety_reqts_argument"></a>
@@ -1211,7 +1211,7 @@ Strategy S2.1 is refined into two subclaims about the validity of the ML safety 
 
 Subclaim G2.4 states that the ML safety requirements are a valid development of the allocated system safety requirements. The justification (J2.2) is that the requirements have been validated in cross-organizational workshops within the SMILE3 research project. We provide evidence through ML Safety Requirements Validation Results [J] originating in a Fagan inspection (Sn2.2).
 
-# 8 ML Safety Requirements Validation Results [J]
+# 8 ML Safety Requirements Validation Results [J] <a name="ml_safety_requirement_validation_results"></a>
 The SMILE3 project conducted a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the ML safety requirements, i.e., a formal inspection consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire SRS.
 
 1. Planning: The authors prepared the SRS and invited the required reviewers to an inspection meeting.
@@ -1223,7 +1223,7 @@ The SMILE3 project conducted a [Fagan inspection](https://en.wikipedia.org/wiki/
 
 The [inspection protocol](https://github.com/RI-SE/smirk/blob/main/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx) is available.
 
-# 9 ML Safety Requirements Argument [K]
+# 9 ML Safety Requirements Argument [K] <a name="ml_safety_requirement_argumentation"></a>
 SMIRK instantiates the ML safety requirements argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Safety Requirements Argument Pattern [I]](</docs/System Requirements Specification.md#5-ml-assurance-scoping-argument-pattern-f->), as well as the following artifacts from preceding AMLAS activities:
 - [Safety Requirements Allocated to ML Component](</docs/System Requirements Specification.md#32-safety-requirements-allocated-to-ml-component-e->) [E]
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
