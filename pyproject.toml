@@ -2,7 +2,7 @@
 name = "smirk"
 version = "0.1.0"
 description = "An experimental pedestrian emergency breaking ADAS."
-authors = ["Kasper Socha <kaspersocha@gmail.com>", "Markus Borg <markus.borg@ri.se>"]
+authors = ["Kasper Socha <kaspersocha@gmail.com>", "Markus Borg <markus.borg@ri.se>", "Jens Henriksson <jens.henriksson@semcon.com>"]
 readme= "README.md"
 repository="https://github.com/RI-SE/smirk"
 license="GPL-3.0-or-later"
