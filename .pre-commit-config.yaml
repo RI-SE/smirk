@@ -16,12 +16,6 @@ repos:
         entry: poetry run flake8
         language: system
         types: [python]
-      - id: export-requirements
-        name: requirements.txt
-        language: system
-        entry: poetry export -o requirements.txt
-        files: "^pyproject.toml$"
-        pass_filenames: false
       - id: isort
         name: isort
         entry: poetry run isort
