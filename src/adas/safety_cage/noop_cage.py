@@ -15,12 +15,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-from abc import ABC, abstractmethod
-
 import numpy as np
 
+from adas.safety_cage.safety_cage import SafetyCage
 
-class SafetyCage(ABC):
-    @abstractmethod
-    def is_accepted(self, camera_frame: np.ndarray, predicted_box_crop: np.ndarray) -> bool:
-        pass
+
+class NoopCage(SafetyCage):
+    def is_accepted(
+        self, camera_frame: np.ndarray, predicted_box_crop: np.ndarray
+    ) -> bool:
+        return True

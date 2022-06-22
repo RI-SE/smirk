@@ -21,10 +21,10 @@ from typing import List, Optional
 
 import numpy as np
 
+from adas.pedestrian_detector.pedestrian_detector import BoundingBox
+from adas.pedestrian_detector.yolo.yolo_detector import YoloDetector
+from adas.safety_cage.ae_box.ae_box_cage import AeBoxCage
 from shared.radar_detection import RadarDetection
-from smirk.pedestrian_detector.pedestrian_detector import BoundingBox
-from smirk.pedestrian_detector.yolo.yolo_detector import YoloDetector
-from smirk.safety_cage.ae_box.ae_box_cage import AeBoxCage
 
 
 @dataclass

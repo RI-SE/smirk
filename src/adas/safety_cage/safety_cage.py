@@ -15,16 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-from typing import List
+from abc import ABC, abstractmethod
 
 import numpy as np
 
-from smirk.pedestrian_detector.pedestrian_detector import (
-    BoundingBox,
-    PedestrianDetector,
-)
 
-
-class NoopDetector(PedestrianDetector):
-    def detect_pedestrians(self, camera_frame: np.ndarray) -> List[BoundingBox]:
-        return []
+class SafetyCage(ABC):
+    @abstractmethod
+    def is_accepted(
+        self, camera_frame: np.ndarray, predicted_box_crop: np.ndarray
+    ) -> bool:
+        pass

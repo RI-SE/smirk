@@ -32,7 +32,7 @@ import torch
 from tqdm import tqdm
 
 import config.paths
-from smirk.pedestrian_detector.yolo.metrics import (
+from adas.pedestrian_detector.yolo.metrics import (
     box_iou,
     calculate_base_metrics,
     draw_boxes,

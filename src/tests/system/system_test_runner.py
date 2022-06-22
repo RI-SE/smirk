@@ -25,9 +25,9 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 
+from adas.smirk import Smirk
 from config import paths
 from simple_aeb_scene import SimpleAebScene
-from smirk.smirk import Smirk
 
 
 @dataclass

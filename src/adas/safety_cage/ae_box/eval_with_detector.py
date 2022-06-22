@@ -24,7 +24,7 @@ import pandas as pd
 import torch
 
 import config.paths
-from smirk.pedestrian_detector.yolo.val import results_by_slice
+from adas.pedestrian_detector.yolo.val import results_by_slice
 
 
 def eval_with_detector(

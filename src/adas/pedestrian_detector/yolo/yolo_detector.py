@@ -21,10 +21,7 @@ import numpy as np
 import torch
 
 import config.paths
-from smirk.pedestrian_detector.pedestrian_detector import (
-    BoundingBox,
-    PedestrianDetector,
-)
+from adas.pedestrian_detector.pedestrian_detector import BoundingBox, PedestrianDetector
 from yolov5.models.common import DetectMultiBackend
 from yolov5.utils.augmentations import letterbox
 from yolov5.utils.general import non_max_suppression, scale_coords
