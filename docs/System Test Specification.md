@@ -185,17 +185,17 @@ The set of metrics includes:
 
 | Test Case ID   | Type                 | Given               | When       | Then         |
 |----------------|----------------------|---------------------|------------|--------------|
-| TC-OS-[1-18]   | Operational Scenario | Scenario [1-18]     | Pedestrian crosses the street and ego car is on collision course | SMIRK commences PAEB |
-| TC-OS-[19-32]   | Operational Scenario | Scenario [19-32]     | Object crosses the street and ego car is on collision course | SMIRK does not commence PAEB |
-| TC-RAND-[1-18] | Random Testing       | TC-OS-[1-18]+jitter | Pedestrian crosses the street and ego car is on collision course | SMIRK commences PAEB |
-| TC-RAND-[19-32] | Random Testing       | TC-OS-[19-32]+jitter | Object crosses the street and ego car is on collision course | SMIRK does not commence PAEB |
+| TC-OS-[1-25]   | Operational Scenario | Scenario [1-25]     | Pedestrian crosses the street and ego car is on collision course | SMIRK commences PAEB |
+| TC-OS-[26-38]   | Operational Scenario | Scenario [26-38]     | Object crosses the street and ego car is on collision course | SMIRK does not commence PAEB |
+| TC-RAND-[1-25] | Random Testing       | TC-OS-[1-25]+jitter | Pedestrian crosses the street and ego car is on collision course | SMIRK commences PAEB |
+| TC-RAND-[26-38] | Random Testing       | TC-OS-[26-38]+jitter | Object crosses the street and ego car is on collision course | SMIRK does not commence PAEB |
 | TC-REQ-1    | RBT (SYS-ML-REQ1) | VMC | The radar tracking component returns a pedestrian with TTC < 4s | The pedestrian recognition component identifies the pedestrian |
 | TC-REQ-2    | RBT (SYS-ML-REQ2) | VMC | The radar tracking component returns a basic shape with TTC < 4s | The pedestrian recognition component does not identify a pedestrian |
 | TC-REQ-3    | RBT (SYS-PER-REQ1) | VMC | The radar tracking component returns a pedestrian with TTC < 4s within 80 m | The inference speed is at least 10 FPS |
 
 Comments regarding individual test cases:
 - TC-OS-[1-38]: Each TC represents an operational scenario in which SMIRK either shall or shall not commence PAEB depending on the type of the object.
-- TC-RAND-[1-382]: Each TC represents an operational scenario with random perturbations compared to TC-OS-[1-38]. Note that the new scenarios might no longer lead to a collision. If the object and ego car are on a collision course, however, SMIRK shall or shall not commence PAEB depending on the type of the object.
+- TC-RAND-[1-38]: Each TC represents an operational scenario with random perturbations compared to TC-OS-[1-38]. Note that the new scenarios might no longer lead to a collision. If the object and ego car are on a collision course, however, SMIRK shall or shall not commence PAEB depending on the type of the object.
 - TC-REQ-1: For all collected frames with a detected pedestrian with TTC < 4s, calculate how many pedestrians are not identified. A passing test case means none were missed.
 - TC-REQ-2: For all collected frames with a basic shape with TTC < 4s, calculate how many pedestrians are identified. A passing test case means no pedestrian were found.
 - TC-REQ-3: For all collected frames with a detected pedestrian with TTC < 4s within 80 m, measure the inference time. A passing test case means no  inference time exceeded 100 ms.
