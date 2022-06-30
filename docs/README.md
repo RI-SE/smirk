@@ -27,7 +27,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [A]   |     System Safety Requirements                     |         1, 6    |                    | [SRS Sec 3.1](</docs/System Requirements Specification.md#31-system-safety-requirements-a->)    | Done |
 |     [B]   |     Description of Operating Environment of System |         1, 6    |                    | [SRS Sec 4](</docs/System Requirements Specification.md#4-operational-design-domain-b->)    | Done |
 |     [C]   |     System Description                             |         1, 6    |                    | [SRS Sec 2](</docs/System Requirements Specification.md#2-system-description-c->)    | Done |
-|     [D]   |     ML Component Description                       |          1      |                    | [MLCS Sec 2](</docs/ML Component Specification.md#ml_comp_desc>)    | Done |
+|     [D]   |     ML Component Description                       |          1      |                    | [MLCS Sec 2](</docs/ML Component Specification.md#2-ml-component-description-d>)    | Done |
 |     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       | [SRS Sec 3.2](</docs/System Requirements Specification.md#32-safety-requirements-allocated-to-ml-component-e->)    | Done |
 |     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    | [SRS Sec 5](</docs/System Requirements Specification.md#5-ml-assurance-scoping-argument-pattern-f->)    | Done |
 |     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       | [SRS Sec 6](</docs/System Requirements Specification.md#6-ml-safety-assurance-scoping-argument-g->)    | Done |
