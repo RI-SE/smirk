@@ -24,17 +24,17 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 
 |      ID   |     Title                                        |     Input to    |     Output from    |     Where?       |     Status       |
 |:---------:|--------------------------------------------------|:---------------:|:------------------:|------------------|------------------|
-|     [A]   |     System Safety Requirements                     |         1, 6    |                    | [SRS Sec 3.1](</docs/System Requirements Specification.md#system_safety_reqts>)    | Done |
-|     [B]   |     Description of Operating Environment of System |         1, 6    |                    | [SRS Sec 4](</docs/System Requirements Specification.md#odd>)    | Done |
-|     [C]   |     System Description                             |         1, 6    |                    | [SRS Sec 2](</docs/System Requirements Specification.md#system_reqts>)    | Done |
+|     [A]   |     System Safety Requirements                     |         1, 6    |                    | [SRS Sec 3.1](</docs/System Requirements Specification.md#31-system-safety-requirements-a->)    | Done |
+|     [B]   |     Description of Operating Environment of System |         1, 6    |                    | [SRS Sec 4](</docs/System Requirements Specification.md#4-operational-design-domain-b->)    | Done |
+|     [C]   |     System Description                             |         1, 6    |                    | [SRS Sec 2](</docs/System Requirements Specification.md#2-system-description-c->)    | Done |
 |     [D]   |     ML Component Description                       |          1      |                    | [MLCS Sec 2](</docs/ML Component Specification.md#ml_comp_desc>)    | Done |
-|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       | [SRS Sec 3.2](</docs/System Requirements Specification.md#ml_component_safety_reqts>)    | Done |
-|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    | [SRS Sec 5](</docs/System Requirements Specification.md#ml_assurance_scoping_pattern>)    | Done |
-|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       | [SRS Sec 6](</docs/System Requirements Specification.md#ml_assurance_scoping_argument>)    | Done |
-|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | [SRS Sec 3.3](</docs/System Requirements Specification.md#ml_safety_reqts>) | Done |
-|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | [SRS Sec 7](</docs/System%20Requirements%20Specification.md#ml_safety_requirement_pattern>) | Done |
-|     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | [SRS Sec 8](</docs/System%20Requirements%20Specification.md#ml_safety_requirement_validation_results>) | Done |
-|     [K]   |     ML Safety Requirements Argument                |                 |            2       | [SRS Sec 9](</docs/System%20Requirements%20Specification.md#ml_safety_requirement_argumentation>) | Done |
+|     [E]   |     Safety Requirements Allocated to ML Component  |          2      |            1       | [SRS Sec 3.2](</docs/System Requirements Specification.md#32-safety-requirements-allocated-to-ml-component-e->)    | Done |
+|     [F]   |     ML Assurance Scoping Argument Pattern          |          1      |                    | [SRS Sec 5](</docs/System Requirements Specification.md#5-ml-assurance-scoping-argument-pattern-f->)    | Done |
+|     [G]   |     ML Safety Assurance Scoping Argument           |                 |            1       | [SRS Sec 6](</docs/System Requirements Specification.md#6-ml-safety-assurance-scoping-argument-g->)    | Done |
+|     [H]   |     ML Safety Requirements                         |       3, 4, 5   |            2       | [SRS Sec 3.3](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) | Done |
+|     [I]   |     ML Safety Requirements Argument Pattern        |          2      |                    | [SRS Sec 7](</docs/System%20Requirements%20Specification.md#7-ml-safety-requirements-argument-pattern-i->) | Done |
+|     [J]   |     ML Safety Requirements Validation Results      |                 |            2       | [SRS Sec 8](</docs/System%20Requirements%20Specification.md#8-ml-safety-requirements-validation-results-j->) | Done |
+|     [K]   |     ML Safety Requirements Argument                |                 |            2       | [SRS Sec 9](</docs/System%20Requirements%20Specification.md#9-ml-safety-requirements-argument-k->) | Done |
 |     [L]   |     Data Requirements                              |                 |            3       | [DMS Sec 2](</docs/Data Management Specification.md#data_rqts>) | Done |
 |     [M]   | Data Requirements Justification Report             |                 |          3         | [DMS Sec 3](</docs/Data Management Specification.md#data_rqts_just>) | Done |
 |     [N]   | Development Data                                   |                 |          3         | TBD | (M) Hosting needed |
