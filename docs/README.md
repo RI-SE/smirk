@@ -46,7 +46,7 @@ The set of artifacts listed constitutes the safety case for the ML-based object 
 |     [S]   | ML Data Validation Results                         |                 |          3         | [DMS Sec 6](</docs/Data Management Specification.md#data_validation_results>) | Done |
 |     [T]   | ML Data Argument                                   |                 |          3         | [DMS Sec 7](</docs/Data Management Specification.md#data_argument>) | Done |
 |     [U]   | Model Development Log                          |                 |          4         | [MLCS Sec 3](</docs/ML%20Component%20Specification.md#3-model-development-log-u>) | Done |
-|     [V]   | ML Model                                           |       5, 6      |          4         | TBD | (K) Need to upload model |
+|     [V]   | ML Model                                           |       5, 6      |          4         | [Model](https://github.com/RI-SE/smirk/releases/download/v0.99/pedestrian-detection-model.pt) | Done |
 |     [W]   | ML Learning Argument Pattern                   |          4      |                    | [MLCS Sec 5](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>) | Done |
 |     [X]   | Internal Test Results                          |                 |            4       | [Protocols](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Internal%20Test%20Results%20[X]%202022-06-16.pdf) | Done |
 |     [Y]   | ML Learning Argument                           |                 |            4       | [MLCS Sec 6](</docs/ML%20Component%20Specification.md#6-ml-learning-argument-y>) | Done |
