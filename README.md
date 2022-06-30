@@ -36,6 +36,6 @@ External pull requests are welcome, but must be reviewed before they can be merg
 For a longer desciption of the branching model, please refer to our [examples](https://github.com/RI-SE/smirk/blob/main/branching.md).
 
 ## References
-<a id="1">[1]</a> https://ec.europa.eu/digital-single-market/en/news/assessment-list-trustworthy-artificial-intelligence-altai-self-assessment
+<a id="1">[1]</a> https://futurium.ec.europa.eu/en/european-ai-alliance/pages/altai-assessment-list-trustworthy-artificial-intelligence)
 
 <a id="2">[2]</a> https://www.iso.org/standard/70939.html
