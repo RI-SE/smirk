@@ -11,6 +11,7 @@ The following documents are available in this folder.
 
 Supplementary documents
 - [Numbered ALTAI questions](</docs/support/ALTAI_Numbered_Questions_v1.0.pdf>) from the Assessment List for Trustworthy Artificial Intelligence. The European Commission published ALTAI to support self-assessment. The questions were discussed in a related paper on [AI ethics](https://arxiv.org/abs/2103.09051).
+- [Instructions for data generation](https://github.com/RI-SE/smirk/blob/main/docs/generate_data.md). Note that ESI Pro-SiVIC is needed to reproduce the SMIRK data set.
 
 ## Safety Assurance
 
