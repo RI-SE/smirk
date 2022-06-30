@@ -215,5 +215,5 @@ Following the test-based verification approach, the sub-claim G5.3 argues that t
 SMIRK instantiates the ML Verification Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Verification Argument Pattern [BB]](</docs/System%20Test%20Specification.md#5-ml-verification-argument-pattern-bb>), as well as the following artefacts from preceding AMLAS activities:
 
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
-- [Verification Data](TBD) [P]
+- [Verification Data](https://www.ai.se/en/data-factory/datasets/smirk-synthetic-pedestrians-dataset) [P]
 - [ML Model](TBD) [V]
