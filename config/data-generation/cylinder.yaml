@@ -1,0 +1,14 @@
+scenarios:
+  - type: left
+    object:
+      type: cylinder
+      speeds: [4]
+      distances_from_car: "${range:10,101,10}"
+      distances_from_road: [5]
+
+  - type: right
+    object:
+      type: cylinder
+      speeds: [4]
+      distances_from_car: "${range:10,101,10}"
+      distances_from_road: [5]

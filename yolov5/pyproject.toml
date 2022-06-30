@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "yolov5"
+version = "0.1.0"
+description = "Minor packaging for yolov5 to make it installable."
+authors = ["Kasper Socha <kasper.socha@ri.se>"]
+
+[tool.poetry.dependencies]
+matplotlib = "^3.5.0"
+numpy = "~1.18.0"
+opencv-python = "~4.4.0"
+pandas = "^1.3.3"
+Pillow = ">=7.1.2"
+python = "3.7.9"
+PyYAML = "^6.0"
+requests = "^2.26.0"
+scipy = "^1.7.3"
+seaborn = "^0.11.2"
+tensorboard = "^2.7.0"
+tqdm = "^4.62.3"
+
+### See ../requirements-pytorch.txt ###
+#thop
+#torch
+#torchvision
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

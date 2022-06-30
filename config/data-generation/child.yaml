@@ -1,0 +1,33 @@
+scenarios:
+  - 
+    type: 'left'
+    pedestrian:
+      appearance: child
+      speeds: [1,2,3,4]
+      angles: "${range:30,151,20}"
+      distances_from_car: "${range:10,101,10}"
+      distances_from_road: [5]
+  - 
+    type: 'right'
+    pedestrian:
+      appearance: child
+      speeds: [1,2,3,4]
+      angles: "${range:30,151,20}"
+      distances_from_car: "${range:10,101,10}"
+      distances_from_road: [5]
+  - 
+    type: 'towards'
+    max_travel_distance: 90
+    pedestrian:
+      appearance: child
+      speeds: [1,2,3,4]
+      distances_from_car: [100]
+      offsets_from_road_center:  "${range:-3,4,1}"
+  - 
+    type: 'away'
+    max_travel_distance: 90
+    pedestrian:
+      appearance: child
+      speeds: [1,2,3,4]
+      distances_from_car: [10]
+      offsets_from_road_center:  "${range:-3,4,1}"

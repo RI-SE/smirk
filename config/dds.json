@@ -1,0 +1,14 @@
+{
+    "domainid": 15,                         // domain ID must be equivalent to ProSiVIC domain ID
+    "transporttype": "rtpsudp",             // possible transport mode: "tcp", "rtpsudp","shmem"
+    "TCPsettings": {                        // TCP settings mode must be equivalent to  ProSiViC( only used when transporttype is "tcp" )
+        "repository": "localhost:4242",     // Address of ProSiVIC machine. Port number must correspond to proSiVIC setting
+        "local_address": "localhost:"       // Address of the local machine (: is mandatory after ip address to let the port number to OS assignement
+    },
+    "rtpsUDPSettings": {
+        "mode": "multicast"                 // RTPS UDP mode must be equivalent ito ProSiViC ( multicast or unicast)
+    },
+    "shmemSettings": {
+        "port": "4242"                      // port ProSiViC TCP settings ( only used when transporttype is "tcp" )
+    }
+}
