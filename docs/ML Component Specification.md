@@ -151,6 +151,6 @@ Sub-claim G4.3 addresses the approach that was used when developing the model. T
 # 6 ML Learning Argument [Y]
 SMIRK instantiates the ML Learning Argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Learning Argument Pattern [W]](</docs/ML%20Component%20Specification.md#5-ml-model-learning-argument-pattern-w>), as well as the following artifacts from preceding AMLAS activities:
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
-- [Development Data](TBD) [N]
-- [Internal Test Data](TBD) [O]
+- [Development Data](https://www.ai.se/en/data-factory/datasets/smirk-synthetic-pedestrians-dataset) [N]
+- [Internal Test Data](https://www.ai.se/en/data-factory/datasets/smirk-synthetic-pedestrians-dataset) [O]
   
