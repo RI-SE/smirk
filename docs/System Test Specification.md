@@ -216,4 +216,4 @@ SMIRK instantiates the ML Verification Argument through a subset of the artifact
 
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
 - [Verification Data](https://www.ai.se/en/data-factory/datasets/smirk-synthetic-pedestrians-dataset) [P]
-- [ML Model](TBD) [V]
+- [ML Model](https://github.com/RI-SE/smirk/releases/download/v0.99/pedestrian-detection-model.pt) [V]
