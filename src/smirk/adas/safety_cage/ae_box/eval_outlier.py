@@ -25,8 +25,6 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import torch  # noqa
-from alibi_detect.od.ae import OutlierAE
-from alibi_detect.utils.saving import load_detector
 from PIL import Image
 from tqdm import tqdm
 
@@ -35,10 +33,15 @@ from yolov5.utils.augmentations import letterbox
 
 
 def evaluate_outlier(
-    pedestrian_results_path: str,
-    model_path: str,
+    pedestrian_results_path: Path,
+    model_path: Path,
     batch_size=1000,
 ) -> None:
+    # NOTE: Speed up cli.
+    # TODO: Try lazy loading sub commands instead.
+    from alibi_detect.od.ae import OutlierAE
+    from alibi_detect.utils.saving import load_detector
+
     save_dir = paths.temp_dir_path / "ae_box" / f"{int(time())}_eval_outlier"
     save_dir.mkdir(parents=True)
     model = cast(OutlierAE, load_detector(model_path))
@@ -131,4 +134,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    evaluate_outlier(args.data, args.weights)
+    evaluate_outlier(Path(args.data), Path(args.weights))

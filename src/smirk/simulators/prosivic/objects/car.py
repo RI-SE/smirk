@@ -18,10 +18,10 @@
 from enum import Enum
 from typing import List
 
-import ProSivicDDS as psvdds
-
 import smirk.simulators.prosivic.utils as utils
 from smirk.simulators.prosivic.simulation import Simulation
+
+from ..psvdds import psvdds
 
 
 class CruiseControlPositions(Enum):

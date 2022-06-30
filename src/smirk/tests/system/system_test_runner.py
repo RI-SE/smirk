@@ -16,16 +16,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 import dataclasses
-from dataclasses import dataclass
 from datetime import datetime
+from pathlib import Path
 from time import time
 from typing import Dict, Iterable, List, Union
 
 import numpy as np
 import pandas as pd
+from omegaconf import OmegaConf
 from PIL import Image
+from pydantic.dataclasses import dataclass
 
-from smirk.adas.smirk import Smirk
 from smirk.config import paths
 from smirk.simulators.prosivic.scenes.simple_aeb_scene import SimpleAebScene
 
@@ -58,9 +59,14 @@ SystemTestConfiguration = Union[PedestrianTestConfiguration, ObjectTestConfigura
 
 
 class SystemTestRunner:
-    def __init__(self, simulation_step_size=1, min_car_speed=0.1):
+    def __init__(self, simulation_step_size=1, min_car_speed=0.1, add_noise=False):
+        # NOTE: Speeds up cli.
+        # TODO: Look for a better solution, lazy sub commands?.
+        from smirk.adas.smirk import Smirk
+
         self.simulation_step_size = simulation_step_size
         self.min_car_speed = min_car_speed
+        self.add_noise = add_noise
 
         self.scene = SimpleAebScene()
         self.smirk = Smirk()
@@ -69,18 +75,32 @@ class SystemTestRunner:
         )
         self.img_save_dir.mkdir(parents=True)
 
-    def run_all(
-        self, configurations: Iterable[SystemTestConfiguration], add_noise: bool = False
-    ):
+    def run_all(self, configurations: Iterable[SystemTestConfiguration]):
         for configuration in configurations:
-            self.run_configuration(configuration, add_noise)
+            self.run_configuration(configuration)
 
-    def add_noise(self, scenario_params: Dict):
+    def add_noise_to_params(self, scenario_params: Dict):
         for k, v in scenario_params.items():
             if type(v) in [int, float]:
                 scenario_params[k] = v * np.random.uniform(0.9, 1.1)
 
-    def run_configuration(self, test_config: SystemTestConfiguration, add_noise: bool):
+    def run_from_file(self, test_config: Path):
+        cfg = OmegaConf.load(test_config)
+        configurations: List[SystemTestConfiguration] = []
+
+        for scenario in cfg.scenarios:
+            if scenario.type == "pedestrian":
+                configurations.append(
+                    PedestrianTestConfiguration(**scenario.parameters)
+                )
+            elif scenario.type == "object":
+                configurations.append(ObjectTestConfiguration(**scenario.parameters))
+            else:
+                raise Exception("Unknown scenario type")
+
+        self.run_all(configurations)
+
+    def run_configuration(self, test_config: SystemTestConfiguration):
         results: List[Dict] = []
 
         param_dict = dataclasses.asdict(test_config)
@@ -88,8 +108,8 @@ class SystemTestRunner:
         scenario_save_dir = self.img_save_dir / test_config.scenario_id
         scenario_save_dir.mkdir(parents=True)
 
-        if add_noise:
-            self.add_noise(param_dict)
+        if self.add_noise:
+            self.add_noise_to_params(param_dict)
 
         if isinstance(test_config, PedestrianTestConfiguration):
             self.scene.setup_pedestrian_scenario(**param_dict)

@@ -17,22 +17,33 @@
 #
 from pathlib import Path
 
-project_root_path = Path(__file__).parents[3]
+import click
 
-temp_dir_path = project_root_path / "temp"
-default_data_dir_path = temp_dir_path / "data"
+import smirk.config.paths
+from smirk.tests.system.system_test_runner import SystemTestRunner
 
-example_dir_path = project_root_path / "examples"
-example_data_generation_config = example_dir_path / "data-generation-config.yaml"
 
-default_system_test_config = (
-    project_root_path / "config" / "system_tests" / "smirk-scenario-tests.yaml"
+@click.command()
+@click.option(
+    "-c",
+    "--config",
+    "config_path",
+    type=click.Path(
+        exists=True, file_okay=True, dir_okay=False, resolve_path=True, path_type=Path
+    ),
+    default=smirk.config.paths.default_system_test_config,
+    help="Path to system test config file.",
 )
-
-model_dir_path = project_root_path / "models"
-yolo_model = model_dir_path / "yolo.pt"
-vae_model = model_dir_path / "vae"
-ae_box_model = model_dir_path / "ae_box"
-
-config_dir_path = project_root_path / "config"
-prosivic_dds_config_path = config_dir_path / "dds.json"
+@click.option(
+    "-n",
+    "--noisy",
+    is_flag=True,
+    default=False,
+    help="Add random jitter in the range from -10%% to +10%% to all numerical values.",
+)
+def test(config_path, noisy):
+    """
+    System simulator testing.
+    """
+    runner = SystemTestRunner(add_noise=noisy)
+    runner.run_from_file(config_path)

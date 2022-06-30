@@ -19,9 +19,10 @@ from dataclasses import dataclass
 from typing import Any
 
 import numpy as np
-import ProSivicDDS as psvdds
 
 from smirk.simulators.prosivic.simulation import Simulation
+
+from ..psvdds import psvdds
 
 
 @dataclass

@@ -15,10 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-import ProSivicDDS as psvdds
+
 
 import smirk.config.paths as paths
 from smirk.simulators.prosivic.prosivic_tcp import ProsivicTCP
+
+from .psvdds import psvdds
 
 
 class Simulation:

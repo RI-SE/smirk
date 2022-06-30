@@ -19,10 +19,10 @@ import math
 from dataclasses import dataclass
 from uuid import uuid4
 
-import ProSivicDDS as psvdds
-
 from smirk.simulators.prosivic.objects.position import Position
 from smirk.simulators.prosivic.simulation import Simulation
+
+from ..psvdds import psvdds
 
 
 @dataclass

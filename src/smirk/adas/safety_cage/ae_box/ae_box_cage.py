@@ -18,7 +18,6 @@
 from typing import Any, Dict, cast
 
 import numpy as np
-import tensorflow as tf
 
 import smirk.config.paths as paths
 from smirk.adas.safety_cage.safety_cage import SafetyCage
@@ -31,6 +30,8 @@ class AeBoxCage(SafetyCage):
     IMG_SIZE = [160, 64]
 
     def __init__(self) -> None:
+        import tensorflow as tf
+
         for gpu in tf.config.experimental.list_physical_devices("GPU"):
             tf.config.experimental.set_memory_growth(gpu, True)
 

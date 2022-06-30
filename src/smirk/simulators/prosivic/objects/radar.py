@@ -19,10 +19,10 @@ import math
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
-import ProSivicDDS as psvdds
-
 import smirk.simulators.prosivic.utils as utils
 from smirk.shared.radar_detection import RadarDetection
+
+from ..psvdds import psvdds
 
 
 @dataclass

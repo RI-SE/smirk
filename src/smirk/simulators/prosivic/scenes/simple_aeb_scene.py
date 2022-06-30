@@ -75,6 +75,7 @@ class SimpleAebScene:
     DISTANCE_OBSERVER_NAME = "collision_observer"
     ROAD_LEFT_Y = 2.8
     ROAD_RIGHT_Y = -2.8
+    COLLISION_OBSERVER_OUTPUT = "collision_observer.csv"
 
     def __init__(self) -> None:
         self.simulation = Simulation()

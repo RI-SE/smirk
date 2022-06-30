@@ -81,4 +81,4 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    eval_with_detector(args.data, args.conf, args.outlier, args.distance)
+    eval_with_detector(Path(args.data), args.conf, args.outlier, args.distance)

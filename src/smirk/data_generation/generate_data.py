@@ -15,11 +15,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-import argparse
 import pickle
 import shutil
 from pathlib import Path
-from time import sleep, time
+from time import sleep
 from typing import List, Optional, cast
 
 import pandas as pd
@@ -40,6 +39,8 @@ from smirk.data_generation.scenario import (
 )
 from smirk.simulators.prosivic.scenes.simple_aeb_scene import SimpleAebScene
 from smirk.simulators.prosivic.supervisor import Supervisor
+
+# TODO: Refactor: Extract class
 
 MAX_SCENARIO_RETRIES = 10
 MIN_EXPECTED_FRAMES = 10
@@ -67,9 +68,9 @@ def step_until_end_condition(scenario: Scenario, scene: SimpleAebScene) -> None:
             return
 
 
-def find_scenario_dir(id: str) -> Optional[Path]:
+def find_scenario_dir(id: str, prosivic_sensor_dir: Path) -> Optional[Path]:
     # PERF: Use prosivic session name to reduce files we need to search.
-    search_res = sorted(paths.prosivic_sensor_folder.glob(f"**/*{id}"))
+    search_res = sorted(prosivic_sensor_dir.glob(f"**/*{id}"))
 
     if not search_res:
         return None
@@ -82,9 +83,15 @@ def find_scenario_dir(id: str) -> Optional[Path]:
     return search_res[0]
 
 
-def read_scenario_data_from_disk(scenario_id: str, result_dir: Path, img_ext="png"):
+def read_scenario_data_from_disk(
+    scenario_id: str,
+    result_dir: Path,
+    prosivic_sensor_dir: Path,
+    scene: SimpleAebScene,
+    img_ext="png",
+):
     """Read scenario data prosivic writes to disk."""
-    out_dir = find_scenario_dir(scenario_id)
+    out_dir = find_scenario_dir(scenario_id, prosivic_sensor_dir)
 
     if not out_dir:
         raise Exception(f"Could not find out dir for {scenario_id}")
@@ -126,26 +133,28 @@ def read_scenario_data_from_disk(scenario_id: str, result_dir: Path, img_ext="pn
         )
 
     distance_data = pd.read_csv(
-        new_path / paths.prosivic_distance_out_filename, sep=";", comment="%"
+        new_path / scene.COLLISION_OBSERVER_OUTPUT, sep=";", comment="%"
     )
 
     return ScenarioResults(camera_frames, distance_data)
 
 
-def delete_scenario_dir(scenario_id: str):
-    scenario_dir = find_scenario_dir(scenario_id)
+def delete_scenario_dir(scenario_id: str, prosivic_sensor_dir: Path):
+    scenario_dir = find_scenario_dir(scenario_id, prosivic_sensor_dir)
 
     if scenario_dir:
         shutil.rmtree(scenario_dir)
 
 
-def create_result_dir(name: str, resume: bool) -> Path:
-    result_dir = paths.prosivic_sensor_folder / name
+def create_result_dir(name: str, data_dir: Path, resume: bool) -> Path:
+    result_dir = data_dir / name
 
     if not resume and result_dir.exists():
-        result_dir = result_dir.with_name(f"{result_dir.name}_{int(time())}")
+        raise Exception(
+            f"Data for the {name} configuration already exists. Try resuming it instead."
+        )
 
-    result_dir.mkdir(exist_ok=resume)
+    result_dir.mkdir(exist_ok=resume, parents=True)
 
     return result_dir
 
@@ -186,8 +195,14 @@ def setup_scenario_in_scene(scenario: Scenario, scene: SimpleAebScene):
         raise ValueError(f"Unexpected scenario type {scenario}")
 
 
-def generate_data(config_path: Path, resume: bool) -> None:
-    prosivic_supervisor = Supervisor(paths.prosivic_exe_path)
+def generate_data(
+    prosivic_exe_path: Path,
+    prosivic_sensor_dir: Path,
+    config_path: Path,
+    output_path: Path,
+    resume: bool,
+) -> None:
+    prosivic_supervisor = Supervisor(prosivic_exe_path)
     scene = SimpleAebScene()
 
     if resume:
@@ -197,7 +212,9 @@ def generate_data(config_path: Path, resume: bool) -> None:
         write_scenario_pickle(config_path, scenarios)
 
     result_rows = []
-    result_dir = create_result_dir(config_path.stem, resume)
+    result_dir = create_result_dir(
+        name=config_path.stem, data_dir=output_path, resume=resume
+    )
 
     for scenario in scenarios:
         for _ in range(MAX_SCENARIO_RETRIES):
@@ -209,7 +226,9 @@ def generate_data(config_path: Path, resume: bool) -> None:
                     # Make sure prosivic disk lock is released
                     scene.simulation.stop()
 
-                scenario.results = read_scenario_data_from_disk(scenario.id, result_dir)
+                scenario.results = read_scenario_data_from_disk(
+                    scenario.id, result_dir, prosivic_sensor_dir, scene
+                )
 
                 # TODO: Better way to check if scenario is not complete?
                 #       Seems to have at most 1-2 frames when this happens.
@@ -225,39 +244,6 @@ def generate_data(config_path: Path, resume: bool) -> None:
 
                 prosivic_supervisor.restart()
                 scene.reload()
-                delete_scenario_dir(scenario.id)
+                delete_scenario_dir(scenario.id, prosivic_sensor_dir)
 
     pd.DataFrame(result_rows).to_csv(result_dir / LABELS_FILENAME, index=False)
-
-
-def assert_all_paths_exist(paths: List[Path]):
-    for path in paths:
-        if not path.exists():
-            raise Exception(f"Could not find: {path.absolute()}")
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-c",
-        "--config",
-        action="append",
-        required=True,
-        help="path to config file",
-    )
-    parser.add_argument(
-        "-r", "--resume", action="store_true", help="resume previous run"
-    )
-
-    args = parser.parse_args()
-
-    config_paths = [Path(path) for path in args.config]
-    assert_all_paths_exist(config_paths)
-
-    if args.resume:
-        assert_all_paths_exist(
-            [get_pickle_path_from_config(path) for path in config_paths]
-        )
-
-    for path in config_paths:
-        generate_data(path, args.resume)

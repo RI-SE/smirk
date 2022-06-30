@@ -70,8 +70,8 @@ NON_PEDESTIAN_OBJECTS = {"box", "sphere", "pyramid", "cone", "cylinder"}
 
 @torch.no_grad()
 def evaluate(
-    data: str,
-    weights: str,
+    data: Path,
+    weights: Path,
     conf_threshold: float = None,
     batch_size: int = 256,
     img_size: int = 640,
@@ -82,6 +82,7 @@ def evaluate(
     Args:
         data_dir: Dataset dir path
         weights: Path to model.pt
+        conf_threshold: Confidence threshold
         batch_size: Batch size
         img_size: Inference size (pixels)
         iou_thres: Non-max supression IoU threshold
@@ -98,7 +99,7 @@ def evaluate(
     img_size = check_img_size(img_size, s=model.stride)  # type:ignore
     model.warmup(imgsz=(1, 3, img_size, img_size))
 
-    metadata = pd.read_csv(Path(data) / "metadata.csv")
+    metadata = pd.read_csv(data / "metadata.csv")
 
     dataloader = create_dataloader(
         data,
@@ -187,7 +188,7 @@ def evaluate(
     augmented_res_df = pd.DataFrame.from_dict(augmented_res, orient="index")
     augmented_res_df.sort_values(by=["run_id", "frame_index"], inplace=True)
     augmented_res_df.reset_index(inplace=True, drop=True)
-    augmented_res_df.to_pickle(save_dir / f"{Path(data).stem}-augmented-res.pkl")
+    augmented_res_df.to_pickle(save_dir / f"{data.stem}-augmented-res.pkl")
 
     results_by_slice(augmented_res_df, save_dir, conf_threshold)
 
@@ -613,4 +614,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    evaluate(args.data, args.weights, args.conf)
+    evaluate(Path(args.data), Path(args.weights), args.conf)

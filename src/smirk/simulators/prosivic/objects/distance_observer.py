@@ -17,10 +17,10 @@
 #
 from dataclasses import dataclass
 
-import ProSivicDDS as psvdds
-
 from smirk.simulators.prosivic.objects.position import Position
 from smirk.simulators.prosivic.simulation import Simulation
+
+from ..psvdds import psvdds
 
 
 @dataclass

@@ -15,24 +15,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-from pathlib import Path
+from typing import Any
 
-project_root_path = Path(__file__).parents[3]
+psvdds: Any = None
 
-temp_dir_path = project_root_path / "temp"
-default_data_dir_path = temp_dir_path / "data"
+try:
+    import ProSivicDDS as psvdds
+except ImportError:
+    # TODO: Temporary workaround to get cli to work even when prosivic dds isn't available.
+    pass
 
-example_dir_path = project_root_path / "examples"
-example_data_generation_config = example_dir_path / "data-generation-config.yaml"
 
-default_system_test_config = (
-    project_root_path / "config" / "system_tests" / "smirk-scenario-tests.yaml"
-)
-
-model_dir_path = project_root_path / "models"
-yolo_model = model_dir_path / "yolo.pt"
-vae_model = model_dir_path / "vae"
-ae_box_model = model_dir_path / "ae_box"
-
-config_dir_path = project_root_path / "config"
-prosivic_dds_config_path = config_dir_path / "dds.json"
+def is_psv_dds_available():
+    return psvdds is not None

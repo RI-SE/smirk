@@ -1,0 +1,444 @@
+scenarios:
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: child
+      pedestrian_start_x: 21.5
+      pedestrian_start_y: 5
+      pedestrian_angle: -45
+      pedestrian_speed: 1
+      car_speed: 3.47
+      scenario_id: TC-1
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: child
+      pedestrian_start_x: 26
+      pedestrian_start_y: 5
+      pedestrian_angle: -90
+      pedestrian_speed: 1
+      car_speed: 5.78
+      scenario_id: TC-2
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: child
+      pedestrian_start_x: 38
+      pedestrian_start_y: 0
+      pedestrian_angle: 0
+      pedestrian_speed: 0
+      car_speed: 14
+      scenario_id: TC-3
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: child
+      pedestrian_start_x: 54.5
+      pedestrian_start_y: -5
+      pedestrian_angle: 135
+      pedestrian_speed: 3
+      car_speed: 18.9
+      scenario_id: TC-4
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_business
+      pedestrian_start_x: 20
+      pedestrian_start_y: 0
+      pedestrian_angle: 180
+      pedestrian_speed: 3
+      car_speed: 16
+      scenario_id: TC-5
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_business
+      pedestrian_start_x: 23.5
+      pedestrian_start_y: 5
+      pedestrian_angle: -45
+      pedestrian_speed: 1
+      car_speed: 3.73
+      scenario_id: TC-6
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_business
+      pedestrian_start_x: 46
+      pedestrian_start_y: 5
+      pedestrian_angle: -135
+      pedestrian_speed: 1
+      car_speed: 5.8
+      scenario_id: TC-7
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_business
+      pedestrian_start_x: 50
+      pedestrian_start_y: -5
+      pedestrian_angle: 90
+      pedestrian_speed: 1
+      car_speed: 10
+      scenario_id: TC-8
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_casual
+      pedestrian_start_x: 15
+      pedestrian_start_y: 0
+      pedestrian_angle: 135
+      pedestrian_speed: 0
+      car_speed: 11
+      scenario_id: TC-9
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_casual
+      pedestrian_start_x: 24.5
+      pedestrian_start_y: -5
+      pedestrian_angle: 135
+      pedestrian_speed: 1
+      car_speed: 3.14
+      scenario_id: TC-10
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_casual
+      pedestrian_start_x: 45
+      pedestrian_start_y: 5
+      pedestrian_angle: -135
+      pedestrian_speed: 1
+      car_speed: 5.66
+      scenario_id: TC-11
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_casual
+      pedestrian_start_x: 46
+      pedestrian_start_y: 5
+      pedestrian_angle: -90
+      pedestrian_speed: 1
+      car_speed: 10.22
+      scenario_id: TC-12
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: female_casual
+      pedestrian_start_x: 50.5
+      pedestrian_start_y: 6
+      pedestrian_angle: -45
+      pedestrian_speed: 3
+      car_speed: 18.6
+      scenario_id: TC-13
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_business
+      pedestrian_start_x: 21
+      pedestrian_start_y: -5
+      pedestrian_angle: 45
+      pedestrian_speed: 1
+      car_speed: 3.68
+      scenario_id: TC-14
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_business
+      pedestrian_start_x: 25
+      pedestrian_start_y: 5
+      pedestrian_angle: -90
+      pedestrian_speed: 3
+      car_speed: 15
+      scenario_id: TC-15
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_business
+      pedestrian_start_x: 26.5
+      pedestrian_start_y: 5
+      pedestrian_angle: -135
+      pedestrian_speed: 1
+      car_speed: 3.46
+      scenario_id: TC-16
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_business
+      pedestrian_start_x: 54
+      pedestrian_start_y: 0
+      pedestrian_angle: 0
+      pedestrian_speed: 1
+      car_speed: 9
+      scenario_id: TC-17
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_casual
+      pedestrian_start_x: 34
+      pedestrian_start_y: -5
+      pedestrian_angle: 45
+      pedestrian_speed: 1
+      car_speed: 5.52
+      scenario_id: TC-18
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_casual
+      pedestrian_start_x: 34.5
+      pedestrian_start_y: 5
+      pedestrian_angle: -135
+      pedestrian_speed: 1
+      car_speed: 4.71
+      scenario_id: TC-19
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_casual
+      pedestrian_start_x: 47.5
+      pedestrian_start_y: 4
+      pedestrian_angle: -45
+      pedestrian_speed: 1
+      car_speed: 10.3
+      scenario_id: TC-20
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_casual
+      pedestrian_start_x: 74
+      pedestrian_start_y: 0
+      pedestrian_angle: 90
+      pedestrian_speed: 0
+      car_speed: 19
+      scenario_id: TC-21
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_construction
+      pedestrian_start_x: 10
+      pedestrian_start_y: 5
+      pedestrian_angle: -90
+      pedestrian_speed: 3
+      car_speed: 6
+      scenario_id: TC-22
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_construction
+      pedestrian_start_x: 17.5
+      pedestrian_start_y: -5
+      pedestrian_angle: 45
+      pedestrian_speed: 1
+      car_speed: 3.46
+      scenario_id: TC-23
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_construction
+      pedestrian_start_x: 39
+      pedestrian_start_y: 5
+      pedestrian_angle: -135
+      pedestrian_speed: 1
+      car_speed: 4.81
+      scenario_id: TC-24
+
+  - type: pedestrian
+    scene: simple_aeb_scene
+    parameters:
+      pedestrian_appearance: male_construction
+      pedestrian_start_x: 86.5
+      pedestrian_start_y: 5
+      pedestrian_angle: -135
+      pedestrian_speed: 1
+      car_speed: 12.89
+      scenario_id: TC-25
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: box
+      start_x: 15
+      start_y: 5
+      end_x: 15
+      end_y: -5
+      angle: -90
+      speed: 1
+      car_speed: 3.33
+      scenario_id: TC-26
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: box
+      start_x: 25
+      start_y: 5
+      end_x: 25
+      end_y: -5
+      angle: -90
+      speed: 3
+      car_speed: 13.64
+      scenario_id: TC-27
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: box
+      start_x: 50
+      start_y: -5
+      end_x: 50
+      end_y: 5
+      angle: 90
+      speed: 1
+      car_speed: 9
+      scenario_id: TC-28
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: cone
+      start_x: 22
+      start_y: 5
+      end_x: 22
+      end_y: -5
+      angle: -90
+      speed: 1
+      car_speed: 4
+      scenario_id: TC-29
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: cone
+      start_x: 25
+      start_y: -5
+      end_x: 25
+      end_y: 5
+      angle: 90
+      speed: 3
+      car_speed: 15
+      scenario_id: TC-30
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: cone
+      start_x: 29
+      start_y: 5
+      end_x: 29
+      end_y: -5
+      angle: -90
+      speed: 1
+      car_speed: 5.27
+      scenario_id: TC-31
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: cone
+      start_x: 80
+      start_y: 5
+      end_x: 80
+      end_y: -5
+      angle: -90
+      speed: 1
+      car_speed: 17.78
+      scenario_id: TC-32
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: pyramid
+      start_x: 15
+      start_y: 5
+      end_x: 15
+      end_y: -5
+      angle: -90
+      speed: 1
+      car_speed: 3.33
+      scenario_id: TC-33
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: pyramid
+      start_x: 25
+      start_y: 5
+      end_x: 25
+      end_y: -5
+      angle: -90
+      speed: 3
+      car_speed: 15
+      scenario_id: TC-34
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: pyramid
+      start_x: 93
+      start_y: -5
+      end_x: 93
+      end_y: 5
+      angle: 90
+      speed: 1
+      car_speed: 16.91
+      scenario_id: TC-35
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: sphere
+      start_x: 10
+      start_y: -5
+      end_x: 10
+      end_y: 5
+      angle: 90
+      speed: 3
+      car_speed: 6.67
+      scenario_id: TC-36
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: sphere
+      start_x: 29
+      start_y: 5
+      end_x: 29
+      end_y: -5
+      angle: -90
+      speed: 3
+      car_speed: 17.4
+      scenario_id: TC-37
+
+  - type: object
+    scene: simple_aeb_scene
+    parameters:
+      object_type: sphere
+      start_x: 72
+      start_y: 5
+      end_x: 72
+      end_y: -5
+      angle: -90
+      speed: 1
+      car_speed: 14.4
+      scenario_id: TC-38
