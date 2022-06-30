@@ -124,7 +124,7 @@ First, we manually prepared two SMIRK datasets to match the input format of YOLO
 
 Second, we trained the YOLOv5s model using the development data (as specified in dataset.yaml) from the pretrained weights in yolov5s.pt. The model was trained for 3 epochs with a batch-size of 16. The [Internal Test Results [X]](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Internal%20Test%20Results%20[X]%202022-06-16.pdf) provides evidence that the ML model satisfies the requirements on the internal test data. 
 
-The final pedestrian detection model, i.e., the ML model [V], has a size of ~14 MB.
+The [final pedestrian detection model](https://github.com/RI-SE/smirk/releases/download/v0.99/pedestrian-detection-model.pt), i.e., the ML model [V], has a size of ~14 MB.
 
 # 4 Outlier Detection for the Safety Cage Architecture <a name="outlier_detection_safety_cage_architecture"></a>
 SMIRK relies on the open-source third-party library [Alibi Detect](https://github.com/SeldonIO/alibi-detect) from Seldon for outlier detection. The outlier detection is part of the safety cage architecture. Alibi Detect is a Python library that provides several algorithms for outlier, adversarial, and drift detection for various types of data (Klaise, 2020). For SMIRK, we trained Alibi Detect's autoencoder for outlier detection, with three convolutional and deconvolutional layers for the encoder and decoder respectively. 
