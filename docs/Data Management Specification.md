@@ -74,6 +74,12 @@ Revision History
 <td>Beta Release - Ready for peer-review</th>
 <td>0.99</th>
 </tr>
+<tr>
+<td>Markus Borg, Kasper Socha</th>
+<td>2022-09-13</th>
+<td>Updated after journal review according to Issue <a href="https://github.com/RI-SE/smirk/issues/26">#26</a>.</th>
+<td>0.991</th>
+</tr>
 </table>
 
 # 1 Introduction
@@ -223,7 +229,7 @@ The SMIRK data collection campaign focuses on generation of annotated data in ES
 
 For each listed item, there is a YAML configuration file used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
 
-In total, we generate data representing 8 x 616 = 4,928 execution scenarios with positive examples and 5 x 40 = 200 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 185 GB of image data, annotations, and meta-data (including bounding boxes).
+In total, we generate data representing 8 x 616 = 4,928 execution scenarios with positive examples and 5 x 20 = 100 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 185 GB of image data, annotations, and meta-data (including bounding boxes).
 
 The figure below shows the visual appearance of all assets used from the ESI Pro-SiVIC object catalog. 
 
@@ -275,8 +281,9 @@ OOD examples:
 - [N4] Pyramid
 - [N5] Cylinder
 
-For each OOD example, we specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
+For each OOD example, we specify the execution of 20 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
 
+- Crossing direction: [left, right]
 - Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
 ## 4.2 Preprocessing
