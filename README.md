@@ -15,7 +15,7 @@ SMIRK is a research prototype under development that facilitates research on ver
 ## Purpose and Limitations
 The SMIRK safety case is restricted to the novel challenges introduced by ML. The development adheres to the overall process described in the publicly available  specification *ISO/PAS 21448:2019 Road vehicles — Safety of the intended functionality* and we provide ML assurance by following the methodology for *Assurance of Machine Learning for use in Autonomous Systems* (AMLAS). Demonstrating compliance with the quintessential automotive software standard *ISO 26262:2018 Road vehicles — Functional safety* is out of the scope of this research project. We make the simplified assumption that the overall development context embedded the development of the ML-based SMIRK ADAS fulfills all aspects of ISO 26262, e.g., regarding processes, practices, and tools. While we will use third party open-source software in SMIRK (both incorporated as assets in the product and as tool support for software testing), we will not provide any safety assurance of external tools - instead we assume that the development organization has the capability to do so.
 
-## How to cite this work
+## How To Cite This Work
 If you use this software, please cite the peer-reviewed Original Software Publication:
 
 ```
