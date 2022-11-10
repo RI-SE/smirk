@@ -1,0 +1,63 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  SMIRK: A Machine Learning-Based Pedestrian
+  Automatic Emergency Braking System With a Complete
+  Safety Case
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file. To cite the corresponding
+  safety case, please cite: M. Borg et al., “Ergo,
+  SMIRK is Safe: A Safety Case for a Machine Learning
+  Component in a Pedestrian Automatic Emergency Brake
+  System,” arXiv:2204.07874 [cs], 2022.
+type: software
+authors:
+  - given-names: Kasper
+    family-names: Socha
+    email: kasper.socha@ri.se
+    affiliation: RISE Research Institutes of Sweden
+  - given-names: Markus
+    family-names: Borg
+    email: markus.borg@ri.se
+    affiliation: CodeScene
+    orcid: 'https://orcid.org/0000-0001-7879-4371'
+  - given-names: Jens
+    family-names: Henriksson
+    email: jens.henriksson@semcon.com
+    affiliation: Semcon
+identifiers:
+  - type: doi
+    value: 10.1016/j.simpa.2022.100352
+    description: Original Software Publication
+repository-code: 'https://github.com/RI-SE/smirk/'
+url: >-
+  https://www.softwareimpacts.com/article/S2665-9638(22)00068-9/fulltext
+abstract: >-
+  SMIRK is a pedestrian automatic emergency braking
+  system that facilitates research on safety-critical
+  systems embedding machine learning components. As a
+  fully transparent driver-assistance system, SMIRK
+  can support future research on trustworthy AI
+  systems, e.g., verification & validation,
+  requirements engineering, and testing. SMIRK is
+  implemented for the simulator ESI Pro-SiVIC with
+  core components including a radar sensor, a mono
+  camera, a YOLOv5 model, and an anomaly detector.
+  ISO/PAS 21448 SOTIF guided the development, and we
+  present a complete safety case for a restricted ODD
+  using the AMLAS methodology. Finally, all training
+  data used to train the perception system is
+  publicly available.
+keywords:
+  - Automotive demonstrator
+  - Advanced driver-assistance system
+  - Pedestrian automatic emergency braking
+  - Machine learning
+  - Computer vision
+  - Safety case
+license: GPL-3.0
+version: '0.99'
+date-released: '2022-06-30'
