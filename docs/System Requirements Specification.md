@@ -1,4 +1,4 @@
-# System Requirements Specification v0.91
+# System Requirements Specification v0.991
 
 Revision History
 <table>
@@ -47,20 +47,61 @@ Revision History
 <td>0.91</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Markus Borg</td>
+<td>2022-02-16</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/8">#8</a>, <a href="https://github.com/RI-SE/smirk/issues/9">#9</a>, and <a href="https://github.com/RI-SE/smirk/issues/10">#10</a>.
+</td>
+<td>0.92</td>
+</tr>
+<tr>
+<td>Markus Borg</td>
+<td>2022-03-05</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/11">#11</a> and <a href="https://github.com/RI-SE/smirk/issues/12">#12</a>.
+</td>
+<td>0.93</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</td>
+<td>2022-03-15</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/13">#13</a> and <a href="https://github.com/RI-SE/smirk/issues/14">#14</a>.
+</td>
+<td>0.94</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</td>
+<td>2022-04-14</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/16">#16</a> and <a href="https://github.com/RI-SE/smirk/issues/17">#17</a>.
+</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</td>
+<td>2022-04-15</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/13">#13</a>, <a href="https://github.com/RI-SE/smirk/issues/14">#14</a>, and <a href="https://github.com/RI-SE/smirk/issues/19">#19</a>.
+</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha, Jens Henriksson</th>
+<td>2022-06-16</th>
+<td>Beta Release - Ready for peer-review</th>
+<td>0.99</th>
+</tr>
+<tr>
+<td>Markus Borg</th>
+<td>2022-09-13</th>
+<td>Updated after journal review according to Issue <a href="https://github.com/RI-SE/smirk/issues/25">#25</a>.</th>
+<td>0.991</th>
 </tr>
 </table>
 
 # 1 Introduction
-This system requirements specification (SRS) contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
+This system requirements specification (SRS) contains the system requirements for SMIRK – a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML). SMIRK is an advanced driver-assistance system (ADAS), intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparency under an open-source software (OSS) license. We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC.
 
 ## 1.1 Purpose ##
 The SMIRK *product goal* is to assist the driver on country roads in rural areas by performing emergency braking in the case of an imminent collision with a pedestrian. The level of automation offered by SMIRK corresponds to SAE Level 1 - Driver Assistance, i.e., "the driving mode-specific execution by a driver assistance system of either steering or acceleration/deceleration." SMIRK is developed with a focus on evolvability, thus future versions might include steering and thus comply with SAE Level 2. This document provides the foundation for the SMIRK minimum viable product (MVP), i.e., an implementation limited to a highly restricted operational design domain (ODD).
 
-The *project goal* of the SMIRK development endeavor, as part of the research project SMILE3, is twofold. First, the project team will benefit substantially from having a concrete example of ADAS development as a basis for discussion. We will all learn how challenging it is to perform safety case development for ML-based perception systems by practically doing it for the SMIRK MVP. Nothing can substitute the experience of a hands-on engineering effort. Second, SMIRK will be provided as a completely open research protoype that can be used as a case under study in future research studies. As we keep expanding the ODD beyond the MVP limitations, the SMIRK ADAS can be used to study various aspects of AI engineering. For our subsequent research projects, we expect to primarily study the efficiency and effectiveness of various solution proposals related to software testing, verification, and validation.
+The *project goal* of the SMIRK development endeavor, as part of the research project SMILE3, is twofold. First, the project team will benefit substantially from having a concrete example of ADAS development as a basis for discussion. We will all learn how challenging it is to perform safety case development for ML-based perception systems by practically doing it for the SMIRK MVP. Nothing can substitute the experience of a hands-on engineering effort. Second, SMIRK will be provided as a completely open research prototype that can be used as a case under study in future research studies. As we keep expanding the ODD beyond the MVP limitations, the SMIRK ADAS can be used to study various aspects of AI engineering. For our subsequent research projects, we expect to primarily study the efficiency and effectiveness of various solution proposals related to software testing, verification, and validation.
 
 ## 1.2 Document Conventions ##
 This document largely follows the structure proposed in [IEEE 830-1998 - IEEE Recommended Practice for Software Requirements Specifications](https://standards.ieee.org/standard/830-1998.html) and the [template](https://www.modernanalyst.com/Resources/Templates/tabid/146/ID/497/Karl-Wiegers-Software-Requirements-Specification-SRS-Template.aspx) provided by Wiegers. While the standard has been replaced by [ISO/IEC/IEEE 29148:2011](https://www.iso.org/standard/45171.html), the old standard serves the SMIRK development well.
@@ -101,14 +142,14 @@ The entire document is relevant to the internal development organization. Specif
 
 **External stakeholders**
 - Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
-- Researchers: Academic and industrial reserachers active in ML safety are likely to find most value in [Section 3 (System Requirements)](#3-system-requirements).
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in [Section 3 (System Requirements)](#3-system-requirements).
 - Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Assurance Scoping Argument Pattern)](#5-ml-assurance-scoping-argument-pattern-f-).
 - Curious readers: For an overview of SMIRK, read [Section 1 (Introduction)](#1-introduction) and [Section 2 (System Description)](#2-system-description-c-).
 
 ## 1.5 Product Scope ##
 SMIRK is an ADAS that is intended to co-exist with other ADAS in a vehicle. We expect that sensors and actuators will be shared among different systems. SMIRK currently implements its own perception system based on radar and camera input. In future versions, it is likely that a central perception system operating on the vehicle will provide reliable input to SMIRK. This is not yet the case for the SMIRK MVP and this version of the SRS does not specify any requirements related to shared resources. The SMIRK scope is further explained through the context diagram in [Section 2.1](#21-product-perspective).
 
-Product development inevitably necessitates quality trade-offs. While we have not conducted a systematic quality requirements prioritization, such as an analytical hierarchy process workshop (Kassab and Kilicay-Ergin, 2015), this section shares our general aims with SMIRK. The software product quality model defined in the ISO/IEC 25010 standard consists of eight characteristics. Furthermore, as recommend in requirements engineering research (Horkoff, 2019), we add the two novel quality characteristics explainability and fairness. For each characteristic, we share how important it is considered during the development and assign it a low, medium or high priority. Our priorities influence architectural decisions in SMIRK and support elicitation of architecturally significant requirements (Chen et al., 2012).
+Product development inevitably necessitates quality trade-offs. While we have not conducted a systematic quality requirements prioritization, such as an analytical hierarchy process workshop (Kassab and Kilicay-Ergin, 2015), this section shares our general aims with SMIRK. The software product quality model defined in the ISO/IEC 25010 standard consists of eight characteristics. Furthermore, as recommend in requirements engineering research (Horkoff, 2019), we add the two novel quality characteristics interpretability and fairness. For each characteristic, we share how important it is considered during the development and assign it a low, medium or high priority. Our priorities influence architectural decisions in SMIRK and support elicitation of architecturally significant requirements (Chen et al., 2012).
 
 - **Functional suitability**: No matter how functionally restricted the SMIRK MVP is, it must meet the stated and implied needs of a prototype ADAS. This quality characteristic is fundamentally important. **[High priority]**
 - **Performance efficiency**: When deployed in the simulated environment, SMIRK must be able to process input, conduct ML inference, and possibly commission emergency braking in realistic driving scenarios. As a real-time system, SMIRK must be sufficiently fast and finding when performance efficiency reached excessive levels is vital in the requirements engineering process. **[Medium priority]**
@@ -118,7 +159,7 @@ Product development inevitably necessitates quality trade-offs. While we have no
 - **Security**: Not prioritized in the SMIRK MVP. ISO/PAS 21448 is limited to "reasonably foreseeable misuse" but does not address antagonistic attacks. While safety and security shall be co-engineered, we leave this quality characteristic as future work. **[Low priority]**
 - **Maintainability**: As mentioned in [Section 1.1 Purpose](#11-purpose), evolvability from the SMIRK MVP is a key concern. Consequently, maintainability is important, although not more important than functional suitability and reliability. **[Medium priority]**
 - **Portability**: We aim to develop SMIRK in a manner that allows porting the ADAS to both other simulated environments and to physical demonstration platforms in future projects. We consider this  quality characteristic during the SMIRK development, but it is not a primary concern. **[Low priority]**
-- **Explainability**: Explainability is an important characteristic for any cyber-physical system, but the challenge grows with the introduction of DNNs. There is considerable research momentum on “Explainable AI” and we expect that new findings will be applicable to SMIRK. For the MVP development, however, our explainability focus is restricted to the auditability resulting in following AMLAS. **[Medium priority]**
+- **Interpretability**: Interpretability is an important characteristic for any cyber-physical system, but the challenge grows with the introduction of DNNs. There is considerable research momentum on “Explainable AI” and we expect that new findings will be applicable to SMIRK. For the MVP development, however, our interpretability focus is restricted to the auditability resulting in following AMLAS. **[Medium priority]**
 - **Fairness**: Obviously a vital quality characteristic for a PAEB ADAS that primarily impacts the data requirements specified in the [Data Management Specification](</docs/Data Management Specification.md>). We have elaborated on SMIRK fairness in an academic publication (Borg et al., 2021). **[High priority]**
 
 ## 1.6 References ##
@@ -151,7 +192,7 @@ SMIRK is an OSS ML-based ADAS. The SMIRK MVP is a research prototype that provid
 The SMIRK system architecture is further described in the [System Architecture Description](</docs/System Architecture Description.md>).
 
 ## 2.1 Product Perspective ##
-SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. Figures 1 to 7 illustrate the overall function provided by SMIRK, i.e., they should be interpreted as high-level descriptions of the product. Figures 1-2 depict two standard scenarios in which pedestrians the pedestrian crosses the road. Figures 3-4 show two scenarios with a pedestrian walking on the road, toward and away from ego car, respectively. Figure 5 shows a stationary pedestrian on the road, i.e., a scenario known to be difficult for some pedestrian detection systems. Figure 5 presents a general scenario to highlight that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Finally, Figure 7 stresses that SMIRK is robust against false positives, also know as "braking for ghosts." Trajectories are illustrated with blue arrows accompanied by a speed (*v*) and possible an angle (*θ*). *c* and *p* in the superscript denotes car and pedestrian, respectively, and *0* in the subscript indicates initial speed.
+SMIRK is designed to send a brake signal when a collision with a pedestrian is imminent. Figures 1 to 7 illustrate the overall function provided by SMIRK, i.e., they should be interpreted as high-level descriptions of the product. Figures 1-2 depict two standard scenarios in which pedestrians the pedestrian crosses the road. Figures 3-4 show two scenarios with a pedestrian walking on the road, toward and away from ego car, respectively. Figure 5 shows a stationary pedestrian on the road, i.e., a scenario known to be difficult for some pedestrian detection systems. Figure 5 presents a general scenario to highlight that SMIRK can handle arbitrary angles, i.e., not only perpendicular movement. Finally, Figure 7 stresses that SMIRK is robust against false positives, also know as "braking for ghosts." Trajectories are illustrated with blue arrows accompanied by a speed (*v*) and possibly an angle (*θ*). *c* and *p* in the superscript denotes car and pedestrian, respectively, and *0* in the subscript indicates initial speed.
 
 ![Scenario1](/docs/figures/scenario1.png) <a name="scenario1"></a>
 
@@ -181,7 +222,7 @@ SMIRK is designed to send a brake signal when a collision with a pedestrian is i
 
 *Figure 7: Example scenario illustrating that ego car shall not commence PAEB for false positives.*
 
-The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAEB. The design of SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. "Other ADAS 1 - N"). We also expect that sensors and actuators will be shared between ADAS. For the SMIRK MVP, however, we do not elaborate any further on ADAS co-existand and we do not adhere to any particular higher-level automotive architecture. In the same vein, we do not assume a central perception system that fuses various types of sensor input for individual ADAS such as SMIRK to use. SMIRK uses a standalone ML model trained for pedestrian detection and recognition. In the SMIRK terminology, to mitigate confusion, the radar *detects* objects and the ML-based pedestrian recognition component *identifies* potential pedestrians in the camera input. Solid lines in the figure show how SMIRK interacts with sensors and actuators in the ego vehicle. Dashed lines indicate how other ADAS might use sensors and actuators.
+The figure below shows a SMIRK context diagram. The sole purpose of SMIRK is PAEB. The design of SMIRK assumes that it will be deployed in a vehicle with complementary ADAS, e.g., large animal detection, lane keeping assistance, and various types of collision avoidance (cf. "Other ADAS 1 - N"). We also expect that sensors and actuators will be shared between ADAS. For the SMIRK MVP, however, we do not elaborate any further on ADAS co-existence and we do not adhere to any particular higher-level automotive architecture. In the same vein, we do not assume a central perception system that fuses various types of sensor input for individual ADAS such as SMIRK to use. SMIRK uses a standalone ML model trained for pedestrian detection and recognition. In the SMIRK terminology, to mitigate confusion, the radar *detects* objects and the ML-based pedestrian recognition component *identifies* potential pedestrians in the camera input. Solid lines in the figure show how SMIRK interacts with sensors and actuators in ego car. Dashed lines indicate how other ADAS might use sensors and actuators.
 
 ![Context](/docs/figures/context_diagram.png) <a name="context"></a>
 
@@ -192,12 +233,12 @@ SMIRK comprises implementations of four algorithms and uses external vehicle fun
 
 Sensors:
 - Radar detection and tracking of objects in front of the vehicle (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>)).
-- A forward-facing mono-camera (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>).
+- A forward-facing mono-camera (further details in the [System Architecture Description](</docs/System Architecture Description.md#31-logical-view>)).
 
 Algorithms:
 - Time-to-collision (TTC) calculation for objects on collision course (threshold 4 s).
 - Pedestrian detection and recognition based on the camera input where the radar detected an object. 
-- Out-of-distribution (OOD) detection of never-seen-before input (part of the [safety cage mechanism](</docs/ML%20Component%20Specification.md#4-outlier-detection-for-the-safety-cage-architecturesafety-cage>)). 
+- Out-of-distribution (OOD) detection of never-seen-before input (part of the [safety cage mechanism](</docs/ML%20Component%20Specification.md#outlier_detection_safety_cage_architecture>)). 
 - A braking module that commissions emergency braking. In the MVP, maximum braking power is always used.
 
 Actuators:
@@ -223,46 +264,46 @@ This section specifies the SMIRK system requirements, organized into system safe
 ## 3.1 System Safety Requirements [A] <a name="system_safety_reqts"></a>
 This section specifies the highest level SMIRK requirement.
 
-- **SYS-SAF-REQ1: Ego shall commence automatic emergency braking if and only if collision with a pedestrian on collision course is imminent.**
+- **SYS-SAF-REQ1: SMIRK shall commence automatic emergency braking if and only if collision with a pedestrian on collision course is imminent.**
 
-Rationale: This is the main purpose of SMIRK. If possible, Ego will stop and avoid a collision. If a collision is inevitable, Ego will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
+Rationale: This is the main purpose of SMIRK. If possible, ego car will stop and avoid a collision. If a collision is inevitable, ego car will reduce speed to decrease the impact severity. Hazards introduced from false positives, i.e., braking for ghosts, are mitigated under ML Safety Requirements.
 
 ## 3.2 Safety Requirements Allocated to ML Component [E] <a name="ml_component_safety_reqts"></a>
-Based on a Hazard Analysis and Risk Assessment (HARA), two categories of hazards were identified. First, SMIRK might miss pedestrians and fail to commence emergency braking - we refer to this as a false negative. Second, SMIRK might commence emergency braking when it should not - we refer to this as a false positive. A summary of the HARA is presented below.
+Based on a Hazard Analysis and Risk Assessment (HARA), two categories of hazards were identified. First, SMIRK might miss pedestrians and fail to commence emergency braking - we refer to this as a *missed pedestrian*. Second, SMIRK might commence emergency braking when it should not - we refer to this as an instance of *ghost braking*. A summary of the HARA is presented below.
 
-- **False negative**: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego vehicle.
-- **False positive**: The severity of the hazard is high (can be fatal). Controllability is very low since the driver would have no chance to counteract the braking. 
+- **Missed pedestrian hazard**: The severity of the hazard is very high (high risk of fatality). Controllability is high since the driver can brake ego car.
+- **Ghost braking hazard**: The severity of the hazard is high (can be fatal). Controllability is very low since the driver would have no chance to counteract the braking. 
  
-To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements in relation to false negatives. Furthermore, the false positive hazard necessitates the introduction of SYS-ML-REQ2.
+To conclude, we refine SYS-SAF-REQ1 in the next section to specify requirements in relation to the missed pedestrian hazard. Furthermore, the ghost braking hazard necessitates the introduction of SYS-ML-REQ2.
 
 ## 3.3 Machine Learning Safety Requirements [H] <a name="ml_safety_reqts"></a>
-This section refines SYS-SAF-REQ into two separate requirements corresponding to false positives and false negatives, respectively.
+This section refines SYS-SAF-REQ1 into two separate requirements corresponding to missed pedestrians and ghost braking, respectively.
 
 - **SYS-ML-REQ1: The pedestrian recognition component shall identify pedestrians in all valid scenarios when the radar tracking component returns a TTC < 4s for the corresponding object.**
 - **SYS-ML-REQ2: The pedestrian recognition component shall reject false positive input that does not resemble the training data.**
 
-Rationale: SYS-SAF-REQ1 is interpreted in the light of false negatives and false positives and then broken down into the separate ML safety requirements SYS-ML-REQ1 and SYS-ML-REQ2. The former requirement deals with the "if" aspect of SYS-SAF-REQ1 whereas its "and only if" aspect is targetted by SYS-SAF-REQ2. SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2016) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds, confirmed with the original authors). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
+Rationale: SYS-SAF-REQ1 is interpreted in the light of missed pedestrians and ghost braking and then broken down into the separate ML safety requirements SYS-ML-REQ1 and SYS-ML-REQ2. The former requirement deals with the "if" aspect of SYS-SAF-REQ1 whereas its "and only if" aspect is targetted by SYS-SAF-REQ2. SMIRK follows the reference architecture from Ben Abdessalem *et al.* (2016) and SYS-ML-REQ1 uses the same TTC threshold (4 seconds, confirmed with the original authors). We have confirmed that the TTC threshold is valid for SMIRK in its [Operational Design Domain](#odd). SYS-ML-REQ2 motivates the primary contribution of the SMILE projects, i.e., an out-of-distribution detection mechanism that we refer to as a safety cage.
 
 ## 3.3.1 Performance Requirements
 This section specifies performance requirements corresponding to the ML safety requirements with a focus on quantitative targets for the pedestrian recognition component. All requirements below are restricted to pedestrians on or close to the road.
 
 **For objects detected by the radar tracking component with a TTC < 4s, the following requirements must be fulfilled:**
 
-- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with an accuracy of 93% when they are within 50 m.**
+- **SYS-PER-REQ1: The pedestrian recognition component shall identify pedestrians with a true positive rate of 93% when they are within 80 m.**
 - **SYS-PER-REQ2: The false negative rate of the pedestrian recognition component shall not exceed 7% within 50 m.**
-- **SYS-PER-REQ3: The false positive rate of the pedestrian recognition component shall not exceed 0.01%. within 50 m.** 
-- **SYS-PER-REQ4: In a sequence of consecutive images from a 10 FPS video feed, any pedestrian within 50 m shall not be missed in more than 20% of the frames.**
-- **SYS-PER-REQ5: For pedestrians within 50 m, the pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
+- **SYS-PER-REQ3: The false positive per image of the pedestrian recognition component shall not exceed 0.1% within 80 m.** 
+- **SYS-PER-REQ4: In 97% of sequences of 5 consecutive frames from a 10 FPS video feed, no pedestrian within 80 m shall be missed in more than 20% of the frames.**
+- **SYS-PER-REQ5: For pedestrians within 80 m, the pedestrian recognition component shall determine the position of pedestrians within 50 cm of their actual position.**
 - **SYS-PER-REQ6: The pedestrian recognition component shall allow an inference speed of at least 10 FPS in the ESI Pro-SiVIC simulation.**
 
-Rationale: SMIRK adapts the performance requirements specified by Gauerhof *et al.* (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the accuracy threshold from Example 7 in AMLAS. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson *et al.* (2019). SYS-PER-REQ6 means that any further improvements to reaction time have a negligible impact on the total brake distance. 
+Rationale: SMIRK adapts the performance requirements specified by Gauerhof *et al.* (2020) for the SMIRK ODD. SYS-PER-REQ1 reuses the threshold from Example 7 in AMLAS, but clarifies that we consider accuracy as the true positive rate. SYS-PER-REQ2 and SYS-PER-REQ3 are two additional requirements inspired by Henriksson *et al.* (2019). Note that SYS-PER-REQ3 relies on the metric false positive per image rather than false positive rate as true negatives do not exist for object detection. SYS-PER-REQ6 means that any further improvements to reaction time have a negligible impact on the total brake distance. 
 
 ## 3.3.2 Robustness Requirements
 This section specifies robustness requirements corresponding to the ML safety requirements.
 
-**For pedestrians present within 50 m of Ego, captured in the field of view of the camera:**
+**For pedestrians present within 80 m of ego car, captured in the field of view of the camera:**
 
-- **SYS-ROB-REQ1: The pedestrian recognition component shall perform as required in all situations Ego may encounter within the defined ODD.**
+- **SYS-ROB-REQ1: The pedestrian recognition component shall perform as required in all situations ego car may encounter within the defined ODD.**
 - **SYS-ROB-REQ2: The pedestrian recognition component shall identify pedestrians irrespective of their upright pose with respect to the camera.**
 - **SYS-ROB-REQ3: The pedestrian recognition component shall identify pedestrians irrespective of their size with respect to the camera.**
 - **SYS-ROB-REQ4: The pedestrian recognition component shall identify pedestrians irrespective of their appearance with respect to the camera.**
@@ -270,7 +311,7 @@ This section specifies robustness requirements corresponding to the ML safety re
 Rationale: SMIRK reuses robustness requirements for pedestrian detection from previous work. SYS-ROB-REQ1 is specified in Gauerhof *et al.* (2020). SYS-ROB-REQ2 is presented as Example 7 in AMLAS, which has been limited to upright poses, i.e., SMIRK is not designed to work for pedestrians sitting or lying on the road. SYS-ROB-REQ3 and SYS-ROB-REQ4 are additions identified during the [Fagan inspection](/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx). 
 
 # 4 Operational Design Domain [B] <a name="odd"></a>
-This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn *et al.*, 2018) and the introductory text for each ODD category originates in the same techincal report. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
+This section specifies the SMIRK operational design domain (ODD). The ODD specification is based on the taxonomy developed by NHTSA (Thorn *et al.*, 2018) and the introductory text for each ODD category originates in the same technical report. Note that the ODD is deliberately restricted to allow rapid prototyping of a SMIRK MVP.
 
 ## 4.1 Physical Infrastructure
 >Physical infrastructure refers to facilities and systems that serve a country, city, or area and enable its economy to function. Physical infrastructure is typically characterized by technical structures, such as roads, bridges, tunnels, water supply, sewers, electrical grids, telecommunications, etc., that are for the most part interrelated. ADAS features may depend on such infrastructure elements, which are a critical part of the ODD environment. (Thorn *et al.*, 2018)
@@ -540,7 +581,7 @@ This section specifies the SMIRK operational design domain (ODD). The ODD specif
   </tr>
   <tr>
     <td>Lane width</td>
-    <td>&lt;TBD&gt;</td>
+    <td>4-8 m</td>
   </tr>
   <tr>
     <td>Other</td>
@@ -1156,15 +1197,15 @@ The figure below shows the ML assurance scoping argument pattern using goal stru
 
 *Figure 9: SMIRK ML Assurance Scoping Argument Pattern.*
 
-The top claim, i.e., the starting point for the safety argument for the SMIRK ML-based object detection component, is that the system safety requirements that have been allocated to the pedestrian recognition component are satisfied in the ODD (G1.1). The safety claim for the pedestrian recognition component is made within the context of the information that was used to establish the safety requirements allocation, i.e., the system description ([C]), the ODD ([B]), and the ML component description ([D]). The allocated system safety requirements ([E]) are also provided as context. An explicit assumption is made that the allocated safety requirements have been correctly defined (A1.1), as this is part of the overall system safety process preceding AMLAS. Our claim to the validity of this assumption is presented in relation to the HARA described in [E]. As stated in AMLAS, "the primary aim of the ML Safety Assurance Scoping argument is to explain and justify the essential relationship between, on the one hand, the system-level safety requirements and associated hazards and risks, and on the other hand, the ML-specific safety requirements and associated ML performance and failure conditions."
+The top claim, i.e., the starting point for the safety argument for the SMIRK ML-based pedestrian recognition component, is that the system safety requirements that have been allocated to the pedestrian recognition component are satisfied in the ODD (G1.1). The safety claim for the pedestrian recognition component is made within the context of the information that was used to establish the safety requirements allocation, i.e., the system description ([C]), the ODD ([B]), and the ML component description ([D]). The allocated system safety requirements ([E]) are also provided as context. An explicit assumption is made that the allocated safety requirements have been correctly defined (A1.1), as this is part of the overall system  safety process preceding AMLAS. Our claim to the validity of this assumption is presented in relation to the HARA described in [E]. As stated in AMLAS, "the primary aim of the ML Safety Assurance Scoping argument is to explain and justify the essential relationship between, on the one hand, the system-level safety requirements and associated hazards and risks, and on the other hand, the ML-specific safety requirements and associated ML performance and failure conditions."
 
 The ML safety claim is supported by an argument split into two parts. First, the development of the ML component is considered with an argument that starts with the elicitation of the ML safety requirements argument. Second, the deployment of the ML component is addressed with a corresponding argument. 
 
 # 6 ML Safety Assurance Scoping Argument [G] <a name="ml_assurance_scoping_argument"></a>
 SMIRK instantiates the ML safety assurance scoping argument through the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). The set of artifacts constitutes the safety case for SMIRK's ML-based pedestrian recognition component.
 
-# 7 ML Safety Requirements Argument Pattern [I]
-The figure below shows the ML safety requirements argument pattern using GSN. The pattern largely follows the example provided in AMLAS, but adapts it to the specific SMIRK case. The major difference is the introduction of G2.2 targeting false positives and the safety cage mechanism as the corresponding solution 2.2.
+# 7 ML Safety Requirements Argument Pattern [I] <a name="ml_safety_requirement_pattern"></a>
+The figure below shows the ML safety requirements argument pattern using GSN. The pattern largely follows the example provided in AMLAS, but adapts it to the specific SMIRK case. The major difference is the introduction of G2.2 targeting ghost braking and the safety cage mechanism as the corresponding solution 2.2.
 
 ![GSN-ML-Safety_Reqts_Argument_Pattern](/docs/figures/gsn-ml_safety_reqts_argument_pattern.png) <a name="gsn-ml_safety_reqts_argument"></a>
 
@@ -1172,11 +1213,11 @@ The figure below shows the ML safety requirements argument pattern using GSN. Th
 
 The top claim is that system safety requirements that have been allocated to the ML component are satisfied by the model that is developed (G2.1). This is demonstrated through considering explicit ML safety requirements defined for the ML model [H]. The argument approach is a refinement strategy translating the allocated safety requirements into two concrete ML safety requirements (S2.1) provided as context (C2.1). Justification J2.1 explains how we allocated safety requirements to the ML component as part of the system safety process, including the HARA. 
 
-Strategy 2.1 is refined into two subclaims about the validity of the ML safety requirements corresponding to false negatives and false positives, respectively. Furthermore, a third subclaim concerns the satisfaction of those requirements. G2.2 focuses on the ML safety requirement SYS-ML-REQ1, i.e., that the nominal functionality of the pedestrian recognition component shall be satisfactory. G2.2 is considered in the context of the ML data (C2.2) and the ML model (C2.3), which in turn are supported by the ML Data Argument Pattern [R] and the ML Learning Argument Pattern [W]. The argumentation strategy (S2.2) builds on two subclaims related to two types of safety requirements with respect to safety-related outputs, i.e., performance requirements (G2.5 in context of C2.4) and robustness requirements (G2.6 in context of C2.5). The satisfaction of both G2.5 and G2.6 are addressed by the ML Verification Argument Pattern [BB]. G2.3 focuses on the ML safety requirement SYS-ML-REQ2, i.e., that the pedestrian recognition component shall reject input that does not resemble the training data to avoid false positives. G2.3 is again considered in the context of the ML data (C2.2) and the ML model (C2.3). For SMIRK, the solution is the safety cage architecture (Sn2.1) developed  in the SMILE research program (Henriksson *et al.*, 2021), further described in the [Machine Learning Component Specification](</docs/ML Component Specification.md#4-safety-cage-architecture>).
+Strategy S2.1 is refined into two subclaims about the validity of the ML safety requirements corresponding to missed pedestrians and ghost braking, respectively. Furthermore, a third subclaim concerns the satisfaction of those requirements. G2.2 focuses on the ML safety requirement SYS-ML-REQ1, i.e., that the nominal functionality of the pedestrian recognition component shall be satisfactory. G2.2 is considered in the context of the ML data (C2.2) and the ML model (C2.3), which in turn are supported by the ML Data Argument Pattern [R] and the ML Learning Argument Pattern [W]. The argumentation strategy (S2.2) builds on two subclaims related to two types of safety requirements with respect to safety-related outputs, i.e., performance requirements (G2.5 in context of C2.4) and robustness requirements (G2.6 in context of C2.5). The satisfaction of both G2.5 and G2.6 are addressed by the ML Verification Argument Pattern [BB]. G2.3 focuses on the ML safety requirement SYS-ML-REQ2, i.e., that the pedestrian recognition component shall reject input that does not resemble the training data to avoid ghost braking. G2.3 is again considered in the context of the ML data (C2.2) and the ML model (C2.3). For SMIRK, the solution is the safety cage architecture (Sn2.1) developed  in the SMILE research program (Henriksson *et al.*, 2021), further described in the [Machine Learning Component Specification](</docs/ML Component Specification.md>).
 
 Subclaim G2.4 states that the ML safety requirements are a valid development of the allocated system safety requirements. The justification (J2.2) is that the requirements have been validated in cross-organizational workshops within the SMILE3 research project. We provide evidence through ML Safety Requirements Validation Results [J] originating in a Fagan inspection (Sn2.2).
 
-# 8 ML Safety Requirements Validation Results [J]
+# 8 ML Safety Requirements Validation Results [J] <a name="ml_safety_requirement_validation_results"></a>
 The SMILE3 project conducted a [Fagan inspection](https://en.wikipedia.org/wiki/Fagan_inspection) of the ML safety requirements, i.e., a formal inspection consisting of the steps 1) Planning, 2) Overview, 3) Preparation, 4) Inspection meeting, 5) Rework, and 6) Follow-up. The Fagan inspection targeted the entire SRS.
 
 1. Planning: The authors prepared the SRS and invited the required reviewers to an inspection meeting.
@@ -1186,10 +1227,10 @@ The SMILE3 project conducted a [Fagan inspection](https://en.wikipedia.org/wiki/
 1. Rework: The lead authors updated the SRS according to the inspection protocol.
 1. Follow-up: Selected reviewers verified that the previously found issues had been correctly resolved. 
 
-The inspection protocol is available at TBD.
+The [inspection protocol](https://github.com/RI-SE/smirk/blob/main/docs/protocols/SRS%20Inspection%20Protocol%202021-11-15.xlsx) is available.
 
-# 9 ML Safety Requirements Argument [K]
+# 9 ML Safety Requirements Argument [K] <a name="ml_safety_requirement_argumentation"></a>
 SMIRK instantiates the ML safety requirements argument through a subset of the artifacts listed in the [Safety Assurance Table](https://github.com/RI-SE/smirk/tree/main/docs#safety-assurance). This instantiation activity uses as input the [ML Safety Requirements Argument Pattern [I]](</docs/System Requirements Specification.md#5-ml-assurance-scoping-argument-pattern-f->), as well as the following artifacts from preceding AMLAS activities:
-- [Safety Requirements Allocated to ML Component](</docs/System Requirements Specification.md#32-safety-requirements-allocated-to-ml-component-e->) [E]
-- [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
-- [ML Safety Requirements Validation Results](</docs/System Requirements Specification.md#8-ml-safety-requirements-validation-results-j>) [J]
+- [Safety Requirements Allocated to ML Component](</docs/System Requirements Specification.md#ml_component_safety_reqts>) [E]
+- [ML Safety Requirements](</docs/System Requirements Specification.md#ml_safety_reqts>) [H]
+- [ML Safety Requirements Validation Results](</docs/System Requirements Specification.md#ml_safety_requirement_validation_results>) [J]

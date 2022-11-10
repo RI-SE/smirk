@@ -1,4 +1,4 @@
-# Data Management Specification v0.91
+# Data Management Specification v0.991
 
 Revision History
 <table>
@@ -48,17 +48,44 @@ Revision History
 <td>0.91</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Markus Borg, Kasper Socha</td>
+<td>2022-04-09</td>
+<td>Updated according to Issues <a href="https://github.com/RI-SE/smirk/issues/15">#15</a> and <a href="https://github.com/RI-SE/smirk/issues/16">#16</a>.
+</td>
+<td>0.92</td>
+</tr>
+<tr>
+<td>Markus Borg</td>
+<td>2022-04-14</td>
+<td>Updated according to Issue <a href="https://github.com/RI-SE/smirk/issues/18">#18</a>.
+</td>
+<td>0.93</td>
+</tr>
+<tr>
+<td>Markus Borg</td>
+<td>2022-06-16</td>
+<td>Updated according to Issue <a href="https://github.com/RI-SE/smirk/issues/22">#22</a>.
+</td>
+<td>0.94</td>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha, Jens Henriksson</th>
+<td>2022-06-16</th>
+<td>Beta Release - Ready for peer-review</th>
+<td>0.99</th>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</th>
+<td>2022-09-13</th>
+<td>Updated after journal review according to Issue <a href="https://github.com/RI-SE/smirk/issues/26">#26</a>.</th>
+<td>0.991</th>
 </tr>
 </table>
 
 # 1 Introduction
-This data management specification (DMS) describes the overall approach to data management for SMIRK and the exlicit data requirements. SMIRK is a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML), i.e., an advanced driver-assistance system (ADAS). The ADAS is intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
+This data management specification (DMS) describes the overall approach to data management for SMIRK and the explicit data requirements. SMIRK is a pedestrian automatic emergency braking (PAEB) system that relies on machine learning (ML), i.e., an advanced driver-assistance system (ADAS). The ADAS is intended to act as one of several systems supporting the driver in the dynamic driving task, i.e., all the real-time operational and tactical functions required to operate a vehicle in on-road traffic. SMIRK, including the accompanying safety case, is developed with full transparancy under an open-source software (OSS) license.
 
-We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK operational design domain (ODD) by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual or business casual clothes, young boys wearing jeans and a sweatshirt, and male road workers. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes from the object catalog to as examples of out-of-distribution (OOD) objects (that still can appear in the ODD) for SMIRK to handle in operation: boxes, cones, pyramids, and spheres.
+We develop SMIRK as a demonstrator in a simulated environment provided by ESI Pro-SiVIC. As an alternative to longitudinal traffic observations and consideration of emergency statistics, we have analyzed the SMIRK operational design domain (ODD) by monitoring the presence of actors and objects in the ESI Pro-SiVIC "Object Catalog" and its development over the versions 2018-2021. We conclude that the demographics of pedestrians in the ODD is constituted of the following: adult males and females in either casual, business casual or business clothes, young boys wearing jeans and a sweatshirt, and male road workers. As other traffic is not within the ODD (e.g., cars, motorcycles, and bicycles), we consider the following basic shapes from the object catalog to as examples of out-of-distribution (OOD) objects (that still can appear in the ODD) for SMIRK to handle in operation: boxes, cones, pyramids, spheres, and cylinders.
 
 ## 1.1 Purpose ##
 This document describes the data management strategy for the pedestrian recognition component in SMIRK. The pedestrian recognition component detects pedestrians in input images from the camera when the radar sensor indicates the risk of an immediate collision with an external object. In the SMIRK minimum viable product (MVP), no other classes but pedestrians are considered by the ML-based pedestrian recognition component. The document encompasses the entire lifecycle, i.e., data requirements and its justification report, data collection, data preprocessing, data validation, and data monitoring for SMIRK in operation.
@@ -96,7 +123,7 @@ The entire document is relevant to the internal development organization. Specif
 
 **External stakeholders**
 - Safety assessors: Focus on headings that map to the AMLAS process, indicated with letters in brackets.
-- Researchers: Academic and industrial reserachers active in ML safety are likely to find most value in [Section 2 (Data Requirements)](#2-data-requirements-l-).
+- Researchers: Academic and industrial reserachers active in ML safety are likely to find the most value in [Section 2 (Data Requirements)](#2-data-requirements-l-).
 - Standardization bodies and legislators: An overview of the safety argumentation is presented in [Section 5 (ML Data Argument Pattern)](#5-ml-data-argument-pattern-r-).
 - Curious readers: For an overview of data management in SMIRK, read [Section 1 (Introduction)](#1-introduction).
 
@@ -115,12 +142,13 @@ The references are organized into 1) internal SMIRK documentation, 2) SMIRK data
 
 **Peer-reviewed publications**
 - Ashmore, Calinescu, and Paterson, 2021. [Assuring the Machine Learning Lifecycle: Desiderata, Methods, and Challenges](https://arxiv.org/abs/1905.04223), *ACM Computing Surveys*, 54(5).
-- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP).
+- Gauerhof, Hawkins, David, Picardi, Paterson, Hagiwara, and Habli, 2020. [Assuring the Safety of Machine Learning for Pedestrian Detection at Crossings](https://link.springer.com/chapter/10.1007/978-3-030-54549-9_13). In *Proc. of the 39th International Conference on ComputerSafety, Reliability and Security (SAFECOMP)*.
 
 **Gray literature and white papers**
 - The Assurance Case Working Group (ACWG), 2018. [Goal Structuring Notation Community Standard](https://scsc.uk/r141B:1?t=1), Version 2, SCSC-141B. 
 - High-Level Expert Group on Artificial Intelligence, 2019. [Ethics Guidelines for Trustworthy AI](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai), European Commission.
 - [Safety First for Automated Driving (SaFAD)](https://www.daimler.com/documents/innovation/other/safety-first-for-automated-driving.pdf), 2019. Joint White Paper by Aptiv, Audi, Bayrische Motoren Werke; Beijing Baidu Netcom Science Technology, Continental Teves AG, Daimler, FCA US, HERE Global, Infineon Technologies, Intel, and Volkswagen.
+- Schyllander, 2014. [Fotgängarolyckor - statistik och analys](https://rib.msb.se/filer/pdf/27438.pdf), Tech. Rep. MSB744, Swedish Civil Contingencies Agency. 
 - Thorn, Kimmel, and Chaka, 2018. [A Framework for Automated Driving System Testable Cases and Scenarios](https://trid.trb.org/view/1574670), Technical Report DOT HS 812 623, National Highway Traffic Safety Administration.
 
 # 2 Data Requirements [L] <a name="data_rqts"></a>
@@ -190,7 +218,7 @@ For the SMIRK MVP, we have specified a very restricted ODD to support our effort
 - [Combitech](https://www.combitech.com/)
 
 # 4 Data Generation Log [Q] <a name="data_gen"></a>
-This section descibres how the data used for the fine-tuning of the ML model in the pedestrian recognition component was generated. Based on the [data requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we generate data for fine-tuning in ESI Pro-SIVIC. The data are split into three sets in accordance with AMLAS. 
+This section describes how the data used for training the ML model in the pedestrian recognition component was generated. Based on the [data requirements](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-), we generate data in ESI Pro-SIVIC with the following [configurations](https://github.com/RI-SE/smirk/tree/develop/config/data-generation). The data are split into three sets in accordance with AMLAS. 
 
 - Development data: Covering both training and validation data used by developers to create models during ML development.
 - Internal test data: Used by developers to test the model.
@@ -199,21 +227,29 @@ This section descibres how the data used for the fine-tuning of the ML model in 
 ## 4.1 Data Collection
 The SMIRK data collection campaign focuses on generation of annotated data in ESI Pro-SiVIC. All data generation is script-based and fully reproducible. The following two lists present the scripts used to play scenarios and capture the corresponding annotated data. The first section describes positive examples [PX], i.e., humans that shall be classified as pedestrians. The second section describes examples that represent OOD shapes [NX], i.e., objects that shall not initiate PAEB in case of an imminent collision. These images, referred to as OOD examples, shall either not be recognized as a pedestrian or be rejected by the SMIRK safety cage. 
 
-For each listed item, there is a link to a YAML configuration file that is used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
+For each listed item, there is a YAML configuration file used by the Python script that generates the data in the ESI Pro-SiVIC output folder "Sensors". Ego car is always stationary during data collection, and pedestrians and objects move according to specific configurations. Finally, images are sampled from the camera at 10 frames per second with a resolution of 752x480 pixels. For each image, we add a separate image file containing the ground truth pixel-level annotation of the position of the pedestrian.
 
-In total, we generate data representing 6 x 616 = 3,696 execution scenarios with positive examples and 4 x 40 = 160 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 120 GB of image data, annotations, and meta-data (including bounding boxes).
+In total, we generate data representing 8 x 616 = 4,928 execution scenarios with positive examples and 5 x 20 = 100 execution scenarios with OOD examples. In total, the data collection campaign generates roughly 185 GB of image data, annotations, and meta-data (including bounding boxes).
+
+The figure below shows the visual appearance of all assets used from the ESI Pro-SiVIC object catalog. 
+
+![object_catalog](/docs/figures/object_catalog.png) <a name="object_catalog"></a>
+
+*Figure 1: Visual appearance of pedestrians (P1–P8) and basic shapes (N1–N5).*
 
 ### 4.1.1 Positive examples:
-We generate positive examples from humans with six visual appearances available in the ESI Pro-SiVIC object catalog.
+We generate positive examples from humans with eight visual appearances available in the ESI Pro-SiVIC object catalog.
 
-- [P1] Casual female pedestrian [TBD: female_casual.yaml]
-- [P2] Casual male pedestrian [TBD: male_casual.yaml]
-- [P3] Business female pedestrian [TBD: female_business.yaml]
-- [P4] Business male pedestrian [TBD: male_business.yaml]
-- [P5] Child [TBD: child.yaml]
-- [P6] Male construction worker [TBD: male_construction.yaml]
+- [P1] Casual female pedestrian
+- [P2] Casual male pedestrian
+- [P3] Business casual female pedestrian
+- [P4] Business casual male pedestrian
+- [P5] Business female pedestrian
+- [P6] Business male pedestrian
+- [P7] Child
+- [P8] Male construction worker
 
-Each configuration file for positive examples specify the execution of 616 scenarios in ESI Pro-SiVIC. The configurations are organized into four groups (A-D). The pedestrians always follow rectilinear motion (a straight line) at a constant speed during scenario execution. Groups A and B describe pedestrians crossing the road, either from the left (Group A) or from the right (Group B). There are three variation points, i.e., 1) the speed of the pedestrian, 2) the angle at which the pedestrian crosses the road (see [SRS Sec 2.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#21-product-perspective)), and 3) the longitudinal distance between ego car and the pedestrian's starting point. In all scenarios, the distance between the starting point of the pedestrian and the edge of the road is 5 m. 
+For each positive example, we specify the execution of 616 scenarios in ESI Pro-SiVIC. The configurations are organized into four groups (A-D). The pedestrians always follow rectilinear motion (a straight line) at a constant speed during scenario execution. Groups A and B describe pedestrians crossing the road, either from the left (Group A) or from the right (Group B). There are three variation points, i.e., 1) the speed of the pedestrian, 2) the angle at which the pedestrian crosses the road (see [SRS Sec 2.1](https://github.com/RI-SE/smirk/blob/main/docs/System%20Requirements%20Specification.md#21-product-perspective)), and 3) the longitudinal distance between ego car and the pedestrian's starting point. In all scenarios, the distance between the starting point of the pedestrian and the edge of the road is 5 m. 
 
 - A. Crossing the road from left to right (280 scenario configurations)
 	- 1. Speed (m/s): [1, 2, 3, 4]
@@ -236,16 +272,18 @@ Groups C and D describe pedestrians moving parallel to the road, either toward e
 	- 2. Lateral offset (m): [-3, -2, -1, 0, 1, 2, 3]
 
 ### 4.1.2 Out-of-Distribution examples:
-We generate OOD examples using four basic shapes available in the ESI Pro-SiVIC object catalog.
+We generate OOD examples using five basic shapes available in the ESI Pro-SiVIC object catalog.
 
 OOD examples:
-- [N1] Sphere [TBD: sphere.yaml]
-- [N2] Cube [TBD: cube.yaml]
-- [N3] Cone [TBD: cone.yaml]
-- [N4] Pyramid [TBD: pyramid.yaml]
+- [N1] Sphere
+- [N2] Cube
+- [N3] Cone
+- [N4] Pyramid
+- [N5] Cylinder
 
-All four configuration files for OOD examples specify the execution of 10 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
+For each OOD example, we specify the execution of 20 scenarios in ESI Pro-SiVIC. The configurations represent a basic shape crossing the road from the left or right at an angle perpendicular to the road. Since basic shapes are not animated, we fix the speed at 4 m/s. In all scenarios, the distance between the starting point of the basic shape and the edge of the road is 5 m. The only variation point is the longitudinal distance between ego car and the objects' starting point. The objects always follow rectilinear motion (a straight line) at a constant speed during scenario execution.
 
+- Crossing direction: [left, right]
 - Longitudinal distance (m): [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
 ## 4.2 Preprocessing
@@ -256,9 +294,9 @@ SMIRK includes a script to generate bounding boxes for training the object detec
 ## 4.3 Data Splitting
 The generated SMIRK data will be used in sequestered data sets as follows:
 
-- Development data: [P2] and [P3]
-- Internal test data: [P1], [P4], [N1], and [N2] 
-- Verification data: [P5], [P6], [N3], and [N4]
+- Development data: [P2], [P3], [P6], and [N5]
+- Internal test data: [P1], [P4], [N1], and [N3] 
+- Verification data: [P5], [P6], [N2], and [N4]
 
 Note that we deliberately avoid mixing pedestrian models from the ESI Pro-SiVIC object catalog in the data sets due to the limited diversity in the images within the ODD for the SMIRK MVP.
 
@@ -267,7 +305,7 @@ The figure below shows the ML data argument pattern using GSN. The pattern follo
 
 ![GSN-ML_Data_Argument_Pattern](/docs/figures/gsn-ml_data_argument_pattern.png) <a name="gsn-ml_data_argument"></a>
 
-*Figure 1: ML data argument pattern.*
+*Figure 2: ML data argument pattern.*
 
 The top claim is that the data used during the development and verification of the ML model is sufficient (G3.1). This claim is made for all three data sets: development data [N], internal test data [O], and verification data [P]. The argumentation strategy (S2.1) involves how the sufficiency of these data sets is demonstrated given the Data Requirements [L]. The strategy is supported by arguing over subclaims demonstrating sufficiency of the Data Requirements (G3.2) and that the Data Requirements are satisfied (G3.3). Claim G3.2 is supported by evidence in the form of a data requirements justification report [M]. As stated in AMLAS, "It is not possible to claim that the data alone can guarantee that the ML safety requirements will be satisfied, however the data used must be sufficient to enable the model that is developed to do so."
 
@@ -285,14 +323,16 @@ First, the SMILE3 project conducted a Fagan inspection, i.e., a formal inspectio
 1. Rework: The lead authors updated the SRS according to the inspection protocol.
 1. Follow-up: Selected reviewers verified that the previously found issues had been correctly resolved. 
 
-The inspection protocol is available at TBD.
+The [inspection protocol](https://github.com/RI-SE/smirk/blob/main/docs/protocols/DMS%20Inspection%20Protocol%202021-11-15.xlsx) is available.
 
-Second, the SMILE3 project analyzed the characteristics of the data sets. The analysis was based on automated data validation using <TBD, DESCRIBE THAT KASPER IS DOING>. Furthermore, SMILE3 reviewers manually analyzed a random sample of images from the data set <TBD, DESCRIBE HOW WE DO THIS>.
+Second, the SMILE3 project analyzed the characteristics of the data sets. The analysis was partly done using automated data validation with [Great Expectations](https://greatexpectations.io/). We validate the ethical dimension of the data balance by analyzing the gender (DAT-BAL-REQ1) and age (DAT-BAL-REQ2) distributions of the pedestrians in the SMIRK data set. SMIRK evolves as a demonstrator in a Swedish research project, which provides a frame of reference for this analysis. The demographics originate in a study on collisions between vehicles and pedestrians by the Swedish Civil Contingencies Agency (Schyllander, 2014).
 
-Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-)
+The [data validation report](https://github.com/RI-SE/smirk/blob/main/docs/protocols/Data%20Validation%20Report%202022-06-16.pdf) is available.
+
+Finally, we argue that the script-based generation of data in ESI Pro-SiVIC leads to data compliant with the data requirements. Our argumentation follows the four desiderata introduced in [Section 2](https://github.com/RI-SE/smirk/blob/main/docs/Data%20Management%20Specification.md#2-data-requirements-l-).
 - Relevant: DAT-REL-REQ1 to DAT-REL-REQ7 are implicitly met by the data generation scripts. Everything present in the data set has been explicitly added by the SMIRK developers in the scripts. Only relevant data samples captured using a forward-facing camera in a valid sensor position have been added to the scripts. No outlier objects exist in the data sets.
 - Complete: DAT-COM-REQ is satisfied as the ODD is restricted to excellent driving conditions. The data set complies with DAT-COM-REQ2 since we explicitly cover six pedestrian types available in the ESI Pro-SiVIC object catalog. DAT-COM-REQ3 is satisfied through scripts that explicitly generate data that covers longitudinal distances between 10 meters and 100 meters. DAT-COM-REQ4 is met since the scripts ensure data collection from the point in time that pedestrians enter the camera's field of vision (a hand becomes available) until the pedestrian leaves (only a foot remains). DAT-COM-REQ5 is implicitly satisfied as the ideal camera in ESI Pro-SiVIC does not fail, i.e., there will be no dirt on the lens or cracks in the optics.
-- Balanced: DAT-BAL-REQ1 and DAT-BAL-REQ2 are validated automatically using <TBD, DESCRIBE THAT KASPER IS DOING>.
+- Balanced: DAT-BAL-REQ1 and DAT-BAL-REQ2 are validated automatically using Great Expectations. Note that we designed the SMIRK data generation process to result in a data set corresponding to deadly accidents in Sweden, but, motivated by AI fairness, we increased the fraction of female pedestrians to mitigate a potential gender bias.
 - Accurate: DAT-ACC-REQ1 and DAT-ACC-REQ3 are implicitly met as ESI Pro-SiVIC generates the ground truth on pixel-level. DAT-ACC-REQ2 is also implicitly satisfied as we extract bounding boxes using a script that identifies the smallest possible rectangle around the pedestrian.
 
 # 7 ML Data Argument [T] <a name="data_argument"></a>
@@ -300,8 +340,8 @@ SMIRK instantiates the ML Data Argument through a subset of the artifacts listed
 - [ML Safety Requirements](</docs/System Requirements Specification.md#33-machine-learning-safety-requirements-h->) [H]
 - [Data Requirements](</docs/Data Management Specification.md#data_rqts>) [L]
 - [Data Requirements Justification Report](</docs/Data Management Specification.md#data_rqts_just>) [M]
-- [Development Data](TBD) [N]
-- [Internal Test Data](TBD) [O]
-- [Verification Data](TBD) [P]
+- [Development Data](https://www.ai.se/en/data-factory/datasets/smirk-synthetic-pedestrians-dataset) [N]
+- [Internal Test Data](https://www.ai.se/en/data-factory/datasets/smirk-synthetic-pedestrians-dataset) [O]
+- [Verification Data](https://www.ai.se/en/data-factory/datasets/smirk-synthetic-pedestrians-dataset) [P]
 - [Data Generation Log](</docs/Data Management Specification.md#data_gen>) [Q]
 - [ML Data Validation Results](</docs/Data Management Specification.md#data_validation_results>) [S]

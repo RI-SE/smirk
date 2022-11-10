@@ -1,0 +1,45 @@
+scenarios:
+  - type: left
+    pedestrian:
+      appearance:
+        - male_business
+        - male_casual
+        - male_construction
+        - female_business
+        - female_casual
+        - child
+      speeds: [2]
+      angles: [90]
+      distances_from_car: [50]
+      distances_from_road: [2]
+  - type: right
+    pedestrian:
+      appearance: female_business
+      speeds: [2]
+      angles: "${range:30,151,20}"
+      distances_from_car: "${range:10,151,10}"
+      distances_from_road: [2]
+  - type: towards
+    max_travel_distance: 140
+    pedestrian:
+      appearance: child
+      speeds: [2]
+      distances_from_car: [150]
+      offsets_from_road_center: "${range:-3,4,1}"
+  - type: away
+    max_travel_distance: 140
+    pedestrian:
+      appearance: male_business
+      speeds: [2]
+      distances_from_car: [10]
+      offsets_from_road_center: "${range:-3,4,1}"
+  - type: right
+    object:
+      type:
+        - box
+        - cone
+        - pyramid
+        - sphere
+      speeds: [1, 2]
+      distances_from_car: "${range:10,151,10}"
+      distances_from_road: [2]
