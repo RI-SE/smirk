@@ -15,6 +15,35 @@ SMIRK is a research prototype under development that facilitates research on ver
 ## Purpose and Limitations
 The SMIRK safety case is restricted to the novel challenges introduced by ML. The development adheres to the overall process described in the publicly available  specification *ISO/PAS 21448:2019 Road vehicles — Safety of the intended functionality* and we provide ML assurance by following the methodology for *Assurance of Machine Learning for use in Autonomous Systems* (AMLAS). Demonstrating compliance with the quintessential automotive software standard *ISO 26262:2018 Road vehicles — Functional safety* is out of the scope of this research project. We make the simplified assumption that the overall development context embedded the development of the ML-based SMIRK ADAS fulfills all aspects of ISO 26262, e.g., regarding processes, practices, and tools. While we will use third party open-source software in SMIRK (both incorporated as assets in the product and as tool support for software testing), we will not provide any safety assurance of external tools - instead we assume that the development organization has the capability to do so.
 
+## How to cite this work
+If you use this software, please cite the peer-reviewed Original Software Publication:
+
+```
+@article{socha2022smirk,
+  title={SMIRK: A Machine Learning-Based Pedestrian Automatic Emergency Braking System with a Complete Safety Case},
+  author={Socha, Kasper and Borg, Markus and Henriksson, Jens},
+  journal={Software Impacts},
+  volume={13},
+  year={2022},
+  publisher={Elsevier},
+  doi = {10.1016/j.simpa.2022.100352}
+}
+```
+
+When refering to the development of SMIRK and its corresponding safety case, please cite the manuscript:
+
+```
+@misc{https://doi.org/10.48550/arxiv.2204.07874,
+  doi = {10.48550/ARXIV.2204.07874},
+  url = {https://arxiv.org/abs/2204.07874},
+  author = {Borg, Markus and Henriksson, Jens and Socha, Kasper and Lennartsson, Olof and Lönegren, Elias Sonnsjö and Bui, Thanh and Tomaszewski, Piotr and Sathyamoorthy, Sankar Raman and Brink, Sebastian and Moghadam, Mahshid Helali},  
+  title = {Ergo, SMIRK is Safe: A Safety Case for a Machine Learning Component in a Pedestrian Automatic Emergency Brake System},
+  publisher = {arXiv},
+  year = {2022}, 
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
+
 ## Disclaimer
 SMIRK is developed for use in simulated environments. Under no circumstances shall SMIRK be used in real vehicles operating in the physical world. You assume all responsibility and risk for the use of the SMIRK or any resources available on or through this GitHub repository. RISE Research Institutes of Sweden does not assume any liability for the materials, information and opinions provided on, or available through, this web page. No advice or information given by RISE Research Institutes of Sweden or its employees shall create any warranty. Reliance on such advice, information or the content of this web page is solely at your own risk, including without limitation any safety guidelines, resources or precautions related to the installation, operation, maintenance or evolution of SMIRK or any other information related to safety that may be available on or through this web page. RISE Research Institutes of Sweden disclaims any liability for injury, death or damages resulting from the use thereof. 
 
