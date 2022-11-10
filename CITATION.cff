@@ -5,7 +5,7 @@ cff-version: 1.2.0
 title: >-
   SMIRK: A Machine Learning-Based Pedestrian
   Automatic Emergency Braking System With a Complete
-  Safety Case
+  Safety Case, Software Impacts, Volume 13
 message: >-
   If you use this software, please cite it using the
   metadata from this file. To cite the corresponding
@@ -13,7 +13,7 @@ message: >-
   SMIRK is Safe: A Safety Case for a Machine Learning
   Component in a Pedestrian Automatic Emergency Brake
   System,” arXiv:2204.07874 [cs], 2022.
-type: software
+type: Original Software Publication
 authors:
   - given-names: Kasper
     family-names: Socha
