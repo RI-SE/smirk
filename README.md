@@ -30,17 +30,16 @@ If you use this software, please cite the peer-reviewed Original Software Public
 }
 ```
 
-When refering to the development of SMIRK and its corresponding safety case, please cite the manuscript:
+When refering to the development of SMIRK and its corresponding safety case, please cite the article:
 
 ```
-@misc{https://doi.org/10.48550/arxiv.2204.07874,
+@article{borg2022ergo,
   doi = {10.48550/ARXIV.2204.07874},
   url = {https://arxiv.org/abs/2204.07874},
   author = {Borg, Markus and Henriksson, Jens and Socha, Kasper and Lennartsson, Olof and Lönegren, Elias Sonnsjö and Bui, Thanh and Tomaszewski, Piotr and Sathyamoorthy, Sankar Raman and Brink, Sebastian and Moghadam, Mahshid Helali},  
   title = {Ergo, SMIRK is Safe: A Safety Case for a Machine Learning Component in a Pedestrian Automatic Emergency Brake System},
-  publisher = {arXiv},
-  year = {2022}, 
-  copyright = {arXiv.org perpetual, non-exclusive license}
+  journal={Software Quality Journal (to appear)},
+  year = {2022}
 }
 ```
 
