@@ -1,4 +1,4 @@
-# System Test Specification v0.991
+# System Test Specification v1.0
 
 Revision History
 <table>
@@ -49,6 +49,12 @@ Revision History
 <td>2022-09-13</th>
 <td>Updated after journal review according to Issue <a href="https://github.com/RI-SE/smirk/issues/25">#25</a>.</th>
 <td>0.991</th>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</th>
+<td>2022-12-19</th>
+<td>Production Release - Peer-reviewed by Software Quality Journal according to Issue <a href="https://github.com/RI-SE/smirk/issues/27">#27</a>.</th>
+<td>1.0</th>
 </tr>
 </table>
 

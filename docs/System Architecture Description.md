@@ -1,4 +1,4 @@
-# System Architecture Description v0.99
+# System Architecture Description v1.0
 
 Revision History
 <table>
@@ -37,6 +37,12 @@ Revision History
 <td>2022-06-16</th>
 <td>Beta Release - Ready for peer-review</th>
 <td>0.99</th>
+</tr>
+<tr>
+<td>Markus Borg, Kasper Socha</th>
+<td>2022-12-19</th>
+<td>Production Release - Peer-reviewed by Software Quality Journal according to Issue <a href="https://github.com/RI-SE/smirk/issues/27">#27</a>.</th>
+<td>1.0</th>
 </tr>
 </table>
 
