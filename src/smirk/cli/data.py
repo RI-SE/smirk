@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 from pathlib import Path
-from typing import List
+from typing import List, Tuple
 
 import click
 import pandas as pd
@@ -129,3 +129,56 @@ def convert(label_paths: List[Path], output_path: Path, subset_path: Path = None
             raise Exception("Invalid subset file")
 
     smirk.data.utils.to_yolo(label_paths, output_path, include_ids)
+
+
+@data.command()
+@click.option(
+    "-l",
+    "--labels",
+    "label_paths",
+    type=click.Path(
+        exists=True,
+        file_okay=True,
+        dir_okay=False,
+        resolve_path=True,
+        path_type=Path,
+    ),
+    multiple=True,
+    required=True,
+    help="Path to labels file. Pass multiple times to include multiple.",
+)
+@click.option(
+    "-o",
+    "--output",
+    "output_path",
+    type=click.Path(file_okay=False, resolve_path=True, path_type=Path),
+    required=False,
+    default=smirk.config.paths.default_data_dir_path,
+    help="Path to output directory.",
+)
+@click.option(
+    "--only-pedestrians",
+    is_flag=True,
+    default=False,
+    help="Only extract pedestrian bounding boxes.",
+)
+@click.option(
+    "--box-size",
+    required=False,
+    nargs=2,
+    type=int,
+    default=(160, 64),  # TODO: extract
+    help="Extracted box dimensions (height,width).",
+)
+def extract_boxes(
+    label_paths: List[Path],
+    output_path: Path,
+    only_pedestrians: bool,  # TODO: Rethink how this is handled.
+    box_size: Tuple[int, int],
+):
+    """Crop bounding boxes from a dataset on smirk format.
+
+    Creates a new dataset containing only the contents of the bounding boxes. Boxes are resized to the specified dimensions.
+    """
+
+    smirk.data.utils.extract_boxes(label_paths, output_path, only_pedestrians, box_size)

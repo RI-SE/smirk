@@ -18,10 +18,14 @@
 import concurrent.futures
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Set
+from typing import Any, List, Set, Tuple
 
+import numpy as np
 import pandas as pd
+from PIL import Image
 from tqdm import tqdm
+
+from smirk.adas.safety_cage.ae_box.data import resize_box_img
 
 
 @dataclass
@@ -130,3 +134,54 @@ def to_yolo(label_paths: List[Path], out_dir: Path, included_ids: pd.Series = No
         lambda row: Path(row.object_type) / Path(row.file), axis=1
     )
     labels.drop(columns="abs_file_path").to_csv(out_dir / "meta.csv", index=False)
+
+
+def extract_boxes(
+    label_paths: List[Path],
+    out_dir: Path,
+    only_pedestrians: bool,  # TODO: Rethink this
+    box_size: Tuple[int, int],
+):
+    """Crop bounding boxes from a dataset on smirk format.
+
+    Croped boxes will be resized to fit the specified box size.
+
+
+    Args:
+        label_paths: Paths to labels on smirk format.
+        out_dir: Path to location for the extracted boxes.
+        only_pedestrians: Only extract boxes containing pedestrians.
+        box_size: Resize height and width.
+    """
+    labels = _load_labels_with_abs_path(label_paths)
+
+    if only_pedestrians:
+        labels = labels[labels.class_text == "pedestrian"]
+
+    def _extract_box(row: Any):
+        if row.class_text == "background":
+            return None
+
+        img_path = row.abs_file_path
+        box_img = np.array(
+            Image.open(img_path).crop((row.x_min, row.y_min, row.x_max, row.y_max))
+        )
+        box_img_letter = resize_box_img(box_img, box_size)
+
+        save_path = out_dir / row.object_type / f"{row.run_id}-{img_path.name}"
+        save_path.parent.mkdir(exist_ok=True, parents=True)
+        Image.fromarray(box_img_letter).save(save_path)
+
+        return save_path.relative_to(out_dir)
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=None) as executor:
+        paths = list(
+            tqdm(
+                executor.map(_extract_box, labels.itertuples()),
+                total=len(labels),
+            )
+        )
+
+    labels["file"] = paths
+
+    labels.drop(columns="abs_file_path").to_csv(out_dir / "box-labels.csv", index=False)
