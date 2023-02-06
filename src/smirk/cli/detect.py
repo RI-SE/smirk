@@ -20,25 +20,76 @@ from pathlib import Path
 import click
 
 import smirk.config.paths
-from smirk.adas.pedestrian_detector.yolo.val import evaluate
 
 
 @click.group()
 def detect():
     """
-    Training and evaluation of pedestrian detection models. Currently only YOLOv5.
+    Training and evaluation of pedestrian detection models.
+
+    Currently only YOLOv5.
     """
     pass
 
 
 @detect.command()
-def train():
+@click.option(
+    "--train",
+    "train_path",
+    type=click.Path(exists=True, file_okay=False, resolve_path=True, path_type=str),
+    required=True,
+    help="Path to training data directory",
+)
+@click.option(
+    "--val",
+    "val_path",
+    type=click.Path(exists=True, file_okay=False, resolve_path=True, path_type=str),
+    required=True,
+    help="Path to validation data directory",
+)
+@click.option(
+    "-o",
+    "--output",
+    "output_path",
+    type=click.Path(file_okay=False, resolve_path=True, path_type=str),
+    required=True,
+    help="Path to output directory.",
+)
+@click.option(
+    "-h",
+    "--hyper-parameters",
+    "hyp",
+    type=click.Path(exists=True, dir_okay=False, resolve_path=True, path_type=str),
+    required=True,
+    default=smirk.config.paths.yolo_model_hyp,
+    help="Path to yolo hyper parameters file.",
+)
+@click.option("--epochs", type=int, default=10, help="Number of epoch to train")
+@click.option("--batch-size", type=int, default=8, help="Batch size for training")
+def train(
+    train_path: str,
+    val_path: str,
+    output_path: str,
+    hyp: str,
+    epochs: int,
+    batch_size: int,
+):
     """
     Train pedestrian detection model.
+
+    Currently mainly for SMIRK reproducibility purposes.
     """
-    click.secho(
-        "WIP: Simple training is not yet available. Use model from release page for now.",
-        fg="yellow",
+    from smirk.adas.pedestrian_detector.yolo.train import run as train_yolo
+
+    train_yolo(
+        weights="",  # Train from scratch.
+        cfg=smirk.config.paths.yolo_model_config,
+        epochs=epochs,
+        batch_size=batch_size,
+        project=output_path,
+        train_path=train_path,
+        val_path=val_path,
+        hyp=hyp,
     )
 
 
@@ -63,7 +114,11 @@ def train():
 @click.option("--conf", type=float, required=True, help="Confidence threshold")
 @click.option("--batch-size", type=int, default=256, help="Batch size")
 def eval(data_path: Path, weights_path: Path, conf: float, batch_size: int):
+    """Evalute pedestrian detection model.
+
+    Currently mainly for SMIRK reproducibility purposes.
     """
-    Evalute pedestrian detection model.
-    """
+
+    from smirk.adas.pedestrian_detector.yolo.val import evaluate
+
     evaluate(data_path, weights_path, conf, batch_size)
