@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 import dataclasses
-from datetime import datetime
 from pathlib import Path
 from time import time
 from typing import Dict, Iterable, List, Union
@@ -27,8 +26,8 @@ from omegaconf import OmegaConf
 from PIL import Image
 from pydantic.dataclasses import dataclass
 
-from smirk.config import paths
 from smirk.simulators.prosivic.scenes.simple_aeb_scene import SimpleAebScene
+from smirk.simulators.prosivic.utils import TIMESTAMP_PER_SECOND
 
 
 @dataclass
@@ -59,7 +58,16 @@ SystemTestConfiguration = Union[PedestrianTestConfiguration, ObjectTestConfigura
 
 
 class SystemTestRunner:
-    def __init__(self, simulation_step_size=1, min_car_speed=0.1, add_noise=False):
+    RESULT_FILE_NAME = "results.csv"
+    SUMMARY_FILE_NAME = "summary.csv"
+
+    def __init__(
+        self,
+        output_path: Path,
+        simulation_step_size=1,
+        min_car_speed=0.1,
+        add_noise=False,
+    ):
         # NOTE: Speeds up cli.
         # TODO: Look for a better solution, lazy sub commands?.
         from smirk.adas.smirk import Smirk
@@ -70,10 +78,8 @@ class SystemTestRunner:
 
         self.scene = SimpleAebScene()
         self.smirk = Smirk()
-        self.img_save_dir = (
-            paths.project_root_path / "system_test" / f"{datetime.now():%Y%m%d_%H%M%S}"
-        )
-        self.img_save_dir.mkdir(parents=True)
+        self.output_path = output_path
+        self.output_path.mkdir(parents=True)
 
     def run_all(self, configurations: Iterable[SystemTestConfiguration]):
         for configuration in configurations:
@@ -99,13 +105,14 @@ class SystemTestRunner:
                 raise Exception("Unknown scenario type")
 
         self.run_all(configurations)
+        self.create_result_summary()
 
     def run_configuration(self, test_config: SystemTestConfiguration):
         results: List[Dict] = []
 
         param_dict = dataclasses.asdict(test_config)
 
-        scenario_save_dir = self.img_save_dir / test_config.scenario_id
+        scenario_save_dir = self.output_path / test_config.scenario_id
         scenario_save_dir.mkdir(parents=True)
 
         if self.add_noise:
@@ -142,8 +149,8 @@ class SystemTestRunner:
                     )
                 )
 
-                result_path = scenario_save_dir / "results.csv"
-                pd.DataFrame(results).to_csv(result_path)
+                result_path = scenario_save_dir / self.RESULT_FILE_NAME
+                pd.DataFrame(results).to_csv(result_path, index=False)
 
                 return
 
@@ -216,3 +223,59 @@ class SystemTestRunner:
                     if smirk_res.brake:
                         self.scene.car.brake()
                         is_braking = True
+
+    def create_result_summary(self):
+        result_paths = self.output_path.glob(f"**/{self.RESULT_FILE_NAME}")
+
+        results = pd.concat([pd.read_csv(p) for p in result_paths], ignore_index=True)
+
+        results.radar_data_timestamp = (
+            results.radar_data_timestamp / TIMESTAMP_PER_SECOND
+        ).round(1)
+        results.camera_data_timestamp = (
+            results.camera_data_timestamp / TIMESTAMP_PER_SECOND
+        ).round(1)
+        results.radar_triggered = results.radar_triggered.fillna(False)
+        results.brake = results.brake.fillna(False)
+
+        distance = results.groupby("scenario_id").distance.min()
+        radar_trigger_time = (
+            results[results.radar_triggered]
+            .groupby("scenario_id")
+            .radar_data_timestamp.min()
+        )
+        brake_trigger_time = (
+            results[results.brake].groupby("scenario_id").radar_data_timestamp.min()
+        )
+        radar_trigger_distance = results.loc[
+            results[results.radar_triggered]
+            .groupby("scenario_id")
+            .radar_data_timestamp.idxmin()
+        ].distance
+        brake_trigger_distance = results.loc[
+            results[results.brake].groupby("scenario_id").radar_data_timestamp.idxmin()
+        ].distance
+        collision = results.groupby("scenario_id").is_collision.any()
+        collision_speed = (
+            results[results.is_collision]
+            .groupby("scenario_id")
+            .first()
+            .current_car_speed
+        )
+
+        pd.DataFrame(
+            {
+                "Min distance": distance,
+                "Radar trigger time": radar_trigger_time,
+                "Brake trigger time": brake_trigger_time,
+                "Radar trigger distance": pd.Series(
+                    radar_trigger_distance.tolist(), index=radar_trigger_time.index
+                ),
+                "Brake trigger distance": pd.Series(
+                    brake_trigger_distance.tolist(), index=brake_trigger_time.index
+                ),
+                "Collision": collision,
+                "Collision speed": collision_speed,
+                "Initial speed": results.groupby("scenario_id").first().car_speed,
+            }
+        ).to_csv(self.output_path / self.SUMMARY_FILE_NAME, index=False)
