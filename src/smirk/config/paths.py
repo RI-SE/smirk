@@ -36,3 +36,5 @@ ae_box_model = model_dir_path / "ae_box"
 
 config_dir_path = project_root_path / "config"
 prosivic_dds_config_path = config_dir_path / "dds.json"
+yolo_model_config = config_dir_path / "yolo" / "yolov5s.yaml"
+yolo_model_hyp = config_dir_path / "yolo" / "hyp.yaml"
