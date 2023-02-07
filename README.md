@@ -39,7 +39,7 @@ When refering to the development of SMIRK and its corresponding safety case, ple
   author = {Borg, Markus and Henriksson, Jens and Socha, Kasper and Lennartsson, Olof and Lönegren, Elias Sonnsjö and Bui, Thanh and Tomaszewski, Piotr and Sathyamoorthy, Sankar Raman and Brink, Sebastian and Moghadam, Mahshid Helali},  
   title = {Ergo, SMIRK is Safe: A Safety Case for a Machine Learning Component in a Pedestrian Automatic Emergency Brake System},
   journal={Software Quality Journal (to appear)},
-  year = {2022}
+  year = {2023}
 }
 ```
 
