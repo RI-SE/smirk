@@ -1,6 +1,6 @@
 #
 # SMIRK
-# Copyright (C) 2021-2022 RISE Research Institutes of Sweden AB
+# Copyright (C) 2021-2023 RISE Research Institutes of Sweden AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ from PIL import Image
 from tqdm import tqdm
 
 import smirk.config.paths as paths
-from yolov5.utils.augmentations import letterbox
+from smirk.adas.safety_cage.ae_box.data import resize_box_img
 
 
 def evaluate_outlier(
@@ -83,7 +83,7 @@ def evaluate_outlier(
 def extract_box(row):
     pred = row.predictions[0].cpu().numpy()
     im_box = np.array(Image.open(row.img_path).crop(pred[:4]))
-    im_box_letter, *_ = letterbox(im_box, (160, 64), auto=False, scaleFill=True)
+    im_box_letter = resize_box_img(im_box)
 
     return (im_box_letter / 255).astype(np.float32)
 

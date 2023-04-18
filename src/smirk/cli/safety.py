@@ -1,6 +1,6 @@
 #
 # SMIRK
-# Copyright (C) 2021-2022 RISE Research Institutes of Sweden AB
+# Copyright (C) 2021-2023 RISE Research Institutes of Sweden AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,10 +20,6 @@ from pathlib import Path
 import click
 
 import smirk.config.paths
-from smirk.adas.safety_cage.ae_box.eval_outlier import evaluate_outlier as ae_box_eval
-from smirk.adas.safety_cage.ae_box.eval_with_detector import (
-    eval_with_detector as ae_box_eval_with_detector,
-)
 
 
 @click.group()
@@ -34,11 +30,45 @@ def safety():
 
 
 @safety.command()
-def train():
+@click.option(
+    "-d",
+    "--data",
+    "data_path",
+    type=click.Path(
+        exists=True,
+        file_okay=False,
+        dir_okay=True,
+        resolve_path=True,
+        path_type=Path,
+    ),
+    required=True,
+    help="Path to directory with extracted bouding boxes.",
+)
+@click.option(
+    "-o",
+    "--output",
+    "output_path",
+    type=click.Path(file_okay=False, resolve_path=True, path_type=Path),
+    required=True,
+    help="Path to output directory.",
+)
+@click.option("--epochs", type=int, default=30, help="Number of epoch to train")
+@click.option("--batch-size", type=int, default=1024, help="Batch size for training")
+# TODO: Customization + Better place for default values
+def train(data_path: Path, output_path: Path, epochs: int, batch_size: int):
     """Train outlier detector."""
-    click.secho(
-        "WIP: Simple training is not yet available. Use model from release page for now.",
-        fg="yellow",
+    from smirk.adas.safety_cage.ae_box.train import train as trian_ae_box
+
+    trian_ae_box(
+        data_path,
+        output_path,
+        epochs,
+        batch_size,
+        seed=3,
+        img_height=160,
+        img_width=64,
+        num_channels=3,
+        encoding_dim=1024,
     )
 
 
@@ -65,6 +95,10 @@ def eval_outlier(data_path: Path, weights_path: Path, batch_size: int):
     """
     Evalute outlier detector in isolation.
     """
+    from smirk.adas.safety_cage.ae_box.eval_outlier import (
+        evaluate_outlier as ae_box_eval,
+    )
+
     ae_box_eval(data_path, weights_path, batch_size)
 
 
@@ -86,4 +120,8 @@ def eval_with_detector(data_path: Path, conf: float, outlier: float, distance: f
     """
     Evalute outlier detector together with pedestrian detector.
     """
+    from smirk.adas.safety_cage.ae_box.eval_with_detector import (
+        eval_with_detector as ae_box_eval_with_detector,
+    )
+
     ae_box_eval_with_detector(data_path, conf, outlier, distance)

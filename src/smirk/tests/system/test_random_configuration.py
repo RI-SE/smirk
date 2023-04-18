@@ -1,6 +1,6 @@
 #
 # SMIRK
-# Copyright (C) 2021-2022 RISE Research Institutes of Sweden AB
+# Copyright (C) 2021-2023 RISE Research Institutes of Sweden AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,10 +17,12 @@
 #
 import argparse
 import random
+from time import time
 
 import nanoid
 import numpy as np
 
+import smirk.config.paths
 from smirk.simulators.prosivic.scenes.simple_aeb_scene import SimpleAebScene
 from smirk.tests.system.system_test_runner import (
     PedestrianTestConfiguration,
@@ -112,7 +114,10 @@ def get_single_random_configuration(
 
 
 def test_random_configurations(count: int):
-    runner = SystemTestRunner()
+    runner = SystemTestRunner(
+        output_path=smirk.config.paths.temp_dir_path / f"{int(time())}_system_test"
+    )
+
     runner.run_all(get_single_random_configuration() for _ in range(count))
 
 

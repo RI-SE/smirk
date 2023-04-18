@@ -1,6 +1,6 @@
 #
 # SMIRK
-# Copyright (C) 2021-2022 RISE Research Institutes of Sweden AB
+# Copyright (C) 2021-2023 RISE Research Institutes of Sweden AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,14 +20,13 @@ from typing import Any, Dict, cast
 import numpy as np
 
 import smirk.config.paths as paths
+from smirk.adas.safety_cage.ae_box.data import get_init_img, resize_box_img
 from smirk.adas.safety_cage.safety_cage import SafetyCage
-from yolov5.utils.augmentations import letterbox
 
 
 class AeBoxCage(SafetyCage):
-    # TODO: Proper threshold + store/load somewhere else
+    # TODO: store/load somewhere else
     THRESHOLD = 4e-3
-    IMG_SIZE = [160, 64]
 
     def __init__(self) -> None:
         import tensorflow as tf
@@ -40,16 +39,16 @@ class AeBoxCage(SafetyCage):
 
         self.model = cast(OutlierAE, load_detector(paths.ae_box_model))
         self.model.threshold = self.THRESHOLD
-        self.model.predict(np.random.random((1, *self.IMG_SIZE, 3)).astype(np.float32))
+        self.model.predict(get_init_img())
 
     def is_accepted(
         self, camera_frame: np.ndarray, predicted_box_crop: np.ndarray, distance: float
     ) -> bool:
         if distance <= 10:
             return True
-        resized_box, *_ = letterbox(
-            predicted_box_crop, self.IMG_SIZE, auto=False, scaleFill=True
-        )
+
+        resized_box = resize_box_img(predicted_box_crop)
+
         pred: Dict[Any, Any] = self.model.predict(
             np.expand_dims(resized_box / 255, 0).astype(np.float32),
             outlier_type="instance",

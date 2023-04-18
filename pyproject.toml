@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "smirk"
-version = "0.1.0"
+version = "1.0"
 description = "An experimental pedestrian emergency breaking ADAS."
 authors = ["Kasper Socha <kaspersocha@gmail.com>", "Markus Borg <markus.borg@ri.se>", "Jens Henriksson <jens.henriksson@semcon.com>"]
 readme= "README.md"

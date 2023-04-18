@@ -1,6 +1,6 @@
 #
 # SMIRK
-# Copyright (C) 2021-2022 RISE Research Institutes of Sweden AB
+# Copyright (C) 2021-2023 RISE Research Institutes of Sweden AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -289,3 +289,8 @@ def box_iou(box1, box2):
     return inter / (
         area1[:, None] + area2 - inter
     )  # iou = inter / (area1 + area2 - inter)
+
+
+def fitness(x):
+    w = [0.0, 0.0, 1, 0]  # weights for [P, R, mAP@0.5, mAP@0.5:0.95]
+    return (x[:, :4] * w).sum(1)

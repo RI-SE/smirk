@@ -15,11 +15,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-from dataclasses import dataclass
+from typing import Tuple
+
+import numpy as np
+
+from yolov5.utils.augmentations import letterbox
+
+IMG_SIZE = (160, 64)
 
 
-@dataclass
-class Position:
-    x: float
-    y: float
-    z: float
+def resize_box_img(box_img: np.ndarray, new_size: Tuple[int, int] = IMG_SIZE):
+    resized_img, *_ = letterbox(box_img, new_size, auto=False, scaleFill=True)
+
+    return resized_img
+
+
+def get_init_img(img_size: Tuple[int, int] = IMG_SIZE):
+    return np.random.random((1, *img_size, 3)).astype(np.float32)

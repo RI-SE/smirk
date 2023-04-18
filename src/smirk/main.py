@@ -1,6 +1,6 @@
 #
 # SMIRK
-# Copyright (C) 2021-2022 RISE Research Institutes of Sweden AB
+# Copyright (C) 2021-2023 RISE Research Institutes of Sweden AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 #
 import click
 
+from smirk.cli.data import data
 from smirk.cli.detect import detect
 from smirk.cli.generate import generate
 from smirk.cli.safety import safety
@@ -51,3 +52,4 @@ main.add_command(generate)
 main.add_command(detect)
 main.add_command(safety)
 main.add_command(test)
+main.add_command(data)

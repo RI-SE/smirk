@@ -1,6 +1,6 @@
 #
 # SMIRK
-# Copyright (C) 2021-2022 RISE Research Institutes of Sweden AB
+# Copyright (C) 2021-2023 RISE Research Institutes of Sweden AB
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -35,15 +35,22 @@ from smirk.tests.system.system_test_runner import SystemTestRunner
     help="Path to system test config file.",
 )
 @click.option(
+    "-o",
+    "--output",
+    "output_path",
+    type=click.Path(file_okay=False, resolve_path=True, path_type=Path),
+    help="Path to output directory.",
+)
+@click.option(
     "-n",
     "--noisy",
     is_flag=True,
     default=False,
     help="Add random jitter in the range from -10%% to +10%% to all numerical values.",
 )
-def test(config_path, noisy):
+def test(config_path: Path, output_path: Path, noisy: bool):
     """
     System simulator testing.
     """
-    runner = SystemTestRunner(add_noise=noisy)
+    runner = SystemTestRunner(output_path, add_noise=noisy)
     runner.run_from_file(config_path)
