@@ -12,7 +12,7 @@ message: >-
   safety case, please cite: M. Borg et al., “Ergo,
   SMIRK is Safe: A Safety Case for a Machine Learning
   Component in a Pedestrian Automatic Emergency Brake
-  System,” arXiv:2204.07874 [cs], 2022.
+  System,” Software Quality Journal, 2023.
 type: Original Software Publication
 authors:
   - given-names: Kasper
