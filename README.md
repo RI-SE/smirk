@@ -1,3 +1,5 @@
+[![CodeScene Code Health](https://codescene.io/projects/43828/status-badges/code-health)](https://codescene.io/projects/43828)
+
 # SMIRK
 SMIRK is an experimental pedestrian emergency braking ADAS facilitating research on quality assurance of critical components that rely on machine learning.
 
