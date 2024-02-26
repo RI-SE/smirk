@@ -12,35 +12,36 @@ SMIRK is an experimental pedestrian emergency braking ADAS facilitating research
 - License: [GPL3-0](https://github.com/RI-SE/smirk/blob/main/LICENSE)
 
 ## Description
-SMIRK is a research prototype under development that facilitates research on verification and validation (V&V) of safety-critical systems embedding Machine Learning (ML) components. SMIRK responds to calls for a fully transparent ML-based Advanced Driver-Assistance System (ADAS) to act as a system-under-test in research on trusted AI [[1]](#1). SMIRK provides pedestrian emergency braking. By combining trained and coded software, SMIRK is intended to become a baseline Software-Under-Test (SUT) for ML testing research targeting automotive perception applications such as object detection and path planning. To ensure industrial relevance, SMIRK will implement a reference architecture while adhering to development practices mandated by contemporary automotive safety standards [[2]](#2) and we is complemented by a fully transparent safety case.
+SMIRK is a research prototype under development that facilitates research on verification and validation (V&V) of safety-critical systems embedding Machine Learning (ML) components. SMIRK responds to calls for a fully transparent ML-based Advanced Driver-Assistance System (ADAS) to act as a system-under-test in research on trusted AI [[1]](#1). SMIRK provides pedestrian emergency braking. By combining trained and coded software, SMIRK is intended to become a baseline Software-Under-Test (SUT) for ML testing research targeting automotive perception applications such as object detection and path planning. To ensure industrial relevance, SMIRK will implement a reference architecture while adhering to development practices mandated by contemporary automotive safety standards [[2]](#2), and we complemented it with a fully transparent safety case.
 
 ## Purpose and Limitations
-The SMIRK safety case is restricted to the novel challenges introduced by ML. The development adheres to the overall process described in the publicly available  specification *ISO/PAS 21448:2019 Road vehicles — Safety of the intended functionality* and we provide ML assurance by following the methodology for *Assurance of Machine Learning for use in Autonomous Systems* (AMLAS). Demonstrating compliance with the quintessential automotive software standard *ISO 26262:2018 Road vehicles — Functional safety* is out of the scope of this research project. We make the simplified assumption that the overall development context embedded the development of the ML-based SMIRK ADAS fulfills all aspects of ISO 26262, e.g., regarding processes, practices, and tools. While we will use third party open-source software in SMIRK (both incorporated as assets in the product and as tool support for software testing), we will not provide any safety assurance of external tools - instead we assume that the development organization has the capability to do so.
+The SMIRK safety case is restricted to the novel challenges introduced by ML. The development adheres to the overall process described in the publicly available  specification *ISO/PAS 21448:2019 Road vehicles — Safety of the intended functionality* and we provide ML assurance by following the methodology for *Assurance of Machine Learning for use in Autonomous Systems* (AMLAS). Demonstrating compliance with the quintessential automotive software standard *ISO 26262:2018 Road vehicles — Functional safety* is out of the scope of this research project. We make the simplified assumption that the overall development context embedded the development of the ML-based SMIRK ADAS fulfills all aspects of ISO 26262, e.g., regarding processes, practices, and tools. While we will use third-party open-source software in SMIRK (both incorporated as assets in the product and as tool support for software testing), we will not provide any safety assurance of external tools - instead we assume that the development organization has the capability to do so.
 
 ## How To Cite This Work
 If you use this software, please cite the peer-reviewed Original Software Publication:
 
 ```
 @article{socha2022smirk,
-  title={SMIRK: A Machine Learning-Based Pedestrian Automatic Emergency Braking System with a Complete Safety Case},
-  author={Socha, Kasper and Borg, Markus and Henriksson, Jens},
-  journal={Software Impacts},
-  volume={13},
-  year={2022},
-  publisher={Elsevier},
+  title = {SMIRK: A Machine Learning-Based Pedestrian Automatic Emergency Braking System with a Complete Safety Case},
+  author = {Socha, Kasper and Borg, Markus and Henriksson, Jens},
+  journal = {Software Impacts},
+  volume = {13},
+  year = {2022},
+  publisher = {Elsevier},
   doi = {10.1016/j.simpa.2022.100352}
 }
 ```
 
-When refering to the development of SMIRK and its corresponding safety case, please cite the article:
+When referring to the development of SMIRK and its corresponding safety case, please cite the article:
 
 ```
-@article{borg2022ergo,
-  doi = {10.48550/ARXIV.2204.07874},
-  url = {https://arxiv.org/abs/2204.07874},
+@article{borg2023ergo,
+  doi = {10.1007/s11219-022-09613-1},
   author = {Borg, Markus and Henriksson, Jens and Socha, Kasper and Lennartsson, Olof and Lönegren, Elias Sonnsjö and Bui, Thanh and Tomaszewski, Piotr and Sathyamoorthy, Sankar Raman and Brink, Sebastian and Moghadam, Mahshid Helali},  
   title = {Ergo, SMIRK is Safe: A Safety Case for a Machine Learning Component in a Pedestrian Automatic Emergency Brake System},
-  journal={Software Quality Journal (to appear)},
+  journal = {Software Quality Journal},
+  issue = {31},
+  pages = {335–403},
   year = {2023}
 }
 ```
@@ -50,7 +51,7 @@ SMIRK is developed for use in simulated environments. Under no circumstances sha
 
 ## Branching Model
 
-The SMIRK development follows the popular [git-flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model. The model uses two *infinite* branches (`master` and `develop`) and two types of supporting branches (`feature` and `hotfix` branches). Supporting branches shall be *ephemeral*, i.e., they should only last as long as the feature or hotfix itself is in development. Once completed, they shall be merged back into one of the infitine branches and/or discarded.
+The SMIRK development follows the popular [git-flow](https://nvie.com/posts/a-successful-git-branching-model/) branching model. The model uses two *infinite* branches (`master` and `develop`) and two types of supporting branches (`feature` and `hotfix` branches). Supporting branches shall be *ephemeral*, i.e., they should only last as long as the feature or hotfix itself is in development. Once completed, they shall be merged back into one of the infinite branches and/or discarded.
 
 In the following examples, `feature-x` or `hotfix-x` shall be replaced with a short phrase describing the feature or hotfix.
 
@@ -63,10 +64,10 @@ The repository administrators are responsible for deleting the remote copies of 
 
 External pull requests are welcome, but must be reviewed before they can be merged into the master branch. Reviewers may ask questions or make suggestions for edits and improvements before your feature can be merged. If your feature branch pull request is not accepted, make the necessary adjustments or fixes as indicated by the repository administrators and redo the pull request.
 
-For a longer desciption of the branching model, please refer to our [examples](https://github.com/RI-SE/smirk/blob/main/branching.md).
+For a longer description of the branching model, please refer to our [examples](https://github.com/RI-SE/smirk/blob/main/branching.md).
 
 ## Quickstart
-Create a python 3.7 virtual environment with your preferred tool e.g. using conda:
+Create a Python 3.7 virtual environment with your preferred tool e.g. using conda:
 
 ```
 $ conda create -n=smirk-env python=3.7
